@@ -14,6 +14,7 @@ export * as UiProductCard from "./components/UiProductCard";
 export * as UiProgress from "./components/UiProgress";
 export * as UiRadioFancy from "./components/UiRadioFancy";
 export * as UiSkeleton from "./components/UiSkeleton";
+export * as UiSnackbar from "./components/UiSnackbar";
 export * as UiTable from "./components/UiTable";
 export * as UiTypography from "./components/UiTypography";
 export * as UiToggle from "./components/UiToggle";
