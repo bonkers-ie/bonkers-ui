@@ -5,6 +5,7 @@ type TButtonProps = {
     size?: EButtonSizes;
     fullWidth?: boolean;
     weight?: EButtonWeight;
+    className?: string;
 } & React.HTMLAttributes<HTMLElement> & React.ButtonHTMLAttributes<HTMLElement> & React.AnchorHTMLAttributes<HTMLElement>;
 export declare const UiButton: React.FC<TButtonProps>;
 export {};
