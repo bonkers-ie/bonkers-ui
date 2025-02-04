@@ -54,13 +54,3 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {};
-export const HalfStar: Story = {
-	args: {
-		current: 3.5,
-	},
-};
-export const PartialStar: Story = {
-	args: {
-		current: 3.7,
-	},
-};
