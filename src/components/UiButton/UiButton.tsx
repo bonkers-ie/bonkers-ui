@@ -8,6 +8,7 @@ type TButtonProps = {
 	size?: EButtonSizes;
 	fullWidth?: boolean;
 	weight?: EButtonWeight;
+	className?: string;
 } & React.HTMLAttributes<HTMLElement> &
 	React.ButtonHTMLAttributes<HTMLElement> &
 	React.AnchorHTMLAttributes<HTMLElement>
@@ -388,6 +389,7 @@ export const UiButton: React.FC<TButtonProps> = ({
 	disabled = false,
 	children,
 	weight = EButtonWeight.BOLD,
+	className,
 	onClick,
 	...rest
 }) => {
@@ -427,7 +429,8 @@ export const UiButton: React.FC<TButtonProps> = ({
 				{
 					"w-full": fullWidth,
 					"pointer-events-none": disabled,
-				}
+				},
+				className
 			) }
 			disabled={ disabled }
 		>
