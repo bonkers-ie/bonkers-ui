@@ -48,7 +48,7 @@ input:checked + .UiCheckbox__custom {
 }
 
 input:checked + .UiCheckbox__custom:hover {
-	background-color: theme(colors.primary.600);
+	background-color: theme(colors.primary.700);
 }
 
 input:checked + .UiCheckbox__custom:active {

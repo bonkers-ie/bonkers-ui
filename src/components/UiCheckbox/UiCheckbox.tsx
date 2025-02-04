@@ -76,7 +76,7 @@ export const UiCheckbox: React.FC<TUiCheckboxProps> = ({
 				"justify-center",
 				"rounded",
 				"border",
-				"border-secondary-alt-500",
+				"border-secondary-alt-600",
 				"hover:border-secondary-alt-700",
 				invertOrder && "order-last",
 				spanSizeClasses[size]
