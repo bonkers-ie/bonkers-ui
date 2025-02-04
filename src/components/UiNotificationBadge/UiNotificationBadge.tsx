@@ -50,15 +50,12 @@ const sizeClasses = {
 };
 
 export const UiNotificationBadge: React.FC<UiNotificationBadge> = ({
-	offset,
+	offset = EBadgeOffset.DEFAULT,
 	children,
 	kind = EBadgeTypes.DEFAULT,
 	size = EBadgeSizes.DEFAULT
 
 }) => {
-	if (!children) {
-		return null;
-	}
 
 	return (
 		<div
@@ -76,7 +73,7 @@ export const UiNotificationBadge: React.FC<UiNotificationBadge> = ({
 				"text-white",
 				"whitespace-nowrap",
 				"gap-xxxs",
-				offset && offsetClasses[offset],
+				offsetClasses[offset],
 				kindClasses[kind],
 				sizeClasses[size]
 			) }
