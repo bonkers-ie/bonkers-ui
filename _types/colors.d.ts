@@ -33,6 +33,8 @@ export declare enum EColors {
     WARNING_600 = "--color-warning-600",
     WARNING_700 = "--color-warning-700",
     ERROR = "--color-error",
+    ERROR_100 = "--color-error-100",
+    ERROR_200 = "--color-error-200",
     ERROR_300 = "--color-error-300",
     ERROR_400 = "--color-error-400",
     ERROR_500 = "--color-error-500",
