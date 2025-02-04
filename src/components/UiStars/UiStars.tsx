@@ -1,19 +1,19 @@
 import React from "react";
 import cx from "classnames";
 import { EColors } from "../../_types/colors.ts";
-
+import { EStarsSize } from "./_types.ts";
 interface IUiStars {
 	min: number
 	max: number
 	current: number
-	size?: "sm" | "md" | "lg"
+	size?: EStarsSize
 	color?: EColors
 }
 
 const sizeClasses = {
-	"sm": "w-sm h-sm",
-	"md": "w-md h-md",
-	"lg": "w-lg h-lg"
+	[EStarsSize.SM]: "w-sm h-sm",
+	[EStarsSize.MD]: "w-md h-md",
+	[EStarsSize.LG]: "w-lg h-lg"
 };
 
 const colorClasses = {
@@ -90,7 +90,7 @@ export const UiStars: React.FC<IUiStars> = ({
 	min = 0,
 	max = 5,
 	current,
-	size = "md",
+	size = EStarsSize.MD,
 	color = EColors.PRIMARY
 }) => {
 	const totalStars = max - min;

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { UiStars } from "./UiStars";
 import { EColors } from "../../_types/colors";
-
+import { EStarsSize } from "./_types";
 const meta = {
 	title: "Components/UiStars",
 	component: UiStars,
@@ -29,7 +29,7 @@ const meta = {
 			control: {
 				type: "select"
 			},
-			options: ["sm", "md", "lg"],
+			options: Object.values(EStarsSize),
 			description: "Star size",
 		},
 		color: {
@@ -44,7 +44,7 @@ const meta = {
 		min: 0,
 		max: 5,
 		current: 3.5,
-		size: "md",
+		size: EStarsSize.MD,
 		color: EColors.PRIMARY
 	},
 } satisfies Meta<typeof UiStars>;
