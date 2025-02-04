@@ -94,14 +94,16 @@ export const UiStars: React.FC<IUiStars> = ({
 	color = EColors.PRIMARY
 }) => {
 	const totalStars = max - min;
-	const filledStars = current - min;
+	const filledStars = Math.min(Math.max(current - min, 0), max - min);
 
 	return (
 		<div className="flex">
 			{ [...Array(totalStars)].map((_, index) => {
 				const isFilled = index < Math.floor(filledStars);
-				const isPartial = !isFilled && index < Math.ceil(filledStars);
-				const partialFill = isPartial ? (filledStars % 1) * 100 : 0;
+				const isPartial = !isFilled && index === Math.floor(filledStars);
+				const partialFill = isPartial
+					? 15 + (Number((filledStars % 1).toFixed(6)) * 70)
+					: 0;
 
 				return (
 					<div key={ index } className="relative">
@@ -112,31 +114,22 @@ export const UiStars: React.FC<IUiStars> = ({
 							) }
 							viewBox="0 0 24 24"
 						>
+							<defs>
+								{ isPartial && (
+									<linearGradient id={ `star-fill-${index}` } x1="0" x2="1" y1="0" y2="0">
+										<stop offset={ `${partialFill}%` } stopColor="currentColor" />
+										<stop offset={ `${partialFill}%` } stopColor="transparent" />
+									</linearGradient>
+								) }
+							</defs>
 							<path
 								d="M12 2L14.8 8.1L22 8.9L17 13.4L18.2 20L12 16.9L5.8 20L7 13.4L2 8.9L9.2 8.1L12 2Z"
-								fill={ isFilled ? "currentColor" : "none" }
+								fill={ isFilled ? "currentColor" : (isPartial ? `url(#star-fill-${index})` : "none") }
 								strokeWidth="2"
 								stroke="currentColor"
 								strokeLinecap="round"
 								strokeLinejoin="round"
 							/>
-							{ isPartial && (
-								<clipPath id={ `star-clip-${index}` }>
-									<rect x="0" y="0" width={ `${partialFill}%` } height="100%" />
-								</clipPath>
-							) }
-							{ isPartial && (
-								<path
-									d="M12 2L14.8 8.1L22 8.9L17 13.4L18.2 20L12 16.9L5.8 20L7 13.4L2 8.9L9.2 8.1L12 2Z"
-									fill="currentColor"
-									strokeWidth="2"
-									stroke="currentColor"
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									className={ colorClasses[color] }
-									clipPath={ `url(#star-clip-${index})` }
-								/>
-							) }
 						</svg>
 					</div>
 				);
