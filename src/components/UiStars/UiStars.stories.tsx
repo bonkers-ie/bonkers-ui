@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { UiStars } from "./UiStars";
 import { EColors } from "../../_types/colors";
 import { EStarsSize } from "./_types";
+
 const meta = {
 	title: "Components/UiStars",
 	component: UiStars,
