@@ -125,7 +125,7 @@ export const UiStars: React.FC<IUiStars> = ({
 							<path
 								d="M12 2L14.8 8.1L22 8.9L17 13.4L18.2 20L12 16.9L5.8 20L7 13.4L2 8.9L9.2 8.1L12 2Z"
 								fill={ isFilled ? "currentColor" : (isPartial ? `url(#star-fill-${index})` : "none") }
-								strokeWidth="2"
+								strokeWidth="1.5"
 								stroke="currentColor"
 								strokeLinecap="round"
 								strokeLinejoin="round"
