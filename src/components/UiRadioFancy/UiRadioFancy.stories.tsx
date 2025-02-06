@@ -20,12 +20,6 @@ const meta = {
 			},
 			description: "Radio disabled",
 		},
-		subHeader: {
-			control: {
-				type: "text",
-			},
-			description: "RadioFancy Children",
-		},
 		radioType: {
 			control: {
 				type: "select",
@@ -38,7 +32,6 @@ const meta = {
 	args: {
 		children: "Title",
 		disabled: false,
-		subHeader: "DG2 = Rural supply region",
 		radioType: ERadioTypes.DEFAULT,
 		onChange: (value: string) => console.log(value),
 		active: false,
@@ -79,7 +72,6 @@ export const Primary: Story = {
 				<UiRadioFancy
 					disabled={ args.disabled }
 					icon={ ["far", "face-smile"] }
-					subHeader={ args.subHeader }
 					radioType={ args.radioType }
 					value="value2"
 					onChange={ handleChange }
@@ -128,7 +120,6 @@ export const Variant: Story = {
 				<UiRadioFancy
 					disabled={ args.disabled }
 					icon={ ["far", "face-smile"] }
-					subHeader={ args.subHeader }
 					radioType={ args.radioType }
 					value="value2"
 					onChange={ handleChange }

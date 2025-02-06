@@ -51,18 +51,22 @@ export const UiRadioFancy: React.FC<TUiRadioFancy> = ({
 				"bg-white",
 				"p-sm",
 				"hover:border-secondary-alt-700",
-				"peer-focus:shadow-border-primary",
-				"peer-active:bg-secondary-alt-200",
+				"peer-focus:outline ",
+				"peer-focus:outline-4",
+				"peer-focus:outline-primary-300",
+				"peer-focus:outline-offset-2",
+				"peer-checked:shadow-border-primary-600",
+				"peer-checked:border-0",
+				"peer-checked:active:bg-secondary-alt-200",
+				"peer-checked:hover:shadow-border-primary-700",
 				"flex",
 				"gap-sm",
 				"text-sm",
-				{
-					"border-secondary-alt-400": disabled && !active,
-					"border-primary-600 border-2 peer-hover:border-primary-700": !disabled && active,
-					"border-primary-300": disabled && active,
-					"border-secondary-alt-600": !disabled && !active
 
-				},
+				disabled
+					? "border-secondary-alt-400 peer-checked:shadow-border-primary-disabled"
+					: "border-secondary-alt-600",
+
 				typeClasses[radioType],
 
 			) }>
