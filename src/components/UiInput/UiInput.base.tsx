@@ -26,7 +26,7 @@ export const UiInputBase: React.FC<
 			htmlFor={ rest.id }
 			className={
 				cx("ui-input-wrapper",
-					"flex flex-row items-center gap-xxs rounded-lg border p-sm",
+					"flex flex-row items-center gap-sm rounded-lg border p-sm",
 					kind && stateClasses[kind],
 					{
 						"bg-white": !rest.disabled,
