@@ -1,28 +1,17 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { UiStars } from "./UiStars";
-import { EColors } from "../../_types/colors";
-import { EStarsSize } from "./_types";
+import { EStarsSize, EStarColors } from "./_types";
 
 const meta = {
 	title: "Components/UiStars",
 	component: UiStars,
 	argTypes: {
-		min: {
-			control: {
-				type: "number"
-			},
-			description: "Minimum rating value",
-		},
-		max: {
-			control: {
-				type: "number"
-			},
-			description: "Maximum rating value",
-		},
-		current: {
+		currentRating: {
 			control: {
 				type: "number",
-				step: 0.1
+				step: 0.1,
+				min: 0,
+				max: 5
 			},
 			description: "Current rating value",
 		},
@@ -37,16 +26,14 @@ const meta = {
 			control: {
 				type: "select"
 			},
-			options: Object.values(EColors),
+			options: Object.values(EStarColors),
 			description: "Star color",
 		}
 	},
 	args: {
-		min: 0,
-		max: 5,
-		current: 3.5,
+		currentRating: 3.5,
 		size: EStarsSize.MD,
-		color: EColors.PRIMARY
+		color: EStarColors.DEFAULT
 	},
 } satisfies Meta<typeof UiStars>;
 

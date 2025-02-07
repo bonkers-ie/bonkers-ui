@@ -3,3 +3,12 @@ export enum EStarsSize {
 	MD = "MD",
 	LG = "LG"
 }
+
+export enum EStarColors {
+	DEFAULT = "default",
+	GOLD = "gold",
+	WHITE = "white",
+	BLACK = "black",
+	CURRENT = "current",
+	GREEN = "green"
+}
