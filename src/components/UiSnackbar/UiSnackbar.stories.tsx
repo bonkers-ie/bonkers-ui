@@ -14,18 +14,24 @@ const meta = {
 			options: Object.values(ESnackbarTypes),
 			description: "Snackbar Color",
 		},
+		title: {
+			control: {
+				type: "text",
+				description: "text or title",
+			}
+		},
 		children: {
 			control: {
 				type: "text",
 				description: "text or child element/s",
 			}
-		},
+		}
 
 	},
 	args: {
-		kind: ESnackbarTypes.DEFAULT,
-		children: "Some Text",
-		open: false
+		kind: ESnackbarTypes.SECONDARY,
+		title: "Some Text",
+		children: "Text"
 
 	},
 } satisfies Meta<typeof UiSnackbar>;

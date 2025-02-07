@@ -5,14 +5,15 @@ import { EButtonSizes, EButtonTypes, UiButton } from "../UiButton";
 
 type UiSnackbarProps ={
 	kind?: ESnackbarTypes;
+	title: React.ReactNode;
 	children: React.ReactNode;
-	open?: boolean;
 
 }
 
 const kindClasses = {
 	[ESnackbarTypes.DEFAULT]: `
 		bg-white
+		text-secondary-700
 
 	`,
 	[ESnackbarTypes.PRIMARY]: `
@@ -36,65 +37,44 @@ const kindClasses = {
 
 export const UiSnackbar: React.FC<UiSnackbarProps> = ({
 
-	kind= ESnackbarTypes.DEFAULT,
-	children,
-	open = true
+	kind= ESnackbarTypes.SECONDARY,
+	title,
+	children
+
 }) => {
-
-	const [isOpen, setIsOpen] = React.useState(open);
-	const handleClick = () => {
-		setIsOpen(false);
-		console.log("open");
-	};
-
-	const handleClose = () => {
-		setIsOpen(true);
-		console.log("closed");
-	};
 
 	return (
 		<>
-			{ isOpen && (
+
+			<div
+				className={ cx(
+					"ui-snackbar",
+					"flex",
+					"w-full",
+					"rounded-xxs",
+					"items-center",
+					"justify-between",
+					"shadow-md",
+					"p-sm",
+					"flex-row-reverse",
+					"text-sm",
+					kindClasses[kind]
+				) }
+			>
 				<UiButton
-					kind={ EButtonTypes.SECONDARY_OVERLAY }
-					size={ EButtonSizes.MEDIUM }
-					onClick={ handleClick }
+					kind={ EButtonTypes.LINK }
+					size={ EButtonSizes.SMALL }
+					style={ {
+						color: kind === ESnackbarTypes.DEFAULT ? "black" : "white",
+						fontWeight: "normal",
+					} }
 				>
-					Open Snackbar
-				</UiButton>
-			) }
-
-			{ !isOpen && (
-				<div
-					className={ cx(
-						"ui-snackbar",
-						"flex",
-						"w-full",
-						"rounded-xxs",
-						"items-center",
-						"justify-between",
-						"shadow-md",
-						"p-sm",
-						"flex-row-reverse",
-						"text-sm",
-						kindClasses[kind]
-					) }
-				>
-					<UiButton
-						kind={ EButtonTypes.LINK }
-						size={ EButtonSizes.SMALL }
-						style={ {
-							color: kind === ESnackbarTypes.DEFAULT ? "black" : "white",
-							fontWeight: "normal",
-						} }
-						onClick={ handleClose }
-					>
-						Text
-					</UiButton>
-
 					{ children }
-				</div>
-			) }
+				</UiButton>
+
+				{ title }
+			</div>
+
 		</>
 	);
 };
