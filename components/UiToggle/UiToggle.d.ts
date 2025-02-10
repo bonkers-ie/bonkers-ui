@@ -1,9 +1,9 @@
 import { default as React } from '../../../node_modules/react';
-interface IUiToggle {
+type TUiToggleProps = {
     title?: React.ReactNode;
     children?: React.ReactNode;
     disabled?: boolean;
     invertOrder?: boolean;
-}
-export declare const UiToggle: React.FC<IUiToggle>;
+} & React.InputHTMLAttributes<HTMLInputElement>;
+export declare const UiToggle: React.FC<TUiToggleProps>;
 export {};
