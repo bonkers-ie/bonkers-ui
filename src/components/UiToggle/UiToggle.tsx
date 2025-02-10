@@ -1,22 +1,31 @@
 import React, { useState } from "react";
 import cx from "classnames";
 
-interface IUiToggle {
+type TUiToggleProps = {
 	title?:  React.ReactNode
 	children?: React.ReactNode
 	disabled?: boolean
 	invertOrder?: boolean;
-}
+} & React.InputHTMLAttributes<HTMLInputElement>;
 
-export const UiToggle: React.FC<IUiToggle> = ({
+export const UiToggle: React.FC<TUiToggleProps> = ({
 	children,
 	title,
 	disabled = false,
-	invertOrder = false
-
+	invertOrder = false,
+	checked,
+	onChange,
+	...rest
 }) => {
-	const [isChecked, setIsChecked] = useState(false);
+	const [isChecked, setIsChecked] = useState(checked || false);
 	const [isHovered, setIsHovered] = useState(false);
+
+	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		if (!disabled && onChange) {
+			onChange?.(event);
+			setIsChecked(!isChecked);
+		}
+	};
 
 	return (
 		<div className={ cx(
@@ -60,7 +69,9 @@ export const UiToggle: React.FC<IUiToggle> = ({
 					) }
 					type="checkbox"
 					checked={ isChecked }
-					onChange={ () => setIsChecked(!isChecked) }
+					onChange={ handleChange }
+					disabled={ disabled }
+					{ ...rest }
 					>
 					</input>
 

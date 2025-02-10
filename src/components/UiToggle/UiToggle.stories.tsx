@@ -1,3 +1,4 @@
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { UiToggle } from "./UiToggle";
 
@@ -28,7 +29,11 @@ const meta = {
 				type: "boolean"
 			},
 			description: "The Element order state",
-		}
+		},
+		onClick: {
+			action: "clicked",
+			description: "Toggle Clicked",
+		},
 
 	},
 	args: {
@@ -45,4 +50,14 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {};
+export const Primary: Story = {
+	render: (args) => {
+		const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+			console.log("Checked", e.target.checked);
+		};
+
+		return (
+			<UiToggle { ...args } onChange={ handleChange } />
+		);
+	}
+};
