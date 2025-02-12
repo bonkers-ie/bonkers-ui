@@ -5,8 +5,10 @@ type TUiToggleProps = {
 	title?:  React.ReactNode
 	children?: React.ReactNode
 	disabled?: boolean
-	invertOrder?: boolean;
-} & React.InputHTMLAttributes<HTMLInputElement>;
+	invertOrder?: boolean
+	value?: boolean
+	onChange?: (checked: boolean) => void
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange">;
 
 export const UiToggle: React.FC<TUiToggleProps> = ({
 	children,
@@ -14,16 +16,16 @@ export const UiToggle: React.FC<TUiToggleProps> = ({
 	disabled = false,
 	invertOrder = false,
 	checked,
+	value,
 	onChange,
 	...rest
 }) => {
-	const [isChecked, setIsChecked] = useState(checked || false);
+
 	const [isHovered, setIsHovered] = useState(false);
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		if (!disabled && onChange) {
-			onChange?.(event);
-			setIsChecked(!isChecked);
+			onChange?.(event.target.checked);
 		}
 	};
 
@@ -68,9 +70,10 @@ export const UiToggle: React.FC<TUiToggleProps> = ({
 						"border-0"
 					) }
 					type="checkbox"
-					checked={ isChecked }
+					checked={ checked }
 					onChange={ handleChange }
 					disabled={ disabled }
+					value={ value }
 					{ ...rest }
 					>
 					</input>
@@ -81,10 +84,10 @@ export const UiToggle: React.FC<TUiToggleProps> = ({
 						"w-xl",
 						"rounded-full",
 						{
-							"bg-secondary-alt-300": !isChecked && disabled,
-							"bg-primary-500": isChecked && !disabled,
-							"bg-primary-300": isChecked && disabled,
-							"bg-secondary-alt": !isChecked && !disabled,
+							"bg-secondary-alt-300": !checked && disabled,
+							"bg-primary-500": checked && !disabled,
+							"bg-primary-300": checked && disabled,
+							"bg-secondary-alt": !checked && !disabled,
 						}
 					) }
 					></span>
@@ -104,9 +107,9 @@ export const UiToggle: React.FC<TUiToggleProps> = ({
 						"active:shadow-border-secondary",
 						"focus:shadow-border-secondary",
 						{
-							"shadow-border-secondary": isHovered && !isChecked && !disabled,
-							"shadow-border-primary": isHovered && isChecked && !disabled,
-							"translate-x-[calc(var(--xl)_-_100%_-_1px)] translate-y-[-50%]": isChecked
+							"shadow-border-secondary": isHovered && !checked && !disabled,
+							"shadow-border-primary": isHovered && checked && !disabled,
+							"translate-x-[calc(var(--xl)_-_100%_-_1px)] translate-y-[-50%]": checked
 						},
 
 					) }>

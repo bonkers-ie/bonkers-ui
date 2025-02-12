@@ -30,9 +30,11 @@ const meta = {
 			},
 			description: "The Element order state",
 		},
-		onClick: {
-			action: "clicked",
-			description: "Toggle Clicked",
+		checked: {
+			control: {
+				type: "boolean",
+			},
+			description: "Toggle Disabled",
 		},
 
 	},
@@ -42,6 +44,8 @@ const meta = {
 		children: "title",
 		disabled: false,
 		invertOrder: false,
+		checked: false,
+		onChange: (value: boolean) => console.log(`Checked ${value}`)
 
 	},
 } satisfies Meta<typeof UiToggle>;
@@ -52,12 +56,19 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
 	render: (args) => {
-		const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-			console.log("Checked", e.target.checked);
+		const [isChecked, setIsChecked] = React.useState(args.checked);
+
+		React.useEffect(() => {
+			setIsChecked(args.checked);
+		}, [args.checked]);
+
+		const handleChange = (isChecked: boolean) => {
+			setIsChecked(isChecked);
+			args.onChange?.(isChecked);
 		};
 
 		return (
-			<UiToggle { ...args } onChange={ handleChange } />
+			<UiToggle { ...args } checked={ isChecked } onChange={ handleChange } />
 		);
 	}
 };
