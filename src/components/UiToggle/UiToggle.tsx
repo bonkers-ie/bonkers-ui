@@ -43,9 +43,6 @@ export const UiToggle: React.FC<TUiToggleProps> = ({
 			setIsToggled(checked);
 		}
 	}, [checked]);
-	console.log(isChecked,"is checked");
-	console.log(value, "the value");
-	console.log(disabled);
 
 	return (
 		<div className={ cx(
