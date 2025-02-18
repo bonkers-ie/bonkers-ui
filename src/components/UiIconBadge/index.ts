@@ -1,0 +1,1 @@
+export { UiIconBadge } from "./UiIconBadge";
