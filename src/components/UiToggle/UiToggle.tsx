@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import cx from "classnames";
 
 type TUiToggleProps = {
@@ -6,6 +6,9 @@ type TUiToggleProps = {
 	children?: React.ReactNode
 	disabled?: boolean
 	invertOrder?: boolean
+	defaultValue?: boolean;
+	defaultChecked?: boolean
+	checked?: boolean
 	value?: boolean
 	onChange?: (checked: boolean) => void
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange">;
@@ -17,24 +20,37 @@ export const UiToggle: React.FC<TUiToggleProps> = ({
 	invertOrder = false,
 	checked,
 	value,
+	defaultChecked,
+	defaultValue,
 	onChange,
 	...rest
 }) => {
 
-	const [isHovered, setIsHovered] = useState(false);
+	const [toggled, setIsToggled] = useState<boolean>(defaultChecked ?? defaultValue ?? false);
 
-	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		if (!disabled && onChange) {
-			onChange?.(event.target.checked);
+	const isChecked = value ?? checked ?? toggled;
+
+	const handleChange = () => {
+		if (value === undefined && checked === undefined) {
+			setIsToggled(!toggled);
 		}
+
+		onChange?.(!isChecked);
 	};
+
+	useEffect(()=>{
+		if ( checked !== undefined) {
+			setIsToggled(checked);
+		}
+	}, [checked]);
+	console.log(isChecked,"is checked");
+	console.log(value, "the value");
+	console.log(disabled);
 
 	return (
 		<div className={ cx(
 			"ui-toggle"
 		) }
-		onMouseEnter={ () => setIsHovered(true) }
-		onMouseLeave={ () => setIsHovered(false) }
 		>
 
 			<span className={ cx("font-bold") }>
@@ -53,7 +69,7 @@ export const UiToggle: React.FC<TUiToggleProps> = ({
 				"text-md",
 				{
 					"flex-row-reverse": invertOrder,
-					"pointer-events-none": disabled
+					"pointer-events-none opacity-50": disabled
 				}
 
 			) }>
@@ -70,7 +86,7 @@ export const UiToggle: React.FC<TUiToggleProps> = ({
 						"border-0"
 					) }
 					type="checkbox"
-					checked={ checked }
+					checked={ isChecked }
 					onChange={ handleChange }
 					disabled={ disabled }
 					value={ value }
@@ -84,13 +100,15 @@ export const UiToggle: React.FC<TUiToggleProps> = ({
 						"w-xl",
 						"rounded-full",
 						{
-							"bg-secondary-alt-300": !checked && disabled,
-							"bg-primary-500": checked && !disabled,
-							"bg-primary-300": checked && disabled,
-							"bg-secondary-alt": !checked && !disabled,
+							"bg-primary-500": isChecked && !disabled,
+							"bg-secondary-alt-300": !isChecked && disabled,
+							"bg-secondary-alt-600": !isChecked && !disabled,
+							"bg-primary-300": isChecked && disabled
+
 						}
-					) }
-					></span>
+					) }>
+
+					</span>
 					<span className={ cx(
 						"absolute",
 						"top-[50%]",
@@ -103,13 +121,12 @@ export const UiToggle: React.FC<TUiToggleProps> = ({
 						"translate-y-[-50%]",
 						"ease-in-out",
 						"transition-transform",
-						"hover:shadow-border-secondary",
 						"active:shadow-border-secondary",
 						"focus:shadow-border-secondary",
 						{
-							"shadow-border-secondary": isHovered && !checked && !disabled,
-							"shadow-border-primary": isHovered && checked && !disabled,
-							"translate-x-[calc(var(--xl)_-_100%_-_1px)] translate-y-[-50%]": checked
+							"hover:shadow-border-secondary": !isChecked && !disabled,
+							"hover:shadow-border-primary": isChecked && !disabled,
+							"translate-x-[calc(var(--xl)_-_100%_-_1px)] translate-y-[-50%]": isChecked
 						},
 
 					) }>
