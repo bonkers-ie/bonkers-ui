@@ -1,5 +1,6 @@
 .UiCheckbox {
 	grid-template-columns: auto auto;
+	border: 1px solid red;
 }
 
 .UiCheckbox__custom {
