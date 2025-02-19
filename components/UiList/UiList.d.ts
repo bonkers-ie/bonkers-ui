@@ -1,7 +1,8 @@
 import { default as React } from '../../../node_modules/react';
-import { EListItemSize, EListItemSpacing } from './_types.ts';
+import { EListItemDirection, EListItemSize, EListItemSpacing } from './_types.ts';
 interface IUiListProps {
     children?: React.ReactNode;
+    direction?: EListItemDirection;
     size?: EListItemSize;
     spacing?: EListItemSpacing;
 }

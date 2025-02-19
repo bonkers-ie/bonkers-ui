@@ -1,3 +1,7 @@
+export declare enum EListItemDirection {
+    VERTICAL = "VERTICAL",
+    HORIZONTAL = "HORIZONTAL"
+}
 export declare enum EListItemSpacing {
     DEFAULT = "DEFAULT",
     COMPACT = "COMPACT"
