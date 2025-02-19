@@ -45,7 +45,11 @@ export const UiIconBadge: React.FC<IUiIconBadgeProps> = ({
 		<div className={ cx(
 			"ui-icon-badge",
 			"rounded-full",
-			"p-sm",
+			"inline-flex",
+			"items-center",
+			"justify-center",
+			"aspect-square",
+			"p-xs",
 			"max-w-[104px]",
 			"max-h-[104px]",
 			kindClasses[kind]
