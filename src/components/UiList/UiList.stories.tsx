@@ -3,12 +3,19 @@ import { UiListItem } from "./UiListItem";
 import { UiList } from "./UiList";
 import { UiIcon } from "../UiIcon";
 import React from "react";
-import { EListItemSize, EListItemSpacing } from "./_types";
+import { EListItemDirection, EListItemSize, EListItemSpacing } from "./_types";
 
 const meta = {
 	title: "Components/UiList",
 	component: UiList,
 	argTypes: {
+		direction: {
+			control: {
+				type: "select",
+			},
+			options: Object.values(EListItemDirection),
+			description: "Direction",
+		},
 		size: {
 			control: {
 				type: "select",
@@ -25,6 +32,7 @@ const meta = {
 		}
 	},
 	args: {
+		direction: EListItemDirection.VERTICAL,
 		size: EListItemSize.SM,
 		spacing: EListItemSpacing.DEFAULT
 	},
@@ -40,7 +48,7 @@ const IconComponent = ()=>{
 
 export const Primary: Story = {
 	render: (args)=> (
-		<UiList size={ args.size } spacing={ args.spacing }>
+		<UiList direction={ args.direction } size={ args.size } spacing={ args.spacing }>
 			<UiListItem prefix={ IconComponent() }>Item 1<br/> Item 1</UiListItem>
 			<UiListItem prefix={ IconComponent() }>Item 2</UiListItem>
 			<UiListItem>Item 3</UiListItem>
