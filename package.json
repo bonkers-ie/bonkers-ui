@@ -50,7 +50,6 @@
 		"eslint-plugin-storybook": "^0.11.2",
 		"eslint-plugin-tailwindcss": "^3.17.5",
 		"gh-pages": "^6.3.0",
-		"glob": "^11.0.1",
 		"husky": "^9.1.7",
 		"lint-staged": "^15.4.0",
 		"postcss": "^8.5.1",
@@ -89,9 +88,9 @@
 	"types": "./index.d.ts",
 	"exports": {
 		".": "./index.js",
-		"./types": {
-			"import": "./types.js",
-			"types": "./types.d.ts"
+		"./types/*": {
+			"import": "./_types/*.js",
+			"types": "./_types/*.d.ts*"
 		},
 		"./plugin": "./plugin.ts",
 		"./*": {
