@@ -3,10 +3,22 @@ import { ESize } from "../../_types/sizing";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import cx from "classnames";
 import { type IconProp } from "@fortawesome/fontawesome-svg-core";
+import { EColors } from "../../_types/colors";
+
+// Create a subset of EColors that we actually support
+type IconKind = Extract<
+	EColors,
+	| EColors.PRIMARY
+	| EColors.PRIMARY_800
+	| EColors.WHITE
+	| EColors.BLACK
+	| EColors.CURRENT
+>;
 
 interface IUiIconProps {
 	name: IconProp;
 	size?: ESize;
+	kind?: IconKind;
 }
 
 const sizeToClassName: { [key in ESize]: string } = {
@@ -25,8 +37,15 @@ const sizeToClassName: { [key in ESize]: string } = {
 	[ESize.ZERO]: "size-zero",
 };
 
-export const UiIcon: React.FC<IUiIconProps> = ({ size, name }) => {
+const kindClasses: { [key in IconKind]: string } = {
+	[EColors.PRIMARY]: "text-primary",
+	[EColors.PRIMARY_800]: "text-primary-800",
+	[EColors.WHITE]: "text-white",
+	[EColors.BLACK]: "text-black",
+	[EColors.CURRENT]: "text-current",
+};
 
+export const UiIcon: React.FC<IUiIconProps> = ({ size, name, kind = EColors.CURRENT }) => {
 	return (
 		<FontAwesomeIcon
 			icon={ name }
@@ -35,7 +54,8 @@ export const UiIcon: React.FC<IUiIconProps> = ({ size, name }) => {
 				"inline",
 				"overflow-visible",
 				"align-[-.125em]",
-				size && sizeToClassName[size]
+				size && sizeToClassName[size],
+				kind && kindClasses[kind]
 			) }
 		/>
 	);

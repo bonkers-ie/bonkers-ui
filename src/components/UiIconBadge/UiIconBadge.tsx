@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import cx from "classnames";
 import { type IconProp } from "@fortawesome/fontawesome-svg-core";
 
-// Create subset types for both badge and icon sizes
 type BadgeSize = Extract<
 	ESize,
 	ESize.XS | ESize.SM | ESize.MD | ESize.LG
@@ -22,8 +21,8 @@ export enum EIconBadgeKind {
 
 interface IUiIconBadgeProps {
 	name: IconProp;
-	badgeSize?: BadgeSize;  // Renamed from size to badgeSize
-	iconSize?: IconSize;    // New prop for icon size
+	badgeSize?: BadgeSize;
+	iconSize?: IconSize;
 	kind?: EIconBadgeKind;
 }
 
