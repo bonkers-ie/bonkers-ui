@@ -49,7 +49,8 @@ export const Light: Story = {
 	args: {
 		name: ["far", "face-smile"],
 		kind: EIconBadgeKind.LIGHT,
-		iconSize: ESize.LG
+		iconSize: ESize.LG,
+		badgeSize: ESize.LG
 	},
 };
 
@@ -63,6 +64,8 @@ export const Warning: Story = {
 export const Error: Story = {
 	args: {
 		name: ["far", "face-smile"],
-		kind: EIconBadgeKind.ERROR
+		kind: EIconBadgeKind.ERROR,
+		iconSize: ESize.SM,
+		badgeSize: ESize.SM
 	},
 };
