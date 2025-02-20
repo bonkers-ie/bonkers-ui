@@ -31,8 +31,10 @@ export default plugin(
 				"--shadow-border-primary": "0 0 0 4px rgb(69 158 74 / 50%)",
 				"--shadow-border-selected": "0 0 0 4px rgb(69 158 74 / 100%)",
 				"--shadow-selected-shadow": "0 0 0 4px var(--color-primary-500)",
-				"--shadow-selected-disabled": "0 0 0 4px var(--color-primary-300)",
+				"--shadow-selected-disabled": "0 0 0 2px var(--color-primary-300)",
 				"--shadow-border-secondary": "0 0 0 4px rgb(223 225 233 / 50%)",
+				"--shadow-border-primary-600": "0 0 0 2px var(--color-primary-600)",
+				"--shadow-border-primary-700": "0 0 0 2px var(--color-primary-700)",
 
 				// font sizes
 				"--font-size-xxs": "10px",
