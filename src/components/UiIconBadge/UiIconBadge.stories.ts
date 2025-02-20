@@ -48,7 +48,8 @@ export const Default: Story = {
 export const Light: Story = {
 	args: {
 		name: ["far", "face-smile"],
-		kind: EIconBadgeKind.LIGHT
+		kind: EIconBadgeKind.LIGHT,
+		iconSize: ESize.LG
 	},
 };
 

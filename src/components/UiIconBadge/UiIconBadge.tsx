@@ -56,7 +56,6 @@ export const UiIconBadge: React.FC<IUiIconBadgeProps> = ({
 }) => {
 	return (
 		<div className={ cx(
-			"ui-icon-badge",
 			"rounded-full",
 			"inline-flex",
 			"items-center",
@@ -72,8 +71,6 @@ export const UiIconBadge: React.FC<IUiIconBadgeProps> = ({
 					"inline",
 					"overflow-visible",
 					"align-[-.125em]",
-					"max-w-[90%]",
-					"max-h-[90%]",
 					iconSizeClasses[iconSize]
 				) }
 			/>
