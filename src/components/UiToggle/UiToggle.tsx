@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 import cx from "classnames";
 
 type TUiToggleProps = {
-	title?:  React.ReactNode
 	children?: React.ReactNode
 	disabled?: boolean
 	invertOrder?: boolean
-	defaultValue?: boolean;
 	defaultChecked?: boolean
 	checked?: boolean
 	value?: boolean
@@ -15,18 +13,16 @@ type TUiToggleProps = {
 
 export const UiToggle: React.FC<TUiToggleProps> = ({
 	children,
-	title,
 	disabled = false,
 	invertOrder = false,
 	checked,
 	value,
 	defaultChecked,
-	defaultValue,
 	onChange,
 	...rest
 }) => {
 
-	const [toggled, setIsToggled] = useState<boolean>(defaultChecked ?? defaultValue ?? false);
+	const [toggled, setIsToggled] = useState<boolean>(defaultChecked ??  false);
 
 	const isChecked = value ?? checked ?? toggled;
 
@@ -49,10 +45,6 @@ export const UiToggle: React.FC<TUiToggleProps> = ({
 			"ui-toggle"
 		) }
 		>
-
-			<span className={ cx("font-bold") }>
-				{ title }
-			</span>
 
 			<label className={ cx(
 				"flex",

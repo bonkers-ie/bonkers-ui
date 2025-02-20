@@ -6,12 +6,6 @@ const meta = {
 	title: "Components/UiToggle",
 	component: UiToggle,
 	argTypes: {
-		title: {
-			control: {
-				type: "text",
-			},
-			description: "header",
-		},
 		children: {
 			control: {
 				type: "text",
@@ -52,7 +46,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
 	args: {
-		title: "header",
 		children: "title",
 		disabled: false,
 		invertOrder: false,
