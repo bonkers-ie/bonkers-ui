@@ -5,7 +5,6 @@ import cx from "classnames";
 import { type IconProp } from "@fortawesome/fontawesome-svg-core";
 import { EColors } from "../../_types/colors";
 
-// Create a subset of EColors that we actually support
 type IconKind = Extract<
 	EColors,
 	| EColors.PRIMARY
