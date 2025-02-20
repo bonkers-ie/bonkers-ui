@@ -10,7 +10,7 @@
 		"lint:style": "bun run prettier './src/**/*.{css,scss}' --check",
 		"upgrade": "bun x npm-check-updates -ui",
 		"build-storybook": "storybook build",
-		"build": "vite build",
+		"build": "tsc && vite build",
 		"typecheck": "tsc --noEmit",
 		"i": "bun install --frozen-lockfile",
 		"pack": "bun run build && bun run postbuild.ts && cd dist && npm pack --pack-destination ../",
@@ -83,14 +83,14 @@
 	},
 	"keywords": [],
 	"license": "ISC",
-	"main": "./bonkers-ui.umd.js",
+	"main": "./index.js",
 	"module": "./index.js",
 	"types": "./index.d.ts",
 	"exports": {
 		".": "./index.js",
-		"./types": {
-			"import": "./types.js",
-			"types": "./types.d.ts"
+		"./types/*": {
+			"import": "./_types/*.js",
+			"types": "./_types/*.d.ts*"
 		},
 		"./plugin": "./plugin.ts",
 		"./*": {
@@ -98,10 +98,11 @@
 			"import": "./components/*/index.js"
 		},
 		"./components/*": {
-			"types": "./components/*/index.d.ts",
-			"import": "./components/*/index.js"
+			"types": "./components/*",
+			"import": "./components/*"
 		},
 		"./postcss.config.mjs": "./postcss.config.mjs",
 		"./eslint.config.mjs": "./eslint.config.mjs"
-	}
+	},
+	"sideEffects": ["*.css", "./assets/*.css"]
 }
