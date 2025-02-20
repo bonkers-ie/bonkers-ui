@@ -4,6 +4,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import cx from "classnames";
 import { type IconProp } from "@fortawesome/fontawesome-svg-core";
 
+// Create subset types for both badge and icon sizes
+type BadgeSize = Extract<
+	ESize,
+	ESize.XS | ESize.SM | ESize.MD | ESize.LG
+>;
+
+type IconSize = Extract<
+	ESize,
+	ESize.XS | ESize.SM | ESize.MD | ESize.LG
+>;
+
 export enum EIconBadgeKind {
 	PRIMARY = "primary",
 	LIGHT = "light"
@@ -11,24 +22,23 @@ export enum EIconBadgeKind {
 
 interface IUiIconBadgeProps {
 	name: IconProp;
-	size?: ESize;
+	badgeSize?: BadgeSize;  // Renamed from size to badgeSize
+	iconSize?: IconSize;    // New prop for icon size
 	kind?: EIconBadgeKind;
 }
 
-const sizeToClassName: { [key in ESize]: string } = {
-	[ESize.XXXS]: "size-xxxs",
-	[ESize.XXS]: "size-xxs",
+const badgeSizeClasses: { [key in BadgeSize]: string } = {
+	[ESize.XS]: "w-[36px] h-[36px]",
+	[ESize.SM]: "size-xl",
+	[ESize.MD]: "w-[56px] h-[56px]",
+	[ESize.LG]: "w-[104px] h-[104px]"
+};
+
+const iconSizeClasses: { [key in IconSize]: string } = {
 	[ESize.XS]: "size-xs",
-	[ESize.SM]: "size-sm",
-	[ESize.MD]: "size-md",
-	[ESize.LG]: "size-lg",
-	[ESize.XL]: "size-xl",
-	[ESize.XXL]: "size-xxl",
-	[ESize.XXXL]: "size-xxxl",
-	[ESize.XXXXL]: "size-xxxxl",
-	[ESize.XXXXXL]: "size-xxxxxl",
-	[ESize.AUTO]: "size-auto",
-	[ESize.ZERO]: "size-zero",
+	[ESize.SM]: "w-[16px] h-[16px]",
+	[ESize.MD]: "w-[24px] h-[24px]",
+	[ESize.LG]: "w-[40px] h-[40px]"
 };
 
 const kindClasses = {
@@ -37,8 +47,9 @@ const kindClasses = {
 };
 
 export const UiIconBadge: React.FC<IUiIconBadgeProps> = ({
-	size,
 	name,
+	badgeSize = ESize.MD,
+	iconSize = ESize.SM,
 	kind = EIconBadgeKind.PRIMARY
 }) => {
 	return (
@@ -50,8 +61,7 @@ export const UiIconBadge: React.FC<IUiIconBadgeProps> = ({
 			"justify-center",
 			"aspect-square",
 			"p-xs",
-			"max-w-[104px]",
-			"max-h-[104px]",
+			badgeSizeClasses[badgeSize],
 			kindClasses[kind]
 		) }>
 			<FontAwesomeIcon
@@ -60,7 +70,9 @@ export const UiIconBadge: React.FC<IUiIconBadgeProps> = ({
 					"inline",
 					"overflow-visible",
 					"align-[-.125em]",
-					size && sizeToClassName[size]
+					"max-w-[90%]",
+					"max-h-[90%]",
+					iconSizeClasses[iconSize]
 				) }
 			/>
 		</div>

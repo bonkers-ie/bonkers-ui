@@ -1,21 +1,29 @@
-import { UiIconBadge } from "../UiIconBadge/UiIconBadge";
+import { UiIconBadge } from "./UiIconBadge";
 import type { Meta, StoryObj } from "@storybook/react";
-import { ESize } from "../../_types/sizing.js";
+import { ESize } from "../../_types/sizing";
 
 const meta: Meta<typeof UiIconBadge> = {
 	title: "Components/UiIconBadge",
 	component: UiIconBadge,
 	argTypes: {
-		size: {
+		badgeSize: {
 			control: {
 				type: "select",
 			},
-			options: Object.values(ESize),
-			description: "IconBadge Size",
+			options: [ESize.XS, ESize.SM, ESize.MD, ESize.LG],
+			description: "Badge Size",
 		},
+		iconSize: {
+			control: {
+				type: "select",
+			},
+			options: [ESize.XXS, ESize.XS, ESize.SM, ESize.MD, ESize.LG],
+			description: "Icon Size",
+		}
 	},
 	args: {
-		size: ESize.LG,
+		badgeSize: ESize.LG,
+		iconSize: ESize.MD,
 	},
 } satisfies Meta<typeof UiIconBadge>;
 
