@@ -18,11 +18,11 @@ jobs:
             - uses: oven-sh/setup-bun@v2
               with:
                   bun-version: latest
-            - run: bun i
-            - run: bun lint
-            - run: bun lint:style
+            - run: bun install
+            - run: bun run lint
+            - run: bun run lint:style
             # - run: bun run test
-            - run: bun build-storybook
+            - run: bun run build-storybook
             - name: Deploy
               uses: peaceiris/actions-gh-pages@v4
               with:
