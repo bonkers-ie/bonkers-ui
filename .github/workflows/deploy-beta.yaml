@@ -10,19 +10,19 @@ on:
 jobs:
     lint:
         runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                node-version: [20.x]
         steps:
             - uses: actions/checkout@v4
             - uses: oven-sh/setup-bun@v2
               with:
                   bun-version: latest
-            - run: bun i
-            - run: bun lint
-            - run: bun lint:style
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+            - run: bun install
+            - run: bun run lint
+            - run: bun run lint:style
             # - run: bun run test
-            - run: bun build-storybook
+            - run: bun run build-storybook
             - name: Deploy
               uses: peaceiris/actions-gh-pages@v4
               with:
