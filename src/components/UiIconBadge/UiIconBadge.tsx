@@ -51,7 +51,7 @@ const kindClasses = {
 export const UiIconBadge: React.FC<IUiIconBadgeProps> = ({
 	name,
 	badgeSize = ESize.MD,
-	iconSize = ESize.SM,
+	iconSize = ESize.MD,
 	kind = EIconBadgeKind.PRIMARY
 }) => {
 	return (

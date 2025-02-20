@@ -29,7 +29,7 @@ const meta: Meta<typeof UiIconBadge> = {
 		}
 	},
 	args: {
-		badgeSize: ESize.LG,
+		badgeSize: ESize.MD,
 		iconSize: ESize.MD,
 		kind: EIconBadgeKind.PRIMARY
 	},
