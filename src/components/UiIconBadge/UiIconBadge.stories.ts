@@ -17,7 +17,7 @@ const meta: Meta<typeof UiIconBadge> = {
 			control: {
 				type: "select",
 			},
-			options: [ESize.XXS, ESize.XS, ESize.SM, ESize.MD, ESize.LG],
+			options: [ESize.SM, ESize.MD, ESize.LG],
 			description: "Icon Size",
 		}
 	},

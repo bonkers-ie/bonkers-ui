@@ -12,7 +12,7 @@ type BadgeSize = Extract<
 
 type IconSize = Extract<
 	ESize,
-	ESize.XS | ESize.SM | ESize.MD | ESize.LG
+    ESize.SM | ESize.MD | ESize.LG
 >;
 
 export enum EIconBadgeKind {
@@ -35,7 +35,6 @@ const badgeSizeClasses: { [key in BadgeSize]: string } = {
 };
 
 const iconSizeClasses: { [key in IconSize]: string } = {
-	[ESize.XS]: "size-xs",
 	[ESize.SM]: "w-[16px] h-[16px]",
 	[ESize.MD]: "w-[24px] h-[24px]",
 	[ESize.LG]: "w-[40px] h-[40px]"
