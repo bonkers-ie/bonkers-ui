@@ -42,12 +42,12 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const IconComponent = ()=>{
-	return <UiIcon name={ ["far", "face-smile"] }/>;
+const IconComponent = () => {
+	return <UiIcon name={ ["far", "face-smile"] } />;
 };
 
 export const Primary: Story = {
-	render: (args)=> (
+	render: (args) => (
 		<UiList direction={ args.direction } size={ args.size } spacing={ args.spacing }>
 			<UiListItem prefix={ IconComponent() }>Item 1</UiListItem>
 			<UiListItem prefix={ IconComponent() }>Item 2</UiListItem>
@@ -56,8 +56,8 @@ export const Primary: Story = {
 	)
 };
 
-export const variants: Story = {
-	render: (args)=> (
+export const Variants: Story = {
+	render: (args) => (
 		<div className='flex flex-col gap-lg'>
 			<UiList direction={ args.direction } size={ args.size } spacing={ args.spacing }>
 				<UiListItem>Item 1</UiListItem>
@@ -65,17 +65,17 @@ export const variants: Story = {
 				<UiListItem>Item 3</UiListItem>
 			</UiList>
 			<UiList direction={ args.direction } size={ args.size } spacing={ args.spacing }>
-				<UiListItem prefix={ IconComponent() }>Item 1<br/> Item 1</UiListItem>
+				<UiListItem prefix={ IconComponent() }>Item 1<br /> Item 1</UiListItem>
 				<UiListItem prefix={ IconComponent() }>Item 2</UiListItem>
 				<UiListItem prefix={ IconComponent() }>Item 3</UiListItem>
 			</UiList>
 			<UiList direction={ EListItemDirection.HORIZONTAL } size={ args.size } spacing={ args.spacing }>
-				<UiListItem prefix={ IconComponent() }>Item 1<br/> Item 1</UiListItem>
+				<UiListItem prefix={ IconComponent() }>Item 1<br /> Item 1</UiListItem>
 				<UiListItem prefix={ IconComponent() }>Item 2</UiListItem>
 				<UiListItem>Item 3</UiListItem>
 			</UiList>
 			<UiList direction={ EListItemDirection.HORIZONTAL } size={ args.size } spacing={ args.spacing }>
-				<UiListItem>Item 1<br/> Item 1</UiListItem>
+				<UiListItem>Item 1<br /> Item 1</UiListItem>
 				<UiListItem>Item 2</UiListItem>
 				<UiListItem>Item 3</UiListItem>
 			</UiList>

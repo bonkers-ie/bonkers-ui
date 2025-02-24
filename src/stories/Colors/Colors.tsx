@@ -41,7 +41,7 @@ export const Colors = () => {
 			{ groupedColors.map(([groupTitle, groupColors]) => (
 				<div className="mb-md" key={ groupTitle }>
 					<h2 className="mb-sm text-3xl font-bold">{ groupTitle }:</h2>
-					<ul className="color_wrapper grid gap-md">
+					<ul className="color_wrapper grid gap-xxl">
 						{ Object.entries(groupColors).map(([shade, colorValue]) => (
 							<li key={ `${groupTitle}-${shade}` } className="grid gap-xs">
 								<div className="color_circle relative m-auto size-xxxxxl rounded-full" style={ {

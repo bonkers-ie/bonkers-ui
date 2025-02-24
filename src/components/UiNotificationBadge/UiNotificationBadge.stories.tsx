@@ -64,7 +64,7 @@ export const Primary: Story = {
 export const Variant: Story = {
 
 	render: (args) => (
-		<div className="flex h-xxl w-xxxxl gap-md rounded-sm bg-secondary-alt-600 p-xxs">
+		<div className="flex h-xxl w-xxxxl gap-md rounded-xs bg-secondary-alt-600 p-xxs">
 			<div className="relative">
 				<UiNotificationBadge { ...args } size={ EBadgeSizes.DEFAULT }
 					offset={ EBadgeOffset.OFFSET_TOP_LEFT } />

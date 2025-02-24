@@ -28,7 +28,7 @@ export const UiProductCard: React.FC<TUiProductCardProps> = ({ badgeText,
 			py-sm'>
 
 			{ badgeText && (
-				<div className="!absolute -top-xxs right-xs">
+				<div className="absolute! -top-xxs right-xs">
 					<UiPills rounded kind={ EBadgeKind.ACCENT_ALT }>{ badgeText }</UiPills>
 				</div>
 			) }

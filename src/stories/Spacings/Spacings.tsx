@@ -9,7 +9,7 @@ export const Spacings = () => {
 		>
 			{
 				Object.entries(SpacingsJson).map(([key, size]) => (
-					<li className="grid gap-sm border border-black p-md">
+					<li key={ key } className="grid gap-sm border border-black p-md">
 						<div>
 							<b>
 								{ getCssVariableValue(size) }
