@@ -15,7 +15,7 @@ export const UiInputBase: React.FC<
 > = ({ postIcon, preIcon, kind = EInputKind.DEFAULT, ...rest } ) => {
 
 	const stateClasses = {
-		[EInputKind.DEFAULT]: "border-secondary-alt-500 hover:border-secondary-alt-700",
+		[EInputKind.DEFAULT]: "border-secondary-alt-600 hover:border-secondary-alt-700",
 		[EInputKind.ERROR]: "border-error",
 		[EInputKind.SUCCESS]: "border-primary-600",
 	};
