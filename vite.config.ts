@@ -5,6 +5,7 @@ import * as path from "node:path";
 import { libInjectCss } from "vite-plugin-lib-inject-css";
 import { globSync } from "node:fs";
 import { fileURLToPath } from "node:url";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -21,6 +22,7 @@ export default defineConfig({
 				"**/*.stories.tsx"
 			]
 		}),
+		tailwindcss()
 	],
 	build: {
 		emptyOutDir: true,
