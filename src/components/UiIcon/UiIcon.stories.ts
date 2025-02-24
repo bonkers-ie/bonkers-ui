@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ESize } from "../../_types/sizing";
 import { EColors } from "../../_types/colors";
 
-// Only the colors we support
 const SUPPORTED_KINDS = [
 	EColors.PRIMARY,
 	EColors.PRIMARY_800,
@@ -47,7 +46,6 @@ export const Default: Story = {
 	},
 };
 
-// Add some color examples
 export const Primary: Story = {
 	args: {
 		name: ["far", "face-smile"],

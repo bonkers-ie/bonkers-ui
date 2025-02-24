@@ -54,6 +54,15 @@ export const Light: Story = {
 	},
 };
 
+export const Dark: Story = {
+	args: {
+		name: ["far", "face-smile"],
+		kind: EIconBadgeKind.DARK,
+		iconSize: ESize.LG,
+		badgeSize: ESize.LG
+	},
+};
+
 export const Warning: Story = {
 	args: {
 		name: ["far", "face-smile"],

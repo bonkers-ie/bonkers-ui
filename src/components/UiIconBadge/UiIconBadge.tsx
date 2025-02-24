@@ -17,6 +17,7 @@ type IconSize = Extract<
 export enum EIconBadgeKind {
 	PRIMARY = "primary",
 	LIGHT = "light",
+	DARK = "dark",
 	WARNING = "warning",
 	ERROR = "error"
 }
@@ -44,6 +45,7 @@ const iconSizeClasses: { [key in IconSize]: string } = {
 const kindClasses = {
 	[EIconBadgeKind.PRIMARY]: "bg-primary-500 text-white",
 	[EIconBadgeKind.LIGHT]: "bg-primary-100 text-primary-800",
+	[EIconBadgeKind.DARK]: "bg-primary-800 text-white",
 	[EIconBadgeKind.WARNING]: "bg-warning-500 text-white",
 	[EIconBadgeKind.ERROR]: "bg-error-500 text-white"
 };
