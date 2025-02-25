@@ -4,6 +4,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 interface IUiIconProps {
     name: IconProp;
     size?: ESize;
+    className?: string;
 }
 export declare const UiIcon: React.FC<IUiIconProps>;
 export {};

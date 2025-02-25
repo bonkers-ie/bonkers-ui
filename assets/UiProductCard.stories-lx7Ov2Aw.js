@@ -1,4 +1,4 @@
-import{j as e}from"./jsx-runtime-D_zvdyIk.js";import"./index-DmM0KDA7.js";import{U as v,a as E}from"./UiPills-DDECvhFq.js";import{U as c,E as m,c as p,a as U,b as x}from"./UiTypography-BZRJyQsk.js";import{U as n,E as o}from"./UiIcon-D0b3HfTx.js";import"./index-C7T3p30y.js";const s=({badgeText:r,title:a,subtitle:l,header:N})=>e.jsxs("div",{className:`relative
+import{j as e}from"./jsx-runtime-D_zvdyIk.js";import"./index-DmM0KDA7.js";import{U as v,a as E}from"./UiPills-DDECvhFq.js";import{U as c,E as m,c as p,a as U,b as x}from"./UiTypography-BZRJyQsk.js";import{U as n,E as o}from"./UiIcon-BhDFDDHY.js";import"./index-C7T3p30y.js";const s=({badgeText:r,title:a,subtitle:l,header:N})=>e.jsxs("div",{className:`relative
 			flex
 			flex-col
 			gap-sm
