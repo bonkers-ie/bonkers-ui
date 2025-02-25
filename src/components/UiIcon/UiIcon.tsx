@@ -7,6 +7,7 @@ import { type IconProp } from "@fortawesome/fontawesome-svg-core";
 interface IUiIconProps {
 	name: IconProp;
 	size?: ESize;
+	className?: string;
 }
 
 const sizeToClassName: { [key in ESize]: string } = {
@@ -25,7 +26,7 @@ const sizeToClassName: { [key in ESize]: string } = {
 	[ESize.ZERO]: "size-zero",
 };
 
-export const UiIcon: React.FC<IUiIconProps> = ({ size, name }) => {
+export const UiIcon: React.FC<IUiIconProps> = ({ size, name, className }) => {
 
 	return (
 		<FontAwesomeIcon
@@ -35,7 +36,8 @@ export const UiIcon: React.FC<IUiIconProps> = ({ size, name }) => {
 				"inline",
 				"overflow-visible",
 				"align-[-.125em]",
-				size && sizeToClassName[size]
+				size && sizeToClassName[size],
+				className
 			) }
 		/>
 	);
