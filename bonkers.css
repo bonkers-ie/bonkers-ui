@@ -1,3 +1,34 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-gray-200, currentColor);
+		box-sizing: border-box;
+	}
+}
+
+@layer base {
+	:root {
+		/* text */
+		--base-line-height: 1.6;
+		--base-font: museo-sans, sans-serif;
+	}
+}
+
 @theme {
   /* spacing */
   --auto: auto;
@@ -37,7 +68,21 @@
   --font-size-4xl: 32px;
   --font-size-5xl: 40px;
 
+  --text-*: initial; /* reset */
+  --text-xxs: var(--font-size-xxs);
+  --text-xs: var(--font-size-xs);
+  --text-sm: var(--font-size-sm);
+  --text-md: var(--font-size-md);
+  --text-lg: var(--font-size-lg);
+  --text-xl: var(--font-size-xl);
+  --text-2xl: var(--font-size-2xl);
+  --text-3xl: var(--font-size-3xl);
+  --text-4xl: var(--font-size-4xl);
+  --text-5xl: var(--font-size-5xl);
+
   /* colors */
+  --color-*: initial; /* disable base colors in TW */
+
   --color-white: white;
   --color-black: black;
   --color-current: currentColor;
@@ -109,6 +154,7 @@
   --color-warning: var(--color-warning-500);
 
   /* backdrop blur */
+  --backdrop-blur-*: initial;
   --backdrop-blur-min: 0.5px;
   --backdrop-blur-xs: 2px;
   --backdrop-blur-sm: 4px;
@@ -119,6 +165,7 @@
   --backdrop-blur-2xl: 40px;
 
   /* spacing */
+  --spacing-*: initial; /* reset */
   --spacing-auto: var(--auto);
   --spacing-0: var(--zero);
   --spacing-min: var(--min);

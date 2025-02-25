@@ -1,18 +1,24 @@
 import React from "react";
-import fontSizes from "../../_styles/_fontSizes.json";
-import { getCssVariableValue } from "../../helper";
+import { getThemeTokens } from "../../helper";
 
-export const FontSizes: React.FC = () => (
-	<ul className="flex flex-row flex-wrap gap-md">
-		{ Object.entries(fontSizes).map(([key, size]) => (
-			<li key={ key } style={ {
-				fontSize: size
-			} }
-			className="grid gap-sm border p-md">
-				<b>{ key }</b>
-				<p>{ getCssVariableValue(size) }</p>
-				<p>{ size }</p>
-			</li>
-		)) }
-	</ul>
-);
+export const FontSizes: React.FC = () => {
+	const { fontSizes } = getThemeTokens();
+
+	return (
+		<ul className="flex flex-row flex-wrap gap-md">
+			{ fontSizes.map(({ name, value }) => {
+				const varName = name.split("-").pop();
+				return (
+					<li key={ name } style={ {
+						fontSize: value
+					} }
+					className="grid gap-sm border p-md">
+						<b>{ varName }</b>
+						<p>{ value }</p>
+						<p>{ `var(${name})` }</p>
+					</li>
+				);
+			}) }
+		</ul>
+	);
+};
