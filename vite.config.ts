@@ -20,8 +20,7 @@ export default defineConfig({
 			exclude: [
 				"**/*.test.ts",
 				"**/*.stories.ts",
-				"**/*.stories.tsx",
-				"src/stories/*"
+				"**/*.stories.tsx"
 			]
 		}),
 		tailwindcss()
