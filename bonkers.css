@@ -1,6 +1,4 @@
-@layer theme, base, components, utilities;
-@import "tailwindcss/theme.css" layer(theme);
-@import "tailwindcss/utilities.css" layer(utilities);
+@import "tailwindcss";
 
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
@@ -11,22 +9,22 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-	*,
-	::after,
-	::before,
-	::backdrop,
-	::file-selector-button {
-		border-color: var(--color-gray-200, currentColor);
-		box-sizing: border-box;
-	}
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+    box-sizing: border-box;
+  }
 }
 
 @layer base {
-	:root {
-		/* text */
-		--base-line-height: 1.6;
-		--base-font: museo-sans, sans-serif;
-	}
+  :root {
+    /* text */
+    --base-line-height: 1.6;
+    --base-font: museo-sans, sans-serif;
+  }
 }
 
 @theme {
