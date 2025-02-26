@@ -36,7 +36,7 @@ export const UiInputBase: React.FC<
 		>
 			{ preIcon ? preIcon : null }
 			<input
-				className={ cx("border-0 flex-1 bg-transparent outline-none placeholder:text-secondary-alt-600 w-full") }
+				className={ cx("border-0 flex-1 bg-transparent outline-hidden placeholder:text-secondary-alt-600 w-full") }
 				{ ...rest }
 			/>
 			{ postIcon ? postIcon : null }
