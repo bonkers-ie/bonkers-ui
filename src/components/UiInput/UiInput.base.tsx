@@ -15,7 +15,7 @@ export const UiInputBase: React.FC<
 > = ({ postIcon, preIcon, kind = EInputKind.DEFAULT, ...rest } ) => {
 
 	const stateClasses = {
-		[EInputKind.DEFAULT]: "border-secondary-alt-500 hover:border-secondary-alt-700",
+		[EInputKind.DEFAULT]: "border-secondary-alt-600 hover:border-secondary-alt-700",
 		[EInputKind.ERROR]: "border-error",
 		[EInputKind.SUCCESS]: "border-primary-600",
 	};
@@ -26,7 +26,7 @@ export const UiInputBase: React.FC<
 			htmlFor={ rest.id }
 			className={
 				cx("ui-input-wrapper",
-					"flex flex-row items-center gap-xxs rounded-lg border p-sm",
+					"flex flex-row items-center gap-sm rounded-xl border p-sm",
 					kind && stateClasses[kind],
 					{
 						"bg-white": !rest.disabled,
@@ -36,7 +36,7 @@ export const UiInputBase: React.FC<
 		>
 			{ preIcon ? preIcon : null }
 			<input
-				className={ cx("border-0 flex-1 bg-transparent outline-none placeholder:text-secondary-alt-600 w-full") }
+				className={ cx("border-0 flex-1 bg-transparent outline-hidden placeholder:text-secondary-alt-600 w-full") }
 				{ ...rest }
 			/>
 			{ postIcon ? postIcon : null }

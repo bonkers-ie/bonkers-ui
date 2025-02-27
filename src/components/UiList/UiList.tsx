@@ -1,12 +1,18 @@
 import React from "react";
-import { EListItemSize, EListItemSpacing } from "./_types.ts";
+import { EListItemDirection, EListItemSize, EListItemSpacing } from "./_types.ts";
 import cx from "classnames";
 
 interface IUiListProps {
 	children?: React.ReactNode
+	direction?: EListItemDirection
 	size?: EListItemSize
 	spacing?: EListItemSpacing
 }
+
+const directionClasses = {
+	[EListItemDirection.VERTICAL]: "flex-col",
+	[EListItemDirection.HORIZONTAL]: "flex-row"
+};
 
 const spacingClasses = {
 	[EListItemSpacing.DEFAULT]: "gap-sm",
@@ -20,13 +26,15 @@ const sizeClasses = {
 
 export const UiList: React.FC<IUiListProps> = ({
 	children,
+	direction = EListItemDirection.VERTICAL,
 	spacing = EListItemSpacing.DEFAULT,
 	size = EListItemSize.SM
 }) => {
 	return (
 		<ul className={ cx(
 			"ui-list",
-			"grid",
+			"flex",
+			directionClasses[direction],
 			spacingClasses[spacing],
 			sizeClasses[size],
 		) }>

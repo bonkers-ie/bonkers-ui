@@ -6,7 +6,7 @@ type TRowProps = {
 	kind?: ERowKind;
 } & React.HTMLAttributes<HTMLTableRowElement>;
 
-export const UiTableRow: React.FC<TRowProps> = ({ kind, children, ...rest }) => {
+export const UiTableRow: React.FC<TRowProps> = ({ kind, children, className, ...rest }) => {
 	return (
 		<tr
 			className={ cn(
@@ -17,7 +17,8 @@ export const UiTableRow: React.FC<TRowProps> = ({ kind, children, ...rest }) => 
 				"[&>td:first-of-type]:rounded-l-xxs",
 				{
 					"bg-secondary-alt-200": kind === ERowKind.SECONDARY
-				}
+				},
+				className
 			)
 			}
 			{ ...rest }

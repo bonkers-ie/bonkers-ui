@@ -1,34 +1,50 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import cx from "classnames";
 
-interface IUiToggle {
-	title?:  React.ReactNode
+type TUiToggleProps = {
 	children?: React.ReactNode
 	disabled?: boolean
-	invertOrder?: boolean;
-}
+	invertOrder?: boolean
+	defaultChecked?: boolean
+	checked?: boolean
+	value?: boolean
+	onChange?: (checked: boolean) => void
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange">;
 
-export const UiToggle: React.FC<IUiToggle> = ({
+export const UiToggle: React.FC<TUiToggleProps> = ({
 	children,
-	title,
 	disabled = false,
-	invertOrder = false
-
+	invertOrder = false,
+	checked,
+	value,
+	defaultChecked,
+	onChange,
+	...rest
 }) => {
-	const [isChecked, setIsChecked] = useState(false);
-	const [isHovered, setIsHovered] = useState(false);
+
+	const [toggled, setIsToggled] = useState<boolean>(defaultChecked ??  false);
+
+	const isChecked = value ?? checked ?? toggled;
+
+	const handleChange = () => {
+		if (value === undefined && checked === undefined) {
+			setIsToggled(!toggled);
+		}
+
+		onChange?.(!isChecked);
+	};
+
+	useEffect(()=>{
+		if ( checked !== undefined) {
+			setIsToggled(checked);
+		}
+	}, [checked]);
 
 	return (
 		<div className={ cx(
 			"ui-toggle"
 		) }
-		onMouseEnter={ () => setIsHovered(true) }
-		onMouseLeave={ () => setIsHovered(false) }
 		>
-
-			<span className={ cx("font-bold") }>
-				{ title }
-			</span>
 
 			<label className={ cx(
 				"flex",
@@ -42,7 +58,7 @@ export const UiToggle: React.FC<IUiToggle> = ({
 				"text-md",
 				{
 					"flex-row-reverse": invertOrder,
-					"pointer-events-none": disabled
+					"pointer-events-none opacity-50": disabled
 				}
 
 			) }>
@@ -60,7 +76,10 @@ export const UiToggle: React.FC<IUiToggle> = ({
 					) }
 					type="checkbox"
 					checked={ isChecked }
-					onChange={ () => setIsChecked(!isChecked) }
+					onChange={ handleChange }
+					disabled={ disabled }
+					value={ value }
+					{ ...rest }
 					>
 					</input>
 
@@ -70,13 +89,15 @@ export const UiToggle: React.FC<IUiToggle> = ({
 						"w-xl",
 						"rounded-full",
 						{
-							"bg-secondary-alt-300": !isChecked && disabled,
 							"bg-primary-500": isChecked && !disabled,
-							"bg-primary-300": isChecked && disabled,
-							"bg-secondary-alt": !isChecked && !disabled,
+							"bg-secondary-alt-300": !isChecked && disabled,
+							"bg-secondary-alt-600": !isChecked && !disabled,
+							"bg-primary-300": isChecked && disabled
+
 						}
-					) }
-					></span>
+					) }>
+
+					</span>
 					<span className={ cx(
 						"absolute",
 						"top-[50%]",
@@ -89,12 +110,11 @@ export const UiToggle: React.FC<IUiToggle> = ({
 						"translate-y-[-50%]",
 						"ease-in-out",
 						"transition-transform",
-						"hover:shadow-border-secondary",
 						"active:shadow-border-secondary",
 						"focus:shadow-border-secondary",
 						{
-							"shadow-border-secondary": isHovered && !isChecked && !disabled,
-							"shadow-border-primary": isHovered && isChecked && !disabled,
+							"hover:shadow-border-secondary": !isChecked && !disabled,
+							"hover:shadow-border-primary": isChecked && !disabled,
 							"translate-x-[calc(var(--xl)_-_100%_-_1px)] translate-y-[-50%]": isChecked
 						},
 

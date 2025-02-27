@@ -51,7 +51,7 @@ export const Basic: Story = {
 	render: (args) => {
 		return (
 			<UiAccordion className="col-auto flex flex-col justify-start gap-xs" { ...args }>
-				<UiAccordionItem className="overflow-hidden rounded bg-secondary-alt-200" id="section1">
+				<UiAccordionItem className="overflow-hidden rounded-sm bg-secondary-alt-200" id="section1">
 					<UiAccordionItem.Trigger className="flex flex-row items-center justify-between px-sm py-xs">
 						{ (isOpen) =>
 							<>
