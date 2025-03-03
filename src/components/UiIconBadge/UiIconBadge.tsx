@@ -1,8 +1,9 @@
 import React from "react";
 import { ESize } from "../../_types/sizing";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import cx from "classnames";
 import { type IconProp } from "@fortawesome/fontawesome-svg-core";
+import { UiIcon } from "../UiIcon/UiIcon";
+import { EColors } from "../../_types/colors";
 
 type BadgeSize = Extract<
 	ESize,
@@ -36,12 +37,6 @@ const badgeSizeClasses: { [key in BadgeSize]: string } = {
 	[ESize.LG]: "w-[104px] h-[104px]"
 };
 
-const iconSizeClasses: { [key in IconSize]: string } = {
-	[ESize.SM]: "w-[16px] h-[16px]",
-	[ESize.MD]: "w-[24px] h-[24px]",
-	[ESize.LG]: "w-[40px] h-[40px]"
-};
-
 const kindClasses = {
 	[EIconBadgeKind.PRIMARY]: "bg-primary-500 text-white",
 	[EIconBadgeKind.LIGHT]: "bg-primary-100 text-primary-800",
@@ -67,14 +62,10 @@ export const UiIconBadge: React.FC<IUiIconBadgeProps> = ({
 			badgeSizeClasses[badgeSize],
 			kindClasses[kind]
 		) }>
-			<FontAwesomeIcon
-				icon={ name }
-				className={ cx(
-					"inline",
-					"overflow-visible",
-					"align-[-.125em]",
-					iconSizeClasses[iconSize]
-				) }
+			<UiIcon
+				name={ name }
+				size={ iconSize }
+				kind={ EColors.CURRENT }
 			/>
 		</div>
 	);
