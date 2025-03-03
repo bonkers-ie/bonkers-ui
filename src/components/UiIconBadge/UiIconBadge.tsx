@@ -3,7 +3,6 @@ import { ESize } from "../../_types/sizing";
 import cx from "classnames";
 import { type IconProp } from "@fortawesome/fontawesome-svg-core";
 import { UiIcon } from "../UiIcon/UiIcon";
-import { EColors } from "../../_types/colors";
 
 type BadgeSize = Extract<
 	ESize,
@@ -65,7 +64,6 @@ export const UiIconBadge: React.FC<IUiIconBadgeProps> = ({
 			<UiIcon
 				name={ name }
 				size={ iconSize }
-				kind={ EColors.CURRENT }
 			/>
 		</div>
 	);
