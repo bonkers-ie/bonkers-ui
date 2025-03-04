@@ -1,0 +1,28 @@
+.UiToggle__dot {
+	width: 22px;
+	height: 22px;
+	transform: translate3d(1px, -50%, 0);
+	transition: transform 0.3s ease-in-out;
+}
+
+.UiToggle__dot:active,
+.UiToggle__dot:focus + .UiToggle__dot {
+	box-shadow: var(--shadow-border-secondary);
+}
+
+.UiToggle__dot_checked {
+	transform: translate3d(calc(var(--xl) - 100% - 1px), -50%, 0);
+}
+
+.UiToggle__icon {
+	top: 60%;
+	left: 50%;
+	transform: translate3d(-50%, -50%, 0);
+	stroke-dasharray: 70;
+	stroke-dashoffset: 70;
+	transition: stroke-dashoffset 0.2s ease-in-out;
+}
+
+.UiToggle__icon_checked {
+	stroke-dashoffset: 0;
+}
