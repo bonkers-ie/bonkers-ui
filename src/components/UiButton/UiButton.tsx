@@ -400,6 +400,7 @@ export const UiButton: React.FC<TButtonProps> = ({
 			className={ cx(
 				css.UiButton,
 				"text-base",
+				"cursor-pointer",
 				"touch-manipulation",
 				"whitespace-nowrap",
 				"rounded-xl",
