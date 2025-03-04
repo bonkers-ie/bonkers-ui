@@ -1,4 +1,4 @@
-import{j as r}from"./jsx-runtime-D_zvdyIk.js";import"./index-DmM0KDA7.js";import{c as l}from"./index-C7T3p30y.js";import{U as m,a as p,b as u}from"./UiButton-C85yurkk.js";var e=(t=>(t.SECONDARY="secondary",t.DEFAULT="default",t.PRIMARY="primary",t.WARNING="warning",t.ERROR="error",t))(e||{});const R={[e.DEFAULT]:`
+import{j as r}from"./jsx-runtime-D_zvdyIk.js";import"./index-DmM0KDA7.js";import{c as l}from"./index-C7T3p30y.js";import{U as m,a as p,b as u}from"./UiButton-DH7K67Jb.js";var e=(t=>(t.SECONDARY="secondary",t.DEFAULT="default",t.PRIMARY="primary",t.WARNING="warning",t.ERROR="error",t))(e||{});const R={[e.DEFAULT]:`
 		bg-white
 		text-secondary-700
 
