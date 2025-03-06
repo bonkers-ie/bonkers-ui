@@ -6,7 +6,7 @@ import { UiIcon } from "../UiIcon/UiIcon";
 
 type BadgeSize = Extract<
 	ESize,
-	ESize.XS | ESize.SM | ESize.MD | ESize.LG
+	ESize.SM | ESize.MD | ESize.LG
 >;
 
 type IconSize = Extract<
@@ -29,11 +29,10 @@ interface IUiIconBadgeProps {
 	kind?: EIconBadgeKind;
 }
 
-const badgeSizeClasses: { [key in BadgeSize]: string } = {
-	[ESize.XS]: "w-[36px] h-[36px]",
-	[ESize.SM]: "size-xl",
-	[ESize.MD]: "w-[56px] h-[56px]",
-	[ESize.LG]: "w-[104px] h-[104px]"
+const badgeSizeClasses = {
+	[ESize.SM]: "p-xxs",
+	[ESize.MD]: "p-sm",
+	[ESize.LG]: "p-lg"
 };
 
 const kindClasses = {
@@ -57,7 +56,6 @@ export const UiIconBadge: React.FC<IUiIconBadgeProps> = ({
 			"items-center",
 			"justify-center",
 			"aspect-square",
-			"p-xs",
 			badgeSizeClasses[badgeSize],
 			kindClasses[kind]
 		) }>
