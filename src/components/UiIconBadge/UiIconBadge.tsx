@@ -4,15 +4,7 @@ import cx from "classnames";
 import { type IconProp } from "@fortawesome/fontawesome-svg-core";
 import { UiIcon } from "../UiIcon/UiIcon";
 
-type BadgeSize = Extract<
-	ESize,
-	ESize.SM | ESize.MD | ESize.LG
->;
-
-type IconSize = Extract<
-	ESize,
-    ESize.SM | ESize.MD | ESize.LG
->;
+type BadgeSize = ESize.SM | ESize.MD | ESize.LG;
 
 export enum EIconBadgeKind {
 	PRIMARY = "primary",
@@ -25,7 +17,7 @@ export enum EIconBadgeKind {
 interface IUiIconBadgeProps {
 	name: IconProp;
 	badgeSize?: BadgeSize;
-	iconSize?: IconSize;
+	iconSize?: ESize;
 	kind?: EIconBadgeKind;
 }
 
