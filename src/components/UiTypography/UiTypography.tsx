@@ -106,6 +106,7 @@ const colorClasses = {
 
 	[EColors.ACCENT]: "text-accent",
 	[EColors.ACCENT_300]: "text-accent-300",
+	[EColors.ACCENT_400]: "text-accent-400",
 	[EColors.ACCENT_500]: "text-accent-500",
 	[EColors.ACCENT_600]: "text-accent-600",
 	[EColors.ACCENT_700]: "text-accent-700",

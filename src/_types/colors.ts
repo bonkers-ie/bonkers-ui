@@ -48,6 +48,7 @@ export enum EColors {
 
 	ACCENT = "--color-accent",
 	ACCENT_300 = "--color-accent-300",
+	ACCENT_400 = "--color-accent-400",
 	ACCENT_500 = "--color-accent-500",
 	ACCENT_600 = "--color-accent-600",
 	ACCENT_700 = "--color-accent-700",

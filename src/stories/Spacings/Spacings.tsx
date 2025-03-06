@@ -1,14 +1,16 @@
-import React from "react";
-import { getThemeTokens } from "../../helper";
+// import React from "react";
+// import { getCssVariableValue } from "../../helper";
+// import
 
 export const Spacings = () => {
-	const { spacings } = getThemeTokens();
+// 	const { spacings } = getThemeTokens();
 
 	return (
 		<ul
 			className="flex flex-row flex-wrap gap-md"
 		>
-			{
+			{ /*
+				{
 				spacings.map(({ name, value }) => (
 					<li key={ name } className="grid gap-sm border border-black p-md">
 						<div>
@@ -30,7 +32,7 @@ export const Spacings = () => {
 						/>
 					</li>
 				))
-			}
+			} */ }
 		</ul>
 	);
 };

@@ -1,26 +1,25 @@
 export type TColor ={
 	name: string;
 	value: string;
+	hex: string;
 }
 
 export type TGroupedColor ={
 	groupTitle: string;
-	groupColors: {
-		shade: string;
-		value: string;
-		name: string;
-	}[];
+	groupColors: TColor[];
 }
 
 export const getCssVariableValue = (variable: string) => {
-	const cssVariable = variable.match(/\((.*)\)/)?.pop() || "";
-	return globalThis.getComputedStyle(document.body).getPropertyValue(cssVariable);
+	// const cssVariable = variable.match(/\((.*)\)/)?.pop() || "";
+	return window.getComputedStyle(document.documentElement).getPropertyValue(variable);
 };
 
 // get base variables from css theme
 export const getBaseVariables = () => {
-	const styles = globalThis.getComputedStyle(document.documentElement);
-	if (!styles) return [];
+	const frame = document.getElementById("storybook-preview-iframe") as HTMLIFrameElement;
+	console.log("frame", frame);
+	const styles = window.getComputedStyle(frame?.contentDocument?.documentElement || document.documentElement);
+	console.log(Array.from(styles));
 
 	return Object.values(styles).filter(key => key.startsWith("--")).map(key => {
 		return ({
@@ -30,60 +29,31 @@ export const getBaseVariables = () => {
 	});
 };
 
-// get the base theme tokens from css theme
-export const getThemeTokens = () => {
-	const variables = getBaseVariables();
-
-	const fontSizes = variables.filter(variable => variable.name.includes("--font-size"));
-	const spacings = variables.filter(variable => variable.name.includes("--spacing"));
-	const colors = variables.filter(variable => variable.name.includes("--color"));
-	const baseColors  = colors.filter(({ name }) => name.includes("white") || name.includes("black") || name.includes("transparent") || name.includes("current"));
-
-	return {
-		fontSizes,
-		spacings,
-		groupedColors: groupColors(colors),
-		baseColors
-	};
-};
-
 // helper to split up the css variables into groups for displaying in Colors story
-const groupColors = (colors: TColor[]): TGroupedColor[] => {
-	const baseNames = ["transparent", "current", "black", "white"];
-	// Filter out base colors.
-	const filteredColors = colors.filter(({ name }) => {
-		const trimmedName = name.replace("--color-", "");
-		return !baseNames.includes(trimmedName);
-	});
-
-	const groups = filteredColors.reduce<Record<string, TGroupedColor>>((acc, { name, value }) => {
-		// Remove the prefix and split the name.
-		const trimmedName = name.replace("--color-", "");
-		const segments = trimmedName.split("-");
-		const lastSegment = segments[segments.length - 1];
-
-		// Determine groupTitle and shade.
-		let groupTitle: string;
-		let shade: string;
-		if (!isNaN(parseInt(lastSegment)) && /^\d+$/.test(lastSegment)) {
-			shade = lastSegment;
-			groupTitle = segments.slice(0, -1).join("-");
+export const groupColors = (colors: TColor[]): TGroupedColor[] => {
+	const groups = colors.reduce<Record<string, TGroupedColor>>((acc, color) => {
+		let groupKey: string;
+		if (["WHITE", "BLACK", "TRANSPARENT", "CURRENT"].includes(color.name)) {
+			groupKey = "BASE";
 		} else {
-			shade = "DEFAULT";
-			groupTitle = trimmedName;
+			const parts = color.name.split("_");
+			if (!/_[0-9]{3}$/.test(color.name)) color.name = "DEFAULT"; // Set name to DEFAULT for the default colors
+
+			if (parts.length > 1 && /^\d+$/.test(parts[parts.length - 1])) { // test if the last part is a number e.g. "PRIMARY_500" or "SECONDARY_ALT_300"
+				groupKey = parts.slice(0, -1).join("-");
+				color.name = parts[parts.length - 1];
+			} else {
+				groupKey = parts.join("-"); // Secondary-Alt, Accent-Alt and Primary-Alt
+			}
 		}
 
-		if (!acc[groupTitle]) {
-			acc[groupTitle] = {
-				groupTitle,
+		if (!acc[groupKey]) {
+			acc[groupKey] = {
+				groupTitle: groupKey,
 				groupColors: []
 			};
 		}
-		acc[groupTitle].groupColors.push({
-			shade,
-			value,
-			name
-		});
+		acc[groupKey].groupColors.push(color);
 		return acc;
 	}, {});
 

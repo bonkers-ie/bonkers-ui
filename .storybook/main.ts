@@ -1,17 +1,20 @@
 import type { StorybookConfig } from "@storybook/react-vite";
 
 const config: StorybookConfig = {
-	stories: ["../src/**/*.stories.@(ts|tsx)"],
+	stories: [
+		"../src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+		"../src/**/*.mdx",
+	],
 	addons: [
 		"@storybook/addon-essentials",
-		"storybook-dark-mode"
+		"storybook-dark-mode",
+		"@chromatic-com/storybook"
 	],
-	framework: {
-		name: "@storybook/react-vite",
-		options: {},
+	framework: "@storybook/react-vite",
+
+	typescript: {
+		reactDocgen: false
 	},
-	docs: {
-		autodocs: true
-	}
+	
 };
 export default config;

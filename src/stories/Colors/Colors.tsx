@@ -1,50 +1,46 @@
+import { ColorPalette, ColorItem } from "@storybook/blocks";
 import React from "react";
-import { getThemeTokens } from "../../helper";
+import { getCssVariableValue, groupColors, type TGroupedColor } from "../../helper";
+import { EColors } from "../../_types/colors";
+import { ETextAlign, ETextWeight, ETypographySizes, UiTypography } from "../../components/UiTypography";
 
-const { groupedColors, baseColors } = getThemeTokens();
+export default function Colors () {
+	const colorsArray = Object.entries(EColors).map(([name, value]) => ({
+		name,
+		value,
+		hex: getCssVariableValue(value),
+	}));
 
-export const Colors = () => {
+	const groupedColors: TGroupedColor[] = groupColors(colorsArray);
 
 	return (
-		<div>
-			<div className="mb-md">
-				<h2 className="mb-sm text-3xl font-bold">Base Colors:</h2>
-
-				<ul className="color_wrapper grid gap-md">
-					{ baseColors.map(({ name, value }) => (
-						<li key={ name } className="grid gap-xs">
-							<div className="color_circle relative m-auto size-xxxxxl rounded-full" style={ {
-								backgroundColor: value,
-							} }>
-							</div>
-							<b className="text-center text-lg">{ name }</b>
-							<div className="text-center">({ value })</div>
-							<div className="text-nowrap text-center text-md">{ value }</div>
-						</li>
-					)) }
-				</ul>
-			</div>
-			<hr className="my-sm"/>
-
+		<ColorPalette>
 			{ groupedColors.map(({ groupTitle, groupColors }) => (
-				<div className="mb-md" key={ groupTitle }>
-					<h2 className="mb-sm text-3xl font-bold">{ groupTitle }:</h2>
-					<ul className="color_wrapper grid gap-xxl">
-						{ groupColors.map(({ shade, value, name }) => (
-							<li key={ `${groupTitle}-${shade}-${name}` } className="grid gap-xs">
-								<div className="color_circle relative m-auto size-xxxxxl rounded-full" style={ {
-									backgroundColor: `var(${name})`,
-								} }>
-								</div>
-								<b className="text-center text-lg">{ shade }</b>
-								<div className="text-center">({ value })</div>
-								<div className="text-nowrap text-center text-md">var({ name })</div>
-							</li>
-						)) }
-					</ul>
-					<hr className="my-sm"/>
+				<div key={ groupTitle }>
+					<div className="mb-md">
+						<UiTypography
+							lineHeight
+							className="pr-sm"
+							align={ ETextAlign.RIGHT }
+							weight={ ETextWeight.BOLD }
+							size={ ETypographySizes.XL }
+						>
+							{ groupTitle }
+						</UiTypography>
+						<hr/>
+					</div>
+					{ groupColors.map(({ name, value, hex }) => (
+						<ColorItem
+							key={ name }
+							title={ name }
+							subtitle={ hex }
+							colors={ {
+								[name]: `var(${value})`
+							} }
+						/>
+					)) }
 				</div>
 			)) }
-		</div>
+		</ColorPalette>
 	);
 };

@@ -26,9 +26,6 @@ const preview: Preview = {
 			light: light,
 		},
 		stylePreview: true,
-		actions: {
-			argTypesRegex: "^on[A-Z].*"
-		},
 		backgrounds: {
 			default: "Bonkers",
 			values: [
@@ -53,6 +50,8 @@ const preview: Preview = {
 			},
 		},
 	},
+
+	tags: ["autodocs"]
 };
 
 export default preview;
