@@ -1,0 +1,243 @@
+@import "tailwindcss";
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+    box-sizing: border-box;
+  }
+}
+
+@layer base {
+  :root {
+    /* text */
+    --base-line-height: 1.6;
+    --base-font: museo-sans, sans-serif;
+  }
+}
+
+@theme {
+  /* spacing */
+  --auto: auto;
+  --zero: 0;
+  --min: 1px;
+  --xxxs: 4px;
+  --xxs: 8px;
+  --xs: 12px;
+  --sm: 16px;
+  --md: 24px;
+  --lg: 32px;
+  --xl: 40px;
+  --xxl: 48px;
+  --xxxl: 64px;
+  --xxxxl: 80px;
+  --xxxxxl: 120px;
+
+  /* shadows */
+  --shadow-size-md: 0 2px 4px 0 rgb(180 184 205 / 50%);
+  --shadow-border-primary: 0 0 0 4px rgb(69 158 74 / 50%);
+  --shadow-border-selected: 0 0 0 4px rgb(69 158 74 / 100%);
+  --shadow-selected-shadow: 0 0 0 4px var(--color-primary-500);
+  --shadow-selected-disabled: 0 0 0 2px var(--color-primary-300);
+  --shadow-border-secondary: 0 0 0 4px rgb(223 225 233 / 50%);
+  --shadow-border-primary-600: 0 0 0 2px var(--color-primary-600);
+  --shadow-border-primary-700: 0 0 0 2px var(--color-primary-700);
+
+  /* font sizes */
+  --font-size-xxs: 10px;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 28px;
+  --font-size-4xl: 32px;
+  --font-size-5xl: 40px;
+
+  --text-*: initial; /* reset */
+  --text-xxs: var(--font-size-xxs);
+  --text-xs: var(--font-size-xs);
+  --text-sm: var(--font-size-sm);
+  --text-md: var(--font-size-md);
+  --text-lg: var(--font-size-lg);
+  --text-xl: var(--font-size-xl);
+  --text-2xl: var(--font-size-2xl);
+  --text-3xl: var(--font-size-3xl);
+  --text-4xl: var(--font-size-4xl);
+  --text-5xl: var(--font-size-5xl);
+
+  /* colors */
+  --color-*: initial; /* disable base colors in TW */
+
+  --color-white: white;
+  --color-black: black;
+  --color-current: currentColor;
+  --color-transparent: transparent;
+
+  --color-primary-50: #ecf8ed;
+  --color-primary-100: #d9f2db;
+  --color-primary-200: #b3e5b6;
+  --color-primary-300: #9adc9e;
+  --color-primary-400: #78d17d;
+  --color-primary-500: #56c55d;
+  --color-primary-600: #459e4a;
+  --color-primary-700: #347638;
+  --color-primary-800: #1a4c1d;
+  --color-primary-900: #0d260f;
+
+  --color-primary-alt-300: #83e4ad;
+  --color-primary-alt-400: #5adb92;
+  --color-primary-alt-500: #31d277;
+  --color-primary-alt-600: #27a85f;
+  --color-primary-alt-700: #1d7e47;
+
+  --color-secondary-300: #848793;
+  --color-secondary-400: #5b5f6f;
+  --color-secondary-500: #32374b;
+  --color-secondary-600: #282c3c;
+  --color-secondary-700: #1e212d;
+
+  --color-error-100: #fbe8e8;
+  --color-error-200: #f7d4d4;
+  --color-error-300: #ea9797;
+  --color-error-400: #df6363;
+  --color-error-500: #d52f2f;
+  --color-error-600: #a02323;
+  --color-error-700: #6b1818;
+
+  --color-warning-300: #ffbc9b;
+  --color-warning-400: #ffa57a;
+  --color-warning-500: #ff8f59;
+  --color-warning-600: #cc7247;
+  --color-warning-700: #995635;
+
+  --color-accent-300: #c9c9f6;
+  --color-accent-400: #8b8bfc;
+  --color-accent-500: #4242f7;
+  --color-accent-600: #3535c6;
+  --color-accent-700: #282894;
+
+  --color-accent-alt-300: #ffd681;
+  --color-accent-alt-400: #fcc44f;
+  --color-accent-alt-500: #ffbb2e;
+  --color-accent-alt-600: #ffae05;
+  --color-accent-alt-700: #f0a100;
+
+  --color-secondary-alt-200: #f4f5f8;
+  --color-secondary-alt-300: #dfe1e9;
+  --color-secondary-alt-400: #b4b8cd;
+  --color-secondary-alt-500: #949ab7;
+  --color-secondary-alt-600: #767b92;
+  --color-secondary-alt-700: #595c6e;
+
+  --color-accent: var(--color-accent-500);
+  --color-accent-alt: var(--color-accent-alt-500);
+  --color-error: var(--color-error-500);
+  --color-primary: var(--color-primary-500);
+  --color-primary-alt: var(--color-primary-alt-500);
+  --color-secondary: var(--color-secondary-500);
+  --color-secondary-alt: var(--color-secondary-alt-500);
+  --color-warning: var(--color-warning-500);
+
+  /* backdrop blur */
+  --backdrop-blur-*: initial;
+  --backdrop-blur-min: 0.5px;
+  --backdrop-blur-xs: 2px;
+  --backdrop-blur-sm: 4px;
+  --backdrop-blur: 8px;
+  --backdrop-blur-md: 12px;
+  --backdrop-blur-lg: 16px;
+  --backdrop-blur-xl: 24px;
+  --backdrop-blur-2xl: 40px;
+
+  /* spacing */
+  --spacing-*: initial; /* reset */
+  --spacing-auto: var(--auto);
+  --spacing-0: var(--zero);
+  --spacing-min: var(--min);
+  --spacing-xxxs: var(--xxxs);
+  --spacing-xxs: var(--xxs);
+  --spacing-xs: var(--xs);
+  --spacing-sm: var(--sm);
+  --spacing-md: var(--md);
+  --spacing-lg: var(--lg);
+  --spacing-xl: var(--xl);
+  --spacing-xxl: var(--xxl);
+  --spacing-xxxl: var(--xxxl);
+  --spacing-xxxxl: var(--xxxxl);
+  --spacing-xxxxxl: var(--xxxxxl);
+
+  --min-h-auto: var(--auto);
+  --min-h-0: var(--zero);
+  --min-h-min: var(--min);
+  --min-h-xxxs: var(--xxxs);
+  --min-h-xxs: var(--xxs);
+  --min-h-xs: var(--xs);
+  --min-h-sm: var(--sm);
+  --min-h-md: var(--md);
+  --min-h-lg: var(--lg);
+  --min-h-xl: var(--xl);
+  --min-h-xxl: var(--xxl);
+  --min-h-xxxl: var(--xxxl);
+  --min-h-xxxxl: var(--xxxxl);
+  --min-h-xxxxxl: var(--xxxxxl);
+
+  --max-h-auto: var(--auto);
+  --max-h-0: var(--zero);
+  --max-h-min: var(--min);
+  --max-h-xxxs: var(--xxxs);
+  --max-h-xxs: var(--xxs);
+  --max-h-xs: var(--xs);
+  --max-h-sm: var(--sm);
+  --max-h-md: var(--md);
+  --max-h-lg: var(--lg);
+  --max-h-xl: var(--xl);
+  --max-h-xxl: var(--xxl);
+  --max-h-xxxl: var(--xxxl);
+  --max-h-xxxxl: var(--xxxxl);
+  --max-h-xxxxxl: var(--xxxxxl);
+
+  --min-w-auto: var(--auto);
+  --min-w-0: var(--zero);
+  --min-w-min: var(--min);
+  --min-w-xxxs: var(--xxxs);
+  --min-w-xxs: var(--xxs);
+  --min-w-xs: var(--xs);
+  --min-w-sm: var(--sm);
+  --min-w-md: var(--md);
+  --min-w-lg: var(--lg);
+  --min-w-xl: var(--xl);
+  --min-w-xxl: var(--xxl);
+  --min-w-xxxl: var(--xxxl);
+  --min-w-xxxxl: var(--xxxxl);
+  --min-w-xxxxxl: var(--xxxxxl);
+
+  --max-w-auto: var(--auto);
+  --max-w-0: var(--zero);
+  --max-w-min: var(--min);
+  --max-w-xxxs: var(--xxxs);
+  --max-w-xxs: var(--xxs);
+  --max-w-xs: var(--xs);
+  --max-w-sm: var(--sm);
+  --max-w-md: var(--md);
+  --max-w-lg: var(--lg);
+  --max-w-xl: var(--xl);
+  --max-w-xxl: var(--xxl);
+  --max-w-xxxl: var(--xxxl);
+  --max-w-xxxxl: var(--xxxxl);
+  --max-w-xxxxxl: var(--xxxxxl);
+
+  --border-radius-xxs: var(--xxs);
+}

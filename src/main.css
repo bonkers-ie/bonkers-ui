@@ -1,14 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-	:root {
-		/* text */
-		--base-line-height: 1.6;
-		--base-font: museo-sans, sans-serif;
-	}
-}
+@import "../bonkers.css";
 
 body {
 	font-family: var(--base-font);

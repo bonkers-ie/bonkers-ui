@@ -72,10 +72,10 @@ export const UiInputRange: React.FC<TUiInputRangeProps> = ({
 				onTouchMove={ (e) => e.stopPropagation() }
 			/>
 
-			<div className="pointer-events-none absolute left-0 top-1/2 h-xxs w-full -translate-y-1/2 rounded bg-secondary-alt" />
+			<div className="pointer-events-none absolute left-0 top-1/2 h-xxs w-full -translate-y-1/2 rounded-sm bg-secondary-alt" />
 
 			<div
-				className="pointer-events-none absolute left-0 top-1/2 h-xxs -translate-y-1/2 rounded bg-primary"
+				className="pointer-events-none absolute left-0 top-1/2 h-xxs -translate-y-1/2 rounded-sm bg-primary"
 				style={ {
 					width: `${trackWidth}%`,
 				} }

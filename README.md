@@ -34,13 +34,13 @@
 
 - Use bun to install all dependencies with the frozen lockfile
 
-    ```js
+    ```bash
     bun i
     ```
 
 - To run the storybook
 
-    ```js
+    ```bash
     bun storybook
     ```
 
@@ -50,46 +50,18 @@
 
 - Install the component library with your desired package manager.
 
-    - Insure `autoprefixer`, `postcss` and `tailwindcss` are installed
+	- This projects uses TailwindCSS @ v4, which does not require a tailwind.config.{js,ts} file. _Note:_ Please refer to the TailwindCSS documentation for more information and up-to-date instructions.
+    - If the client is built with Next.js, please ensure `tailwindcss`, `@tailwindcss/postcss` and `postcss` are installed.
+    - If the client is built with Vite, please ensure `tailwindcss` and `@tailwindcss/vite` are installed.
 
-- In your `tailwind.config.ts`, add the Bonkers-UI tailwind plugin to your `plugins` array. _Note:_ the content array should include the path to the Bonkers-UI source files once installed.
+- Previously the Bonkers-UI tailwind plugin was implemented by adding it to the  `plugins` array of the tailwind config file. Now, all that is required is to add the Bonkers-UI CSS theme file to the styles entry point of the client.
 
-```js
-import bonkersUiConfig from "bonkers-ui/plugin";
-
-export default {
-	content: [
-		/* ...other directories containing Tailwind styled components/pages */
-		"./node_modules/react-ui/**/*.{js,ts,tsx}",
-	],
-	plugins: [bonkersUiConfig],
-};
-```
-
-```ts
-import type { Config } from "tailwindcss";
-import bonkersUiConfig from "react-ui/plugin";
-import { PluginCreator } from "tailwindcss/types/config";
-
-const config = {
-	content: [
-		/* ...other directories containing Tailwind styled components/pages */
-		"./node_modules/react-ui/**/*.{js,ts,tsx}",
-	],
-	plugins: [
-		bonkersUiConfig as { handler: PluginCreator; config?: Partial<Config> },
-	],
-} satisfies Config;
-
-export default config;
-```
-
-- Ensure that the tailwind directives are included in your `main.css` file
+- Ensure that the Bonkers-UI theme is included in the project's CSS entry point, eg. `src/app/globals.css` in a Next.js project or `src/styles.css` in a Vite project.
+- It is also required, at time of writing, to add the Bonkers-UI library as a source in the CSS entry point. _Note:_ the path to the Bonkers-UI source files in the node_modules directory should be relative to the CSS entry point.
 
 ```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'bonkers-ui/theme';;
+@source "../node_modules/bonkers-ui";
 ```
 
 - Please ensure that your `tsconfig` file is configured with `moduleResolution` set to `Bundler` or `NodeNext` (depending on your project setup) to allow for the Bonkers-UI types to be resolved. Example:
@@ -119,12 +91,25 @@ export default config;
 }
 ```
 
+- Within a `Next.js` project, it is requiredd to add the Tailwind PostCSS plugin to the clients `postcss.config.mjs` file.
+
+```tsx
+/** @type {import('postcss-load-config').Config} */
+const config = {
+	plugins: {
+		"@tailwindcss/postcss": {},
+	},
+};
+
+export default config;
+```
+
 - Bonkers-UI has been successfully installed to your project, now import any components you need!
 
 ```tsx
 import React from "react";
-import { UiButton, EButtonTypes, EButtonSizes } from "bonkers-ui";
-import { EInputKinds } from "bonkers-ui/types";
+import { UiButton, EButtonTypes, EButtonSizes } from "bonkers-ui/UiButton";
+import { UiInput, EInputKind } from "bonkers-ui/UiInput";
 
 export type TNewComponent = {
 	placeholder: string;

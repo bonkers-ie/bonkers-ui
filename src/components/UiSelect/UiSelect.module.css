@@ -4,5 +4,5 @@
 
 .UiSelect:not(:disabled):focus-within {
 	border-color: transparent;
-	box-shadow: 0 0 0 2px theme(colors.secondary-alt.700);
+	box-shadow: 0 0 0 2px var(--color-secondary-alt-700);
 }

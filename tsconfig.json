@@ -1,37 +1,11 @@
 {
-	"compilerOptions": {
-		// "jsx": "react",
-		"target": "ES2020",
-		"module": "ESNext",
-		"strict": true, /* Specify what module code is generated. */
-		"verbatimModuleSyntax": true,
-
-		"esModuleInterop": true, /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
-		"forceConsistentCasingInFileNames": true, /* Ensure that casing is correct in imports. */
-		"skipLibCheck": true, /* Skip type checking all .d.ts files. */
-		/* Bun Settings */
-		"moduleResolution": "node",
-		"noEmit": true,
-		"allowImportingTsExtensions": true,
-		"moduleDetection": "force",
-		"resolveJsonModule": true,
-		"isolatedModules": true,
-		"jsx": "preserve",
-	},
-	"include": [
-		"src/**/*.ts",
-		"src/**/*.d.ts",
-		"src/**/*.tsx",
-	],
-	"exclude": [
-		"node_modules",
-		"./src/**/*.stories.*",
-		"./src/stories"
-	],
+	"files": [],
 	"references": [
+		{
+			"path": "./tsconfig.app.json"
+		},
 		{
 			"path": "./tsconfig.node.json"
 		}
 	]
-
 }

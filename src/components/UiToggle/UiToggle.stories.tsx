@@ -6,12 +6,6 @@ const meta = {
 	title: "Components/UiToggle",
 	component: UiToggle,
 	argTypes: {
-		title: {
-			control: {
-				type: "text",
-			},
-			description: "header",
-		},
 		children: {
 			control: {
 				type: "text",
@@ -30,20 +24,20 @@ const meta = {
 			},
 			description: "The Element order state",
 		},
-		onClick: {
-			action: "clicked",
-			description: "Toggle Clicked",
+		checked: {
+			control: {
+				type: "boolean",
+			},
+			description: "Toggle Checked",
+		},
+		value: {
+			control: {
+				type: "boolean",
+			},
+			description: "Toggle Value",
 		},
 
-	},
-	args: {
-
-		title: "header",
-		children: "title",
-		disabled: false,
-		invertOrder: false,
-
-	},
+	}
 } satisfies Meta<typeof UiToggle>;
 
 export default meta;
@@ -51,13 +45,18 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
+	args: {
+		children: "title",
+		disabled: false,
+		invertOrder: false,
+		onChange: (value: boolean) => console.log(`Checked ${value}`),
+	},
 	render: (args) => {
-		const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-			console.log("Checked", e.target.checked);
-		};
-
 		return (
-			<UiToggle { ...args } onChange={ handleChange } />
+			<>
+				<UiToggle { ...args } />
+
+			</>
 		);
 	}
 };
