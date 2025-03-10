@@ -19,6 +19,7 @@ interface IUiIconBadgeProps {
 	badgeSize?: BadgeSize;
 	iconSize?: ESize;
 	kind?: EIconBadgeKind;
+	children?: React.ReactNode;
 }
 
 const badgeSizeClasses = {
@@ -39,7 +40,8 @@ export const UiIconBadge: React.FC<IUiIconBadgeProps> = ({
 	name,
 	badgeSize = ESize.MD,
 	iconSize = ESize.MD,
-	kind = EIconBadgeKind.PRIMARY
+	kind = EIconBadgeKind.PRIMARY,
+	children
 }) => {
 	return (
 		<div className={ cx(
@@ -51,10 +53,7 @@ export const UiIconBadge: React.FC<IUiIconBadgeProps> = ({
 			badgeSizeClasses[badgeSize],
 			kindClasses[kind]
 		) }>
-			<UiIcon
-				name={ name }
-				size={ iconSize }
-			/>
+			{ children || <UiIcon name={ name } size={ iconSize } /> }
 		</div>
 	);
 };
