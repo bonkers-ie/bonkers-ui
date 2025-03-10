@@ -78,3 +78,11 @@ export const Error: Story = {
 		badgeSize: ESize.SM
 	},
 };
+
+export const CustomNode: Story = {
+	args: {
+		badgeSize: ESize.MD,
+		kind: EIconBadgeKind.PRIMARY,
+		children: "custom child prop"
+	},
+};
