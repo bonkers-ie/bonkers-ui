@@ -4,7 +4,7 @@ import cx from "classnames";
 import { type IconProp } from "@fortawesome/fontawesome-svg-core";
 import { UiIcon } from "../UiIcon/UiIcon";
 
-type BadgeSize = ESize.SM | ESize.MD | ESize.LG;
+type BadgeSize = ESize.SM | ESize.MD | ESize.LG | ESize.XL;
 
 export enum EIconBadgeKind {
 	PRIMARY = "primary",
@@ -16,16 +16,24 @@ export enum EIconBadgeKind {
 
 interface IUiIconBadgeProps {
 	name: IconProp;
-	badgeSize?: BadgeSize;
-	iconSize?: ESize;
+	size?: BadgeSize;
 	kind?: EIconBadgeKind;
 	children?: React.ReactNode;
 }
 
 const badgeSizeClasses = {
 	[ESize.SM]: "p-xxs",
-	[ESize.MD]: "p-sm",
-	[ESize.LG]: "p-lg"
+	[ESize.MD]: "p-xxs",
+	[ESize.LG]: "p-sm",
+	[ESize.XL]: "p-lg"
+};
+
+// Map badge size to icon size
+const iconSizeMap = {
+	[ESize.SM]: ESize.SM,
+	[ESize.MD]: ESize.MD,
+	[ESize.LG]: ESize.LG,
+	[ESize.XL]: ESize.XL
 };
 
 const kindClasses = {
@@ -38,8 +46,7 @@ const kindClasses = {
 
 export const UiIconBadge: React.FC<IUiIconBadgeProps> = ({
 	name,
-	badgeSize = ESize.MD,
-	iconSize = ESize.MD,
+	size = ESize.MD,
 	kind = EIconBadgeKind.PRIMARY,
 	children
 }) => {
@@ -50,10 +57,10 @@ export const UiIconBadge: React.FC<IUiIconBadgeProps> = ({
 			"items-center",
 			"justify-center",
 			"aspect-square",
-			badgeSizeClasses[badgeSize],
+			badgeSizeClasses[size],
 			kindClasses[kind]
 		) }>
-			{ children || <UiIcon name={ name } size={ iconSize } /> }
+			{ children || <UiIcon name={ name } size={ iconSizeMap[size] } /> }
 		</div>
 	);
 };
