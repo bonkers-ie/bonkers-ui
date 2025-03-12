@@ -2,7 +2,9 @@ import react from "eslint-plugin-react";
 import tseslint from "typescript-eslint";
 import stylisticPlugin from "@stylistic/eslint-plugin";
 import storybook from "eslint-plugin-storybook";
-import pluginTailwind from "eslint-plugin-tailwindcss";
+
+// Not compatible with tailwind v4: https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/325
+// import pluginTailwind from "eslint-plugin-tailwindcss";
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -86,6 +88,5 @@ export default [
 		},
 	},
 	...tseslint.configs.recommended,
-	...storybook.configs["flat/recommended"],
-	...pluginTailwind.configs["flat/recommended"]
+	...storybook.configs["flat/recommended"]
 ];

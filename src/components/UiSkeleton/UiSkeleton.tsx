@@ -45,7 +45,7 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 									"bg-secondary-alt-400",
 									"h-xl",
 									"mb-sm",
-									"rounded",
+									"rounded-sm",
 									"w-2/3"
 								) }
 							/>
@@ -77,7 +77,7 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 									"bg-secondary-alt-400",
 									"h-md",
 									"mb-xxs",
-									"rounded",
+									"rounded-sm",
 									"w-3/5"
 								) }
 							/>
@@ -93,7 +93,7 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 									return (
 										<div
 											key={ index }
-											className={ cx(widthClass, "h-md", bgClass, "rounded") }
+											className={ cx(widthClass, "h-md", bgClass, "rounded-sm") }
 										/>
 									);
 								}) }
@@ -111,7 +111,7 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 									return (
 										<div
 											key={ index }
-											className={ cx(widthClass, heightClass, bgClass, "rounded", "mb-xxs") }
+											className={ cx(widthClass, heightClass, bgClass, "rounded-sm", "mb-xxs") }
 										/>
 									);
 								}) }
@@ -147,7 +147,7 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 													className={ cx(
 														"bg-secondary-alt-300",
 														"mb-xxxs",
-														"rounded",
+														"rounded-sm",
 														widthClass,
 														heightClass
 													) }
@@ -189,7 +189,7 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 										"flex",
 										"h-[20px]",
 										"mb-xxxs",
-										"rounded",
+										"rounded-sm",
 										widthClass,
 										heightClass,
 										lastDivClass
