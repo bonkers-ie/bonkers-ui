@@ -6,9 +6,8 @@ export enum EStarsSize {
 
 export enum EStarColors {
 	DEFAULT = "default",
-	GOLD = "gold",
 	WHITE = "white",
 	BLACK = "black",
 	CURRENT = "current",
-	GREEN = "green"
+	PRIMARY = "primary"
 }

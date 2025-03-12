@@ -4,8 +4,7 @@ import { EStarsSize, EStarColors } from "./_types";
 
 export const colorClasses = {
 	[EStarColors.DEFAULT]: "text-accent-alt-600",
-	[EStarColors.GOLD]: "text-accent-alt-600",
-	[EStarColors.GREEN]: "text-primary",
+	[EStarColors.PRIMARY]: "text-primary",
 	[EStarColors.WHITE]: "text-white",
 	[EStarColors.BLACK]: "text-black",
 	[EStarColors.CURRENT]: "text-current",
