@@ -107,7 +107,7 @@ export const UiToggle: React.FC<TUiToggleProps> = ({
 						styles.UiToggle__dot,
 						{
 							"hover:shadow-border-secondary": !isChecked && !disabled,
-							"hover:shadow-toggle-primary": isChecked && !disabled,
+							"hover:shadow-border-primary": isChecked && !disabled,
 							[styles.UiToggle__dot_checked]: isChecked
 						},
 
