@@ -67,6 +67,7 @@ export const UiFeefo: React.FC<IUiFeefo> = ({
 						<UiTypography
 							size={ ETypographySizes.MD }
 							weight={ ETextWeight.BOLD }
+							className="text-center"
 							color={ EColors.SECONDARY }
 						>
 							{ review.title }
@@ -75,19 +76,22 @@ export const UiFeefo: React.FC<IUiFeefo> = ({
 						<UiTypography
 							size={ ETypographySizes.SM }
 							color={ EColors.SECONDARY }
+							className="text-center"
 						>
 							{ review.content }
 						</UiTypography>
 
-						<div className="flex gap-xs text-secondary-400">
+						<div className="flex gap-xs text-secondary-400 text-center justify-center">
 							<UiTypography
 								size={ ETypographySizes.XS }
+								className="text-center"
 							>
 								{ review.author }
 							</UiTypography>
 							<UiTypography
 								size={ ETypographySizes.XS }
 								color={ EColors.SECONDARY_400 }
+								className="text-center"
 							>
 								- { review.timeAgo }
 							</UiTypography>
