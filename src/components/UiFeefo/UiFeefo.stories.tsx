@@ -35,27 +35,3 @@ export const Default: Story = {
 		]
 	}
 };
-
-export const SingleReview: Story = {
-	args: {
-		overallRating: 4.7,
-		totalReviews: 6704,
-		reviews: [
-			{
-				author: "Customer",
-				timeAgo: "about 18 hours ago",
-				title: "Lots of Choices - Easy to Switch",
-				content: "Gives plenty of options and the transfer over to a new supplier seems easy",
-				rating: 5
-			}
-		]
-	}
-};
-
-export const NoReviews: Story = {
-	args: {
-		overallRating: 4.7,
-		totalReviews: 6704,
-		reviews: []
-	}
-};
