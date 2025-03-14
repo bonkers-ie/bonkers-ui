@@ -1,1 +1,1 @@
-export { UiFeefo } from "./UiFeefo";
+export { UiIcon } from "./UiIcon";

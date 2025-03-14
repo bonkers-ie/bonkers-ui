@@ -25,7 +25,7 @@ export const UiFeefo: React.FC<IUiFeefo> = ({
 	]
 }) => {
 	return (
-		<div className="rounded-3xl border border-secondary-alt-500 bg-white p-lg">
+		<div className="rounded-3xl border-16 border-accent-alt-300 bg-white p-lg">
 			<div className="mb-md text-center">
 				<div className="relative flex flex-col items-center justify-center gap-xs md:flex-row md:gap-xxs">
 					<UiTypography
