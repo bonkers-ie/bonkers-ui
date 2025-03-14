@@ -26,7 +26,7 @@ export const UiFeefo: React.FC<IUiFeefo> = ({
 }) => {
 	return (
 		<div className="rounded-3xl border-16 border-accent-alt-300 bg-white p-md">
-			<div className="mb-md text-center">
+			<div className="mb-xl text-center">
 				<div className="relative flex flex-col items-center mb-lg justify-center gap-xxs md:flex-row md:gap-xxs">
 					<UiTypography
 						size={ ETypographySizes.XXL }
@@ -46,7 +46,7 @@ export const UiFeefo: React.FC<IUiFeefo> = ({
 					>
 						<span className="relative">
 							{ overallRating } out of 5 stars!
-							<span className="absolute right-0 top-1/2 -z-[1] h-[20px] w-[170px] -translate-x-[5px] -translate-y-1/2 skew-x-[16deg] rounded-[3px] bg-[rgba(254,220,100,0.5)]" />
+							<span className="absolute -right-[10px] md:-right-[14px] top-1/2 -z-[1] h-[30px] w-[180px] -translate-x-[5px] -translate-y-1/2 skew-x-[16deg] rounded-[3px] bg-[rgba(254,220,100,0.5)]" />
 						</span>
 					</UiTypography>
 				</div>
@@ -59,7 +59,7 @@ export const UiFeefo: React.FC<IUiFeefo> = ({
 				</UiTypography>
 			</div>
 
-			<div className="grid gap-md">
+			<div className="grid gap-xl">
 				{ reviews.map((review, index) => (
 					<div key={ index } className="grid gap-xxs">
 						{ /* <UiStars currentRating={ review.rating } /> */ }
