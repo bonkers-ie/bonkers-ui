@@ -25,8 +25,8 @@ export const UiFeefo: React.FC<IUiFeefo> = ({
 	]
 }) => {
 	return (
-		<div className="rounded-3xl border-16 border-accent-alt-300 bg-white p-md">
-			<div className="mb-xl text-center">
+		<div className="rounded-3xl max-w-[1170px] border-16 border-accent-alt-300 bg-white p-md">
+			<div className="mb-xxxl text-center">
 				<div className="relative flex flex-col items-center mb-lg justify-center gap-xxs md:flex-row md:gap-xxs">
 					<UiTypography
 						size={ ETypographySizes.XXL }
@@ -59,13 +59,13 @@ export const UiFeefo: React.FC<IUiFeefo> = ({
 				</UiTypography>
 			</div>
 
-			<div className="grid gap-xl">
+			<div className="grid gap-xxxl mb-xxxl grid-cols-1 md:grid-cols-2">
 				{ reviews.map((review, index) => (
 					<div key={ index } className="grid gap-xxs">
 						{ /* <UiStars currentRating={ review.rating } /> */ }
 
 						<UiTypography
-							size={ ETypographySizes.MD }
+							size={ ETypographySizes.LG }
 							weight={ ETextWeight.BOLD }
 							className="text-center"
 							color={ EColors.SECONDARY }
@@ -84,13 +84,14 @@ export const UiFeefo: React.FC<IUiFeefo> = ({
 						<div className="flex gap-xs text-secondary-400 text-center justify-center">
 							<UiTypography
 								size={ ETypographySizes.XS }
+								color={ EColors.SECONDARY_ALT_500 }
 								className="text-center"
 							>
 								{ review.author }
 							</UiTypography>
 							<UiTypography
 								size={ ETypographySizes.XS }
-								color={ EColors.SECONDARY_400 }
+								color={ EColors.SECONDARY_ALT_400 }
 								className="text-center"
 							>
 								- { review.timeAgo }
