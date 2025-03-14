@@ -25,11 +25,11 @@ export const UiFeefo: React.FC<IUiFeefo> = ({
 	]
 }) => {
 	return (
-		<div className="rounded-3xl border-16 border-accent-alt-300 bg-white p-lg">
+		<div className="rounded-3xl border-16 border-accent-alt-300 bg-white p-md">
 			<div className="mb-md text-center">
-				<div className="relative flex flex-col items-center justify-center gap-xs md:flex-row md:gap-xxs">
+				<div className="relative flex flex-col items-center mb-lg justify-center gap-xxs md:flex-row md:gap-xxs">
 					<UiTypography
-						size={ ETypographySizes.XL }
+						size={ ETypographySizes.XXL }
 						className="relative z-10"
 						weight={ ETextWeight.BOLD }
 						color={ EColors.SECONDARY }
@@ -52,7 +52,7 @@ export const UiFeefo: React.FC<IUiFeefo> = ({
 				</div>
 
 				<UiTypography
-					size={ ETypographySizes.SM }
+					size={ ETypographySizes.MD }
 					color={ EColors.SECONDARY_400 }
 				>
 					Independent Service Rating based on { totalReviews } verified reviews. Read all reviews.
@@ -74,7 +74,7 @@ export const UiFeefo: React.FC<IUiFeefo> = ({
 						</UiTypography>
 
 						<UiTypography
-							size={ ETypographySizes.SM }
+							size={ ETypographySizes.MD }
 							color={ EColors.SECONDARY }
 							className="text-center"
 						>
