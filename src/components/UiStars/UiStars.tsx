@@ -11,8 +11,9 @@ export const colorClasses = {
 };
 
 interface IUiStars {
-	currentRating: number
+	starsFilled?: number
 	size?: EStarsSize
+	count?: number
 	color?: EStarColors
 }
 
@@ -23,16 +24,17 @@ const sizeClasses = {
 };
 
 export const UiStars = ({
-	currentRating,
+	starsFilled=0,
 	size = EStarsSize.MD,
+	count = 5,
 	color = EStarColors.DEFAULT
 }: IUiStars) => {
-	const filledStars = Math.min(Math.max(currentRating, 0), 5);
+	const filledStars = Math.min(Math.max(starsFilled, 0), count);
 
 	return (
 		<div className="flex">
 			{ Array.from({
-				length: 5
+				length: count
 			}, (_, index) => {
 				const isCompletelyFilled = index < Math.floor(filledStars);
 				const isPartiallyFilled = !isCompletelyFilled && index === Math.floor(filledStars);

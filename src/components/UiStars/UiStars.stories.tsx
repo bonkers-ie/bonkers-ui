@@ -6,14 +6,22 @@ const meta = {
 	title: "Components/UiStars",
 	component: UiStars,
 	argTypes: {
-		currentRating: {
+		starsFilled: {
 			control: {
 				type: "number",
 				step: 0.1,
 				min: 0,
-				max: 5
+				max: (context: { args: { count?: number } }) => context.args.count || 5
 			},
-			description: "Current rating value",
+			description: "Number of filled stars",
+		},
+		count: {
+			control: {
+				type: "number",
+				min: 1,
+				max: 10
+			},
+			description: "Total number of stars",
 		},
 		size: {
 			control: {
@@ -31,7 +39,8 @@ const meta = {
 		}
 	},
 	args: {
-		currentRating: 3.5,
+		starsFilled: 3.5,
+		count: 5,
 		size: EStarsSize.MD,
 		color: EStarColors.DEFAULT
 	},
