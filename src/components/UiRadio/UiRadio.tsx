@@ -31,7 +31,9 @@ export const UiRadio: React.FC<TUiRadioProps> = ({
 	disabled = false,
 	onChange,
 	checked = false,
-	children
+	children,
+	className,
+	tabIndex
 }) => {
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,6 +64,7 @@ export const UiRadio: React.FC<TUiRadioProps> = ({
 				checked={ checked }
 				onChange={ handleChange }
 				className="peer absolute appearance-none"
+				tabIndex={ tabIndex }
 			/>
 			<span className={ cx(
 				styles.UiRadio__custom,
@@ -81,7 +84,8 @@ export const UiRadio: React.FC<TUiRadioProps> = ({
 				"active:peer-checked:border-primary-800",
 				"peer-focus:shadow-border-primary",
 				"peer-disabled:border-secondary-alt-400",
-				"peer-disabled:bg-secondary-alt-200"
+				"peer-disabled:bg-secondary-alt-200",
+				className,
 			) }>
 				<span className={ cx(
 					styles.UiRadio__dot,
@@ -91,7 +95,7 @@ export const UiRadio: React.FC<TUiRadioProps> = ({
 					"block",
 					"size-xxs",
 					"rounded-full",
-					"bg-primary	"
+					"bg-primary",
 				) } />
 			</span>
 			{ children }
