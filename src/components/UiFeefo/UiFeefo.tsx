@@ -9,14 +9,14 @@ export const UiFeefo: React.FC<IUiFeefo> = ({
 	totalReviews = 6704,
 	reviews = [
 		{
-			author: "Customer",
+			author: "Tom Morello",
 			timeAgo: "about 18 hours ago",
 			title: "Lots of Choices - Easy to Switch",
 			content: "Gives plenty of options and the transfer over to a new supplier seems easy",
 			rating: 5
 		},
 		{
-			author: "Customer",
+			author: "Joe Soap",
 			timeAgo: "2 days ago",
 			title: "Excellent website",
 			content: "Website was very easy to use and changeover to new provider was seamless",
@@ -81,7 +81,7 @@ export const UiFeefo: React.FC<IUiFeefo> = ({
 							{ review.content }
 						</UiTypography>
 
-						<div className="flex gap-xs text-secondary-400 text-center justify-center">
+						<div className="flex gap-xxxs text-secondary-400 text-center justify-center">
 							<UiTypography
 								size={ ETypographySizes.XS }
 								color={ EColors.SECONDARY_ALT_500 }
