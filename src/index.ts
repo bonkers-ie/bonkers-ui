@@ -4,6 +4,7 @@ export * from "./components/UiBerRank";
 export * from "./components/UiButton";
 export * from "./components/UiCheckbox";
 export * from "./components/UiIcon";
+export * from "./components/UiIconBadge";
 export * from "./components/UiInput";
 export * from "./components/UiInputRange";
 export * from "./components/UiList";
