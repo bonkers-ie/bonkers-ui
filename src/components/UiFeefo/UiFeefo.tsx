@@ -1,6 +1,6 @@
 import React from "react";
 import { UiTypography, ETypographySizes, ETextWeight, EColors } from "../UiTypography";
-// import { UiStars } from "../UiStars";
+import { UiStars } from "../UiStars";
 import type { IUiFeefo } from "./_types";
 import FeefoLogo from "../../assets/images/feefo-logo.webp";
 
@@ -25,7 +25,7 @@ export const UiFeefo: React.FC<IUiFeefo> = ({
 	]
 }) => {
 	return (
-		<div className="rounded-3xl max-w-[1170px] border-16 border-accent-alt-300 bg-white p-md">
+		<div className="rounded-3xl max-w-[1170px] border-16 border-accent-alt-300 bg-white p-lg">
 			<div className="mb-xxxl text-center">
 				<div className="relative flex flex-col items-center mb-lg justify-center gap-xxs md:flex-row md:gap-xxs">
 					<UiTypography
@@ -61,8 +61,8 @@ export const UiFeefo: React.FC<IUiFeefo> = ({
 
 			<div className="grid gap-xxxl mb-xxxl grid-cols-1 md:grid-cols-2">
 				{ reviews.map((review, index) => (
-					<div key={ index } className="grid gap-xxs">
-						{ /* <UiStars currentRating={ review.rating } /> */ }
+					<div key={ index } className="grid gap-sm">
+						<UiStars starsFilled={ review.rating } />
 
 						<UiTypography
 							size={ ETypographySizes.LG }

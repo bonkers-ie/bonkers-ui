@@ -32,7 +32,7 @@ export const UiStars = ({
 	const filledStars = Math.min(Math.max(starsFilled, 0), count);
 
 	return (
-		<div className="flex">
+		<div className="flex items-center justify-center">
 			{ Array.from({
 				length: count
 			}, (_, index) => {
