@@ -1,5 +1,6 @@
 import React from "react";
-import { UiIconBadge, EIconBadgeKind } from "./UiIconBadge";
+import { UiIconBadge } from "./UiIconBadge";
+import { EIconBadgeKind } from "./_types";
 import type { Meta, StoryObj } from "@storybook/react";
 import { ESize } from "../../_types/sizing";
 
@@ -38,7 +39,6 @@ export const Default: Story = {};
 export const Variants: Story = {
 	render: (args) => (
 		<div className="flex flex-col gap-lg">
-			{ /* Size variants */ }
 			<div className="flex flex-col gap-sm">
 				<h3>Size Variants</h3>
 				<div className="flex gap-sm items-center">
@@ -49,7 +49,6 @@ export const Variants: Story = {
 				</div>
 			</div>
 
-			{ /* Kind variants */ }
 			<div className="flex flex-col gap-sm">
 				<h3>Kind Variants</h3>
 				<div className="flex gap-sm">
@@ -61,7 +60,6 @@ export const Variants: Story = {
 				</div>
 			</div>
 
-			{ /* Custom child example */ }
 			<div className="flex flex-col gap-sm">
 				<h3>Custom Child</h3>
 				<div className="flex gap-sm">
