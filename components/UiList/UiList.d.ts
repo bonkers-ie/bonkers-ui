@@ -5,6 +5,7 @@ interface IUiListProps {
     direction?: EListItemDirection;
     size?: EListItemSize;
     spacing?: EListItemSpacing;
+    className?: string;
 }
 export declare const UiList: React.FC<IUiListProps>;
 export {};

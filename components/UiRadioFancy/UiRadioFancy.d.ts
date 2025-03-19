@@ -7,6 +7,7 @@ export type TUiRadioFancy = {
     disabled?: boolean;
     active?: boolean;
     subHeader?: string;
+    className?: string;
     radioType?: ERadioTypes;
     value: string;
     onChange: (value: string) => void;

@@ -4,6 +4,7 @@ interface IUiProgress {
     max: number;
     current: number;
     progressText?: string;
+    className?: string;
 }
 export declare const UiProgress: React.FC<IUiProgress>;
 export {};

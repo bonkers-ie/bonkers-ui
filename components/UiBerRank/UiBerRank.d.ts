@@ -3,6 +3,7 @@ import { TBerPropNumber, TBerPropString, EBerSize } from './_types';
 interface IUiBerRankProps {
     rank: TBerPropNumber | TBerPropString | number;
     size?: EBerSize;
+    className?: string;
 }
 export declare const UiBerRank: React.FC<IUiBerRankProps>;
 export {};

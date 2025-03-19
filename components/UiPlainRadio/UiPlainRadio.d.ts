@@ -5,6 +5,7 @@ export type TUiPlainRadio = {
     subHeader?: string;
     value: string;
     name: string;
+    className?: string;
     checked?: boolean;
     onChange: (value: string) => void;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "checked" | "value" | "name">;

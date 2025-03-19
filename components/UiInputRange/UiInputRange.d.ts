@@ -5,5 +5,6 @@ export type TUiInputRangeProps = {
     max: string | number;
     step: string | number;
     onChangeHandler: (value: number) => void;
+    className?: string;
 } & React.HTMLProps<HTMLInputElement>;
 export declare const UiInputRange: React.FC<TUiInputRangeProps>;

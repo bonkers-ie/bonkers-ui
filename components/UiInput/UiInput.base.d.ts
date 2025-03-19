@@ -5,5 +5,6 @@ export type TUiInputBaseProps = {
     postIcon?: React.ReactNode;
     preIcon?: React.ReactNode;
     kind?: EInputKind;
+    className?: string;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 export declare const UiInputBase: React.FC<TUiInputBaseProps>;

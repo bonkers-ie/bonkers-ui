@@ -3,6 +3,7 @@ import { EAlertTypes } from './_types';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 interface IUiAlert {
     children: React.ReactNode;
+    className?: string;
     kind?: EAlertTypes;
     icon?: IconProp;
 }

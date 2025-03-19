@@ -1,32 +1,4 @@
 export declare enum EButtonTypes {
-    /**
-    * @deprecated Use PRIMARY_BRAND instead.
-    */
-    PRIMARY = "primary",
-    /**
-    * @deprecated Use PRIMARY_NEUTRAL instead.
-    */
-    SECONDARY = "secondary",
-    /**
-    * @deprecated Use PRIMARY_DESTRUCTIVE instead.
-    */
-    WARNING = "warning",
-    /**
-    * @deprecated Use SECONDARY_BRAND instead.
-    */
-    PRIMARY_OVERLAY = "primary-overlay",
-    /**
-    * @deprecated Use SECONDARY_NEUTRAL instead.
-    */
-    SECONDARY_OVERLAY = "secondary-overlay",
-    /**
-    * @deprecated Use SECONDARY_DESTRUCTIVE instead.
-    */
-    WARNING_OVERLAY = "warning-overlay",
-    /**
-    * @deprecated Use one of the TERTIARY_ types (e.g., TERTIARY_BRAND, TERTIARY_ACCENT, TERTIARY_NEUTRAL, TERTIARY_DESTRUCTIVE) instead.
-    */
-    LINK = "link",
     PRIMARY_BRAND = "primary-brand",
     PRIMARY_ACCENT = "primary-accent",
     PRIMARY_NEUTRAL = "primary-neutral",

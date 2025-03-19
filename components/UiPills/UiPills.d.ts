@@ -6,6 +6,7 @@ interface IUiPills {
     size?: EBadgeSize;
     icon?: React.ReactNode;
     rounded?: boolean;
+    className?: string;
 }
 export declare const UiPills: React.FC<IUiPills>;
 export {};

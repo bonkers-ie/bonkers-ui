@@ -6,6 +6,7 @@ type TSelectProps = {
     value?: string | number | readonly string[];
     placeholder?: string;
     postfixIcon?: React.ReactNode;
+    className?: string;
     onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 } & React.SelectHTMLAttributes<HTMLSelectElement>;
 export declare const UiSelect: React.FC<TSelectProps>;

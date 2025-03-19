@@ -4,6 +4,7 @@ type TUiProductCardProps = {
     title?: React.ReactNode;
     subtitle?: React.ReactNode;
     header?: React.ReactNode;
+    className?: string;
 };
 export declare const UiProductCard: React.FC<TUiProductCardProps>;
 export {};

@@ -12,6 +12,7 @@ interface IUiStars {
     size?: EStarsSize;
     count?: number;
     color?: EStarColors;
+    className?: string;
 }
-export declare const UiStars: ({ starsFilled, size, count, color }: IUiStars) => React.JSX.Element;
+export declare const UiStars: ({ starsFilled, size, count, className, color }: IUiStars) => React.JSX.Element;
 export {};

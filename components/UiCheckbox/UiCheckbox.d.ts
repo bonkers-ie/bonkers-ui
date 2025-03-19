@@ -8,6 +8,7 @@ export type TUiCheckboxProps = {
     value?: string;
     size?: ECheckboxSize;
     onChange?: (checked: boolean) => void;
+    className?: string;
     name?: string;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "onChange">;
 export declare const UiCheckbox: React.FC<TUiCheckboxProps>;
