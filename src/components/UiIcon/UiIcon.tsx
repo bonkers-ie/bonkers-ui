@@ -27,7 +27,6 @@ const sizeToClassName: { [key in ESize]: string } = {
 };
 
 export const UiIcon: React.FC<IUiIconProps> = ({ size, name, className }) => {
-
 	return (
 		<FontAwesomeIcon
 			icon={ name }

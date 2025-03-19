@@ -3,29 +3,29 @@ import { EBadgeKind, UiPills } from "../UiPills";
 import {
 	UiTypography, ETypographySizes, ETextWeight, ETextAlign, EColors
 } from "../UiTypography";
+import cx from "classnames";
 
 type TUiProductCardProps = {
 	badgeText?: string;
 	title?: React.ReactNode;
 	subtitle?: React.ReactNode;
 	header?: React.ReactNode;
+	className?: string;
 }
 
-export const UiProductCard: React.FC<TUiProductCardProps> = ({ badgeText,
+export const UiProductCard: React.FC<TUiProductCardProps> = ({
+	badgeText,
 	title,
 	subtitle,
-	header }) => {
+	header,
+	className
+}) => {
 	return (
-		<div className='relative
-			flex
-			flex-col
-			gap-sm
-			rounded-2xl
-			border
-			border-secondary-alt-500
-			bg-white
-			px-xs
-			py-sm'>
+		<div className={ cx(
+			"relative flex flex-col gap-sm rounded-2xl border border-secondary-alt-500 bg-white",
+			"px-xs py-sm",
+			className
+		) }>
 
 			{ badgeText && (
 				<div className="absolute! -top-xxs right-xs">

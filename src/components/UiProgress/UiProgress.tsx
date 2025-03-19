@@ -7,21 +7,23 @@ interface IUiProgress {
 	max: number
 	current: number
 	progressText?: string
-
+	className?: string
 }
 
 export const UiProgress: React.FC<IUiProgress> = ({
 	progressText,
 	max,
 	min,
-	current
+	current,
+	className
 
 }) => {
 	const filler = ((current - min) / (max - min)) * 100;
 
 	return (
 		<div className={ cx(
-			"ui-progress"
+			"ui-progress",
+			className
 		) }>
 			<div className={ cx(
 				"relative",

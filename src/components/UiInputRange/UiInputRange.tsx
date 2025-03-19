@@ -8,6 +8,7 @@ export type TUiInputRangeProps = {
 	max: string | number;
 	step: string | number;
 	onChangeHandler: (value: number) => void;
+	className?: string;
 } & React.HTMLProps<HTMLInputElement>;
 
 export const UiInputRange: React.FC<TUiInputRangeProps> = ({
@@ -16,6 +17,7 @@ export const UiInputRange: React.FC<TUiInputRangeProps> = ({
 	max,
 	step,
 	onChangeHandler,
+	className,
 	...rest
 }) => {
 	const track = React.useRef<HTMLInputElement>(null);
@@ -53,6 +55,7 @@ export const UiInputRange: React.FC<TUiInputRangeProps> = ({
 			className={ cx(
 				"relative box-content h-xl py-xxs",
 				rest.disabled && "opacity-60 cursor-default pointer-events-none",
+				className
 			) }
 		>
 			<input

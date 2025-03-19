@@ -8,6 +8,7 @@ import { type IconProp } from "@fortawesome/fontawesome-svg-core";
 
 interface IUiAlert {
 	children: React.ReactNode,
+	className?: string
 	kind?: EAlertTypes,
 	icon?: IconProp
 }
@@ -23,6 +24,7 @@ const kindClasses = {
 export const UiAlert: React.FC<IUiAlert> = ({
 	children,
 	kind = EAlertTypes.PRIMARY,
+	className,
 	icon
 }) => {
 	return (
@@ -37,6 +39,7 @@ export const UiAlert: React.FC<IUiAlert> = ({
 			"leading-normal",
 			"text-xs",
 			kindClasses[kind],
+			className
 		) }>
 
 			{ icon ? <UiIcon name={ icon } size={ ESize.SM } /> : null }

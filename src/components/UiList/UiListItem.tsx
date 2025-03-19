@@ -1,13 +1,15 @@
 import React from "react";
+import cx from "classnames";
 
 interface IUiListItemProps {
 	children: React.ReactNode
+	className?: string
 	prefix?: React.ReactNode
 }
-export const UiListItem: React.FC<IUiListItemProps> = ({ children, prefix }) => {
+export const UiListItem: React.FC<IUiListItemProps> = ({ children, prefix, className }) => {
 
 	return (
-		<li className="flex gap-xxxs">
+		<li className={ cx("flex gap-xxxs", className) }>
 			{
 				prefix
 					? <span className="w-[1em]">

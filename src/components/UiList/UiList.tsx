@@ -7,6 +7,7 @@ interface IUiListProps {
 	direction?: EListItemDirection
 	size?: EListItemSize
 	spacing?: EListItemSpacing
+	className?:string
 }
 
 const directionClasses = {

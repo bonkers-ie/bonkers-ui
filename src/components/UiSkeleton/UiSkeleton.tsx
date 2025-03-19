@@ -4,15 +4,16 @@ import { ESkeletonKind } from "./_types";
 
 type UiSkeletonProps ={
 	kind: ESkeletonKind
-
+	className?: string
 }
 
 export const UiSkeleton: React.FC<UiSkeletonProps> = ({
-	kind
+	kind,
+	className
 }) => {
 
 	return (
-		<>
+		<div className={ className }>
 			{ kind === ESkeletonKind.RESULT_CARD && (
 				<div
 					className={ cx(
@@ -22,7 +23,7 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 						"border-secondary-alt-300",
 						"grid-cols-5",
 						"grid",
-						"rounded-2xl"
+						"rounded-2xl",
 					) }
 				>
 					<div
@@ -204,6 +205,6 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 
 			) }
 
-		</>
+		</div>
 	);
 };

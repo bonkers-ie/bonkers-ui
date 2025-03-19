@@ -8,11 +8,12 @@ export type TUiInputBaseProps = {
 	postIcon?: React.ReactNode;
 	preIcon?: React.ReactNode;
 	kind?: EInputKind;
+	className?: string;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const UiInputBase: React.FC<
 	TUiInputBaseProps
-> = ({ postIcon, preIcon, kind = EInputKind.DEFAULT, ...rest } ) => {
+> = ({ postIcon, preIcon, className, kind = EInputKind.DEFAULT, ...rest } ) => {
 
 	const stateClasses = {
 		[EInputKind.DEFAULT]: "border-secondary-alt-600 hover:border-secondary-alt-700",
@@ -25,13 +26,16 @@ export const UiInputBase: React.FC<
 			tag="label"
 			htmlFor={ rest.id }
 			className={
-				cx("ui-input-wrapper",
+				cx(
+					"ui-input-wrapper",
 					"flex flex-row items-center gap-sm rounded-xl border p-sm",
 					kind && stateClasses[kind],
 					{
 						"bg-white": !rest.disabled,
 						"border-secondary-alt-300 bg-secondary-alt-200": rest.disabled,
-					})
+					},
+					className
+				)
 			}
 		>
 			{ preIcon ? preIcon : null }

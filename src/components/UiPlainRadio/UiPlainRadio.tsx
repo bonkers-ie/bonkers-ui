@@ -8,6 +8,7 @@ export type  TUiPlainRadio = {
 	subHeader?: string;
 	value: string;
 	name: string;
+	className?: string
 	checked?: boolean
 	onChange: (value: string) => void;
 
@@ -20,6 +21,7 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 	value,
 	name,
 	checked = false,
+	className,
 	onChange
 
 }) => {
@@ -29,16 +31,16 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 			"ui-radio-fancy",
 			"relative",
 			{
-				"pointer-events-none": disabled
-			}
+				"pointer-events-none opacity-50": disabled
+			},
+			className
 		) }
 		htmlFor={ name + value }
 		>
 			<input className={ cx(
 				" absolute",
 				"appearance-none",
-				"peer",
-
+				"peer/plain-radio",
 			) }
 			id={ name + value }
 			type="radio"
@@ -51,13 +53,18 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 				"box-border",
 				"size-full",
 				"cursor-pointer",
-				"rounded-lg",
-				"border-2",
+				"rounded-xl",
+				"border border-secondary-alt-600",
+				"peer-checked/plain-radio:border-primary-600",
+				"peer-checked/plain-radio:outline",
+				"peer-checked/plain-radio:outline",
+				"peer-checked/plain-radio:outline-primary-600",
+				"peer-hover/plain-radio:peer-checked/plain-radio:outline-primary-700",
 				"bg-white",
-				"peer-active:bg-secondary-alt-200",
+				"peer-active/plain-radio:bg-secondary-alt-200",
 				"p-sm",
-				"peer-hover:border-primary-700",
-				"peer-focus:shadow-border-primary",
+				"peer-hover/plain-radio:border-primary-700",
+				"peer-focus/plain-radio:shadow-border-primary",
 				"flex",
 				"items-center",
 				"gap-sm",
@@ -69,18 +76,18 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 					"border-primary-600": !disabled && checked
 				}
 
-			) }>
+			) }
+			>
 
-				<span className="pointer-events-none">
-					<UiRadio
-						disabled={ disabled }
-						value={ value }
-						name={ name }
-						onChange={ ()=> onChange(value) }
-						checked={ checked }
-
-					/>
-				</span>
+				<UiRadio
+					className="pointer-events-none"
+					disabled={ disabled }
+					value={ value }
+					name={ name }
+					onChange={ ()=> onChange(value) }
+					checked={ checked }
+					tabIndex={ -1 }
+				/>
 
 				<div className="flex flex-col">
 					{ children }

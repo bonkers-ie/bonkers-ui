@@ -11,6 +11,7 @@ export type TUiCheckboxProps = {
 	value?: string;
 	size?: ECheckboxSize;
 	onChange?: (checked: boolean) => void;
+	className?: string;
 	name?: string;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "onChange">;
 
@@ -42,6 +43,7 @@ export const UiCheckbox: React.FC<TUiCheckboxProps> = ({
 	invertOrder = false,
 	children,
 	onChange,
+	className,
 	name,
 	...rest
 }) => {
@@ -52,12 +54,15 @@ export const UiCheckbox: React.FC<TUiCheckboxProps> = ({
 	};
 	return (
 		<label className={
-			cx(styles.UiCheckbox,
+			cx(
+				styles.UiCheckbox,
 				"grid",
 				"cursor-pointer",
 				children && "items-center gap-sm",
 				justificationClasses[justify],
-				disabled && styles.UiCheckbox__disabled)
+				disabled && styles.UiCheckbox__disabled,
+				className
+			)
 		}>
 			<input
 				{ ...rest }

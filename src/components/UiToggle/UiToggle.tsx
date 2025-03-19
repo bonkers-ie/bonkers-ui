@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import cx from "classnames";
+import styles from "./UiToggle.module.css";
 
 type TUiToggleProps = {
 	children?: React.ReactNode
@@ -17,6 +18,7 @@ export const UiToggle: React.FC<TUiToggleProps> = ({
 	invertOrder = false,
 	checked,
 	value,
+	className,
 	defaultChecked,
 	onChange,
 	...rest
@@ -42,7 +44,8 @@ export const UiToggle: React.FC<TUiToggleProps> = ({
 
 	return (
 		<div className={ cx(
-			"ui-toggle"
+			"ui-toggle",
+			className
 		) }
 		>
 
@@ -89,36 +92,53 @@ export const UiToggle: React.FC<TUiToggleProps> = ({
 						"w-xl",
 						"rounded-full",
 						{
-							"bg-primary-500": isChecked && !disabled,
+							"bg-primary-600": isChecked && !disabled,
 							"bg-secondary-alt-300": !isChecked && disabled,
 							"bg-secondary-alt-600": !isChecked && !disabled,
 							"bg-primary-300": isChecked && disabled
 
 						}
-					) }>
+					) }/>
 
-					</span>
 					<span className={ cx(
 						"absolute",
 						"top-[50%]",
 						"block",
 						"rounded-full",
 						"bg-white",
-						"w-[22px]",
-						"h-[22px]",
-						"translate-x-[1px]",
-						"translate-y-[-50%]",
-						"ease-in-out",
-						"transition-transform",
-						"active:shadow-border-secondary",
-						"focus:shadow-border-secondary",
+						styles.UiToggle__dot,
 						{
 							"hover:shadow-border-secondary": !isChecked && !disabled,
 							"hover:shadow-border-primary": isChecked && !disabled,
-							"translate-x-[calc(var(--xl)_-_100%_-_1px)] translate-y-[-50%]": isChecked
+							[styles.UiToggle__dot_checked]: isChecked
 						},
 
 					) }>
+
+						<svg
+							className={ cx(
+								styles.UiToggle__icon,
+								"absolute",
+								disabled ? "text-primary-300" : "text-primary-600",
+								{
+									[styles.UiToggle__icon_checked]: isChecked ,
+								}
+
+							) }
+							width="16"
+							height="16"
+							viewBox="0 0 16 16"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M1 4.40106L6.60071 10.1135L15.1694 1.71245"
+								stroke="currentColor"
+								stroke-width="1.6"
+								stroke-linecap="round"
+							/>
+						</svg>
+
 					</span>
 				</span>
 
