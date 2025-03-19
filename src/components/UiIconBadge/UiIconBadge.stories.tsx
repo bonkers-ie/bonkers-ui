@@ -3,6 +3,7 @@ import { UiIconBadge } from "./UiIconBadge";
 import { EIconBadgeKind } from "./_types";
 import type { Meta, StoryObj } from "@storybook/react";
 import { ESize } from "../../_types/sizing";
+import { UiIcon } from "../UiIcon/UiIcon";
 
 const meta = {
 	title: "Components/UiIconBadge",
@@ -26,7 +27,7 @@ const meta = {
 	args: {
 		size: ESize.MD,
 		kind: EIconBadgeKind.PRIMARY,
-		name: ["far", "face-smile"]
+		children: <UiIcon name={ ["far", "face-smile"] } size={ ESize.MD } />
 	},
 } satisfies Meta<typeof UiIconBadge>;
 
@@ -37,33 +38,51 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {};
 
 export const Variants: Story = {
-	render: (args) => (
+	render: () => (
 		<div className="flex flex-col gap-lg">
 			<div className="flex flex-col gap-sm">
 				<h3>Size Variants</h3>
 				<div className="flex gap-sm items-center">
-					<UiIconBadge { ...args } size={ ESize.SM } name={ ["far", "face-smile"] } />
-					<UiIconBadge { ...args } size={ ESize.MD } name={ ["far", "face-smile"] } />
-					<UiIconBadge { ...args } size={ ESize.LG } name={ ["far", "face-smile"] } />
-					<UiIconBadge { ...args } size={ ESize.XL } name={ ["far", "face-smile"] } />
+					<UiIconBadge size={ ESize.SM }>
+						<UiIcon name={ ["far", "face-smile"] } size={ ESize.SM } />
+					</UiIconBadge>
+					<UiIconBadge size={ ESize.MD }>
+						<UiIcon name={ ["far", "face-smile"] } size={ ESize.MD } />
+					</UiIconBadge>
+					<UiIconBadge size={ ESize.LG }>
+						<UiIcon name={ ["far", "face-smile"] } size={ ESize.LG } />
+					</UiIconBadge>
+					<UiIconBadge size={ ESize.XL }>
+						<UiIcon name={ ["far", "face-smile"] } size={ ESize.XL } />
+					</UiIconBadge>
 				</div>
 			</div>
 
 			<div className="flex flex-col gap-sm">
 				<h3>Kind Variants</h3>
 				<div className="flex gap-sm">
-					<UiIconBadge { ...args } kind={ EIconBadgeKind.PRIMARY } name={ ["far", "face-smile"] } />
-					<UiIconBadge { ...args } kind={ EIconBadgeKind.LIGHT } name={ ["far", "face-smile"] } />
-					<UiIconBadge { ...args } kind={ EIconBadgeKind.DARK } name={ ["far", "face-smile"] } />
-					<UiIconBadge { ...args } kind={ EIconBadgeKind.WARNING } name={ ["far", "face-smile"] } />
-					<UiIconBadge { ...args } kind={ EIconBadgeKind.ERROR } name={ ["far", "face-smile"] } />
+					<UiIconBadge kind={ EIconBadgeKind.PRIMARY }>
+						<UiIcon name={ ["far", "face-smile"] } size={ ESize.MD } />
+					</UiIconBadge>
+					<UiIconBadge kind={ EIconBadgeKind.LIGHT }>
+						<UiIcon name={ ["far", "face-smile"] } size={ ESize.MD } />
+					</UiIconBadge>
+					<UiIconBadge kind={ EIconBadgeKind.DARK }>
+						<UiIcon name={ ["far", "face-smile"] } size={ ESize.MD } />
+					</UiIconBadge>
+					<UiIconBadge kind={ EIconBadgeKind.WARNING }>
+						<UiIcon name={ ["far", "face-smile"] } size={ ESize.MD } />
+					</UiIconBadge>
+					<UiIconBadge kind={ EIconBadgeKind.ERROR }>
+						<UiIcon name={ ["far", "face-smile"] } size={ ESize.MD } />
+					</UiIconBadge>
 				</div>
 			</div>
 
 			<div className="flex flex-col gap-sm">
 				<h3>Custom Child</h3>
 				<div className="flex gap-sm">
-					<UiIconBadge { ...args } size={ ESize.LG }>
+					<UiIconBadge size={ ESize.LG }>
 						Custom
 					</UiIconBadge>
 				</div>

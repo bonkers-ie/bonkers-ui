@@ -1,22 +1,14 @@
 import React from "react";
 import { ESize } from "../../_types/sizing";
 import cx from "classnames";
-import { UiIcon } from "../UiIcon/UiIcon";
 import { EIconBadgeKind } from "./_types";
 import type { IUiIconBadgeProps } from "./_types";
 
 const badgeSizeClasses = {
 	[ESize.SM]: "p-xxs",
-	[ESize.MD]: "p-xxs",
+	[ESize.MD]: "p-xs",
 	[ESize.LG]: "p-sm",
 	[ESize.XL]: "p-lg"
-};
-
-const iconSizeMap = {
-	[ESize.SM]: ESize.SM,
-	[ESize.MD]: ESize.MD,
-	[ESize.LG]: ESize.LG,
-	[ESize.XL]: ESize.XL
 };
 
 const kindClasses = {
@@ -28,7 +20,6 @@ const kindClasses = {
 };
 
 export const UiIconBadge: React.FC<IUiIconBadgeProps> = ({
-	name,
 	size = ESize.MD,
 	kind = EIconBadgeKind.PRIMARY,
 	children
@@ -43,7 +34,7 @@ export const UiIconBadge: React.FC<IUiIconBadgeProps> = ({
 			badgeSizeClasses[size],
 			kindClasses[kind]
 		) }>
-			{ children || <UiIcon name={ name } size={ iconSizeMap[size] } /> }
+			{ children }
 		</div>
 	);
 };
