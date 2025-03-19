@@ -53,9 +53,9 @@ export const UiFeefo: React.FC<IUiFeefo> = ({
 
 				<UiTypography
 					size={ ETypographySizes.MD }
-					color={ EColors.SECONDARY_400 }
+					color={ EColors.SECONDARY }
 				>
-					Independent Service Rating based on { totalReviews } verified reviews. Read all reviews.
+					Independent Service Rating based on <b>{ totalReviews }</b> verified reviews. Read all reviews.
 				</UiTypography>
 			</div>
 
