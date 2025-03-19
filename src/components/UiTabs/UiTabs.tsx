@@ -3,14 +3,16 @@ import cx from "classnames";
 
 type UiTabsProps ={
 	tabs: string[]
-	tabsModel  : string,
+	tabsModel: string,
+	className: string
 	onTabChange: (val: string) => void
 }
 
 export const UiTabs: React.FC<UiTabsProps> = ({
 	tabs,
 	tabsModel,
-	onTabChange
+	onTabChange,
+	className
 }) => {
 
 	return (
@@ -21,8 +23,8 @@ export const UiTabs: React.FC<UiTabsProps> = ({
 			"rounded-full",
 			"bg-secondary-alt-200",
 			"p-[2px]",
-			"text-secondary-400"
-
+			"text-secondary-400",
+			className
 		) }>
 			{ tabs.map((tab) => (
 				<li

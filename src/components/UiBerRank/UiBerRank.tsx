@@ -7,7 +7,8 @@ import { UiTypography, ETextWeight, ETypographySizes, ETextTransform } from "../
 
 interface IUiBerRankProps {
 	rank: TBerPropNumber | TBerPropString | number;
-	size?: EBerSize
+	size?: EBerSize;
+	className?: string;
 }
 
 const sizeClasses = {
@@ -22,12 +23,14 @@ const textSize = {
 
 export const UiBerRank: React.FC<IUiBerRankProps> = ({
 	rank,
+	className,
 	size = EBerSize.SMALL
 }) => {
 	return (
 		<div className={ cx(
 			"ui-ber-rank",
-			"flex"
+			"flex",
+			className
 		) }>
 			<div className="relative">
 				<svg className={ cx("text-secondary", sizeClasses[size]) }

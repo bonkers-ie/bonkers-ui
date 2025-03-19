@@ -16,11 +16,12 @@ const kindClasses = {
 export const UiTable: React.FC<TTableProps> = ({
 	kind = ETableKind.SECONDARY_INVERTED,
 	header,
+	className,
 	children,
 	...rest
 }) => {
 	return (
-		<table { ...rest }>
+		<table { ...rest } className={ className }>
 			{ header && (<thead>{ header }</thead>) }
 			<tbody className={ cn("rounded-xl", kindClasses[kind]) }>
 				{ children }

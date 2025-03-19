@@ -11,6 +11,7 @@ export type TUiRadioFancy = {
 	disabled?: boolean;
 	active?: boolean;
 	subHeader?: string;
+	className?: string;
 	radioType?: ERadioTypes;
 	value: string;
 	onChange: (value: string) => void;
@@ -30,7 +31,8 @@ export const UiRadioFancy: React.FC<TUiRadioFancy> = ({
 	active,
 	radioType = ERadioTypes.DEFAULT,
 	value,
-	onChange
+	onChange,
+	className
 
 }) => {
 	return (
@@ -39,7 +41,8 @@ export const UiRadioFancy: React.FC<TUiRadioFancy> = ({
 			"relative",
 			{
 				"pointer-events-none": disabled
-			}
+			},
+			className
 		) }>
 			<input className="group peer absolute appearance-none" type="radio" checked={ active } onChange={ ()=> onChange(value) }/>
 

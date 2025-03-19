@@ -2,6 +2,7 @@ import React from "react";
 import {
 	UiTypography, ETextAlign, ETypographySizes, ETextWeight, EColors
 } from "../UiTypography";
+import cx from "classnames";
 
 type TCellProps = {
 	align?: ETextAlign;
@@ -9,7 +10,7 @@ type TCellProps = {
 	weight?: ETextWeight;
 } & React.HTMLAttributes<HTMLTableCellElement>;
 
-export const UiTableCell: React.FC<TCellProps> = ({ align, subText, weight, children, ...rest }) => {
+export const UiTableCell: React.FC<TCellProps> = ({ align, subText, weight, children, className, ...rest }) => {
 	return (
 		<td { ...rest }>
 			<UiTypography
@@ -17,7 +18,7 @@ export const UiTableCell: React.FC<TCellProps> = ({ align, subText, weight, chil
 				size={ ETypographySizes.SM }
 				align={ align }
 				weight={ weight }
-				className='p-sm'
+				className={ cx("p-sm", className) }
 			>
 				{ children }
 				{

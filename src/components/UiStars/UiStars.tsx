@@ -15,6 +15,7 @@ interface IUiStars {
 	size?: EStarsSize
 	count?: number
 	color?: EStarColors
+	className?: string
 }
 
 const sizeClasses = {
@@ -27,12 +28,13 @@ export const UiStars = ({
 	starsFilled=0,
 	size = EStarsSize.MD,
 	count = 5,
+	className,
 	color = EStarColors.DEFAULT
 }: IUiStars) => {
 	const filledStars = Math.min(Math.max(starsFilled, 0), count);
 
 	return (
-		<div className="flex">
+		<div className={ cx("flex", className) }>
 			{ Array.from({
 				length: count
 			}, (_, index) => {

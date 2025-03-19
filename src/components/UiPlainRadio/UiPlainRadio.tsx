@@ -8,6 +8,7 @@ export type  TUiPlainRadio = {
 	subHeader?: string;
 	value: string;
 	name: string;
+	className?: string
 	checked?: boolean
 	onChange: (value: string) => void;
 
@@ -20,6 +21,7 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 	value,
 	name,
 	checked = false,
+	className,
 	onChange
 
 }) => {
@@ -30,7 +32,8 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 			"relative",
 			{
 				"pointer-events-none opacity-50": disabled
-			}
+			},
+			className
 		) }
 		htmlFor={ name + value }
 		>

@@ -3,11 +3,12 @@ import React from "react";
 import cx from "classnames";
 import { EBadgeOffset, EBadgeSizes, EBadgeTypes } from "./_types";
 
-type UiNotificationBadge = {
+type TUiNotificationBadge = {
 	offset?: EBadgeOffset,
 	children: React.ReactNode;
 	kind?: EBadgeTypes;
 	size?: EBadgeSizes;
+	className?: string;
 
 };
 
@@ -49,9 +50,10 @@ const sizeClasses = {
 
 };
 
-export const UiNotificationBadge: React.FC<UiNotificationBadge> = ({
+export const UiNotificationBadge: React.FC<TUiNotificationBadge> = ({
 	offset = EBadgeOffset.DEFAULT,
 	children,
+	className,
 	kind = EBadgeTypes.DEFAULT,
 	size = EBadgeSizes.DEFAULT
 
@@ -75,7 +77,8 @@ export const UiNotificationBadge: React.FC<UiNotificationBadge> = ({
 				"gap-xxxs",
 				offsetClasses[offset],
 				kindClasses[kind],
-				sizeClasses[size]
+				sizeClasses[size],
+				className
 			) }
 		>
 			{ children }

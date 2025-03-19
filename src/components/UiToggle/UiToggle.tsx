@@ -18,6 +18,7 @@ export const UiToggle: React.FC<TUiToggleProps> = ({
 	invertOrder = false,
 	checked,
 	value,
+	className,
 	defaultChecked,
 	onChange,
 	...rest
@@ -43,7 +44,8 @@ export const UiToggle: React.FC<TUiToggleProps> = ({
 
 	return (
 		<div className={ cx(
-			"ui-toggle"
+			"ui-toggle",
+			className
 		) }
 		>
 

@@ -22,6 +22,7 @@ const kindClasses = {
 export const UiIconBadge: React.FC<IUiIconBadgeProps> = ({
 	size = ESize.MD,
 	kind = EIconBadgeKind.PRIMARY,
+	className,
 	children
 }) => {
 	return (
@@ -32,7 +33,8 @@ export const UiIconBadge: React.FC<IUiIconBadgeProps> = ({
 			"justify-center",
 			"aspect-square",
 			badgeSizeClasses[size],
-			kindClasses[kind]
+			kindClasses[kind],
+			className
 		) }>
 			{ children }
 		</div>

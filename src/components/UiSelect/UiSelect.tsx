@@ -10,6 +10,7 @@ type TSelectProps = {
 	value?: string | number | readonly string[];
 	placeholder?: string;
 	postfixIcon?: React.ReactNode;
+	className?: string;
 	onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 } & React.SelectHTMLAttributes<HTMLSelectElement>
 
@@ -19,6 +20,7 @@ export const UiSelect: React.FC<TSelectProps> = ({
 	subLabel,
 	disabled,
 	onChange,
+	className,
 	placeholder,
 	postfixIcon,
 	...rest
@@ -32,7 +34,7 @@ export const UiSelect: React.FC<TSelectProps> = ({
 		[onChange],
 	);
 	return (
-		<div>
+		<div className={ className }>
 			{ heading
 				? <UiTypography
 					size={ ETypographySizes.MD }

@@ -8,7 +8,8 @@ interface IUiPills {
 	kind?: EBadgeKind,
 	size?: EBadgeSize,
 	icon?: React.ReactNode,
-	rounded?: boolean
+	rounded?: boolean,
+	className?: string
 }
 
 const kindClasses = {
@@ -31,7 +32,9 @@ export const UiPills: React.FC<IUiPills> = ({
 	children,
 	kind = EBadgeKind.PRIMARY,
 	size = EBadgeSize.SMALL,
-	icon, rounded = false
+	className,
+	icon,
+	rounded = false
 }) => {
 	return (
 		<div className={ cx(
@@ -43,6 +46,7 @@ export const UiPills: React.FC<IUiPills> = ({
 			"overflow-hidden",
 			rounded ? "rounded-full": "rounded-sm",
 			kindClasses[kind],
+			className
 		) }>
 			{ icon }
 			{ children
