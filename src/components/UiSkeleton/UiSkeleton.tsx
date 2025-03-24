@@ -14,15 +14,16 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 
 	return (
 		<div className={ className }>
+
 			{ kind === ESkeletonKind.RESULT_CARD && (
+
 				<div
 					className={ cx(
 						"ui-skeleton-card",
 						"animate-pulse",
 						"border-2",
 						"border-secondary-alt-300",
-						"grid-cols-5",
-						"grid",
+						"grid grid-cols-[120px_1fr_180px]",
 						"rounded-2xl",
 					) }
 				>
@@ -47,7 +48,7 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 									"h-xl",
 									"mb-sm",
 									"rounded-sm",
-									"w-2/3"
+									"w-xxxxl"
 								) }
 							/>
 							<div
@@ -56,7 +57,7 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 									"bg-secondary-alt-400",
 									"h-xxxxl",
 									"rounded-full",
-									"w-3/5"
+									"w-xxxxl"
 								) }
 							/>
 						</div>
@@ -66,7 +67,6 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 						className={ cx(
 							"ui-skeleton-main__content",
 							"bg-white",
-							"col-span-3"
 						) }>
 						<div className={ cx(
 							"grid",
