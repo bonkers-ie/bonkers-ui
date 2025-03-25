@@ -59,8 +59,8 @@ export const UiSelect: React.FC<TSelectProps> = ({
 					appearance-none
 					border-0
 					bg-transparent
+					leading-[20px]
 					p-sm
-					italic
 					text-secondary-alt
 					outline-0
 					"
