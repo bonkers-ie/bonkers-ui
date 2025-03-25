@@ -220,10 +220,9 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 					<div
 						className={ cx(
 							"ui-skeleton-card__content"
-
 						) }
 					>
-						<div className={ cx("flex", "grow", "gap-sm") }>
+						<div className="flex grow gap-sm">
 							<div
 								className={ cx(
 									"ui-skeleton-card__content",
@@ -290,33 +289,31 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 								"border-l-0",
 								"border-secondary-alt-300",
 								"py-xxs",
+								"place-items-center",
 								index === 2 ? "border-r-0" : ""
 
 							) } >
-								<div className={ cx(
-									"place-items-center"
 
-								) }>
-									{ ["w-2/3", "w-2/4"].map((widthClass, index) => {
-										const bgClass = index === 0 ? "bg-secondary-alt-300" : "bg-secondary-alt-400";
+								{ ["w-2/3", "w-2/4"].map((widthClass, index) => {
+									const bgClass = index === 0 ? "bg-secondary-alt-300" : "bg-secondary-alt-400";
 
-										return (
-											<div
-												key={ index }
-												className={ cx(
-													"bg-secondary-alt-300",
-													"mb-xxxs",
-													"rounded-sm",
-													"h-[23px]",
-													bgClass,
-													widthClass,
+									return (
+										<div
+											key={ index }
+											className={ cx(
+												"bg-secondary-alt-300",
+												"mb-xxxs",
+												"rounded-sm",
+												"h-[23px]",
+												bgClass,
+												widthClass,
 
-												) }
-											/>
-										);
-									}) }
-								</div>
+											) }
+										/>
+									);
+								}) }
 							</div>
+
 						)) }
 
 					</div>
