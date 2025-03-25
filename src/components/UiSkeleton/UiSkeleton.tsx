@@ -140,7 +140,7 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 									) }>
 										{ ["w-2/3", "w-2/4"].map((widthClass, index) => {
 
-											const heightClass = index === 1 ? "h-[23px]" : "h-[20px]";
+											const heightClass = index === 1 ? "h-md" : "h-[20px]";
 
 											return (
 												<div
@@ -214,7 +214,6 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 						"border-secondary-alt-300",
 						"rounded-2xl",
 						"grid",
-						"max-w-[382px]",
 						"p-sm"
 					) }>
 					<div
@@ -304,7 +303,7 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 												"bg-secondary-alt-300",
 												"mb-xxxs",
 												"rounded-sm",
-												"h-[23px]",
+												"h-md",
 												bgClass,
 												widthClass,
 
@@ -350,7 +349,7 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 
 							{ ["w-3/5", "w-2/5", "w-3/6","w-3/5"].map((widthClass, index) => {
 								const bgClass = index === 3 ? "bg-secondary-alt-400" : "bg-secondary-alt-300";
-								const heightClass = index === 2 ? "h-[23px]" : index === 3 ? "h-sm" : "h-[20px]";
+								const heightClass = index === 2 ? "h-md" : index === 3 ? "h-sm" : "h-[20px]";
 								return (
 
 									<div
