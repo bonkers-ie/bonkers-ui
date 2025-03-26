@@ -46,7 +46,7 @@ export const UiSelect: React.FC<TSelectProps> = ({
 			<div className={ cx(styles.UiSelect, "relative",
 				"rounded-xl",
 				"border",
-				"hover:border-secondary-alt-700",
+				"hover:border-secondary-alt-600",
 				disabled
 					? ["pointer-events-none", "border-secondary-alt-300", "bg-secondary-alt-200"]
 					: ["border-secondary-alt-500", "bg-white"]
