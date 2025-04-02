@@ -35,7 +35,9 @@ export const UiInputText: React.FC<TUiInputTextProps> = ({
 						) }
 						lineHeight
 						color={
-							kind === EInputKind.ERROR ? EColors.ERROR : EColors.PRIMARY
+							kind === EInputKind.ERROR
+								? EColors.ERROR
+								: EColors.PRIMARY
 						}
 						size={ ETypographySizes.SM }
 						data-status={ !!statusMessage }

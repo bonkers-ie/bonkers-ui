@@ -41,7 +41,7 @@
 - To run the storybook
 
     ```bash
-    bun storybook
+    bun dev
     ```
 
 - open [http://localhost:6006/](http://localhost:6006/)

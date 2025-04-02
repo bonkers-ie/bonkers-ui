@@ -138,7 +138,9 @@ export const UiTypography = <T extends keyof React.JSX.IntrinsicElements> (
 		{
 			underline
 		},
-		lineHeight ? "leading-normal" : "leading-none",
+		lineHeight
+			? "leading-normal"
+			: "leading-none",
 		size && sizeClasses[size],
 		textTransform && textTransformClasses[textTransform],
 		align && alignClasses[align],

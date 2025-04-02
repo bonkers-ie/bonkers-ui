@@ -29,7 +29,8 @@ export const UiList: React.FC<IUiListProps> = ({
 	children,
 	direction = EListItemDirection.VERTICAL,
 	spacing = EListItemSpacing.DEFAULT,
-	size = EListItemSize.SM
+	size = EListItemSize.SM,
+	className
 }) => {
 	return (
 		<ul className={ cx(
@@ -38,6 +39,7 @@ export const UiList: React.FC<IUiListProps> = ({
 			directionClasses[direction],
 			spacingClasses[spacing],
 			sizeClasses[size],
+			className
 		) }>
 			{ children }
 		</ul>
