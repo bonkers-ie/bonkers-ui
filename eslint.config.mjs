@@ -38,6 +38,9 @@ export default [
 				},
 			],
 			// indent: ["error", "tab"],
+			"@typescript-eslint/no-explicit-any": "warn",
+			"@stylistic/multiline-ternary": ["error", "always"],
+			"@stylistic/space-infix-ops": "error",
 			"object-curly-spacing": ["error", "always"],
 			semi: ["error", "always"],
 			"max-len": ["error", {
@@ -53,6 +56,7 @@ export default [
 			}],
 			"@stylistic/indent": ["error", "tab"],
 			"@stylistic/no-mixed-spaces-and-tabs": "error",
+			"@stylistic/eol-last": ["error", "always"],
 			"react/jsx-curly-spacing": [2, {
 				"when": "always",
 				"children": true

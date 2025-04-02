@@ -43,7 +43,8 @@ export const UiSelect: React.FC<TSelectProps> = ({
 				</UiTypography>
 				: null
 			}
-			<div className={ cx(styles.UiSelect, "relative",
+			<div className={ cx(styles.UiSelect,
+				"relative",
 				"rounded-xl",
 				"border",
 				"hover:border-secondary-alt-600",
@@ -54,6 +55,7 @@ export const UiSelect: React.FC<TSelectProps> = ({
 				<select
 					{ ...rest }
 					className="m-0
+					pr-xl
 					w-full
 					cursor-pointer
 					appearance-none
@@ -68,10 +70,12 @@ export const UiSelect: React.FC<TSelectProps> = ({
 					value={ value }
 					onChange={ handleChange }
 				>
-					{ placeholder ? <option value={ "" } disabled hidden>{ placeholder }</option> : null }
+					{ placeholder
+						? <option value={ "" } disabled hidden>{ placeholder }</option>
+						: null }
 					{ children }
 				</select>
-				<div className="absolute right-sm top-1/2 -translate-y-1/2">
+				<div className="absolute right-sm top-1/2 -translate-y-1/2 pointer-events-none">
 					{ postfixIcon
 						? postfixIcon
 						: (<svg
