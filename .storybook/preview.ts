@@ -2,7 +2,9 @@ import type { Preview } from "@storybook/react";
 import { light, dark } from "./bonkersTheme";
 import { DocsContainer } from "./docsContainer";
 import "../src/main.css";
-import "../fontAwesome";
+import setupFontAwesome from "../fontAwesome";
+
+setupFontAwesome();
 
 const preview: Preview = {
 	parameters: {
