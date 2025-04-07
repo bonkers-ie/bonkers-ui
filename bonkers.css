@@ -53,6 +53,7 @@
   --shadow-border-secondary: 0 0 0 4px rgb(223 225 233 / 50%);
   --shadow-border-primary-600: 0 0 0 2px var(--color-primary-600);
   --shadow-border-primary-700: 0 0 0 2px var(--color-primary-700);
+   --shadow-border-secondary-alt-700: 0 0 0 2px var(--color-secondary-alt-700);
 
   /* font sizes */
   --font-size-xxs: 10px;

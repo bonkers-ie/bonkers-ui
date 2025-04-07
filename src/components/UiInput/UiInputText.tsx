@@ -24,6 +24,7 @@ export const UiInputText: React.FC<TUiInputTextProps> = ({
 }) => {
 	return (
 		<UiInputTitled title={ title } subtitle={ subtitle } infoComponent={ infoComponent } >
+			<UiInputBase kind={ kind } { ...rest }/>
 			{ statusMessage
 				? (
 					<UiTypography
@@ -46,7 +47,7 @@ export const UiInputText: React.FC<TUiInputTextProps> = ({
 					</UiTypography>
 				)
 				: null }
-			<UiInputBase kind={ kind } { ...rest }/>
+
 		</UiInputTitled>
 	);
 };
