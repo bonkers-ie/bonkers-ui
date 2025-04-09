@@ -71,9 +71,23 @@ type Story = StoryObj<typeof meta>;
 
 export const BaseInput: Story = {
 	name: "UiInputBase",
-	render: (args) => (
-		<UiInputBase { ...args } />
-	)
+	render: (args) => {
+		const [isActive, setIsActive] = React.useState(false);
+
+		const handleFocus = () => setIsActive(true);
+		const handleBlur = () => setIsActive(false);
+
+		return (
+			<UiInputBase { ...args }
+				active={ isActive }
+				onFocus={ handleFocus }
+				onBlur={ handleBlur }
+
+			/>
+
+		);
+	}
+
 };
 
 export const BaseInputWithIcons: Story = {

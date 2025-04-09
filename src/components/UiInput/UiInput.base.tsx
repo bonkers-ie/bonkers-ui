@@ -9,14 +9,16 @@ export type TUiInputBaseProps = {
 	preIcon?: React.ReactNode;
 	kind?: EInputKind;
 	className?: string;
+	active?: boolean;
+
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const UiInputBase: React.FC<
 	TUiInputBaseProps
-> = ({ postIcon, preIcon, className, kind = EInputKind.DEFAULT, ...rest } ) => {
+> = ({ postIcon, preIcon, className, active, kind = EInputKind.DEFAULT, ...rest } ) => {
 
 	const stateClasses = {
-		[EInputKind.DEFAULT]: "border-secondary-alt-600 hover:border-secondary-alt-700 focus:outline focus-within:outline-4 focus-within:outline-primary-300  active:shadow-border-secondary-alt-700",
+		[EInputKind.DEFAULT]: "border-secondary-alt-600",
 		[EInputKind.ERROR]: "border-error",
 		[EInputKind.SUCCESS]: "border-primary-600",
 	};
@@ -29,6 +31,13 @@ export const UiInputBase: React.FC<
 				cx(
 					"ui-input-wrapper",
 					"flex flex-row items-center gap-sm rounded-xl border p-sm",
+					"hover:border-secondary-alt-700",
+					"focus-within:outline-2",
+					"focus-within:outline-primary-300",
+					active
+						? "ring ring-secondary-alt-700"
+						: "ring-0",
+					kind && stateClasses[kind],
 					kind && stateClasses[kind],
 					{
 						"bg-white": !rest.disabled,
@@ -45,9 +54,11 @@ export const UiInputBase: React.FC<
 				className={ cx("border-0 flex-1 bg-transparent outline-hidden placeholder:text-secondary-alt-600 w-full") }
 				{ ...rest }
 			/>
+
 			{ postIcon
 				? postIcon
 				: null }
+
 		</UiTypography>
 	);
 };
