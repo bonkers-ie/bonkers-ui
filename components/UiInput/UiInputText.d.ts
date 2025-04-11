@@ -3,7 +3,7 @@ import { EInputKind } from './_types.ts';
 type TUiInputTextProps = {
     id: string;
     kind?: EInputKind;
-    statusMessage?: string;
+    statusMessage?: string | Element;
     title?: React.ReactNode;
     subtitle?: React.ReactNode;
     infoComponent?: React.ReactNode;
