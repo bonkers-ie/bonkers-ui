@@ -258,16 +258,21 @@ const isInverseType = (type: EButtonTypes): boolean => {
 
 const focusColorClasses = {
 	background: (type: EButtonTypes) =>
-		isInverseType(type) ? "focus-visible:before:bg-secondary-500" : "focus-visible:before:bg-white",
+		isInverseType(type)
+			? "focus-visible:before:bg-secondary-500"
+			: "focus-visible:before:bg-white",
 	border: (type: EButtonTypes) =>
-		isInverseType(type) ? "focus-visible:before:border-secondary-alt-400" : "focus-visible:before:border-primary-600"
+		isInverseType(type)
+			? "focus-visible:before:border-secondary-alt-400"
+			: "focus-visible:before:border-primary-600"
 };
 
 const sizeClasses = {
-	[EButtonSizes.SMALL]: "px-md py-xxs",
-	[EButtonSizes.MEDIUM]: "p-sm",
-	[EButtonSizes.LARGE]: "p-md",
-	[EButtonSizes.DEFAULT]: "px-md py-sm",
+	[EButtonSizes.SMALL]: "px-xs py-xxs rounded-lg focus-visible:before:rounded-xl text-sm",
+	[EButtonSizes.MEDIUM]: "p-sm rounded-lg focus-visible:before:rounded-xl text-md",
+	[EButtonSizes.LARGE]: "px-md py-sm rounded-xl focus-visible:before:rounded-2xl text-xl",
+	[EButtonSizes.XLARGE]: "px-lg py-md rounded-xl focus-visible:before:rounded-2xl text-2xl",
+	[EButtonSizes.DEFAULT]: "px-sm py-sm rounded-lg focus-visible:before:rounded-xl",
 };
 
 const weightClasses = {
@@ -292,11 +297,9 @@ export const UiButton: React.FC<TButtonProps> = ({
 			onClick={ onClick }
 			className={ cx(
 				css.UiButton,
-				"text-base",
 				"cursor-pointer",
 				"touch-manipulation",
 				"whitespace-nowrap",
-				"rounded-xl",
 				"leading-none",
 				"flex",
 				"gap-xs",
@@ -305,7 +308,6 @@ export const UiButton: React.FC<TButtonProps> = ({
 				"relative",
 				"transition-all",
 				"focus-visible:before:border-2",
-				"focus-visible:before:rounded-2xl",
 				"focus-visible:before:absolute",
 				"focus-visible:before:-translate-x-1/2",
 				"focus-visible:before:-translate-y-1/2",
