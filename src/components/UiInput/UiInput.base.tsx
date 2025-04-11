@@ -9,13 +9,12 @@ export type TUiInputBaseProps = {
 	preIcon?: React.ReactNode;
 	kind?: EInputKind;
 	className?: string;
-	active?: boolean;
 
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const UiInputBase: React.FC<
 	TUiInputBaseProps
-> = ({ postIcon, preIcon, className, active, kind = EInputKind.DEFAULT, ...rest } ) => {
+> = ({ postIcon, preIcon, className, kind = EInputKind.DEFAULT, ...rest } ) => {
 
 	const stateClasses = {
 		[EInputKind.DEFAULT]: "border-secondary-alt-600",
@@ -32,12 +31,9 @@ export const UiInputBase: React.FC<
 					"ui-input-wrapper",
 					"flex flex-row items-center gap-sm rounded-xl border p-sm",
 					"hover:border-secondary-alt-700",
-					"focus-within:outline-2",
+					"focus-within:outline-4",
 					"focus-within:outline-primary-300",
-					active
-						? "ring ring-secondary-alt-700"
-						: "ring-0",
-					kind && stateClasses[kind],
+					"active:ring focus-within:ring-secondary-alt-700",
 					kind && stateClasses[kind],
 					{
 						"bg-white": !rest.disabled,
