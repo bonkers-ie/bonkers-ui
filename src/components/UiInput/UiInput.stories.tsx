@@ -47,6 +47,12 @@ const meta = {
 			},
 			options: ["text", "password", "email", "number", "tel", "url"],
 		},
+		statusMessage: {
+			description: "The subtitle of the input",
+			control: {
+				type: "text",
+			},
+		},
 		preIcon: {
 			description: "The ReactNode positioned before the input",
 		},
@@ -60,6 +66,7 @@ const meta = {
 		kind: EInputKind.DEFAULT,
 		type: "text",
 		placeholder: "Placeholder",
+		statusMessage: "Subtitle",
 		postIcon: undefined,
 		preIcon: undefined,
 	},
@@ -74,22 +81,20 @@ export const BaseInput: Story = {
 	render: (args) => {
 
 		return (
-			<UiInputBase { ...args } />
-
+			<UiInputBase id="BaseInput" { ...args } />
 		);
 	}
-
 };
 
 export const BaseInputWithIcons: Story = {
 	name: "UiInputBase with Icons",
 	render: (args) => (
 		<UiInputBase
-			{ ...args }
 			placeholder="Pre and Post Icons..."
 			preIcon={ <UiIcon size={ ESize.SM } name={ ["far", "face-smile"] } /> }
 			postIcon="$ Dollar"
 			id="baseIcons"
+			{ ...args }
 		/>
 	),
 };
@@ -104,6 +109,7 @@ export const TextInput: Story = {
 		);
 		return (
 			<UiInputText
+				id="textInput"
 				title="Title"
 				subtitle="Subtitle"
 				infoComponent={ <Info /> }
@@ -129,7 +135,7 @@ export const TextInputVariations: Story  = {
 				id="successInput"
 				placeholder="Success Input"
 				kind={ EInputKind.SUCCESS }
-				statusMessage="You spelled that right!"
+				statusMessage={ args.statusMessage }
 			/>
 		</div>
 	)
