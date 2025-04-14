@@ -50,21 +50,22 @@ export const UiSelect: React.FC<TSelectProps> = ({
 				"hover:border-secondary-alt-600",
 				disabled
 					? ["pointer-events-none", "border-secondary-alt-300", "bg-secondary-alt-200"]
-					: ["border-secondary-alt-500", "bg-white"]
+					: ["border-secondary-alt-600", "bg-white"]
 			) }>
 				<select
 					{ ...rest }
-					className="m-0
-					pr-xl
-					w-full
-					cursor-pointer
-					appearance-none
-					border-0
-					bg-transparent
-					leading-[20px]
-					p-sm
-					text-secondary-alt
-					outline-0
+					className="
+						m-0
+						pr-xl
+						w-full
+						cursor-pointer
+						appearance-none
+						border-0
+						bg-transparent
+						leading-[20px]
+						p-sm
+						text-secondary-alt
+						outline-0
 					"
 					disabled={ disabled }
 					value={ value }
