@@ -8,7 +8,7 @@ import cx from "classnames";
 type TUiInputTextProps = {
 	id: string;
 	kind?: EInputKind;
-	statusMessage?: string;
+	statusMessage?: string | React.ReactElement;
 	title?: React.ReactNode;
 	subtitle?: React.ReactNode;
 	infoComponent?: React.ReactNode;
@@ -24,14 +24,14 @@ export const UiInputText: React.FC<TUiInputTextProps> = ({
 }) => {
 	return (
 		<UiInputTitled title={ title } subtitle={ subtitle } infoComponent={ infoComponent } >
+			<UiInputBase kind={ kind } { ...rest }/>
 			{ statusMessage
 				? (
 					<UiTypography
 						className={ cx(
-							"mb-xxs",
 							"transition-all duration-300 ease-in-out",
-							"max-h-0 opacity-0 overflow-hidden",
-							"data-[status=true]:max-h-lg data-[status=true]:opacity-100"
+							"max-h-0 opacity-0 overflow-hidden gap-xxs mt-xxs",
+							"data-[status=true]:max-h-full data-[status=true]:opacity-100"
 						) }
 						lineHeight
 						color={
@@ -46,7 +46,7 @@ export const UiInputText: React.FC<TUiInputTextProps> = ({
 					</UiTypography>
 				)
 				: null }
-			<UiInputBase kind={ kind } { ...rest }/>
+
 		</UiInputTitled>
 	);
 };

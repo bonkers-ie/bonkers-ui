@@ -7,15 +7,17 @@ import { faFaceAngry } from "@fortawesome/free-regular-svg-icons/faFaceAngry";
 import { faFaceMeh } from "@fortawesome/free-regular-svg-icons/faFaceMeh";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
 
-config.autoAddCss = false;
+export default function setupFontAwesome() {
+	config.autoAddCss = false;
 
-/* add icons to the library */
-library
-	.add(
-		...[
-			faFaceAngry,
-			faFaceMeh,
-			faFaceSmile,
-			faChevronDown,
-		] as IconDefinition[]
-	);
+	/* add icons to the library */
+	library
+		.add(
+			...[
+				faFaceAngry,
+				faFaceMeh,
+				faFaceSmile,
+				faChevronDown,
+			] as IconDefinition[]
+		);
+}

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { UiSelect } from "./UiSelect";
+import { EInputKind } from "../UiInput";
 
 const meta = {
 	title: "Components/UiSelect",
@@ -23,11 +24,24 @@ const meta = {
 			},
 			description: "Heading of the select element"
 		},
+		statusMessage: {
+			control: {
+				type: "text"
+			},
+			description: "Status message of the select element"
+		},
 		subLabel: {
 			control: {
 				type: "text"
 			},
 			description: "Sublabel of the select element"
+		},
+		kind: {
+			control: {
+				type: "select"
+			},
+			options: Object.keys(EInputKind),
+			description: "Kind of the select element"
 		},
 		value: {
 			control: {
@@ -40,6 +54,8 @@ const meta = {
 		disabled: false,
 		heading: "Heading",
 		subLabel: "subLabel",
+		kind: EInputKind.DEFAULT,
+		statusMessage: "",
 		value: "",
 		onChange: (event: React.ChangeEvent<HTMLSelectElement>) => console.log(event.target.value)
 	},
