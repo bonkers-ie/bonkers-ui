@@ -8,7 +8,7 @@ import cx from "classnames";
 type TUiInputTextProps = {
 	id: string;
 	kind?: EInputKind;
-	statusMessage?: string | Element;
+	statusMessage?: string | React.ReactElement;
 	title?: React.ReactNode;
 	subtitle?: React.ReactNode;
 	infoComponent?: React.ReactNode;

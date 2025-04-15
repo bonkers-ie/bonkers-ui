@@ -2,6 +2,7 @@ import React from "react";
 import cx from "classnames";
 import { UiTypography, ETypographySizes, EColors } from "../UiTypography";
 import styles from "./UiSelect.module.css";
+import { EInputKind } from "../UiInput";
 
 type TSelectProps = {
 	heading?: string
@@ -11,8 +12,16 @@ type TSelectProps = {
 	placeholder?: string;
 	postfixIcon?: React.ReactNode;
 	className?: string;
+	kind?: EInputKind;
+	statusMessage?: string | React.ReactElement;
 	onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 } & React.SelectHTMLAttributes<HTMLSelectElement>
+
+const stateClasses = {
+	[EInputKind.DEFAULT]: "border-secondary-alt-600",
+	[EInputKind.ERROR]: "border-error",
+	[EInputKind.SUCCESS]: "border-primary-600",
+};
 
 export const UiSelect: React.FC<TSelectProps> = ({
 	children,
@@ -23,6 +32,8 @@ export const UiSelect: React.FC<TSelectProps> = ({
 	className,
 	placeholder,
 	postfixIcon,
+	statusMessage,
+	kind,
 	...rest
 }) => {
 	const [value, setValue] = React.useState(rest.value || rest.defaultValue || "");
@@ -34,7 +45,7 @@ export const UiSelect: React.FC<TSelectProps> = ({
 		[onChange],
 	);
 	return (
-		<div className={ className }>
+		<div className={ cx("ui-select", className) }>
 			{ heading
 				? <UiTypography
 					size={ ETypographySizes.MD }
@@ -50,7 +61,7 @@ export const UiSelect: React.FC<TSelectProps> = ({
 				"hover:border-secondary-alt-600",
 				disabled
 					? ["pointer-events-none", "border-secondary-alt-300", "bg-secondary-alt-200"]
-					: ["border-secondary-alt-600", "bg-white"]
+					: [kind && stateClasses[kind], "bg-white"]
 			) }>
 				<select
 					{ ...rest }
@@ -104,6 +115,28 @@ export const UiSelect: React.FC<TSelectProps> = ({
 				</UiTypography>)
 				: null
 			}
+
+			{ statusMessage
+				? (
+					<UiTypography
+						className={ cx(
+							"transition-all duration-300 ease-in-out",
+							"max-h-0 opacity-0 overflow-hidden gap-xxs mt-xxs",
+							"data-[status=true]:max-h-full data-[status=true]:opacity-100"
+						) }
+						lineHeight
+						color={
+							kind === EInputKind.ERROR
+								? EColors.ERROR
+								: EColors.PRIMARY
+						}
+						size={ ETypographySizes.SM }
+						data-status={ !!statusMessage }
+					>
+						{ statusMessage }
+					</UiTypography>
+				)
+				: null }
 		</div>
 	);
 };
