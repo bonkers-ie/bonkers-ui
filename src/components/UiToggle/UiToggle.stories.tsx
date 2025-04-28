@@ -1,6 +1,7 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { UiToggle } from "./UiToggle";
+import { EJustify } from "../../_types/align";
 
 const meta = {
 	title: "Components/UiToggle",
@@ -17,6 +18,13 @@ const meta = {
 				type: "boolean",
 			},
 			description: "Toggle Disabled",
+		},
+		justify: {
+			control: {
+				type: "select"
+			},
+			options: Object.values(EJustify),
+			description: "The Element justify",
 		},
 		invertOrder: {
 			control: {
