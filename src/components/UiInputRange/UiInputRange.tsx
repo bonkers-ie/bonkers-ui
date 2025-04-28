@@ -27,23 +27,21 @@ export const UiInputRange: React.FC<TUiInputRangeProps> = ({
 	const updatePositions = React.useCallback(() => {
 		if (!track.current || !thumb.current) return;
 
-		requestAnimationFrame(() => {
-			const numValue = parseFloat(String(value));
-			const numMin = parseFloat(String(min));
-			const numMax = parseFloat(String(max));
+		const numValue = parseFloat(String(value));
+		const numMin = parseFloat(String(min));
+		const numMax = parseFloat(String(max));
 
-			const thumbWidth = thumb.current?.getBoundingClientRect().width ?? 0;
-			const trackWidth = track.current?.getBoundingClientRect().width ?? 0;
+		const thumbWidth = thumb.current?.getBoundingClientRect().width ?? 0;
+		const trackWidth = track.current?.getBoundingClientRect().width ?? 0;
 
-			if (trackWidth === 0) return;
+		if (trackWidth === 0) return;
 
-			const percentage = ((numValue - numMin) / (numMax - numMin)) * 100;
-			const thumbWidthPercentage = (thumbWidth / trackWidth) * 100;
+		const percentage = ((numValue - numMin) / (numMax - numMin)) * 100;
+		const thumbWidthPercentage = (thumbWidth / trackWidth) * 100;
 
-			const adjustedPercentage = Math.max(0, Math.min(100, percentage * (1 - thumbWidthPercentage / 100)));
+		const adjustedPercentage = Math.max(0, Math.min(100, percentage * (1 - thumbWidthPercentage / 100)));
 
-			setPosition(adjustedPercentage);
-		});
+		setPosition(adjustedPercentage);
 	}, [min, max, value]);
 
 	React.useEffect(() => {
