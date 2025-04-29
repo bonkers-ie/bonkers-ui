@@ -94,7 +94,7 @@ export const UiInputRange: React.FC<TUiInputRangeProps> = ({
 			<div className="pointer-events-none absolute left-0 top-1/2 h-xxs w-full -translate-y-1/2 rounded-sm bg-secondary-alt" />
 
 			<div
-				className="pointer-events-none absolute left-0 top-1/2 h-xxs -translate-y-1/2 rounded-sm bg-primary"
+				className="pointer-events-none absolute left-0 top-1/2 h-xxs -translate-y-1/2 rounded-sm bg-primary-600"
 				style={ {
 					width: `${position}%`,
 				} }
@@ -110,14 +110,14 @@ export const UiInputRange: React.FC<TUiInputRangeProps> = ({
 					"-translate-y-1/2",
 					"rounded-full",
 					"bg-white",
-					"border-primary",
+					"border-primary-600",
 				) }
 				ref={ thumb }
 				style={ {
 					left: `${position}%`,
 				} }
 			>
-				<div className="absolute left-1/2 top-1/2 size-xxs -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary" />
+				<div className="absolute left-1/2 top-1/2 size-xxs -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-600" />
 			</div>
 		</div>
 	);
