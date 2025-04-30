@@ -24,6 +24,7 @@ const justificationClasses = {
 };
 
 export const UiRadio: React.FC<TUiRadioProps> = ({
+	id,
 	name,
 	value,
 	invertOrder = false,
@@ -56,7 +57,7 @@ export const UiRadio: React.FC<TUiRadioProps> = ({
 				}
 			) }>
 			<input
-				id={ value }
+				id={ id || `${name}-${value}` }
 				name={ name.toString() }
 				type="radio"
 				value={ value }

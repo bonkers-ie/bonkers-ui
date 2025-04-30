@@ -2,7 +2,7 @@ import React from "react";
 import cx from "classnames";
 import { UiRadio } from "../UiRadio";
 
-export type  TUiPlainRadio = {
+export type TUiPlainRadio = {
 	children?: React.ReactNode
 	disabled?: boolean;
 	subHeader?: string;
@@ -12,7 +12,7 @@ export type  TUiPlainRadio = {
 	checked?: boolean
 	onChange: (value: string) => void;
 
-}& Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "checked" | "value" | "name">;
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "checked" | "value" | "name">;
 
 export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 	children,
@@ -46,7 +46,7 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 			type="radio"
 			value={ value }
 			checked={ checked }
-			onChange={ ()=> onChange(value) }
+			onChange={ () => onChange(value) }
 			/>
 
 			<div className={ cx(
@@ -80,11 +80,12 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 			>
 
 				<UiRadio
+					id={ `ui-plain-radio-${name}-${value}` }
 					className="pointer-events-none"
 					disabled={ disabled }
 					value={ value }
 					name={ name }
-					onChange={ ()=> onChange(value) }
+					onChange={ () => onChange(value) }
 					checked={ checked }
 					tabIndex={ -1 }
 				/>

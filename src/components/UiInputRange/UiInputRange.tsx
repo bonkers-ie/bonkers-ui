@@ -22,27 +22,43 @@ export const UiInputRange: React.FC<TUiInputRangeProps> = ({
 }) => {
 	const track = React.useRef<HTMLInputElement>(null);
 	const thumb = React.useRef<HTMLDivElement>(null);
+	const [position, setPosition] = React.useState(0);
 
-	const [thumbPosition, setThumbPosition] = React.useState(0);
-	const [trackWidth, setTrackWidth] = React.useState(0);
-
-	React.useEffect(() => {
+	const updatePositions = React.useCallback(() => {
 		if (!track.current || !thumb.current) return;
 
 		const numValue = parseFloat(String(value));
 		const numMin = parseFloat(String(min));
 		const numMax = parseFloat(String(max));
 
+		const thumbWidth = thumb.current?.getBoundingClientRect().width ?? 0;
+		const trackWidth = track.current?.getBoundingClientRect().width ?? 0;
+
+		if (trackWidth === 0) return;
+
 		const percentage = ((numValue - numMin) / (numMax - numMin)) * 100;
-
-		const thumbWidth = thumb.current.getBoundingClientRect().width;
-		const trackWidth = track.current.clientWidth;
 		const thumbWidthPercentage = (thumbWidth / trackWidth) * 100;
-		const adjustedPercentage = percentage * (1 - thumbWidthPercentage / 100);
 
-		setThumbPosition(Math.max(0, Math.min(100, adjustedPercentage)));
-		setTrackWidth(Math.max(0, Math.min(100, adjustedPercentage + thumbWidthPercentage)));
+		const adjustedPercentage = Math.max(0, Math.min(100, percentage * (1 - thumbWidthPercentage / 100)));
+
+		setPosition(adjustedPercentage);
 	}, [min, max, value]);
+
+	React.useEffect(() => {
+		updatePositions();
+
+		const resizeObserver = new ResizeObserver(() => {
+			updatePositions();
+		});
+
+		if (track.current) {
+			resizeObserver.observe(track.current);
+		}
+
+		return () => {
+			resizeObserver.disconnect();
+		};
+	}, [updatePositions]);
 
 	const handleOnChange = (newValue: number) => {
 		if (newValue === value) return;
@@ -78,9 +94,9 @@ export const UiInputRange: React.FC<TUiInputRangeProps> = ({
 			<div className="pointer-events-none absolute left-0 top-1/2 h-xxs w-full -translate-y-1/2 rounded-sm bg-secondary-alt" />
 
 			<div
-				className="pointer-events-none absolute left-0 top-1/2 h-xxs -translate-y-1/2 rounded-sm bg-primary"
+				className="pointer-events-none absolute left-0 top-1/2 h-xxs -translate-y-1/2 rounded-sm bg-primary-600"
 				style={ {
-					width: `${trackWidth}%`,
+					width: `${position}%`,
 				} }
 			/>
 
@@ -94,14 +110,14 @@ export const UiInputRange: React.FC<TUiInputRangeProps> = ({
 					"-translate-y-1/2",
 					"rounded-full",
 					"bg-white",
-					"border-primary",
+					"border-primary-600",
 				) }
 				ref={ thumb }
 				style={ {
-					left: `${thumbPosition}%`,
+					left: `${position}%`,
 				} }
 			>
-				<div className="absolute left-1/2 top-1/2 size-xxs -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary" />
+				<div className="absolute left-1/2 top-1/2 size-xxs -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-600" />
 			</div>
 		</div>
 	);
