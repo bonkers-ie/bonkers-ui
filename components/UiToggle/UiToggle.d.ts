@@ -1,8 +1,10 @@
 import { default as React } from '../../../node_modules/react';
+import { EJustify } from '../../_types/align';
 type TUiToggleProps = {
     children?: React.ReactNode;
     disabled?: boolean;
     invertOrder?: boolean;
+    justify?: EJustify;
     defaultChecked?: boolean;
     checked?: boolean;
     value?: boolean;
