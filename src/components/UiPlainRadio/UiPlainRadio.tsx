@@ -63,17 +63,17 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 				"peer-focus:outline-2",
 				"peer-focus:peer-checked:outline-primary-600",
 				"peer-hover:ring-primary-700",
-				"ring",
 				"rounded-xl",
 				"size-full",
 				"text-sm",
+				disabled
+					? "ring-secondary-alt-300"
+					: "peer-checked:ring-primary-600 peer-checked:outline peer-checked:outline-primary-600",
+				checked
+					? "ring-2"
+					: "ring",
 				{
-					"peer-checked:ring-primary-600 peer-checked:outline peer-checked:outline-primary-600": !disabled,
-					"peer-disabled:peer-checked:ring-secondary-alt-300 ": disabled,
-					"ring-secondary-alt-300": disabled,
 					"ring-secondary-alt-600 hover:ring-secondary-500": !disabled && !checked,
-					"ring-primary-600 ": !disabled,
-					"ring-2": checked
 				}
 
 			) }
@@ -85,14 +85,17 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 					"group-hover:ring-primary-700",
 					"pointer-events-none",
 					"relative",
-					"ring",
 					"rounded-full",
 					"size-md",
+					checked
+						? "ring-2"
+						: "ring",
+					disabled
+						? "ring-secondary-alt-300"
+						: "ring-primary-600",
+
 					{
-						"ring-secondary-alt-300": disabled,
-						"ring-2": checked,
 						"ring-secondary-alt-600 group-hover:ring-secondary-500  group-active:ring-secondary-500": !disabled && !checked,
-						"ring-primary-600": !disabled
 					}
 
 				) }>
@@ -107,11 +110,14 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 							"rounded-full",
 							"size-xxs",
 							"top-xxs",
+							checked
+								? "bg-primary-600"
+								: "bg-white",
+							disabled
+								? "bg-secondary-alt-300"
+								: "bg-primary-600",
 							{
-
-								"bg-secondary-alt-300": disabled && checked,
 								"bg-white group-hover:bg-white group-active:bg-white": !disabled && !checked,
-								"bg-primary-600": !disabled && checked
 							}
 
 						) }/>
