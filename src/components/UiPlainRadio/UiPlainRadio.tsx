@@ -1,6 +1,5 @@
 import React from "react";
 import cx from "classnames";
-import { UiRadio } from "../UiRadio";
 
 export type TUiPlainRadio = {
 	children?: React.ReactNode
@@ -28,8 +27,9 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 
 	return (
 		<label className={ cx(
-			"ui-radio-fancy",
+			"ui-plain-radio",
 			"relative",
+			"group",
 			{
 				"pointer-events-none opacity-50": disabled
 			},
@@ -40,7 +40,7 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 			<input className={ cx(
 				" absolute",
 				"appearance-none",
-				"peer/plain-radio",
+				"peer",
 			) }
 			id={ name + value }
 			type="radio"
@@ -50,45 +50,73 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 			/>
 
 			<div className={ cx(
-				"box-border",
-				"size-full",
-				"cursor-pointer",
-				"rounded-xl",
-				"border border-secondary-alt-600",
-				"peer-checked/plain-radio:border-primary-600",
-				"peer-checked/plain-radio:outline",
-				"peer-checked/plain-radio:outline",
-				"peer-checked/plain-radio:outline-primary-600",
-				"peer-hover/plain-radio:peer-checked/plain-radio:outline-primary-700",
 				"bg-white",
-				"peer-active/plain-radio:bg-secondary-alt-200",
-				"p-sm",
-				"peer-hover/plain-radio:border-primary-700",
-				"peer-focus/plain-radio:shadow-border-primary",
+				"box-border",
+				"cursor-pointer",
 				"flex",
-				"items-center",
 				"gap-sm",
+				"items-center",
+				"p-sm",
+				"peer-active:bg-secondary-alt-200",
+				"peer-active:ring-primary-800",
+				"peer-focus-within:outline-offset-4",
+				"peer-focus:outline-2",
+				"peer-focus:peer-checked:outline-primary-600",
+				"peer-hover:ring-primary-700",
+				"ring",
+				"rounded-xl",
+				"size-full",
 				"text-sm",
 				{
-					"border-secondary-alt-400": disabled && !checked,
-					"border-primary-300": disabled && checked,
-					"border-secondary-alt-600": !disabled && !checked,
-					"border-primary-600": !disabled && checked
+					"peer-checked:ring-primary-600 peer-checked:outline peer-checked:outline-primary-600": !disabled,
+					"peer-disabled:peer-checked:ring-secondary-alt-300 ": disabled,
+					"ring-secondary-alt-300": disabled,
+					"ring-secondary-alt-600 hover:ring-secondary-500": !disabled && !checked,
+					"ring-primary-600 ": !disabled,
+					"ring-2": checked
 				}
 
 			) }
 			>
 
-				<UiRadio
-					id={ `ui-plain-radio-${name}-${value}` }
-					className="pointer-events-none"
-					disabled={ disabled }
-					value={ value }
-					name={ name }
-					onChange={ () => onChange(value) }
-					checked={ checked }
-					tabIndex={ -1 }
-				/>
+				<span className={ cx(
+					"bg-white",
+					"group-active:ring-primary-800",
+					"group-hover:ring-primary-700",
+					"pointer-events-none",
+					"relative",
+					"ring",
+					"rounded-full",
+					"size-md",
+					{
+						"ring-secondary-alt-300": disabled,
+						"ring-2": checked,
+						"ring-secondary-alt-600 group-hover:ring-secondary-500  group-active:ring-secondary-500": !disabled && !checked,
+						"ring-primary-600": !disabled
+					}
+
+				) }>
+					<span
+						className={ cx(
+							"absolute",
+							"block",
+							"group-active:bg-primary-800",
+							"group-hover:bg-primary-700",
+							"left-xxs",
+							"pointer-events-none",
+							"rounded-full",
+							"size-xxs",
+							"top-xxs",
+							{
+
+								"bg-secondary-alt-300": disabled && checked,
+								"bg-white group-hover:bg-white group-active:bg-white": !disabled && !checked,
+								"bg-primary-600": !disabled && checked
+							}
+
+						) }/>
+
+				</span>
 
 				<div className="flex flex-col">
 					{ children }
