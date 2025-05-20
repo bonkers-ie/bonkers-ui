@@ -1,5 +1,5 @@
 import React from "react";
-import { UiInputBase } from "./UiInput.base.tsx";
+import { UiInputBase, type TUiInputBaseProps } from "./UiInput.base.tsx";
 import { UiInputTitled } from "./UiInputTitled.tsx";
 import { EInputKind } from "./_types.ts";
 import { EColors, ETypographySizes, UiTypography } from "../UiTypography/index.ts";
@@ -12,7 +12,7 @@ type TUiInputTextProps = {
 	title?: React.ReactNode;
 	subtitle?: React.ReactNode;
 	infoComponent?: React.ReactNode;
-} & React.InputHTMLAttributes<HTMLInputElement>;
+} & TUiInputBaseProps;
 
 export const UiInputText: React.FC<TUiInputTextProps> = ({
 	kind,
