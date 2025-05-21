@@ -1,8 +1,7 @@
 import React from "react";
 import cx from "classnames";
-import { UiRadio } from "../UiRadio";
 
-export type  TUiPlainRadio = {
+export type TUiPlainRadio = {
 	children?: React.ReactNode
 	disabled?: boolean;
 	subHeader?: string;
@@ -12,9 +11,10 @@ export type  TUiPlainRadio = {
 	checked?: boolean
 	onChange: (value: string) => void;
 
-}& Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "checked" | "value" | "name">;
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "checked" | "value" | "name">;
 
 export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
+	id,
 	children,
 	disabled,
 	subHeader,
@@ -22,76 +22,119 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 	name,
 	checked = false,
 	className,
-	onChange
+	onChange,
+	...rest
 
 }) => {
 
 	return (
 		<label className={ cx(
-			"ui-radio-fancy",
+			"ui-plain-radio",
 			"relative",
+			"group",
 			{
 				"pointer-events-none opacity-50": disabled
 			},
 			className
 		) }
-		htmlFor={ name + value }
 		>
 			<input className={ cx(
 				" absolute",
 				"appearance-none",
-				"peer/plain-radio",
+				"peer",
 			) }
-			id={ name + value }
+			id={ id  || `${name}-${value}` }
 			type="radio"
 			value={ value }
 			checked={ checked }
-			onChange={ ()=> onChange(value) }
+			onChange={ () => onChange(value) }
+			{ ...rest }
 			/>
 
 			<div className={ cx(
-				"box-border",
-				"size-full",
-				"cursor-pointer",
-				"rounded-xl",
-				"border border-secondary-alt-600",
-				"peer-checked/plain-radio:border-primary-600",
-				"peer-checked/plain-radio:outline",
-				"peer-checked/plain-radio:outline",
-				"peer-checked/plain-radio:outline-primary-600",
-				"peer-hover/plain-radio:peer-checked/plain-radio:outline-primary-700",
 				"bg-white",
-				"peer-active/plain-radio:bg-secondary-alt-200",
-				"p-sm",
-				"peer-hover/plain-radio:border-primary-700",
-				"peer-focus/plain-radio:shadow-border-primary",
+				"box-border",
+				"cursor-pointer",
 				"flex",
-				"items-center",
 				"gap-sm",
+				"items-center",
+				"p-sm",
+				"peer-active:bg-secondary-alt-200",
+				"peer-active:ring-primary-800",
+				"peer-focus-within:outline-offset-4",
+				"peer-focus:outline-2",
+				"peer-focus:peer-checked:outline-primary-600",
+				"peer-hover:ring-primary-700",
+				"rounded-xl",
+				"size-full",
 				"text-sm",
+				disabled
+					? "ring-secondary-alt-300"
+					: "peer-checked:ring-primary-600 peer-checked:outline peer-checked:outline-primary-600",
+				checked
+					? "ring-2"
+					: "ring",
 				{
-					"border-secondary-alt-400": disabled && !checked,
-					"border-primary-300": disabled && checked,
-					"border-secondary-alt-600": !disabled && !checked,
-					"border-primary-600": !disabled && checked
+					"ring-secondary-alt-600 hover:ring-secondary-500": !disabled && !checked,
 				}
 
 			) }
 			>
 
-				<UiRadio
-					className="pointer-events-none"
-					disabled={ disabled }
-					value={ value }
-					name={ name }
-					onChange={ ()=> onChange(value) }
-					checked={ checked }
-					tabIndex={ -1 }
-				/>
+				<span className={ cx(
+					"bg-white",
+					"group-active:ring-primary-800",
+					"group-hover:ring-primary-700",
+					"pointer-events-none",
+					"relative",
+					"rounded-full",
+					"size-md",
+					checked
+						? "ring-2"
+						: "ring",
+					disabled
+						? "ring-secondary-alt-300"
+						: "ring-primary-600",
+
+					{
+						"ring-secondary-alt-600 group-hover:ring-secondary-500  group-active:ring-secondary-500": !disabled && !checked,
+					}
+
+				) }>
+					<span
+						className={ cx(
+							"absolute",
+							"block",
+							"group-active:bg-primary-800",
+							"group-hover:bg-primary-700",
+							"left-xxs",
+							"pointer-events-none",
+							"rounded-full",
+							"size-xxs",
+							"top-xxs",
+							checked
+								? "bg-primary-600"
+								: "bg-white",
+							disabled
+								? "bg-secondary-alt-300"
+								: "bg-primary-600",
+							{
+								"bg-white group-hover:bg-white group-active:bg-white": !disabled && !checked,
+							}
+
+						) }/>
+
+				</span>
 
 				<div className="flex flex-col">
 					{ children }
-					<div className="text-xs font-normal text-secondary-alt-400">{ subHeader }</div>
+
+					{
+						subHeader
+							? <div className="text-xs font-normal text-secondary-alt-400">{ subHeader }</div>
+							: null
+					}
+
 				</div>
 
 			</div>

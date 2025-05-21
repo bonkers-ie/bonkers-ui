@@ -10,7 +10,6 @@ import tailwindcss from "@tailwindcss/vite";
 // https://vitejs.dev/config/
 export default defineConfig({
 	plugins: [
-		react(),
 		libInjectCss(), // inject module.css files imported in the components
 		dts({
 			staticImport: true,
@@ -23,7 +22,8 @@ export default defineConfig({
 				"**/*.stories.tsx"
 			]
 		}),
-		tailwindcss()
+		tailwindcss(),
+		react()
 	],
 	build: {
 		emptyOutDir: true,
