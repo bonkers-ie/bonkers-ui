@@ -14,6 +14,7 @@ export type TUiPlainRadio = {
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "checked" | "value" | "name">;
 
 export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
+	id,
 	children,
 	disabled,
 	subHeader,
@@ -21,7 +22,8 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 	name,
 	checked = false,
 	className,
-	onChange
+	onChange,
+	...rest
 
 }) => {
 
@@ -35,18 +37,18 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 			},
 			className
 		) }
-		htmlFor={ name + value }
 		>
 			<input className={ cx(
 				" absolute",
 				"appearance-none",
 				"peer",
 			) }
-			id={ name + value }
+			id={ id  || `${name}-${value}` }
 			type="radio"
 			value={ value }
 			checked={ checked }
 			onChange={ () => onChange(value) }
+			{ ...rest }
 			/>
 
 			<div className={ cx(
@@ -126,7 +128,13 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 
 				<div className="flex flex-col">
 					{ children }
-					<div className="text-xs font-normal text-secondary-alt-400">{ subHeader }</div>
+
+					{
+						subHeader
+							? <div className="text-xs font-normal text-secondary-alt-400">{ subHeader }</div>
+							: null
+					}
+
 				</div>
 
 			</div>
