@@ -94,14 +94,18 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 
 							<div className={ cx("flex", "justify-between") }>
 								{ ["w-1/3", "w-1/4"].map((widthClass, index) => {
-									const heightClass = "h-[20px]";
-									const bgClass = index === 0
-										? "bg-secondary-alt-400"
-										: "bg-secondary-alt-300";
 									return (
 										<div
 											key={ index }
-											className={ cx(widthClass, heightClass, bgClass, "rounded-sm", "mb-xxs") }
+											className={ cx(
+												widthClass,
+												"h-[20px]",
+												index === 0
+													? "bg-secondary-alt-400"
+													: "bg-secondary-alt-300",
+												"rounded-sm",
+												"mb-xxs"
+											) }
 										/>
 									);
 								}) }
@@ -324,14 +328,10 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 						"my-xxs"
 					) }>
 						{ ["w-2/6", "w-2/6"].map((widthClass, index) => {
-							const bgClass = index === 0
-								? "bg-secondary-alt-300"
-								: "bg-secondary-alt-300";
-
 							return (
 								<div
 									key={ index }
-									className={ cx(widthClass, "h-md", bgClass, "rounded-sm") }
+									className={ cx(widthClass, "h-md", "bg-secondary-alt-300", "rounded-sm") }
 								/>
 							);
 						}) }
