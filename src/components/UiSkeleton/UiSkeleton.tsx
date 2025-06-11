@@ -82,11 +82,10 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 
 							<div className={ cx("flex", "flex-wrap", "gap-xs", "mb-xxs") }>
 								{ ["w-2/5", "w-1/4"].map((widthClass, index) => {
-									const bgClass = "bg-secondary-alt-300";
 									return (
 										<div
 											key={ index }
-											className={ cx(widthClass, "h-md", bgClass, "rounded-sm") }
+											className={ cx(widthClass, "h-md", "bg-secondary-alt-300", "rounded-sm") }
 										/>
 									);
 								}) }
