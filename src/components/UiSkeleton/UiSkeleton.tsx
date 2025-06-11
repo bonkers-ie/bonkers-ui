@@ -119,9 +119,6 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 								"p-xs md:border-b-0 border-b"
 							) }>
 								{ ["w-2/3", "w-2/4"].map((widthClass, index) => {
-									const heightClass = index === 1
-										? "h-md"
-										: "h-[20px]";
 									return (
 										<div
 											key={ index }
@@ -130,7 +127,9 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 												"mb-xxxs",
 												"rounded-sm",
 												widthClass,
-												heightClass
+												index === 1
+													? "h-md"
+													: "h-[20px]"
 											) }
 										/>
 									);
