@@ -25,12 +25,13 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 						"border-secondary-alt-300",
 						"md:grid md:grid-cols-[120px_1fr_180px]",
 						"rounded-2xl",
+						"overflow-hidden"
 					) }
 				>
 					<div
 						className={ cx(
 							"ui-skeleton-card__content",
-							"bg-secondary-alt-300",
+							"bg-secondary-alt-200",
 							"flex gap-xs items-center justify-center",
 							"px-sm py-xxs",
 							"md:border-b-0 border-t-0 border-b border-secondary-alt-300",
@@ -72,7 +73,7 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 						<div className={ cx("grid", "gap-xxs", "p-sm") }>
 							<div
 								className={ cx(
-									"bg-secondary-alt-400",
+									"bg-secondary-alt-300",
 									"h-md",
 									"mb-xxs",
 									"rounded-sm",
@@ -99,9 +100,7 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 											className={ cx(
 												widthClass,
 												"h-[20px]",
-												index === 0
-													? "bg-secondary-alt-400"
-													: "bg-secondary-alt-300",
+												"bg-secondary-alt-300",
 												"rounded-sm",
 												"mb-xxs"
 											) }
@@ -171,7 +170,7 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 							"md:border-l"
 						) }
 					>
-						<div className={ cx("flex flex-col md:items-center") }>
+						<div className={ cx("flex flex-col md:items-center w-full") }>
 							{ ["w-3/4", "w-1/2"].map((widthClass, index) => {
 								return (
 									<div
