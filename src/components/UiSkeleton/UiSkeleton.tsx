@@ -33,9 +33,9 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 							"bg-secondary-alt-300",
 							"flex gap-xs items-center justify-center",
 							"px-sm py-xxs",
-							"md:border-r md:border-b-0 border-t-0 border-b border-secondary-alt-400",
-							"md:rounded-tl-xl md:rounded-bl-xl md:rounded-tr-0",
-							"rounded-tl-xl rounded-tr-xl md:rounded-br-0"
+							"md:border-b-0 border-t-0 border-b border-secondary-alt-300",
+							"md:rounded-tl-xl md:rounded-bl-xl",
+							"rounded-tl-xl md:rounded-br-0"
 						) }
 					>
 						<div className={ cx("grid", "grow", "gap-xxs", "justify-items-center") }>
@@ -44,7 +44,7 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 									"ui-skeleton-card__content",
 									"bg-secondary-alt-400",
 									"h-xxxl",
-									"mb-sm",
+									"md:mb-sm",
 									"rounded-sm",
 									"w-xxxl"
 								) }
@@ -111,10 +111,10 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 							</div>
 						</div>
 
-						<div className={ cx("border-t border-secondary-alt-400", "md:grid md:grid-cols-2") }>
+						<div className={ cx("border-t border-secondary-alt-300", "md:grid md:grid-cols-2") }>
 							<div className={ cx(
 								"flex flex-col justify-between md:justify-center md:items-center md:flex-col",
-								"md:border-r border-secondary-alt-400",
+								"md:border-r border-secondary-alt-300",
 								"p-xs md:border-b-0 border-b"
 							) }>
 								{ ["w-2/3", "w-2/4"].map((widthClass, index) => {
@@ -140,9 +140,6 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 								"p-xs"
 							) }>
 								{ ["w-2/3", "w-2/4"].map((widthClass, index) => {
-									const heightClass = index === 1
-										? "h-md"
-										: "h-[20px]";
 									return (
 										<div
 											key={ index }
@@ -151,7 +148,9 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 												"mb-xxxs",
 												"rounded-sm",
 												widthClass,
-												heightClass
+												index === 1
+													? "h-md"
+													: "h-[20px]"
 											) }
 										/>
 									);
@@ -165,17 +164,15 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 							"ui-skeleton-cta-cell",
 							"bg-secondary-alt-200",
 							"flex flex-row md:flex-col md:grid md:place-content-center md:items-center md:gap-sm",
-							"border-t md:border-t-0 border-l-0 md:border-l border-secondary-alt-400",
+							"border-t md:border-t-0 border-l-0 border-secondary-alt-300",
 							"p-sm justify-between items-center",
-							"md:rounded-tr-xl md:rounded-br-xl md:rounded-bl-0",
-							"rounded-bl-xl rounded-br-xl md:rounded-tl-0"
+							"md:rounded-tr-xl md:rounded-br-xl",
+							"rounded-br-xl md:rounded-tl-0",
+							"md:border-l"
 						) }
 					>
 						<div className={ cx("flex flex-col md:items-center") }>
 							{ ["w-3/4", "w-1/2"].map((widthClass, index) => {
-								const heightClass = index === 0
-									? "h-lg"
-									: "h-[20px]";
 								return (
 									<div
 										key={ index }
@@ -184,7 +181,9 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 											"mb-xxxs",
 											"rounded-sm",
 											widthClass,
-											heightClass
+											index === 1
+												? "h-lg"
+												: "h-[20px]"
 										) }
 									/>
 								);
@@ -295,21 +294,17 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 							) } >
 
 								{ ["w-2/3", "w-2/4"].map((widthClass, index) => {
-									const bgClass = index === 0
-										? "bg-secondary-alt-300"
-										: "bg-secondary-alt-400";
-
 									return (
 										<div
 											key={ index }
 											className={ cx(
-												"bg-secondary-alt-300",
 												"mb-xxxs",
 												"rounded-sm",
 												"h-md",
-												bgClass,
 												widthClass,
-
+												index === 0
+													? "bg-secondary-alt-400"
+													: "bg-secondary-alt-300"
 											) }
 										/>
 									);
@@ -349,24 +344,20 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 						) }>
 
 							{ ["w-3/5", "w-2/5", "w-3/6","w-3/5"].map((widthClass, index) => {
-								const bgClass = index === 3
-									? "bg-secondary-alt-400"
-									: "bg-secondary-alt-300";
-								const heightClass = index === 2
-									? "h-md"
-									: index === 3
-										? "h-sm"
-										: "h-[20px]";
 								return (
-
 									<div
 										key={ index }
 										className={ cx(
 											"rounded-sm",
 											widthClass,
-											heightClass,
-											bgClass
-
+											index === 2
+												? "h-md"
+												: index === 3
+													? "h-sm"
+													: "h-[20px]",
+											index === 3
+												? "bg-secondary-alt-400"
+												: "bg-secondary-alt-300"
 										) }
 									/>
 								);
@@ -381,36 +372,26 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 							"items-end"
 						) }>
 
-							{ ["w-3/6", "w-2/5", "w-3/5"].map((widthClass, index)=> {
-								const bgClass = index === 1
-									? "bg-secondary-alt-300"
-									: "bg-secondary-alt-400";
-								const roundClass = index === 2
-									? "rounded-full"
-									: "rounded-sm";
-								const heightClass = index === 1
-									? "h-[20px]"
-									: "h-md";
-								const marginsClass = index === 0
-									? "mt-xxs"
-									: index === 2
-										? "mt-xxs"
-										: "mt-0";
-								return (
-
-									<div
-										key={ index }
-										className={ cx(
-											roundClass,
-											widthClass,
-											heightClass,
-											bgClass,
-											marginsClass,
-
-										) }
-									/>
-								);
-							}) }
+							{ ["w-3/6", "w-2/5", "w-3/5"].map((widthClass, index) => (
+								<div
+									key={ index }
+									className={ cx(
+										index === 2
+											? "rounded-full"
+											: "rounded-sm",
+										widthClass,
+										index === 1
+											? "h-[20px]"
+											: "h-md",
+										index === 1
+											? "bg-secondary-alt-300"
+											: "bg-secondary-alt-400",
+										index === 0 || index === 2
+											? "mt-xxs"
+											: "mt-0"
+									) }
+								/>
+							)) }
 						</div>
 					</div>
 
@@ -435,7 +416,7 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 					<div className={ cx(
 						"flex",
 						"border-b",
-						"border-secondary-alt-400",
+						"border-secondary-alt-300",
 						"mt-sm",
 						"-mx-sm"
 
