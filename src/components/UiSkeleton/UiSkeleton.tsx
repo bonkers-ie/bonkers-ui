@@ -81,32 +81,14 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 								) }
 							/>
 
-							<div className={ cx("flex", "flex-wrap", "gap-xs", "mb-xxs") }>
-								{ ["w-2/5", "w-1/4"].map((widthClass, index) => {
-									return (
-										<div
-											key={ index }
-											className={ cx(widthClass, "h-md", "bg-secondary-alt-300", "rounded-sm") }
-										/>
-									);
-								}) }
+							<div className={ cx("flex flex-wrap gap-xs mb-xxs") }>
+								<div className={ cx("w-2/5 h-md bg-secondary-alt-300 rounded-sm") } />
+								<div className={ cx("w-1/4 h-md bg-secondary-alt-300 rounded-sm") } />
 							</div>
 
-							<div className={ cx("flex", "justify-between") }>
-								{ ["w-1/3", "w-1/4"].map((widthClass, index) => {
-									return (
-										<div
-											key={ index }
-											className={ cx(
-												widthClass,
-												"h-[20px]",
-												"bg-secondary-alt-300",
-												"rounded-sm",
-												"mb-xxs"
-											) }
-										/>
-									);
-								}) }
+							<div className={ cx("flex justify-between") }>
+								<div className={ cx("w-1/3 h-[20px] bg-secondary-alt-300 rounded-sm mb-xxs") } />
+								<div className={ cx("w-1/4 h-[20px] bg-secondary-alt-300 rounded-sm mb-xxs") } />
 							</div>
 						</div>
 
@@ -116,44 +98,13 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 								"md:border-r border-secondary-alt-300",
 								"p-xs md:border-b-0 border-b"
 							) }>
-								{ ["w-2/3", "w-2/4"].map((widthClass, index) => {
-									return (
-										<div
-											key={ index }
-											className={ cx(
-												"bg-secondary-alt-300",
-												"mb-xxxs",
-												"rounded-sm",
-												widthClass,
-												index === 1
-													? "h-md"
-													: "h-[20px]"
-											) }
-										/>
-									);
-								}) }
+								<div className={ cx("bg-secondary-alt-300 mb-xxxs rounded-sm w-2/3 h-[20px]") } />
+								<div className={ cx("bg-secondary-alt-300 mb-xxxs rounded-sm w-2/4 h-md") } />
 							</div>
 
-							<div className={ cx(
-								"flex flex-col justify-between md:justify-center md:items-center md:flex-col",
-								"p-xs"
-							) }>
-								{ ["w-2/3", "w-2/4"].map((widthClass, index) => {
-									return (
-										<div
-											key={ index }
-											className={ cx(
-												"bg-secondary-alt-300",
-												"mb-xxxs",
-												"rounded-sm",
-												widthClass,
-												index === 1
-													? "h-md"
-													: "h-[20px]"
-											) }
-										/>
-									);
-								}) }
+							<div className={ cx("flex flex-col justify-between md:justify-center md:items-center md:flex-col p-xs") }>
+								<div className={ cx("bg-secondary-alt-300 mb-xxxs rounded-sm h-md w-2/3") } />
+								<div className={ cx("bg-secondary-alt-300 mb-xxxs rounded-sm h-md w-2/4") } />
 							</div>
 						</div>
 					</div>
@@ -171,30 +122,16 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 						) }
 					>
 						<div className={ cx("flex flex-col md:items-center w-full") }>
-							{ ["w-3/4", "w-1/2"].map((widthClass, index) => {
-								return (
-									<div
-										key={ index }
-										className={ cx(
-											"bg-secondary-alt-400",
-											"mb-xxxs",
-											"rounded-sm",
-											widthClass,
-											index === 1
-												? "h-lg"
-												: "h-[20px]"
-										) }
-									/>
-								);
-							}) }
+							<div className={ cx("bg-secondary-alt-300", "mb-xxxs", "rounded-sm", "h-lg", "w-[120px]") } />
+							<div className={ cx("bg-secondary-alt-300", "mb-xxxs", "rounded-sm", "h-lg", "w-[120px]") } />
 						</div>
 
 						<div
 							className={ cx(
-								"bg-secondary-alt-500",
+								"bg-secondary-alt-400",
 								"h-xxl",
 								"rounded-sm",
-								"w-3/4 md:w-4/5"
+								"w-full"
 							) }
 						/>
 					</div>
@@ -272,61 +209,26 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 							) }
 						/>
 					</div>
-					<div className={ cx(
-						"grid",
-						"grid-cols-3",
+					<div className={ cx("grid grid-cols-3") }>
+						<div className={ cx("border border-l-0 border-secondary-alt-300 py-xxs place-items-center") }>
+							<div className={ cx("mb-xxxs rounded-sm h-md w-2/3 bg-secondary-alt-400") } />
+							<div className={ cx("mb-xxxs rounded-sm h-md w-2/4 bg-secondary-alt-300") } />
+						</div>
 
-					) } >
-						{ Array.from({
-							length: 3
-						}).map((_, index)=> (
-							<div key={ index } className={ cx(
-								"border",
-								"border-l-0",
-								"border-secondary-alt-300",
-								"py-xxs",
-								"place-items-center",
-								index === 2
-									? "border-r-0"
-									: ""
+						<div className={ cx("border border-l-0 border-secondary-alt-300 py-xxs place-items-center") }>
+							<div className={ cx("mb-xxxs rounded-sm h-md w-2/3 bg-secondary-alt-400") } />
+							<div className={ cx("mb-xxxs rounded-sm h-md w-2/4 bg-secondary-alt-300") } />
+						</div>
 
-							) } >
-
-								{ ["w-2/3", "w-2/4"].map((widthClass, index) => {
-									return (
-										<div
-											key={ index }
-											className={ cx(
-												"mb-xxxs",
-												"rounded-sm",
-												"h-md",
-												widthClass,
-												index === 0
-													? "bg-secondary-alt-400"
-													: "bg-secondary-alt-300"
-											) }
-										/>
-									);
-								}) }
-							</div>
-
-						)) }
-
+						<div className={ cx("border border-l-0 border-secondary-alt-300 py-xxs place-items-center border-r-0") }>
+							<div className={ cx("mb-xxxs rounded-sm h-md w-2/3 bg-secondary-alt-400") } />
+							<div className={ cx("mb-xxxs rounded-sm h-md w-2/4 bg-secondary-alt-300") } />
+						</div>
 					</div>
 
-					<div className={ cx(
-						"flex",
-						"gap-sm",
-						"my-xxs"
-					) }>
-						{ ["w-2/6", "w-2/6"].map((widthClass, index) => {
-							return (
-								<div
-									key={ index }
-									className={ cx(widthClass, "h-md", "bg-secondary-alt-300", "rounded-sm") }
-								/>
-							);
-						}) }
+					<div className={ cx("flex gap-sm my-xxs") }>
+						<div className={ cx("w-2/6 h-md bg-secondary-alt-300 rounded-sm") } />
+						<div className={ cx("w-2/6 h-md bg-secondary-alt-300 rounded-sm") } />
 					</div>
 
 					<div className={ cx(
@@ -334,63 +236,17 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 						"justify-between"
 					) }>
 
-						<div className={ cx(
-							"flex",
-							"flex-col",
-							"gap-xxxs",
-							"w-full"
-
-						) }>
-
-							{ ["w-3/5", "w-2/5", "w-3/6","w-3/5"].map((widthClass, index) => {
-								return (
-									<div
-										key={ index }
-										className={ cx(
-											"rounded-sm",
-											widthClass,
-											index === 2
-												? "h-md"
-												: index === 3
-													? "h-sm"
-													: "h-[20px]",
-											index === 3
-												? "bg-secondary-alt-400"
-												: "bg-secondary-alt-300"
-										) }
-									/>
-								);
-							}) }
+						<div className={ cx("flex flex-col gap-xxxs w-full") }>
+							<div className={ cx("rounded-sm w-3/5 h-[20px] bg-secondary-alt-300") } />
+							<div className={ cx("rounded-sm w-2/5 h-[20px] bg-secondary-alt-300") } />
+							<div className={ cx("rounded-sm w-3/6 h-md bg-secondary-alt-300") } />
+							<div className={ cx("rounded-sm w-3/5 h-sm bg-secondary-alt-400") } />
 						</div>
 
-						<div className={ cx(
-							"flex",
-							"flex-col",
-							"gap-xxxs",
-							"w-full",
-							"items-end"
-						) }>
-
-							{ ["w-3/6", "w-2/5", "w-3/5"].map((widthClass, index) => (
-								<div
-									key={ index }
-									className={ cx(
-										index === 2
-											? "rounded-full"
-											: "rounded-sm",
-										widthClass,
-										index === 1
-											? "h-[20px]"
-											: "h-md",
-										index === 1
-											? "bg-secondary-alt-300"
-											: "bg-secondary-alt-400",
-										index === 0 || index === 2
-											? "mt-xxs"
-											: "mt-0"
-									) }
-								/>
-							)) }
+						<div className={ cx("flex flex-col gap-xxxs w-full items-end") }>
+							<div className={ cx("rounded-sm w-3/6 h-md bg-secondary-alt-400 mt-xxs") } />
+							<div className={ cx("rounded-sm w-2/5 h-[20px] bg-secondary-alt-300 mt-0") } />
+							<div className={ cx("rounded-full w-3/5 h-md bg-secondary-alt-400 mt-xxs") } />
 						</div>
 					</div>
 
