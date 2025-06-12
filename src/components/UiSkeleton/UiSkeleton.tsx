@@ -94,7 +94,7 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 
 						<div className={ cx("border-t border-secondary-alt-300", "md:grid md:grid-cols-2") }>
 							<div className={ cx(
-								"flex flex-col justify-between md:justify-center md:items-center md:flex-col",
+								"hidden md:flex flex-col justify-between md:justify-center md:items-center md:flex-col",
 								"md:border-r border-secondary-alt-300",
 								"p-xs md:border-b-0 border-b"
 							) }>
@@ -122,7 +122,6 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 						) }
 					>
 						<div className={ cx("flex flex-col md:items-center w-full") }>
-							<div className={ cx("bg-secondary-alt-300", "mb-xxxs", "rounded-sm", "h-lg", "w-[120px]") } />
 							<div className={ cx("bg-secondary-alt-300", "mb-xxxs", "rounded-sm", "h-lg", "w-[120px]") } />
 						</div>
 
