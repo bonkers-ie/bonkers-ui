@@ -6,8 +6,6 @@ export const Spacings = () => {
 
 	const { spacings } = getThemeTokens(allTokens);
 
-	console.log(allTokens);
-
 	return (
 		<ul
 			className="flex flex-row flex-wrap gap-md"
