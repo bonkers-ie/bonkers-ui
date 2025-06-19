@@ -98,11 +98,9 @@ export function getCSSVariables(): TToken[] {
 			for (const rule of sheet.cssRules) {
 				if (rule instanceof CSSStyleRule && rule.selectorText === ":root") {
 					for (const property of rule.style) {
-						if (property.startsWith("--")) {
+						if (property.startsWith("--") && !variableMap.has(property)) {
 							const value = rule.style.getPropertyValue(property).trim();
-							if (!variableMap.has(property)) {
-								variableMap.set(property, value);
-							}
+							variableMap.set(property, value);
 						}
 					}
 				}
