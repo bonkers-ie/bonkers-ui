@@ -1,9 +1,9 @@
 import React from "react";
-import { getThemeTokens } from "../../helper";
-
-const { groupedColors, baseColors } = getThemeTokens();
+import { getCSSVariables, getThemeTokens } from "../../helper";
 
 export const Colors = () => {
+	const allTokens = getCSSVariables();
+	const { groupedColors, baseColors } = getThemeTokens(allTokens);
 
 	return (
 		<div>

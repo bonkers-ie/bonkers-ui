@@ -1,5 +1,5 @@
 
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { UiSnackbar } from "./UiSnackbar";
 import { ESnackbarTypes } from "./_types";
 

@@ -1,8 +1,10 @@
 import React from "react";
-import { getThemeTokens } from "../../helper";
+import { getCSSVariables, getThemeTokens } from "../../helper";
 
 export const Spacings = () => {
-	const { spacings } = getThemeTokens();
+	const allTokens = getCSSVariables();
+
+	const { spacings } = getThemeTokens(allTokens);
 
 	return (
 		<ul

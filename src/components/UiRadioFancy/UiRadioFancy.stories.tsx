@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { UiRadioFancy } from "./UiRadioFancy";
 import React, { useState } from "react";
 import { ERadioTypes } from "./_types";
@@ -103,7 +103,9 @@ export const Variant: Story = {
 		};
 
 		return (
-			<div className= { args.radioType === ERadioTypes.COMPACT ? "grid w-[350px] grid-cols-2 gap-sm" : "grid grid-rows-2 gap-sm" }>
+			<div className= { args.radioType === ERadioTypes.COMPACT
+				? "grid w-[350px] grid-cols-2 gap-sm"
+				: "grid grid-rows-2 gap-sm" }>
 				<UiRadioFancy
 					disabled={ args.disabled }
 					icon={ ["far", "face-smile"] }

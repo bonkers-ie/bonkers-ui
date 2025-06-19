@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { UiNotificationBadge } from "./UiNotificationBadge";
 import { EBadgeOffset, EBadgeSizes, EBadgeTypes } from "./_types";
 import React from "react";

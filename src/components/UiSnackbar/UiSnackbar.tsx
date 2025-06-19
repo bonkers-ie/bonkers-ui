@@ -2,7 +2,7 @@ import React  from "react";
 import cx from "classnames";
 import { ESnackbarTypes } from "./_types";
 
-type UiSnackbarProps ={
+type UiSnackbarProps = {
 	kind?: ESnackbarTypes;
 	title: React.ReactNode;
 	children: React.ReactNode;
@@ -36,7 +36,7 @@ const kindClasses = {
 
 export const UiSnackbar: React.FC<UiSnackbarProps> = ({
 
-	kind= ESnackbarTypes.SECONDARY,
+	kind = ESnackbarTypes.SECONDARY,
 	title,
 	children,
 	className
@@ -62,7 +62,9 @@ export const UiSnackbar: React.FC<UiSnackbarProps> = ({
 		>
 			<div
 				style={ {
-					color: kind === ESnackbarTypes.DEFAULT ? "black" : "white",
+					color: kind === ESnackbarTypes.DEFAULT
+						? "black"
+						: "white",
 					fontWeight: "normal",
 				} }
 			>

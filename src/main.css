@@ -1,7 +1,7 @@
 @import "../bonkers.css";
 
 body {
-	font-family: var(--base-font);
+	font-family: var(--base-font), sans-serif;
 }
 
 *:focus,

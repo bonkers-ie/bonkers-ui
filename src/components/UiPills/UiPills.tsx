@@ -44,7 +44,9 @@ export const UiPills: React.FC<IUiPills> = ({
 			"gap-xxxs",
 			"px-xxs py-xxxs",
 			"overflow-hidden",
-			rounded ? "rounded-full": "rounded-sm",
+			rounded
+				? "rounded-full"
+				: "rounded-sm",
 			kindClasses[kind],
 			className
 		) }>

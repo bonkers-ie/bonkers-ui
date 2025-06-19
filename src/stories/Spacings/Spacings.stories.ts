@@ -1,7 +1,7 @@
 import { Spacings } from "./Spacings";
 
 export default {
-	title: "Example/Spacings",
+	title: "Spacings",
 	component: Spacings,
 };
 
