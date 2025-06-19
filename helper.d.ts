@@ -1,4 +1,4 @@
-export type TColor = {
+export type TToken = {
     name: string;
     value: string;
 };
@@ -15,18 +15,10 @@ export declare const getBaseVariables: () => {
     name: string;
     value: string;
 }[];
-export declare const getThemeTokens: () => {
-    fontSizes: {
-        name: string;
-        value: string;
-    }[];
-    spacings: {
-        name: string;
-        value: string;
-    }[];
+export declare const getThemeTokens: (variables: TToken[]) => {
+    fontSizes: TToken[];
+    spacings: TToken[];
     groupedColors: TGroupedColor[];
-    baseColors: {
-        name: string;
-        value: string;
-    }[];
+    baseColors: TToken[];
 };
+export declare function getCSSVariables(): TToken[];
