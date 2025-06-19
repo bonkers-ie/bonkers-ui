@@ -29,7 +29,9 @@ export const UiTableCell: React.FC<TCellProps> = ({ align, subText, weight, chil
 								size={ ETypographySizes.XXS }
 								weight={ ETextWeight.SEMI_BOLD }
 								color={ EColors.PRIMARY_ALT_700 }
-								className={ `flex flex-col gap-xxxs ${children ? "pt-sm" : ""}` }
+								className={ `flex flex-col gap-xxxs ${children
+									? "pt-sm"
+									: ""}` }
 							>
 								{ subText }
 							</UiTypography>

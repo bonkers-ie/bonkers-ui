@@ -7,7 +7,7 @@ export enum EBadgeSize {
 export enum EBadgeKind {
 	PRIMARY = "primary",
 	ERROR = "error",
-	WARNING ="warning",
+	WARNING = "warning",
 	ACCENT = "accent",
 	PRIMARY_ALT = "primary-alt",
 	SECONDARY = "secondary",

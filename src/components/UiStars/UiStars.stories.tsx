@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { UiStars } from "./UiStars";
 import { EStarsSize, EStarColors } from "./_types";
 

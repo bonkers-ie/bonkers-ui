@@ -1,8 +1,9 @@
 import React from "react";
-import { getThemeTokens } from "../../helper";
+import { getCSSVariables, getThemeTokens } from "../../helper";
 
 export const FontSizes: React.FC = () => {
-	const { fontSizes } = getThemeTokens();
+	const allTokens = getCSSVariables();
+	const { fontSizes } = getThemeTokens(allTokens);
 
 	return (
 		<ul className="flex flex-row flex-wrap gap-md">

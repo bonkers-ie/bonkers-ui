@@ -1,7 +1,7 @@
 import React from "react";
 import { UiIconBadge } from "./UiIconBadge";
 import { EIconBadgeKind } from "./_types";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ESize } from "../../_types/sizing";
 import { UiIcon } from "../UiIcon/UiIcon";
 

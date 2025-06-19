@@ -16,7 +16,7 @@ export type TUiRadioFancy = {
 	value: string;
 	onChange: (value: string) => void;
 
-}& Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "checked" | "value" | "name">;
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "checked" | "value" | "name">;
 
 const typeClasses = {
 	[ERadioTypes.DEFAULT]: "items-center",

@@ -1,5 +1,5 @@
 
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { UiSkeleton } from "./UiSkeleton";
 import { ESkeletonKind } from "./_types";
 import React from "react";

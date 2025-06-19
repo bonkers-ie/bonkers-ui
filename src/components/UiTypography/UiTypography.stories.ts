@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { UiTypography } from "./UiTypography";
 import { ETextAlign, ETextTransform, ETextWeight, ETypographySizes } from "./_types";
 import { EColors } from "../../_types/colors";

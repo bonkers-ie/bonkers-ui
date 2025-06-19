@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import { EBerSize } from "./_types";
 import { UiBerRank } from "./UiBerRank";
