@@ -60,7 +60,9 @@ const Content: TAccordionItemComposition["Content"] = ({
 		<div
 			className={ cx(
 				"grid transition-all duration-300 ease-in-out",
-				isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+				isOpen
+					? "grid-rows-[1fr]"
+					: "grid-rows-[0fr]",
 				className
 			) }
 		>

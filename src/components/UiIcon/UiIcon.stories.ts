@@ -1,5 +1,5 @@
 import { UiIcon } from "../UiIcon/UiIcon";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ESize } from "../../_types/sizing.js";
 
 const meta: Meta<typeof UiIcon> = {

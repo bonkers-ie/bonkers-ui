@@ -1,5 +1,5 @@
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { UiInputText } from "./UiInputText";
 import { EInputKind } from "./_types";
 import { UiAccordionInfoDropdown } from "../UiAccordion";

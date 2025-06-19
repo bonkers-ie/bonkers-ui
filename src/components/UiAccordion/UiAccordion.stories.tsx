@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { UiAccordion } from "./UiAccordion.base";
 import { UiAccordionItem } from "./UiAccordionItem.base";
 import { EColors, ETextWeight, ETypographySizes, UiTypography } from "../UiTypography";
@@ -57,7 +57,9 @@ export const Basic: Story = {
 							<>
 								<UiTypography color={ EColors.PRIMARY }>Item</UiTypography>
 								{
-									<div className={ cx( "transition","text-primary-700", isOpen ? "rotate-180" : "rotate-0") }>
+									<div className={ cx( "transition","text-primary-700", isOpen
+										? "rotate-180"
+										: "rotate-0") }>
 										<UiIcon name={ ["far", "face-smile"] } size={ ESize.XS } />
 									</div>
 								}
@@ -110,7 +112,9 @@ export const Details: Story = {
 
 									</div>
 
-									<div className={ cx("transition h-fit mr-sm text-secondary-500", isOpen ? "rotate-180" : "") }>
+									<div className={ cx("transition h-fit mr-sm text-secondary-500", isOpen
+										? "rotate-180"
+										: "") }>
 										<UiIcon name={ ["fas", "chevron-down"] } size={ ESize.SM } />
 									</div>
 								</div>

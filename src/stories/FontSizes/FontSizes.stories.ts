@@ -1,7 +1,7 @@
 import { FontSizes } from "./FontSizes";
 
 export default {
-	title: "Example/FontSizes",
+	title: "FontSizes",
 	component: FontSizes,
 };
 

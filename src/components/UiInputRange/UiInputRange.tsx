@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import cx from "classnames";
 import styles from "./UiInputRange.module.css";
 
@@ -22,9 +22,10 @@ export const UiInputRange: React.FC<TUiInputRangeProps> = ({
 }) => {
 	const track = React.useRef<HTMLInputElement>(null);
 	const thumb = React.useRef<HTMLDivElement>(null);
-	const [position, setPosition] = React.useState(0);
+	const [position, setPosition] = useState(0);
+	const [trackOffset, setTrackOffset] = useState(0);
 
-	const updatePositions = React.useCallback(() => {
+	const updatePositions = useCallback(() => {
 		if (!track.current || !thumb.current) return;
 
 		const numValue = parseFloat(String(value));
@@ -42,9 +43,10 @@ export const UiInputRange: React.FC<TUiInputRangeProps> = ({
 		const adjustedPercentage = Math.max(0, Math.min(100, percentage * (1 - thumbWidthPercentage / 100)));
 
 		setPosition(adjustedPercentage);
+		setTrackOffset(adjustedPercentage + (thumbWidthPercentage / 2));
 	}, [min, max, value]);
 
-	React.useEffect(() => {
+	useEffect(() => {
 		updatePositions();
 
 		const resizeObserver = new ResizeObserver(() => {
@@ -91,15 +93,14 @@ export const UiInputRange: React.FC<TUiInputRangeProps> = ({
 				onTouchMove={ (e) => e.stopPropagation() }
 			/>
 
-			<div className="pointer-events-none absolute left-0 top-1/2 h-xxs w-full -translate-y-1/2 rounded-sm bg-secondary-alt" />
-
-			<div
-				className="pointer-events-none absolute left-0 top-1/2 h-xxs -translate-y-1/2 rounded-sm bg-primary-600"
-				style={ {
-					width: `${position}%`,
-				} }
-			/>
-
+			<div className="pointer-events-none absolute left-0 top-1/2 h-xxs w-full -translate-y-1/2 rounded-sm bg-secondary-alt overflow-clip">
+				<div
+					className="pointer-events-none absolute left-0 top-1/2 h-xxs -translate-y-1/2 rounded-sm bg-primary-600"
+					style={ {
+						width: `${trackOffset}%`,
+					} }
+				/>
+			</div>
 			<div
 				className={ cx(
 					styles.thumb,

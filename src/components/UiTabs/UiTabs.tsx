@@ -1,7 +1,7 @@
 import React from "react";
 import cx from "classnames";
 
-type UiTabsProps ={
+type UiTabsProps = {
 	tabs: string[]
 	tabsModel: string,
 	className: string
@@ -20,6 +20,7 @@ export const UiTabs: React.FC<UiTabsProps> = ({
 			"ui-tabs",
 			"grid",
 			"grid-flow-col",
+			"items-stretch",
 			"rounded-full",
 			"bg-secondary-alt-200",
 			"p-[2px]",
@@ -30,6 +31,9 @@ export const UiTabs: React.FC<UiTabsProps> = ({
 				<li
 					key={ tab }
 					className={ cx(
+						"flex",
+						"items-center",
+						"justify-center",
 						"rounded-full",
 						"text-center",
 						tabsModel === tab && "bg-white border border-secondary-alt-600 text-secondary-500",
@@ -37,7 +41,8 @@ export const UiTabs: React.FC<UiTabsProps> = ({
 					) }
 				>
 					<label className={ cx(
-						"block",
+						"flex",
+						"items-center",
 						"cursor-pointer",
 						"px-md",
 						"py-xxs"

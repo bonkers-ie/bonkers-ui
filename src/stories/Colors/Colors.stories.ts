@@ -1,7 +1,7 @@
 import { Colors } from "./Colors";
 
 export default {
-	title: "Example/Colors",
+	title: "Colors",
 	component: Colors,
 };
 

@@ -21,7 +21,9 @@ export const UiAccordionProvider = ({
 	const handleClick = (id?: string) => {
 		if (!id) return;
 		if (type === EAccordionType.SINGLE) {
-			setOpenAccordions(openAccordions?.includes(id) ? [] : [id]);
+			setOpenAccordions(openAccordions?.includes(id)
+				? []
+				: [id]);
 		} else {
 			setOpenAccordions(currAccordions =>
 				currAccordions?.includes(id)

@@ -72,7 +72,7 @@ export const UiStars = ({
 								fill={ isCompletelyFilled
 									? "currentColor"
 									: (isPartiallyFilled
-										? `url(#star-fill-${index})`
+										? `url(#${name}-star-fill-${index})`
 										: "transparent") }
 							/>
 						</svg>

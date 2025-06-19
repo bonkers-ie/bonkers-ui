@@ -42,7 +42,9 @@ export const UiAlert: React.FC<IUiAlert> = ({
 			className
 		) }>
 
-			{ icon ? <UiIcon name={ icon } size={ ESize.SM } /> : null }
+			{ icon
+				? <UiIcon name={ icon } size={ ESize.SM } />
+				: null }
 			{ children }
 		</div>
 	);

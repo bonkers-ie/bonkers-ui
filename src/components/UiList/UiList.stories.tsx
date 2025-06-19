@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { UiListItem } from "./UiListItem";
 import { UiList } from "./UiList";
 import { UiIcon } from "../UiIcon";

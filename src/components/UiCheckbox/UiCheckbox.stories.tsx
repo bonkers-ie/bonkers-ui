@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import { UiCheckbox } from "./UiCheckbox";
 import { EJustify } from "../../_types/align";
@@ -52,7 +52,9 @@ const meta = {
 		invertOrder: false,
 		disabled: false,
 		checked: false,
-		onChange: (value: boolean, name?: string) => console.log(`${name ? name : "Value"} updated to ${value}`),
+		onChange: (value: boolean, name?: string) => console.log(`${name
+			? name
+			: "Value"} updated to ${value}`),
 		size: ECheckboxSize.MD
 	},
 } satisfies Meta<typeof UiCheckbox>;

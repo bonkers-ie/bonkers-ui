@@ -1,7 +1,7 @@
 import React from "react";
 import { UiRadio } from "./UiRadio";
 import { EJustify } from "../../_types/align";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
 	title: "Components/UiRadio",

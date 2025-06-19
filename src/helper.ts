@@ -1,9 +1,9 @@
-export type TColor ={
+export type TToken = {
 	name: string;
 	value: string;
 }
 
-export type TGroupedColor ={
+export type TGroupedColor = {
 	groupTitle: string;
 	groupColors: {
 		shade: string;
@@ -31,9 +31,7 @@ export const getBaseVariables = () => {
 };
 
 // get the base theme tokens from css theme
-export const getThemeTokens = () => {
-	const variables = getBaseVariables();
-
+export const getThemeTokens = (variables: TToken[]) => {
 	const fontSizes = variables.filter(variable => variable.name.includes("--font-size"));
 	const spacings = variables.filter(variable => variable.name.includes("--spacing"));
 	const colors = variables.filter(variable => variable.name.includes("--color"));
@@ -48,7 +46,7 @@ export const getThemeTokens = () => {
 };
 
 // helper to split up the css variables into groups for displaying in Colors story
-const groupColors = (colors: TColor[]): TGroupedColor[] => {
+const groupColors = (colors: TToken[]): TGroupedColor[] => {
 	const baseNames = ["transparent", "current", "black", "white"];
 	// Filter out base colors.
 	const filteredColors = colors.filter(({ name }) => {
@@ -89,3 +87,31 @@ const groupColors = (colors: TColor[]): TGroupedColor[] => {
 
 	return Object.values(groups);
 };
+
+export function getCSSVariables(): TToken[] {
+	const variableMap = new Map<string, string>();
+
+	for (const sheet of document.styleSheets) {
+		try {
+			if (!sheet.cssRules) continue;
+
+			for (const rule of sheet.cssRules) {
+				if (rule instanceof CSSStyleRule && rule.selectorText === ":root") {
+					for (const property of rule.style) {
+						if (property.startsWith("--") && !variableMap.has(property)) {
+							const value = rule.style.getPropertyValue(property).trim();
+							variableMap.set(property, value);
+						}
+					}
+				}
+			}
+		} catch {
+			console.warn("Skipping stylesheet due to CORS policy:", sheet.href);
+		}
+	}
+
+	return Array.from(variableMap, ([name, value]) => ({
+		name,
+		value
+	}));
+}

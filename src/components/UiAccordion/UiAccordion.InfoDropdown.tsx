@@ -16,11 +16,15 @@ export type TUiAccordionInfoDropdown = {
 export const UiAccordionInfoDropdown = ({ children, id, title, postfix, prefix } : TUiAccordionInfoDropdown ) => {
 	return (
 		<UiAccordion className="mb-xxs flex justify-start">
-			<UiAccordionItem id={ id ? id : `whats-this-${Math.random()}` }>
+			<UiAccordionItem id={ id
+				? id
+				: `whats-this-${Math.random()}` }>
 				<UiAccordionItem.Trigger className="flex flex-row items-baseline gap-x-xxs">
 					{ (isOpen) =>
 						<>
-							{ prefix ? prefix(isOpen) : null }
+							{ prefix
+								? prefix(isOpen)
+								: null }
 							<UiTypography
 								underline
 								lineHeight
@@ -33,7 +37,9 @@ export const UiAccordionInfoDropdown = ({ children, id, title, postfix, prefix }
 							{
 								postfix
 									? postfix(isOpen)
-									: <div className={ cx("transition", "text-secondary-500", isOpen ? "rotate-180" : "rotate-0") }>
+									: <div className={ cx("transition", "text-secondary-500", isOpen
+										? "rotate-180"
+										: "rotate-0") }>
 										<UiIcon name={ ["fas", "chevron-down"] } size={ ESize.XS }/>
 									</div>
 							}
