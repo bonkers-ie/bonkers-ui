@@ -11,5 +11,5 @@ export interface IUiIconBadgeProps {
     size?: BadgeSize;
     kind?: EIconBadgeKind;
     children: React.ReactNode;
-    className: string;
+    className?: string;
 }
