@@ -9,8 +9,8 @@ type TTableProps = {
 
 const kindClasses = {
 	[ETableKind.DEFAULT]: "",
-	[ETableKind.SECONDARY]: "[&>tr:nth-child(odd)>td]:bg-secondary-alt-200",
-	[ETableKind.SECONDARY_INVERTED]: "[&>tr:nth-child(even)>td]:bg-secondary-alt-200",
+	[ETableKind.SECONDARY]: "[&>tr:nth-child(odd)>td]:bg-secondary-alt-200 rounded-lg",
+	[ETableKind.SECONDARY_INVERTED]: "[&>tr:nth-child(even)>td]:bg-secondary-alt-200 rounded-lg",
 };
 
 export const UiTable: React.FC<TTableProps> = ({

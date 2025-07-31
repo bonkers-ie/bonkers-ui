@@ -45,7 +45,7 @@ export const UiBerRank: React.FC<IUiBerRankProps> = ({
 					/>
 				</svg>
 				<UiTypography
-					className="absolute left-0 top-0 flex size-full items-center justify-center"
+					className="absolute top-0 left-0 flex size-full items-center justify-center"
 					color={ EColors.WHITE }
 					size={ textSize[size] }
 					weight={ ETextWeight.BOLD }
@@ -71,7 +71,7 @@ export const UiBerRank: React.FC<IUiBerRankProps> = ({
 					</svg>
 				</UiTypography>
 				<UiTypography
-					className="absolute left-0 top-0 flex size-full items-center justify-center"
+					className="absolute top-0 left-0 flex size-full items-center justify-center"
 					color={ EColors.WHITE }
 					size={ textSize[size] }
 					weight={ ETextWeight.BOLD }

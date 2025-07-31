@@ -3,7 +3,7 @@
 <br/>
 
 <div align="center" style="display:flex; flex-direction: column;">
-	<a href="https://bonkers-ie.github.io/bonkers-ui" target="_blank">
+	<a href="https://bonkers-ie.github.io/bonkers-ui/?path=/docs/colors--docs" target="_blank">
 		<img width="300" src="https://web-assets.bonkers.ie/packs/static/logo/bonkers_logo-279f0cff5a9b71e3059a.svg">
 	</a>
 
@@ -13,7 +13,7 @@
 <br/>
 
 <div align="center">
-	<a href="https://bonkers-ie.github.io/bonkers-ui/"  target="_blank">  
+	<a href="https://bonkers-ie.github.io/bonkers-ui/?path=/docs/colors--docs"  target="_blank">  
 		<img alt="Bonkers storybook" src="https://img.shields.io/badge/Bonkers-UI-green.svg?logo=storybook" />  
 	</a>
 	<img src="https://img.shields.io/npm/v/bonkers-ui?color=green">
@@ -156,6 +156,6 @@ export const NewComponent: React.FC<TNewComponent> = ({
 - When you are ready to push just `merge` (do not `rebase`) develop into the current branch
 - Fix any merge conflicts that this creates
 - Next create pull request to develop (you can squash multiple commits when merging)
-- After the pull request is merged to develop you can see it in staging [https://bonkers-ie.github.io/bonkers-ui](https://bonkers-ie.github.io/bonkers-ui/?path=/docs/example-introduction--docs)
+- After the pull request is merged to develop you can see it in staging [https://bonkers-ie.github.io/bonkers-ui](https://bonkers-ie.github.io/bonkers-ui/?path=/docs/colors--docs)
 - Only after reviewing and testing the changes in staging, then create a merge request from `develop` to `master`
 - After you merge to master, the patch version will upgrade x.x.^x and you can use this version in the package

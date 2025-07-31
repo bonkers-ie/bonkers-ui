@@ -33,7 +33,7 @@ export const UiInputBase: React.FC<
 					"hover:border-secondary-alt-700",
 					"focus-within:outline-4",
 					"focus-within:outline-primary-300",
-					"active:ring focus-within:ring-secondary-alt-700",
+					"focus-within:ring-secondary-alt-700 active:ring",
 					kind && stateClasses[kind],
 					{
 						"bg-white": !rest.disabled,
@@ -47,7 +47,7 @@ export const UiInputBase: React.FC<
 				? preIcon
 				: null }
 			<input
-				className={ cx("bg-transparent outline-hidden placeholder:text-secondary-alt-600 w-full") }
+				className={ cx("w-full bg-transparent outline-hidden placeholder:text-secondary-alt-600") }
 				{ ...rest }
 			/>
 

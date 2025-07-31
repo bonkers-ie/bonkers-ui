@@ -67,14 +67,14 @@ export const UiSelect: React.FC<TSelectProps> = ({
 					{ ...rest }
 					className="
 						m-0
-						pr-xl
 						w-full
 						cursor-pointer
 						appearance-none
 						border-0
 						bg-transparent
-						leading-[20px]
 						p-sm
+						pr-xl
+						leading-[20px]
 						text-secondary-alt
 						outline-0
 					"
@@ -87,7 +87,7 @@ export const UiSelect: React.FC<TSelectProps> = ({
 						: null }
 					{ children }
 				</select>
-				<div className="absolute right-sm top-1/2 -translate-y-1/2 pointer-events-none">
+				<div className="pointer-events-none absolute top-1/2 right-sm -translate-y-1/2">
 					{ postfixIcon
 						? postfixIcon
 						: (<svg
@@ -121,7 +121,7 @@ export const UiSelect: React.FC<TSelectProps> = ({
 					<UiTypography
 						className={ cx(
 							"transition-all duration-300 ease-in-out",
-							"max-h-0 opacity-0 overflow-hidden gap-xxs mt-xxs",
+							"mt-xxs max-h-0 gap-xxs overflow-hidden opacity-0",
 							"data-[status=true]:max-h-full data-[status=true]:opacity-100"
 						) }
 						lineHeight

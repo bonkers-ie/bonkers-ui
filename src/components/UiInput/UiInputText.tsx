@@ -30,7 +30,7 @@ export const UiInputText: React.FC<TUiInputTextProps> = ({
 					<UiTypography
 						className={ cx(
 							"transition-all duration-300 ease-in-out",
-							"max-h-0 opacity-0 overflow-hidden gap-xxs mt-xxs",
+							"mt-xxs max-h-0 gap-xxs overflow-hidden opacity-0",
 							"data-[status=true]:max-h-full data-[status=true]:opacity-100"
 						) }
 						lineHeight

@@ -27,7 +27,7 @@ export const UiProgress: React.FC<IUiProgress> = ({
 		) }>
 			<div className={ cx(
 				"relative",
-				"h-xxs ",
+				"h-xxs",
 				"w-full",
 				"overflow-hidden",
 				"rounded-3xl",
