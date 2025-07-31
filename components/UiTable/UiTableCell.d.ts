@@ -4,6 +4,7 @@ type TCellProps = {
     align?: ETextAlign;
     subText?: React.ReactNode;
     weight?: ETextWeight;
+    lineHeight?: boolean;
 } & React.HTMLAttributes<HTMLTableCellElement>;
 export declare const UiTableCell: React.FC<TCellProps>;
 export {};

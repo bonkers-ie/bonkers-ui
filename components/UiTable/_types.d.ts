@@ -1,6 +1,3 @@
-export declare enum ERowKind {
-    SECONDARY = "secondary"
-}
 export declare enum ETableKind {
     DEFAULT = "default",
     SECONDARY = "secondary",
