@@ -36,7 +36,7 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 							"px-sm py-xxs",
 							"border-t-0 border-b border-secondary-alt-300 md:border-b-0",
 							"md:rounded-tl-xl md:rounded-bl-xl",
-							"rounded-tl-xl md:rounded-br-0"
+							"md:rounded-br-0 rounded-tl-xl"
 						) }
 					>
 						<div className={ cx("grid", "grow", "gap-xxs", "justify-items-center") }>
@@ -117,7 +117,7 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 							"border-t border-l-0 border-secondary-alt-300 md:border-t-0",
 							"items-center justify-between p-sm",
 							"md:rounded-tr-xl md:rounded-br-xl",
-							"rounded-br-xl md:rounded-tl-0",
+							"md:rounded-tl-0 rounded-br-xl",
 							"md:border-l"
 						) }
 					>
