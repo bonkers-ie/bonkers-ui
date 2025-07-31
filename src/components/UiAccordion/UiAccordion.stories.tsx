@@ -112,7 +112,7 @@ export const Details: Story = {
 
 									</div>
 
-									<div className={ cx("transition h-fit mr-sm text-secondary-500", isOpen
+									<div className={ cx("mr-sm h-fit text-secondary-500 transition", isOpen
 										? "rotate-180"
 										: "") }>
 										<UiIcon name={ ["fas", "chevron-down"] } size={ ESize.SM } />

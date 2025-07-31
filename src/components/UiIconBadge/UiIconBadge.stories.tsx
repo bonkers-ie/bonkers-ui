@@ -42,7 +42,7 @@ export const Variants: Story = {
 		<div className="flex flex-col gap-lg">
 			<div className="flex flex-col gap-sm">
 				<h3>Size Variants</h3>
-				<div className="flex gap-sm items-center">
+				<div className="flex items-center gap-sm">
 					<UiIconBadge size={ ESize.SM }>
 						<UiIcon name={ ["far", "face-smile"] } size={ ESize.SM } />
 					</UiIconBadge>

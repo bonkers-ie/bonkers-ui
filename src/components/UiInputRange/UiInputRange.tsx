@@ -22,28 +22,20 @@ export const UiInputRange: React.FC<TUiInputRangeProps> = ({
 }) => {
 	const track = React.useRef<HTMLInputElement>(null);
 	const thumb = React.useRef<HTMLDivElement>(null);
-	const [position, setPosition] = useState(0);
-	const [trackOffset, setTrackOffset] = useState(0);
+	const container = React.useRef<HTMLDivElement>(null);
+
+	const initialPosition = calculateInitialPosition(value, min, max);
+	const [thumbLeft, setThumbLeft] = useState(
+		`calc(${initialPosition}% - ${(initialPosition * 32) / 100}px)`
+	);
 
 	const updatePositions = useCallback(() => {
-		if (!track.current || !thumb.current) return;
-
 		const numValue = parseFloat(String(value));
 		const numMin = parseFloat(String(min));
 		const numMax = parseFloat(String(max));
 
-		const thumbWidth = thumb.current?.getBoundingClientRect().width ?? 0;
-		const trackWidth = track.current?.getBoundingClientRect().width ?? 0;
-
-		if (trackWidth === 0) return;
-
 		const percentage = ((numValue - numMin) / (numMax - numMin)) * 100;
-		const thumbWidthPercentage = (thumbWidth / trackWidth) * 100;
-
-		const adjustedPercentage = Math.max(0, Math.min(100, percentage * (1 - thumbWidthPercentage / 100)));
-
-		setPosition(adjustedPercentage);
-		setTrackOffset(adjustedPercentage + (thumbWidthPercentage / 2));
+		setThumbLeft(`calc(${percentage}% - ${(percentage * 32) / 100}px)`);
 	}, [min, max, value]);
 
 	useEffect(() => {
@@ -62,24 +54,58 @@ export const UiInputRange: React.FC<TUiInputRangeProps> = ({
 		};
 	}, [updatePositions]);
 
-	const handleOnChange = (newValue: number) => {
+	const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const newValue = +e.target.value;
 		if (newValue === value) return;
 		const preciseValue = parseFloat(newValue.toFixed(10));
 		onChangeHandler(preciseValue);
 	};
 
+	const handleTrackClick = (e: React.MouseEvent<HTMLDivElement>) => {
+		if (!container.current || !track.current) return;
+
+		const rect = container.current.getBoundingClientRect();
+		const clickPosition = e.clientX - rect.left;
+		const trackWidth = rect.width;
+		const percentage = (clickPosition / trackWidth) * 100;
+
+		const numMin = parseFloat(String(min));
+		const numMax = parseFloat(String(max));
+		const newValue = numMin + (percentage / 100) * (numMax - numMin);
+
+		const steppedValue = Math.round(newValue / Number(step)) * Number(step);
+
+		if (track.current) {
+			track.current.value = String(steppedValue);
+			const event = new Event("input", {
+				bubbles: true
+			});
+			track.current.dispatchEvent(event);
+		}
+	};
+
+	function calculateInitialPosition(value: number, min: string | number, max: string | number) {
+		const numValue = parseFloat(String(value));
+		const numMin = parseFloat(String(min));
+		const numMax = parseFloat(String(max));
+
+		return ((numValue - numMin) / (numMax - numMin)) * 100;
+	}
+
 	return (
 		<div
+			ref={ container }
 			className={ cx(
 				"relative box-content h-xl py-xxs",
-				rest.disabled && "opacity-60 cursor-default pointer-events-none",
+				rest.disabled && "pointer-events-none cursor-default opacity-60",
 				className
 			) }
+			onClick={ handleTrackClick }
 		>
 			<input
 				{ ...rest }
 				ref={ track }
-				className="absolute left-0 top-0 size-full cursor-pointer appearance-none bg-transparent"
+				className="absolute top-0 left-0 size-full cursor-pointer appearance-none bg-transparent"
 				style={ {
 					touchAction: "none",
 				} }
@@ -88,16 +114,16 @@ export const UiInputRange: React.FC<TUiInputRangeProps> = ({
 				max={ max }
 				step={ step }
 				value={ value }
-				onChange={ (e) => handleOnChange(+e.target.value) }
+				onChange={ handleOnChange }
 				onTouchStart={ (e) => e.stopPropagation() }
 				onTouchMove={ (e) => e.stopPropagation() }
 			/>
 
-			<div className="pointer-events-none absolute left-0 top-1/2 h-xxs w-full -translate-y-1/2 rounded-sm bg-secondary-alt overflow-clip">
+			<div className="pointer-events-none absolute top-1/2 left-0 h-xxs w-full -translate-y-1/2 overflow-clip rounded-sm bg-secondary-alt">
 				<div
-					className="pointer-events-none absolute left-0 top-1/2 h-xxs -translate-y-1/2 rounded-sm bg-primary-600"
+					className="pointer-events-none absolute top-1/2 left-0 h-xxs -translate-y-1/2 rounded-sm bg-primary-600"
 					style={ {
-						width: `${trackOffset}%`,
+						width: `calc(${thumbLeft} + 16px)`,
 					} }
 				/>
 			</div>
@@ -115,10 +141,10 @@ export const UiInputRange: React.FC<TUiInputRangeProps> = ({
 				) }
 				ref={ thumb }
 				style={ {
-					left: `${position}%`,
+					left: thumbLeft,
 				} }
 			>
-				<div className="absolute left-1/2 top-1/2 size-xxs -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-600" />
+				<div className="absolute top-1/2 left-1/2 size-xxs -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-600" />
 			</div>
 		</div>
 	);

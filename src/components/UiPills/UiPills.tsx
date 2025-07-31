@@ -39,7 +39,7 @@ export const UiPills: React.FC<IUiPills> = ({
 	return (
 		<div className={ cx(
 			"ui-pills",
-			"grid grid-flow-col justify-start w-max",
+			"grid w-max grid-flow-col justify-start",
 			"items-center",
 			"gap-xxxs",
 			"px-xxs py-xxxs",

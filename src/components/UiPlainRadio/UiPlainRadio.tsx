@@ -39,7 +39,7 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 		) }
 		>
 			<input className={ cx(
-				" absolute",
+				"absolute",
 				"appearance-none",
 				"peer",
 			) }
@@ -70,7 +70,11 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 				"text-sm",
 				disabled
 					? "ring-secondary-alt-300"
-					: "peer-checked:ring-primary-600 peer-checked:outline peer-checked:outline-primary-600",
+					: `
+						peer-checked:ring-primary-600
+						peer-checked:outline
+						peer-checked:outline-primary-600
+					`,
 				checked
 					? "ring-2"
 					: "ring",
@@ -97,7 +101,7 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 						: "ring-primary-600",
 
 					{
-						"ring-secondary-alt-600 group-hover:ring-secondary-500  group-active:ring-secondary-500": !disabled && !checked,
+						"ring-secondary-alt-600 group-hover:ring-secondary-500 group-active:ring-secondary-500": !disabled && !checked,
 					}
 
 				) }>
@@ -126,12 +130,19 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 
 				</span>
 
-				<div className="flex flex-col">
+				<div className={ `
+					flex
+					flex-col
+				` }>
 					{ children }
 
 					{
 						subHeader
-							? <div className="text-xs font-normal text-secondary-alt-400">{ subHeader }</div>
+							? <div className={ `
+								text-xs
+								font-normal
+								text-secondary-alt-400
+							` }>{ subHeader }</div>
 							: null
 					}
 

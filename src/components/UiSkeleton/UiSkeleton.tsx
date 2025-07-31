@@ -32,9 +32,9 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 						className={ cx(
 							"ui-skeleton-card__content",
 							"bg-secondary-alt-200",
-							"flex gap-xs items-center justify-center",
+							"flex items-center justify-center gap-xs",
 							"px-sm py-xxs",
-							"md:border-b-0 border-t-0 border-b border-secondary-alt-300",
+							"border-t-0 border-b border-secondary-alt-300 md:border-b-0",
 							"md:rounded-tl-xl md:rounded-bl-xl",
 							"rounded-tl-xl md:rounded-br-0"
 						) }
@@ -81,30 +81,30 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 								) }
 							/>
 
-							<div className={ cx("flex flex-wrap gap-xs mb-xxs") }>
-								<div className={ cx("w-2/5 h-md bg-secondary-alt-300 rounded-sm") } />
-								<div className={ cx("w-1/4 h-md bg-secondary-alt-300 rounded-sm") } />
+							<div className={ cx("mb-xxs flex flex-wrap gap-xs") }>
+								<div className={ cx("h-md w-2/5 rounded-sm bg-secondary-alt-300") } />
+								<div className={ cx("h-md w-1/4 rounded-sm bg-secondary-alt-300") } />
 							</div>
 
 							<div className={ cx("flex justify-between") }>
-								<div className={ cx("w-1/3 h-[20px] bg-secondary-alt-300 rounded-sm mb-xxs") } />
-								<div className={ cx("w-1/4 h-[20px] bg-secondary-alt-300 rounded-sm mb-xxs") } />
+								<div className={ cx("mb-xxs h-[20px] w-1/3 rounded-sm bg-secondary-alt-300") } />
+								<div className={ cx("mb-xxs h-[20px] w-1/4 rounded-sm bg-secondary-alt-300") } />
 							</div>
 						</div>
 
 						<div className={ cx("border-t border-secondary-alt-300", "md:grid md:grid-cols-2") }>
 							<div className={ cx(
-								"hidden md:flex flex-col justify-between md:justify-center md:items-center md:flex-col",
-								"md:border-r border-secondary-alt-300",
-								"p-xs md:border-b-0 border-b"
+								"hidden flex-col justify-between md:flex md:flex-col md:items-center md:justify-center",
+								"border-secondary-alt-300 md:border-r",
+								"border-b p-xs md:border-b-0"
 							) }>
-								<div className={ cx("bg-secondary-alt-300 mb-xxxs rounded-sm w-2/3 h-[20px]") } />
-								<div className={ cx("bg-secondary-alt-300 mb-xxxs rounded-sm w-2/4 h-md") } />
+								<div className={ cx("mb-xxxs h-[20px] w-2/3 rounded-sm bg-secondary-alt-300") } />
+								<div className={ cx("mb-xxxs h-md w-2/4 rounded-sm bg-secondary-alt-300") } />
 							</div>
 
-							<div className={ cx("flex flex-col justify-between md:justify-center md:items-center md:flex-col p-xs") }>
-								<div className={ cx("bg-secondary-alt-300 mb-xxxs rounded-sm h-md w-2/3") } />
-								<div className={ cx("bg-secondary-alt-300 mb-xxxs rounded-sm h-md w-2/4") } />
+							<div className={ cx("flex flex-col justify-between p-xs md:flex-col md:items-center md:justify-center") }>
+								<div className={ cx("mb-xxxs h-md w-2/3 rounded-sm bg-secondary-alt-300") } />
+								<div className={ cx("mb-xxxs h-md w-2/4 rounded-sm bg-secondary-alt-300") } />
 							</div>
 						</div>
 					</div>
@@ -113,15 +113,15 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 						className={ cx(
 							"ui-skeleton-cta-cell",
 							"bg-secondary-alt-200",
-							"flex flex-row md:flex-col md:grid md:place-content-center md:items-center md:gap-sm",
-							"border-t md:border-t-0 border-l-0 border-secondary-alt-300",
-							"p-sm justify-between items-center",
+							"flex flex-row md:grid md:flex-col md:place-content-center md:items-center md:gap-sm",
+							"border-t border-l-0 border-secondary-alt-300 md:border-t-0",
+							"items-center justify-between p-sm",
 							"md:rounded-tr-xl md:rounded-br-xl",
 							"rounded-br-xl md:rounded-tl-0",
 							"md:border-l"
 						) }
 					>
-						<div className={ cx("flex flex-col md:items-center w-full") }>
+						<div className={ cx("flex w-full flex-col md:items-center") }>
 							<div className={ cx("bg-secondary-alt-300", "mb-xxxs", "rounded-sm", "h-lg", "w-[120px]") } />
 						</div>
 
@@ -209,25 +209,25 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 						/>
 					</div>
 					<div className={ cx("grid grid-cols-3") }>
-						<div className={ cx("border border-l-0 border-secondary-alt-300 py-xxs place-items-center") }>
-							<div className={ cx("mb-xxxs rounded-sm h-md w-2/3 bg-secondary-alt-400") } />
-							<div className={ cx("mb-xxxs rounded-sm h-md w-2/4 bg-secondary-alt-300") } />
+						<div className={ cx("place-items-center border border-l-0 border-secondary-alt-300 py-xxs") }>
+							<div className={ cx("mb-xxxs h-md w-2/3 rounded-sm bg-secondary-alt-400") } />
+							<div className={ cx("mb-xxxs h-md w-2/4 rounded-sm bg-secondary-alt-300") } />
 						</div>
 
-						<div className={ cx("border border-l-0 border-secondary-alt-300 py-xxs place-items-center") }>
-							<div className={ cx("mb-xxxs rounded-sm h-md w-2/3 bg-secondary-alt-400") } />
-							<div className={ cx("mb-xxxs rounded-sm h-md w-2/4 bg-secondary-alt-300") } />
+						<div className={ cx("place-items-center border border-l-0 border-secondary-alt-300 py-xxs") }>
+							<div className={ cx("mb-xxxs h-md w-2/3 rounded-sm bg-secondary-alt-400") } />
+							<div className={ cx("mb-xxxs h-md w-2/4 rounded-sm bg-secondary-alt-300") } />
 						</div>
 
-						<div className={ cx("border border-l-0 border-secondary-alt-300 py-xxs place-items-center border-r-0") }>
-							<div className={ cx("mb-xxxs rounded-sm h-md w-2/3 bg-secondary-alt-400") } />
-							<div className={ cx("mb-xxxs rounded-sm h-md w-2/4 bg-secondary-alt-300") } />
+						<div className={ cx("place-items-center border border-r-0 border-l-0 border-secondary-alt-300 py-xxs") }>
+							<div className={ cx("mb-xxxs h-md w-2/3 rounded-sm bg-secondary-alt-400") } />
+							<div className={ cx("mb-xxxs h-md w-2/4 rounded-sm bg-secondary-alt-300") } />
 						</div>
 					</div>
 
-					<div className={ cx("flex gap-sm my-xxs") }>
-						<div className={ cx("w-2/6 h-md bg-secondary-alt-300 rounded-sm") } />
-						<div className={ cx("w-2/6 h-md bg-secondary-alt-300 rounded-sm") } />
+					<div className={ cx("my-xxs flex gap-sm") }>
+						<div className={ cx("h-md w-2/6 rounded-sm bg-secondary-alt-300") } />
+						<div className={ cx("h-md w-2/6 rounded-sm bg-secondary-alt-300") } />
 					</div>
 
 					<div className={ cx(
@@ -235,17 +235,17 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 						"justify-between"
 					) }>
 
-						<div className={ cx("flex flex-col gap-xxxs w-full") }>
-							<div className={ cx("rounded-sm w-3/5 h-[20px] bg-secondary-alt-300") } />
-							<div className={ cx("rounded-sm w-2/5 h-[20px] bg-secondary-alt-300") } />
-							<div className={ cx("rounded-sm w-3/6 h-md bg-secondary-alt-300") } />
-							<div className={ cx("rounded-sm w-3/5 h-sm bg-secondary-alt-400") } />
+						<div className={ cx("flex w-full flex-col gap-xxxs") }>
+							<div className={ cx("h-[20px] w-3/5 rounded-sm bg-secondary-alt-300") } />
+							<div className={ cx("h-[20px] w-2/5 rounded-sm bg-secondary-alt-300") } />
+							<div className={ cx("h-md w-3/6 rounded-sm bg-secondary-alt-300") } />
+							<div className={ cx("h-sm w-3/5 rounded-sm bg-secondary-alt-400") } />
 						</div>
 
-						<div className={ cx("flex flex-col gap-xxxs w-full items-end") }>
-							<div className={ cx("rounded-sm w-3/6 h-md bg-secondary-alt-400 mt-xxs") } />
-							<div className={ cx("rounded-sm w-2/5 h-[20px] bg-secondary-alt-300 mt-0") } />
-							<div className={ cx("rounded-full w-3/5 h-md bg-secondary-alt-400 mt-xxs") } />
+						<div className={ cx("flex w-full flex-col items-end gap-xxxs") }>
+							<div className={ cx("mt-xxs h-md w-3/6 rounded-sm bg-secondary-alt-400") } />
+							<div className={ cx("mt-0 h-[20px] w-2/5 rounded-sm bg-secondary-alt-300") } />
+							<div className={ cx("mt-xxs h-md w-3/5 rounded-full bg-secondary-alt-400") } />
 						</div>
 					</div>
 

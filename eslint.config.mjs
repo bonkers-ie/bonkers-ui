@@ -2,6 +2,7 @@ import react from "eslint-plugin-react";
 import tseslint from "typescript-eslint";
 import stylisticPlugin from "@stylistic/eslint-plugin";
 import storybook from "eslint-plugin-storybook";
+import eslintPluginBetterTailwindcss from "eslint-plugin-better-tailwindcss";
 
 // Not compatible with tailwind v4: https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/325
 // import pluginTailwind from "eslint-plugin-tailwindcss";
@@ -13,6 +14,7 @@ export default [
 		plugins: {
 			react,
 			"@stylistic": stylisticPlugin,
+			"better-tailwindcss": eslintPluginBetterTailwindcss
 		},
 		languageOptions: {
 			parserOptions: {
@@ -20,6 +22,11 @@ export default [
 					jsx: true,
 				},
 			},
+		},
+		settings: {
+			"better-tailwindcss": {
+				entryPoint: "src/main.css",
+			}
 		},
 		rules: {
 			quotes: [
@@ -88,7 +95,32 @@ export default [
 					"varsIgnorePattern": "^_",
 					"caughtErrorsIgnorePattern": "^_"
 				}
-			]
+			],
+			...(eslintPluginBetterTailwindcss.configs["recommended-warn"]).rules,
+			...(eslintPluginBetterTailwindcss.configs["recommended-error"]).rules,
+			"better-tailwindcss/enforce-consistent-line-wrapping": [
+				"error",
+				{
+					indent: "tab",
+					printWidth: 140,
+					classesPerLine: 1,
+					preferSingleLine: true,
+				},
+			],
+			"better-tailwindcss/no-restricted-classes": [
+				"error",
+				{
+					restrict: [
+						{
+							pattern: "^.*!$",
+							message: "No important classes allowed."
+
+						}]
+				}
+			],
+			"better-tailwindcss/no-unregistered-classes": [
+				"warn",
+			],
 		},
 	},
 	...tseslint.configs.recommended,

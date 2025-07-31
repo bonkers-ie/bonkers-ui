@@ -19,7 +19,7 @@ export const Colors = () => {
 							</div>
 							<b className="text-center text-lg">{ name }</b>
 							<div className="text-center">({ value })</div>
-							<div className="text-nowrap text-center text-md">{ value }</div>
+							<div className="text-center text-md text-nowrap">{ value }</div>
 						</li>
 					)) }
 				</ul>
@@ -38,7 +38,7 @@ export const Colors = () => {
 								</div>
 								<b className="text-center text-lg">{ shade }</b>
 								<div className="text-center">({ value })</div>
-								<div className="text-nowrap text-center text-md">var({ name })</div>
+								<div className="text-center text-md text-nowrap">var({ name })</div>
 							</li>
 						)) }
 					</ul>

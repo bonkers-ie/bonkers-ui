@@ -36,7 +36,7 @@ export const UiTabs: React.FC<UiTabsProps> = ({
 						"justify-center",
 						"rounded-full",
 						"text-center",
-						tabsModel === tab && "bg-white border border-secondary-alt-600 text-secondary-500",
+						tabsModel === tab && "border border-secondary-alt-600 bg-white text-secondary-500",
 
 					) }
 				>

@@ -8,22 +8,22 @@ const meta = {
 	argTypes: {
 		min: {
 			control: {
-				type: "number"
+				type: "number",
 			},
 			description: "The minimum range value",
 		},
 		max: {
 			control: {
-				type: "number"
+				type: "number",
 			},
 			description: "The maximum range value",
 		},
 		step: {
 			control: {
-				type: "number"
+				type: "number",
 			},
 			description: "The step increment of the range",
-		}
+		},
 	},
 	args: {
 		min: 0,
@@ -31,7 +31,7 @@ const meta = {
 		step: 1,
 		disabled: false,
 		value: 50,
-		onChangeHandler: (val?	) => console.log(val)
+		onChangeHandler: (val?) => console.log(val),
 	},
 } satisfies Meta<typeof UiInputRange>;
 
@@ -42,7 +42,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
 	render: (args) => {
 		const [value, setValue] = React.useState(args.value);
-		const handleChange = (val:number) => {
+		const handleChange = (val: number) => {
 			setValue(val);
 			args.onChangeHandler(val);
 		};
@@ -53,9 +53,11 @@ export const Default: Story = {
 					value={ value }
 					onChangeHandler={ handleChange }
 				/>
-				<div style={ {
-					marginTop: "2rem"
-				} }>
+				<div
+					style={ {
+						marginTop: "2rem",
+					} }
+				>
 					Current value: { value }
 				</div>
 			</div>
@@ -65,8 +67,8 @@ export const Default: Story = {
 		min: 0,
 		max: 100,
 		step: 1,
-		value: 50,
-		onChangeHandler: () => {}
+		value: 82,
+		onChangeHandler: () => {},
 	},
 };
 
@@ -74,7 +76,7 @@ export const Default: Story = {
 export const NegativeRange: Story = {
 	render: (args) => {
 		const [value, setValue] = React.useState(args.value);
-		const handleChange = (val:number) => {
+		const handleChange = (val: number) => {
 			setValue(val);
 			args.onChangeHandler(val);
 		};
@@ -85,9 +87,11 @@ export const NegativeRange: Story = {
 					value={ value }
 					onChangeHandler={ handleChange }
 				/>
-				<div style={ {
-					marginTop: "2rem"
-				} }>
+				<div
+					style={ {
+						marginTop: "2rem",
+					} }
+				>
 					Current value: { value }
 				</div>
 			</div>
@@ -98,7 +102,7 @@ export const NegativeRange: Story = {
 		max: 50,
 		step: 5,
 		value: 0,
-		onChangeHandler: () => {}
+		onChangeHandler: () => {},
 	},
 };
 
@@ -106,7 +110,7 @@ export const NegativeRange: Story = {
 export const DecimalSteps: Story = {
 	render: (args) => {
 		const [value, setValue] = React.useState(args.value);
-		const handleChange = (val:number) => {
+		const handleChange = (val: number) => {
 			setValue(val);
 			args.onChangeHandler(val);
 		};
@@ -117,9 +121,11 @@ export const DecimalSteps: Story = {
 					value={ value }
 					onChangeHandler={ handleChange }
 				/>
-				<div style={ {
-					marginTop: "2rem"
-				} }>
+				<div
+					style={ {
+						marginTop: "2rem",
+					} }
+				>
 					Current value: { value }
 				</div>
 			</div>
@@ -130,13 +136,13 @@ export const DecimalSteps: Story = {
 		max: 1,
 		step: 0.1,
 		value: 0.5,
-		onChangeHandler: () => {}
+		onChangeHandler: () => {},
 	},
 };
 
 // Disabled state
 export const Disabled: Story = {
 	args: {
-		disabled: true
+		disabled: true,
 	},
 };

@@ -54,7 +54,7 @@ export const UiRadioFancy: React.FC<TUiRadioFancy> = ({
 				"bg-white",
 				"p-sm",
 				"hover:border-secondary-alt-700",
-				"peer-focus:outline ",
+				"peer-focus:outline",
 				"peer-focus:outline-4",
 				"peer-focus:outline-primary-300",
 				"peer-checked:shadow-border-primary-600",
