@@ -8,17 +8,26 @@ type TCellProps = {
 	align?: ETextAlign;
 	subText?: React.ReactNode;
 	weight?: ETextWeight;
+	lineHeight?: boolean
 } & React.HTMLAttributes<HTMLTableCellElement>;
 
-export const UiTableCell: React.FC<TCellProps> = ({ align, subText, weight, children, className, ...rest }) => {
+export const UiTableCell: React.FC<TCellProps> = ({
+	align,
+	subText,
+	weight,
+	children,
+	className,
+	lineHeight,
+	...rest
+}) => {
 	return (
-		<td { ...rest }>
+		<td { ...rest } className={ cx("p-sm", className) }>
 			<UiTypography
 				tag="div"
 				size={ ETypographySizes.SM }
 				align={ align }
 				weight={ weight }
-				className={ cx("p-sm", className) }
+				lineHeight={ lineHeight }
 			>
 				{ children }
 				{
