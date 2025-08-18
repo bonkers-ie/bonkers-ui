@@ -1,0 +1,14 @@
+nav::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	height: 1px;
+	background-color: var(--color-secondary-alt-500);
+	width: 95%;
+	justify-self: center;
+}
+
+.compact::before {
+	top: 20%;
+}

@@ -6,6 +6,7 @@ import { faFaceSmile } from "@fortawesome/free-regular-svg-icons/faFaceSmile";
 import { faFaceAngry } from "@fortawesome/free-regular-svg-icons/faFaceAngry";
 import { faFaceMeh } from "@fortawesome/free-regular-svg-icons/faFaceMeh";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
+import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 
 export default function setupFontAwesome() {
 	config.autoAddCss = false;
@@ -18,6 +19,7 @@ export default function setupFontAwesome() {
 				faFaceMeh,
 				faFaceSmile,
 				faChevronDown,
+				faCheck
 			] as IconDefinition[]
 		);
 }
