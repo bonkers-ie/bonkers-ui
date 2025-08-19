@@ -109,7 +109,7 @@ export const UiNavigationSteps: React.FC<{
 
 	return (
 		<NavigationStepContext.Provider value={ contextValue }>
-			<nav aria-label="Progress" className={ cx("grid grid-cols-1 grid-rows-1 items-center", styles ) }>
+			<nav aria-label="Progress" className={ cx("relative grid grid-cols-1 grid-rows-1 items-center", styles ) }>
 				<div className="z-10 flex items-center justify-between">
 					{ children }
 				</div>

@@ -67,22 +67,26 @@ export const Primary: Story = {
 				name: "declarations"
 			},
 		];
+
 		return (
 			<div className="grid gap-md">
-				<UiNavigationSteps { ...args }>
-					{
-						steps.map(step => (
-							<UiNavigationStep
-								key={ step.id }
-								id={ step.id }
-								name={ step.name }
-								subSteps={ step.substeps }
-							/>
-						))
-					}
+				<div className="max-w-[95%]">
 
-				</UiNavigationSteps>
+					<UiNavigationSteps { ...args }>
+						{
+							steps.map(step => (
+								<UiNavigationStep
+									key={ step.id }
+									id={ step.id }
+									name={ step.name }
+									subSteps={ step.substeps }
+								/>
+							))
+						}
 
+					</UiNavigationSteps>
+
+				</div>
 				<UiNavigationSteps initialStepId="property">
 					<UiNavigationStep id="property" name="Property"  />
 					<UiNavigationStep id="contents" name="Contents" subSteps={ [{

@@ -30,6 +30,7 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 	displaySubstepName = false,
 	className = "",
 	onClick,
+
 }) => {
 	const {
 		currentStepId,
@@ -38,7 +39,7 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 		getSubstepProgress,
 		updateSubstepProgress,
 		completeSteps,
-		kind
+		kind,
 	} = useStepNav();
 
 	const hasSubsteps = subSteps.length > 0;

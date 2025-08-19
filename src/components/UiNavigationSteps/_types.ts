@@ -1,3 +1,5 @@
+import type { IconProp } from "@fortawesome/fontawesome-svg-core";
+
 export enum ENavStepStatus {
 	COMPLETE = "complete",
 	ACTIVE = "active",
@@ -32,4 +34,5 @@ export interface INavStepProps {
 	displaySubstepName?: boolean;
 	className?: string;
 	onClick?: () => void;
+	icon?: IconProp;
 }

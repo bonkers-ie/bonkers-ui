@@ -8,7 +8,3 @@ nav::before {
 	width: 95%;
 	justify-self: center;
 }
-
-.compact::before {
-	top: 20%;
-}
