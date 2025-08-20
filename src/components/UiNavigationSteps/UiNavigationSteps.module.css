@@ -4,7 +4,13 @@ nav::before {
 	left: 0;
 	right: 0;
 	height: 1px;
+	top: 12px;
 	background-color: var(--color-secondary-alt-500);
 	width: 95%;
-	justify-self: center;
+}
+
+@media (min-width: 768px) {
+	nav::before {
+		top: 20px;
+	}
 }

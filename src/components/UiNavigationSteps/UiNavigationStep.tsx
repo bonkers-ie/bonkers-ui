@@ -1,14 +1,28 @@
 import React, { useEffect  } from "react";
 import cx from "classnames";
-import { ENavStepKind, ENavStepStatus, type INavStepProps } from "./_types";
+import { ENavStepStatus, type INavStepProps } from "./_types";
 import { ETextWeight, ETypographySizes, UiTypography } from "../UiTypography";
 import { useStepNav } from "./UiNavigationSteps";
 import { UiIcon } from "../UiIcon";
 import { ESize } from "../../_types/sizing.ts";
 
-function getStepClasses(status: ENavStepStatus, isClickable: boolean, kind: ENavStepKind) {
+function getStepClasses(status: ENavStepStatus, isClickable: boolean, isActive: boolean) {
 	return cx(
-		"flex items-center rounded-full border transition-all duration-150",
+		`
+			flex
+			items-center
+			justify-center
+			rounded-full
+			border
+			text-secondary-400
+			transition-all
+			duration-150
+			md:h-xl
+			md:w-full
+			md:px-xs
+			md:py-xxs
+			lg:px-sm
+		`,
 		!isClickable && "bg-secondary-400",
 		isClickable && "cursor-pointer",
 		status === ENavStepStatus.COMPLETE
@@ -17,9 +31,8 @@ function getStepClasses(status: ENavStepStatus, isClickable: boolean, kind: ENav
 		&& "border-secondary-400 bg-secondary-alt-200 text-secondary-400",
 		status === ENavStepStatus.INACTIVE
 		&& "border-secondary-alt-500 bg-white text-secondary-alt-500",
-		kind === ENavStepKind.COMPACT
-			? "size-md justify-center text-secondary-400"
-			: "w-full px-md py-xs",
+		isActive && "h-md px-xs py-xxs",
+		!isActive && "size-md",
 	);
 }
 
@@ -40,13 +53,13 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 		getStepOrder,
 		completedSteps,
 		completedIcon,
-		kind,
 	} = useStepNav();
 
 	const hasSubsteps = subSteps.length > 0;
 	const progress = getSubstepProgress(id);
 	const isSubstepActive = subSteps.some(sub => sub.id === currentStepId);
 	const isStepComplete = completedSteps.has(id);
+	const isActive = currentStepId === id || isSubstepActive;
 
 	useEffect(() => {
 		registerStep(id, hasSubsteps);
@@ -83,11 +96,8 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 
 	return (
 		<div
-			className={
-				cx(kind === ENavStepKind.COMPACT
-					? "flex flex-col gap-xxs"
-					: "flex flex-row items-center")
-			}>
+			className="flex flex-col gap-xxs md:flex-row md:items-center"
+		>
 			<button
 				onClick={ handleClick }
 				aria-current={ status === ENavStepStatus.ACTIVE
@@ -95,7 +105,7 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 					: undefined }
 				aria-disabled={ !isClickable }
 				disabled={ !isClickable }
-				className={ cx(getStepClasses(status, isClickable, kind || ENavStepKind.DEFAULT), className) }
+				className={ cx(getStepClasses(status, isClickable, isActive), className) }
 			>
 				<UiTypography
 					className="flex place-items-center gap-xxs"
@@ -118,29 +128,18 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 							</UiTypography>
 						) }
 					{
-						kind === ENavStepKind.DEFAULT
-							? <UiTypography tag="span">
-								{ displayName }
-								{ progressText }
-							</UiTypography>
-							: null
+
+						<UiTypography className={ cx("text-xxs md:text-sm", {
+							"hidden md:inline": !isActive,
+						}) } tag="span">
+							{ displayName }
+							{ progressText }
+						</UiTypography>
+
 					}
 				</UiTypography>
+
 			</button>
-			{
-				kind === ENavStepKind.COMPACT && (
-					<UiTypography
-						className={ cx("fixed top-1/3",{
-							"text-secondary-400": status === ENavStepStatus.ACTIVE,
-							"text-secondary-alt-500": status === ENavStepStatus.INACTIVE,
-						}) }
-						tag="span"
-						size={ ETypographySizes.XS }>
-						{ displayName }
-						{ progressText }
-					</UiTypography>
-				)
-			}
 		</div>
 	);
 };

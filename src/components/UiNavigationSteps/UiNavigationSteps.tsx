@@ -17,15 +17,17 @@ export const UiNavigationSteps: React.FC<{
 	kind?: ENavStepKind;
 	children: React.ReactNode;
 	className?: string;
-	completeIcon?: IconProp;
-}> = ({ initialStepId, children, kind = ENavStepKind.DEFAULT, className, completeIcon: completedIcon }) => {
-
-	const [currentStepId, setCurrentStepId] = useState(initialStepId);
+	completedIcon?: IconProp;
+}> = ({ initialStepId, children, kind = ENavStepKind.DEFAULT, className, completedIcon }) => {
 	const [completedSteps, setCompletedSteps] = useState<Set<string>>(new Set());
 	const orderCounter = useRef(0);
 	const stepOrderMap = useRef<Map<string, number>>(new Map());
 	const substepProgressMap = useRef<Map<string, { current: number; total: number }>>(new Map());
 	const parentStepMap = useRef<Map<string, string>>(new Map());
+
+	//TODO: Make responsive using breakpoint styles and possible add scroll for inner containers or break to new line
+	//TODO: Look at passing props to children instead of using context
+	//TODO: Simplify components, reduce amount of refs + pass icon and name as props for child step
 
 	const registerStep = (id: string, hasSubsteps: boolean) => {
 		if (!stepOrderMap.current.has(id)) {
@@ -61,13 +63,11 @@ export const UiNavigationSteps: React.FC<{
 		if (stepOrderMap.current.has(id)) {
 			const currentOrder = stepOrderMap.current.get(id)!;
 			markPreviousStepsComplete(currentOrder);
-			setCurrentStepId(id);
 		} else if (parentStepMap.current.has(id)) {
 			const parentId = parentStepMap.current.get(id)!;
 			if (stepOrderMap.current.has(parentId)) {
 				const currentOrder = stepOrderMap.current.get(parentId)!;
 				markPreviousStepsComplete(currentOrder);
-				setCurrentStepId(id);
 			}
 		}
 	};
@@ -108,21 +108,21 @@ export const UiNavigationSteps: React.FC<{
 
 	useEffect(() => {
 		if (stepOrderMap.current.size > 0) {
-			if (parentStepMap.current.has(currentStepId)) {
-				const parentId = parentStepMap.current.get(currentStepId)!;
+			if (parentStepMap.current.has(initialStepId)) {
+				const parentId = parentStepMap.current.get(initialStepId)!;
 				if (stepOrderMap.current.has(parentId)) {
 					const currentOrder = stepOrderMap.current.get(parentId)!;
 					markPreviousStepsComplete(currentOrder);
 				}
-			} else if (stepOrderMap.current.has(currentStepId)) {
-				const currentOrder = stepOrderMap.current.get(currentStepId)!;
+			} else if (stepOrderMap.current.has(initialStepId)) {
+				const currentOrder = stepOrderMap.current.get(initialStepId)!;
 				markPreviousStepsComplete(currentOrder);
 			}
 		}
-	}, [currentStepId]);
+	}, [initialStepId]);
 
 	const contextValue: INavigationStepContext = {
-		currentStepId,
+		currentStepId: initialStepId,
 		registerStep,
 		getStepOrder,
 		setStepComplete,
@@ -137,7 +137,7 @@ export const UiNavigationSteps: React.FC<{
 	return (
 		<NavigationStepContext.Provider value={ contextValue }>
 			<nav aria-label="Progress" className={ cx("relative grid grid-cols-1 grid-rows-1 items-center", styles, className ) }>
-				<div className="z-10 flex items-center justify-between">
+				<div className="z-10 flex items-start justify-between">
 					{ children }
 				</div>
 			</nav>
