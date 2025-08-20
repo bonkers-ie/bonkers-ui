@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect  } from "react";
 import cx from "classnames";
 import { ENavStepKind, ENavStepStatus, type INavStepProps } from "./_types";
 import { ETextWeight, ETypographySizes, UiTypography } from "../UiTypography";
@@ -30,7 +30,6 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 	displaySubstepName = false,
 	className = "",
 	onClick,
-
 }) => {
 	const {
 		currentStepId,
@@ -38,17 +37,15 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 		navigateToStep,
 		getSubstepProgress,
 		updateSubstepProgress,
-		completeSteps,
+		getStepOrder,
+		completedSteps,
+		completedIcon,
 		kind,
 	} = useStepNav();
 
 	const hasSubsteps = subSteps.length > 0;
 	const progress = getSubstepProgress(id);
 	const isSubstepActive = subSteps.some(sub => sub.id === currentStepId);
-
-	const order = useMemo(() => {
-		return registerStep(id, hasSubsteps);
-	}, [id, hasSubsteps, registerStep]);
 
 	useEffect(() => {
 		registerStep(id, hasSubsteps);
@@ -60,7 +57,7 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 
 	const status = currentStepId === id || isSubstepActive
 		? ENavStepStatus.ACTIVE
-		: completeSteps.has(id)
+		: completedSteps.has(id)
 			? ENavStepStatus.COMPLETE
 			: ENavStepStatus.INACTIVE;
 
@@ -107,14 +104,14 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 				>
 					{ status === ENavStepStatus.COMPLETE
 						? (
-							<UiIcon className="text-white" name={ ["fas", "check"] } size={ ESize.XS }/>
+							<UiIcon className="text-white" name={ completedIcon || ["far", "face-smile"] } size={ ESize.XS }/>
 						)
 						: (
 							<UiTypography
 								tag="span"
 								size={ ETypographySizes.SM }
 							>
-								{ order }
+								{ getStepOrder().get(id) || 0 }
 							</UiTypography>
 						) }
 					{

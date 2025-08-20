@@ -2,13 +2,13 @@ import React, {
 	createContext,
 	useContext,
 	useState,
-	useCallback,
 	useRef,
 	useEffect,
 } from "react";
 import { ENavStepKind, type INavigationStepContext, type INavSubStep } from "./_types";
 import cx from "classnames";
 import styles from "./UiNavigationSteps.module.css";
+import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const NavigationStepContext = createContext<INavigationStepContext | null>(null);
 
@@ -16,49 +16,52 @@ export const UiNavigationSteps: React.FC<{
 	initialStepId: string;
 	kind?: ENavStepKind;
 	children: React.ReactNode;
-}> = ({ initialStepId, children, kind = ENavStepKind.DEFAULT }) => {
+	className?: string;
+	completeIcon?: IconProp;
+}> = ({ initialStepId, children, kind = ENavStepKind.DEFAULT, className, completeIcon: completedIcon }) => {
 
 	const [currentStepId, setCurrentStepId] = useState(initialStepId);
-	const [completeSteps, setCompleteSteps] = useState<Set<string>>(new Set());
+	const [completedSteps, setCompletedSteps] = useState<Set<string>>(new Set());
 	const orderCounter = useRef(0);
-	const stepOrders = useRef<Map<string, number>>(new Map());
-	const substepProgress = useRef<Map<string, { current: number; total: number }>>(new Map());
+	const stepOrderMap = useRef<Map<string, number>>(new Map());
+	const substepProgressMap = useRef<Map<string, { current: number; total: number }>>(new Map());
 
-	const registerStep = (id: string, hasSubsteps: boolean): number => {
-		if (!stepOrders.current.has(id)) {
+	const registerStep = (id: string, hasSubsteps: boolean) => {
+		if (!stepOrderMap.current.has(id)) {
 			orderCounter.current += 1;
-			stepOrders.current.set(id, orderCounter.current);
+			stepOrderMap.current.set(id, orderCounter.current);
 
 			if (hasSubsteps) {
-				substepProgress.current.set(id, {
+				substepProgressMap.current.set(id, {
 					current: 0,
 					total: 0
 				});
 			}
-			return orderCounter.current;
 		}
-		return stepOrders.current.get(id)!;
+	};
+
+	const getStepOrder = () => {
+		return stepOrderMap.current;
 	};
 
 	const setStepComplete = (id: string) => {
-		setCompleteSteps((prev) => {
+		setCompletedSteps((prev) => {
 			const newSet = new Set(prev);
 			newSet.add(id);
-			console.log("STEPS COMPLETE", newSet);
 			return newSet;
 		});
 	};
 
-	const navigateToStep = useCallback((id: string) => {
-		if (stepOrders.current.has(id)) {
-			const currentOrder = stepOrders.current.get(id)!;
+	const navigateToStep = (id: string) => {
+		if (stepOrderMap.current.has(id)) {
+			const currentOrder = stepOrderMap.current.get(id)!;
 			markPreviousStepsComplete(currentOrder);
 			setCurrentStepId(id);
 		}
-	}, []);
+	};
 
 	const getSubstepProgress = (id: string): { current: number; total: number } | null => {
-		return substepProgress.current.get(id) || null;
+		return substepProgressMap.current.get(id) || null;
 	};
 
 	const updateSubstepProgress = (stepId: string, substepId: string, subSteps: INavSubStep[] = []) => {
@@ -67,7 +70,7 @@ export const UiNavigationSteps: React.FC<{
 			const total = subSteps.length;
 
 			if (current > 0) {
-				substepProgress.current.set(stepId, {
+				substepProgressMap.current.set(stepId, {
 					current,
 					total
 				});
@@ -76,9 +79,9 @@ export const UiNavigationSteps: React.FC<{
 	};
 
 	const markPreviousStepsComplete = (currentOrder: number) => {
-		setCompleteSteps(prev => {
+		setCompletedSteps(prev => {
 			const newSet = new Set(prev);
-			stepOrders.current.forEach((order, id) => {
+			stepOrderMap.current.forEach((order, id) => {
 				if (order < currentOrder) {
 					newSet.add(id);
 				}
@@ -88,8 +91,8 @@ export const UiNavigationSteps: React.FC<{
 	};
 
 	useEffect(() => {
-		if (stepOrders.current.size > 0) {
-			const currentOrder = stepOrders.current.get(currentStepId);
+		if (stepOrderMap.current.size > 0) {
+			const currentOrder = stepOrderMap.current.get(currentStepId);
 			if (currentOrder) {
 				markPreviousStepsComplete(currentOrder);
 			}
@@ -99,17 +102,19 @@ export const UiNavigationSteps: React.FC<{
 	const contextValue: INavigationStepContext = {
 		currentStepId,
 		registerStep,
+		getStepOrder,
 		setStepComplete,
 		navigateToStep,
 		getSubstepProgress,
 		updateSubstepProgress,
-		completeSteps,
+		completedSteps,
+		completedIcon,
 		kind
 	};
 
 	return (
 		<NavigationStepContext.Provider value={ contextValue }>
-			<nav aria-label="Progress" className={ cx("relative grid grid-cols-1 grid-rows-1 items-center", styles ) }>
+			<nav aria-label="Progress" className={ cx("relative grid grid-cols-1 grid-rows-1 items-center", styles, className ) }>
 				<div className="z-10 flex items-center justify-between">
 					{ children }
 				</div>
