@@ -41,11 +41,11 @@ export const Primary: Story = {
 				name: "property",
 				substeps: [
 					{
-						id: "2.1",
+						id: "1.1",
 						name: "Property 1"
 					},
 					{
-						id: "2.2",
+						id: "1.2",
 						name: "Property 2"
 					}
 				]

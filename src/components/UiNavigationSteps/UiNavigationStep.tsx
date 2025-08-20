@@ -8,7 +8,7 @@ import { ESize } from "../../_types/sizing.ts";
 
 function getStepClasses(status: ENavStepStatus, isClickable: boolean, kind: ENavStepKind) {
 	return cx(
-		"flex items-center rounded-full border transition-colors duration-200",
+		"flex items-center rounded-full border transition-all duration-150",
 		!isClickable && "bg-secondary-400",
 		isClickable && "cursor-pointer",
 		status === ENavStepStatus.COMPLETE
@@ -46,6 +46,7 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 	const hasSubsteps = subSteps.length > 0;
 	const progress = getSubstepProgress(id);
 	const isSubstepActive = subSteps.some(sub => sub.id === currentStepId);
+	const isStepComplete = completedSteps.has(id);
 
 	useEffect(() => {
 		registerStep(id, hasSubsteps);
@@ -57,7 +58,7 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 
 	const status = currentStepId === id || isSubstepActive
 		? ENavStepStatus.ACTIVE
-		: completedSteps.has(id)
+		: isStepComplete
 			? ENavStepStatus.COMPLETE
 			: ENavStepStatus.INACTIVE;
 
@@ -75,8 +76,10 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 		: name;
 
 	const progressText = hasSubsteps
-		? ` (${progress?.current || 1}/${progress?.total || subSteps.length})`
-		: "";
+		? isStepComplete
+			? ` ${subSteps.length}/${subSteps.length}`
+			: ` ${progress?.current || 1}/${progress?.total || subSteps.length}`
+		: null;
 
 	return (
 		<div

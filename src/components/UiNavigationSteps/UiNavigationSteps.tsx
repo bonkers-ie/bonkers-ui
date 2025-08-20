@@ -25,6 +25,7 @@ export const UiNavigationSteps: React.FC<{
 	const orderCounter = useRef(0);
 	const stepOrderMap = useRef<Map<string, number>>(new Map());
 	const substepProgressMap = useRef<Map<string, { current: number; total: number }>>(new Map());
+	const parentStepMap = useRef<Map<string, string>>(new Map());
 
 	const registerStep = (id: string, hasSubsteps: boolean) => {
 		if (!stepOrderMap.current.has(id)) {
@@ -38,6 +39,10 @@ export const UiNavigationSteps: React.FC<{
 				});
 			}
 		}
+	};
+
+	const registerSubstep = (parentId: string, substepId: string) => {
+		parentStepMap.current.set(substepId, parentId);
 	};
 
 	const getStepOrder = () => {
@@ -57,6 +62,13 @@ export const UiNavigationSteps: React.FC<{
 			const currentOrder = stepOrderMap.current.get(id)!;
 			markPreviousStepsComplete(currentOrder);
 			setCurrentStepId(id);
+		} else if (parentStepMap.current.has(id)) {
+			const parentId = parentStepMap.current.get(id)!;
+			if (stepOrderMap.current.has(parentId)) {
+				const currentOrder = stepOrderMap.current.get(parentId)!;
+				markPreviousStepsComplete(currentOrder);
+				setCurrentStepId(id);
+			}
 		}
 	};
 
@@ -66,6 +78,10 @@ export const UiNavigationSteps: React.FC<{
 
 	const updateSubstepProgress = (stepId: string, substepId: string, subSteps: INavSubStep[] = []) => {
 		if (subSteps.length > 0) {
+			subSteps.forEach(sub => {
+				registerSubstep(stepId, sub.id);
+			});
+
 			const current = subSteps.findIndex(sub => sub.id === substepId) + 1;
 			const total = subSteps.length;
 
@@ -92,8 +108,14 @@ export const UiNavigationSteps: React.FC<{
 
 	useEffect(() => {
 		if (stepOrderMap.current.size > 0) {
-			const currentOrder = stepOrderMap.current.get(currentStepId);
-			if (currentOrder) {
+			if (parentStepMap.current.has(currentStepId)) {
+				const parentId = parentStepMap.current.get(currentStepId)!;
+				if (stepOrderMap.current.has(parentId)) {
+					const currentOrder = stepOrderMap.current.get(parentId)!;
+					markPreviousStepsComplete(currentOrder);
+				}
+			} else if (stepOrderMap.current.has(currentStepId)) {
+				const currentOrder = stepOrderMap.current.get(currentStepId)!;
 				markPreviousStepsComplete(currentOrder);
 			}
 		}
