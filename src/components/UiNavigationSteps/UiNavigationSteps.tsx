@@ -12,128 +12,152 @@ import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const NavigationStepContext = createContext<INavigationStepContext | null>(null);
 
+interface INavigationStepData {
+	order: number;
+	hasSubsteps: boolean;
+	progress?: {
+		current: number;
+		total: number;
+	};
+}
+
+interface INavigationProviderState {
+	steps: Map<string, INavigationStepData>;
+	parentMap: Map<string, string>;
+}
+
 export const UiNavigationSteps: React.FC<{
 	initialStepId: string;
 	children: React.ReactNode;
 	className?: string;
 	completedIcon?: IconProp;
-}> = ({ initialStepId, children, className, completedIcon }) => {
-	const [completedSteps, setCompletedSteps] = useState<Set<string>>(new Set());
+	complete?: boolean
+}> = ({ initialStepId, children, className, completedIcon, complete = false }) => {
 	const orderCounter = useRef(0);
-	const stepOrderMap = useRef<Map<string, number>>(new Map());
-	const substepProgressMap = useRef<Map<string, { current: number; total: number }>>(new Map());
-	const parentStepMap = useRef<Map<string, string>>(new Map());
+	const [completedSteps, setCompletedSteps] = useState<Set<string>>(new Set());
 
-	//TODO: Look at passing props to children instead of using context
-	//TODO: Simplify components, reduce amount of refs + pass icon and name as props for child step
+	const navigationState = useRef<INavigationProviderState>({
+		steps: new Map(),
+		parentMap: new Map(),
+	});
 
 	const registerStep = (id: string, hasSubsteps: boolean) => {
-		if (!stepOrderMap.current.has(id)) {
+		if (!navigationState.current.steps.has(id)) {
 			orderCounter.current += 1;
-			stepOrderMap.current.set(id, orderCounter.current);
-
-			if (hasSubsteps) {
-				substepProgressMap.current.set(id, {
-					current: 0,
-					total: 0
-				});
-			}
+			navigationState.current.steps.set(id, {
+				order: orderCounter.current,
+				hasSubsteps,
+				progress: hasSubsteps
+					? {
+						current: 0,
+						total: 0
+					}
+					: undefined
+			});
 		}
 	};
 
-	const registerSubstep = (parentId: string, substepId: string) => {
-		parentStepMap.current.set(substepId, parentId);
-	};
-
-	const getStepOrder = () => {
-		return stepOrderMap.current;
-	};
-
-	const setStepComplete = (id: string) => {
-		setCompletedSteps((prev) => {
-			const newSet = new Set(prev);
-			newSet.add(id);
-			return newSet;
-		});
-	};
-
 	const navigateToStep = (id: string) => {
-		if (stepOrderMap.current.has(id)) {
-			const currentOrder = stepOrderMap.current.get(id)!;
+		const { steps, parentMap } = navigationState.current;
+
+		if (steps.has(id)) {
+			const currentOrder = steps.get(id)!.order;
 			markPreviousStepsComplete(currentOrder);
-		} else if (parentStepMap.current.has(id)) {
-			const parentId = parentStepMap.current.get(id)!;
-			if (stepOrderMap.current.has(parentId)) {
-				const currentOrder = stepOrderMap.current.get(parentId)!;
+		} else if (parentMap.has(id)) {
+			const parentId = parentMap.get(id)!;
+			if (steps.has(parentId)) {
+				const currentOrder = steps.get(parentId)!.order;
 				markPreviousStepsComplete(currentOrder);
 			}
 		}
 	};
 
-	const getSubstepProgress = (id: string): { current: number; total: number } | null => {
-		return substepProgressMap.current.get(id) || null;
-	};
-
 	const updateSubstepProgress = (stepId: string, substepId: string, subSteps: INavSubStep[] = []) => {
 		if (subSteps.length > 0) {
 			subSteps.forEach(sub => {
-				registerSubstep(stepId, sub.id);
+				navigationState.current.parentMap.set(sub.id, stepId);
 			});
 
 			const current = subSteps.findIndex(sub => sub.id === substepId) + 1;
 			const total = subSteps.length;
 
 			if (current > 0) {
-				substepProgressMap.current.set(stepId, {
-					current,
-					total
-				});
+				const stepData = navigationState.current.steps.get(stepId);
+				if (stepData) {
+					navigationState.current.steps.set(stepId, {
+						...stepData,
+						progress: {
+							current,
+							total
+						}
+					});
+				}
 			}
 		}
 	};
 
 	const markPreviousStepsComplete = (currentOrder: number) => {
-		setCompletedSteps(prev => {
-			const newSet = new Set(prev);
-			stepOrderMap.current.forEach((order, id) => {
-				if (order < currentOrder) {
-					newSet.add(id);
-				}
+		if (!complete) {
+
+			setCompletedSteps(prev => {
+				const newSet = new Set(prev);
+				navigationState.current.steps.forEach((data, id) => {
+					if (data.order < currentOrder) {
+						newSet.add(id);
+					}
+				});
+				return newSet;
 			});
-			return newSet;
-		});
+		} else {
+			setCompletedSteps(new Set(navigationState.current.steps.keys()));
+		}
 	};
 
 	useEffect(() => {
-		if (stepOrderMap.current.size > 0) {
-			if (parentStepMap.current.has(initialStepId)) {
-				const parentId = parentStepMap.current.get(initialStepId)!;
-				if (stepOrderMap.current.has(parentId)) {
-					const currentOrder = stepOrderMap.current.get(parentId)!;
+		const { steps, parentMap } = navigationState.current;
+
+		if (steps.size > 0) {
+			if (parentMap.has(initialStepId)) {
+				const parentId = parentMap.get(initialStepId)!;
+				if (steps.has(parentId)) {
+					const currentOrder = steps.get(parentId)!.order;
 					markPreviousStepsComplete(currentOrder);
 				}
-			} else if (stepOrderMap.current.has(initialStepId)) {
-				const currentOrder = stepOrderMap.current.get(initialStepId)!;
+			} else if (steps.has(initialStepId)) {
+				const currentOrder = steps.get(initialStepId)!.order;
 				markPreviousStepsComplete(currentOrder);
 			}
-		}
+		};
 	}, [initialStepId]);
 
 	const contextValue: INavigationStepContext = {
 		currentStepId: initialStepId,
 		registerStep,
-		getStepOrder,
-		setStepComplete,
 		navigateToStep,
-		getSubstepProgress,
 		updateSubstepProgress,
 		completedSteps,
 	};
 
-	const childWithProps = React.Children.map(children, child => {
+	const isStepActive = (id: string) => {
+		return id === initialStepId
+			|| navigationState.current.parentMap.get(initialStepId) === id;
+	};
+
+	const isStepComplete = (id: string) => {
+		return completedSteps.has(id);
+	};
+
+	const childWithProps = React.Children.map(children, (child, index) => {
 		if (React.isValidElement<INavStepProps>(child)) {
+			const stepData = navigationState.current.steps.get(child.props.id);
+			const totalSteps = navigationState.current.steps.size;
+
 			return React.cloneElement(child, {
 				icon: completedIcon,
+				order: stepData?.order || index + 1,
+				totalSteps,
+				isActive: isStepActive(child.props.id),
+				isComplete: isStepComplete(child.props.id),
 			});
 		}
 		return child;
@@ -141,7 +165,7 @@ export const UiNavigationSteps: React.FC<{
 
 	return (
 		<NavigationStepContext.Provider value={ contextValue }>
-			<nav aria-label="Progress" className={ cx("relative grid grid-cols-1 grid-rows-1 items-center", styles.navbar, className ) }>
+			<nav aria-label="Progress" className={ cx("relative grid grid-cols-1 grid-rows-1 items-center", styles.navbar, className) }>
 				<div className="z-10 flex items-center justify-between">
 					{ childWithProps }
 				</div>

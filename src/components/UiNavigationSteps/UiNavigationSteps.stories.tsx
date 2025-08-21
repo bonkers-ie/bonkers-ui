@@ -13,9 +13,28 @@ const meta = {
 			description: "Initial step ID to set as active when the provider is mounted.",
 			options: ["1", "2", "3", "4", "5"],
 		},
+		complete: {
+			control: {
+				type: "boolean",
+			},
+			description: "Mark all steps complete as if the user has completed them.",
+		},
+		completedIcon: {
+			control: {
+				type: "select",
+			},
+			description: "Icon to display when a step is complete.",
+			options: [
+				["far", "face-smile"],
+				["far", "face-meh"],
+				["far", "face-angry"],
+			],
+		},
 	},
 	args: {
 		initialStepId: "3",
+		complete: false,
+		completedIcon: ["far", "face-smile"],
 		children: undefined
 	},
 } satisfies Meta<typeof UiNavigationSteps>;
@@ -78,7 +97,7 @@ export const Primary: Story = {
 					</UiNavigationSteps>
 
 				</div>
-				<UiNavigationSteps initialStepId="51">
+				<UiNavigationSteps initialStepId="51" complete>
 					<UiNavigationStep id="11" name="Property"  />
 					<UiNavigationStep id="21" name="Contents" subSteps={ [{
 						id: "contents.1",

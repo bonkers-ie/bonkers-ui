@@ -41,22 +41,15 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 	subSteps = [],
 	className = "",
 	onClick,
+	order = 1,
+	totalSteps = 1,
+	isActive = false,
+	isComplete = false,
 	icon
 }) => {
-	const {
-		currentStepId,
-		registerStep,
-		navigateToStep,
-		getSubstepProgress,
-		updateSubstepProgress,
-		getStepOrder,
-		completedSteps,
-	} = useStepNav();
-
+	const { currentStepId, updateSubstepProgress, navigateToStep, registerStep } = useStepNav();
+	const isSubstepActive = subSteps.some((subStep) => subStep.id === currentStepId);
 	const hasSubsteps = subSteps.length > 0;
-	const progress = getSubstepProgress(id);
-	const isSubstepActive = subSteps.some(sub => sub.id === currentStepId);
-	const isStepComplete = completedSteps.has(id);
 
 	useEffect(() => {
 		registerStep(id, hasSubsteps);
@@ -64,34 +57,30 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 		if (hasSubsteps) {
 			updateSubstepProgress(id, currentStepId, subSteps);
 		}
-	}, [id, hasSubsteps, subSteps, currentStepId]);
+	}, [id, hasSubsteps, subSteps, currentStepId, updateSubstepProgress]);
 
-	const status = currentStepId === id || isSubstepActive
+	const status = !isComplete && (isActive || isSubstepActive)
 		? ENavStepStatus.ACTIVE
-		: isStepComplete
+		: isComplete
 			? ENavStepStatus.COMPLETE
 			: ENavStepStatus.INACTIVE;
 
-	const isClickable = status !== ENavStepStatus.INACTIVE;
-
 	const handleClick = () => {
-		if (isClickable) {
+		if (status !== ENavStepStatus.INACTIVE) {
 			onClick?.();
 			navigateToStep(id);
 		}
 	};
 
-	const progressText = hasSubsteps
-		? isStepComplete
-			? ` ${subSteps.length}/${subSteps.length}`
-			: ` ${progress?.current || 1}/${progress?.total || subSteps.length}`
-		: null;
+	const calculateWidth = () => (order / totalSteps) * 100;
 
-	const calculateWidth = () => {
-		const order = getStepOrder().get(id) || 0;
-		const total = getStepOrder().size + 1;
-		return order / total * 100;
-	};
+	const isClickable = status !== ENavStepStatus.INACTIVE;
+
+	const progressText = hasSubsteps
+		? isComplete
+			? ` ${subSteps.length}/${subSteps.length}`
+			: ` ${order}/${totalSteps || subSteps.length}`
+		: null;
 
 	return (
 		<div
@@ -136,7 +125,7 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 								tag="span"
 								size={ ETypographySizes.SM }
 							>
-								{ getStepOrder().get(id) || 0 }
+								{  order }
 							</UiTypography>
 						) }
 					{

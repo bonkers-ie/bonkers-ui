@@ -13,13 +13,10 @@ export interface INavSubStep {
 
 export interface INavigationStepContext {
 	currentStepId: string;
-	registerStep: (id: string, hasSubsteps: boolean) => void;
-	getStepOrder: () => Map<string, number>;
-	setStepComplete: (id: string) => void;
-	navigateToStep: (id: string) => void;
-	getSubstepProgress: (id: string) => { current: number; total: number } | null;
-	updateSubstepProgress: (stepId: string, substepId: string, subSteps?: INavSubStep[]) => void;
 	completedSteps: Set<string>;
+	navigateToStep: (id: string) => void;
+	registerStep: (id: string, hasSubsteps: boolean) => void;
+	updateSubstepProgress: (stepId: string, substepId: string, subSteps: INavSubStep[]) => void;
 }
 
 export interface INavStepProps {
@@ -29,4 +26,8 @@ export interface INavStepProps {
 	className?: string;
 	onClick?: () => void;
 	icon?: IconProp;
+	order?: number;
+	totalSteps?: number;
+	isActive?: boolean;
+	isComplete?: boolean;
 }
