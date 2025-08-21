@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { UiNavigationSteps } from "./UiNavigationSteps.tsx";
 import { UiNavigationStep } from "./UiNavigationStep.tsx";
-import { ENavStepKind } from "./_types.ts";
 
 const meta = {
 	title: "Components/UiNavigationStepsProvider",
@@ -14,17 +13,9 @@ const meta = {
 			description: "Initial step ID to set as active when the provider is mounted.",
 			options: ["1", "2", "3", "4", "5"],
 		},
-		kind: {
-			control: {
-				type: "select",
-			},
-			description: "The kind of navigation step.",
-			options: Object.values(ENavStepKind),
-		},
 	},
 	args: {
-		initialStepId: "2",
-		kind: ENavStepKind.DEFAULT,
+		initialStepId: "3",
 		children: undefined
 	},
 } satisfies Meta<typeof UiNavigationSteps>;
@@ -42,11 +33,11 @@ export const Primary: Story = {
 				substeps: [
 					{
 						id: "1.1",
-						name: "Property 1"
+						name: "Your Home"
 					},
 					{
 						id: "1.2",
-						name: "Property 2"
+						name: "Your Contents"
 					}
 				]
 			},
@@ -87,18 +78,18 @@ export const Primary: Story = {
 					</UiNavigationSteps>
 
 				</div>
-				<UiNavigationSteps initialStepId="property">
-					<UiNavigationStep id="property" name="Property"  />
-					<UiNavigationStep id="contents" name="Contents" subSteps={ [{
+				<UiNavigationSteps initialStepId="51">
+					<UiNavigationStep id="11" name="Property"  />
+					<UiNavigationStep id="21" name="Contents" subSteps={ [{
 						id: "contents.1",
 						name: "Contents 1"
 					}, {
 						id: "contents.2",
 						name: "Contents 2"
 					}] } />
-					<UiNavigationStep id="history" name="History & Claims" />
-					<UiNavigationStep id="about" name="About You" />
-					<UiNavigationStep id="declarations" name="Declarations" />
+					<UiNavigationStep id="31" name="History & Claims" />
+					<UiNavigationStep id="41" name="About You" />
+					<UiNavigationStep id="51" name="Declarations" />
 				</UiNavigationSteps>
 			</div>
 		);

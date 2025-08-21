@@ -1,12 +1,13 @@
 import React, { useEffect  } from "react";
 import cx from "classnames";
 import { ENavStepStatus, type INavStepProps } from "./_types";
-import { ETextWeight, ETypographySizes, UiTypography } from "../UiTypography";
+import { ETypographySizes, UiTypography } from "../UiTypography";
 import { useStepNav } from "./UiNavigationSteps";
 import { UiIcon } from "../UiIcon";
 import { ESize } from "../../_types/sizing.ts";
+import styles from "./UiNavigationSteps.module.css";
 
-function getStepClasses(status: ENavStepStatus, isClickable: boolean, isActive: boolean) {
+function getStepClasses(status: ENavStepStatus, isClickable: boolean) {
 	return cx(
 		`
 			flex
@@ -26,13 +27,11 @@ function getStepClasses(status: ENavStepStatus, isClickable: boolean, isActive: 
 		!isClickable && "bg-secondary-400",
 		isClickable && "cursor-pointer",
 		status === ENavStepStatus.COMPLETE
-		&& "border-secondary-400 bg-secondary-400 text-white",
+		&& "size-sm border-secondary-400 bg-secondary-400 p-xs text-white",
 		status === ENavStepStatus.ACTIVE
-		&& "border-secondary-400 bg-secondary-alt-200 text-secondary-400",
+		&& "border-secondary-400 bg-secondary-alt-200 px-xs py-xxs text-secondary-400",
 		status === ENavStepStatus.INACTIVE
-		&& "border-secondary-alt-500 bg-white text-secondary-alt-500",
-		isActive && "h-md px-xs py-xxs",
-		!isActive && "size-md",
+		&& "size-sm border-secondary-alt-500 bg-white p-xs text-secondary-alt-500",
 	);
 }
 
@@ -40,9 +39,9 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 	id,
 	name,
 	subSteps = [],
-	displaySubstepName = false,
 	className = "",
 	onClick,
+	icon
 }) => {
 	const {
 		currentStepId,
@@ -52,14 +51,12 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 		updateSubstepProgress,
 		getStepOrder,
 		completedSteps,
-		completedIcon,
 	} = useStepNav();
 
 	const hasSubsteps = subSteps.length > 0;
 	const progress = getSubstepProgress(id);
 	const isSubstepActive = subSteps.some(sub => sub.id === currentStepId);
 	const isStepComplete = completedSteps.has(id);
-	const isActive = currentStepId === id || isSubstepActive;
 
 	useEffect(() => {
 		registerStep(id, hasSubsteps);
@@ -84,19 +81,29 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 		}
 	};
 
-	const displayName = displaySubstepName && isSubstepActive
-		? subSteps.find(sub => sub.id === currentStepId)?.name || name
-		: name;
-
 	const progressText = hasSubsteps
 		? isStepComplete
 			? ` ${subSteps.length}/${subSteps.length}`
 			: ` ${progress?.current || 1}/${progress?.total || subSteps.length}`
 		: null;
 
+	const calculateWidth = () => {
+		const order = getStepOrder().get(id) || 0;
+		const total = getStepOrder().size + 1;
+		return order / total * 100;
+	};
+
 	return (
 		<div
-			className="flex flex-col gap-xxs md:flex-row md:items-center"
+			style={ status === ENavStepStatus.ACTIVE
+				? ({
+					"--step-width": `${calculateWidth()}%`
+				} as React.CSSProperties)
+				: {} }
+			className={ cx("flex flex-col gap-xxs md:flex-row md:items-center", {
+				[styles.active]: status === ENavStepStatus.ACTIVE,
+			},
+			) }
 		>
 			<button
 				onClick={ handleClick }
@@ -105,22 +112,27 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 					: undefined }
 				aria-disabled={ !isClickable }
 				disabled={ !isClickable }
-				className={ cx(getStepClasses(status, isClickable, isActive), className) }
+				className={ cx(getStepClasses(status, isClickable), className) }
 			>
 				<UiTypography
-					className="flex place-items-center gap-xxs"
+					className={ cx("flex place-items-center gap-xxs",
+						{
+							"font-bold": status === ENavStepStatus.ACTIVE,
+							"font-medium": status !== ENavStepStatus.ACTIVE,
+						}
+					) }
 					lineHeight
-					weight={ status !== ENavStepStatus.COMPLETE
-						? ETextWeight.SEMI_BOLD
-						: ETextWeight.REGULAR }
 					size={ ETypographySizes.XS }
 				>
 					{ status === ENavStepStatus.COMPLETE
 						? (
-							<UiIcon className="text-white" name={ completedIcon || ["far", "face-smile"] } size={ ESize.XS }/>
+							<UiIcon className="text-white" name={ icon || ["far", "face-smile"] } size={ ESize.XS }/>
 						)
 						: (
 							<UiTypography
+								className={ cx({
+									"font-semibold md:font-medium": status === ENavStepStatus.INACTIVE,
+								}) }
 								tag="span"
 								size={ ETypographySizes.SM }
 							>
@@ -129,10 +141,13 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 						) }
 					{
 
-						<UiTypography className={ cx("text-xxs md:text-sm", {
-							"hidden md:inline": !isActive,
-						}) } tag="span">
-							{ displayName }
+						<UiTypography
+							className={ cx("text-xxs text-nowrap md:text-xs", {
+								"hidden md:inline": status !== ENavStepStatus.ACTIVE,
+							}) }
+							tag="span"
+						>
+							{ name }
 							{ progressText }
 						</UiTypography>
 

@@ -6,11 +6,6 @@ export enum ENavStepStatus {
 	INACTIVE = "inactive",
 }
 
-export enum ENavStepKind {
-	DEFAULT = "default",
-	COMPACT = "compact",
-}
-
 export interface INavSubStep {
 	id: string;
 	name: string;
@@ -24,8 +19,6 @@ export interface INavigationStepContext {
 	navigateToStep: (id: string) => void;
 	getSubstepProgress: (id: string) => { current: number; total: number } | null;
 	updateSubstepProgress: (stepId: string, substepId: string, subSteps?: INavSubStep[]) => void;
-	kind?: ENavStepKind;
-	completedIcon?: IconProp;
 	completedSteps: Set<string>;
 }
 
@@ -33,7 +26,7 @@ export interface INavStepProps {
 	id: string;
 	name: string;
 	subSteps?: INavSubStep[];
-	displaySubstepName?: boolean;
 	className?: string;
 	onClick?: () => void;
+	icon?: IconProp;
 }

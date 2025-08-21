@@ -5,7 +5,7 @@ import React, {
 	useRef,
 	useEffect,
 } from "react";
-import { ENavStepKind, type INavigationStepContext, type INavSubStep } from "./_types";
+import { type INavStepProps, type INavigationStepContext, type INavSubStep } from "./_types";
 import cx from "classnames";
 import styles from "./UiNavigationSteps.module.css";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
@@ -14,18 +14,16 @@ const NavigationStepContext = createContext<INavigationStepContext | null>(null)
 
 export const UiNavigationSteps: React.FC<{
 	initialStepId: string;
-	kind?: ENavStepKind;
 	children: React.ReactNode;
 	className?: string;
 	completedIcon?: IconProp;
-}> = ({ initialStepId, children, kind = ENavStepKind.DEFAULT, className, completedIcon }) => {
+}> = ({ initialStepId, children, className, completedIcon }) => {
 	const [completedSteps, setCompletedSteps] = useState<Set<string>>(new Set());
 	const orderCounter = useRef(0);
 	const stepOrderMap = useRef<Map<string, number>>(new Map());
 	const substepProgressMap = useRef<Map<string, { current: number; total: number }>>(new Map());
 	const parentStepMap = useRef<Map<string, string>>(new Map());
 
-	//TODO: Make responsive using breakpoint styles and possible add scroll for inner containers or break to new line
 	//TODO: Look at passing props to children instead of using context
 	//TODO: Simplify components, reduce amount of refs + pass icon and name as props for child step
 
@@ -130,15 +128,22 @@ export const UiNavigationSteps: React.FC<{
 		getSubstepProgress,
 		updateSubstepProgress,
 		completedSteps,
-		completedIcon,
-		kind
 	};
+
+	const childWithProps = React.Children.map(children, child => {
+		if (React.isValidElement<INavStepProps>(child)) {
+			return React.cloneElement(child, {
+				icon: completedIcon,
+			});
+		}
+		return child;
+	});
 
 	return (
 		<NavigationStepContext.Provider value={ contextValue }>
-			<nav aria-label="Progress" className={ cx("relative grid grid-cols-1 grid-rows-1 items-center", styles, className ) }>
-				<div className="z-10 flex items-start justify-between">
-					{ children }
+			<nav aria-label="Progress" className={ cx("relative grid grid-cols-1 grid-rows-1 items-center", styles.navbar, className ) }>
+				<div className="z-10 flex items-center justify-between">
+					{ childWithProps }
 				</div>
 			</nav>
 		</NavigationStepContext.Provider>
