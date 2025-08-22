@@ -8,7 +8,6 @@ import React, {
 import { type INavStepProps, type INavigationStepContext, type INavSubStep } from "./_types";
 import cx from "classnames";
 import styles from "./UiNavigationSteps.module.css";
-import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const NavigationStepContext = createContext<INavigationStepContext | null>(null);
 
@@ -30,9 +29,8 @@ export const UiNavigationSteps: React.FC<{
 	initialStepId: string;
 	children: React.ReactNode;
 	className?: string;
-	completedIcon?: IconProp;
 	complete?: boolean
-}> = ({ initialStepId, children, className, completedIcon, complete = false }) => {
+}> = ({ initialStepId, children, className, complete = false }) => {
 	const orderCounter = useRef(0);
 	const [currentStepOrder, setCurrentStepOrder] = useState<number>(0);
 	const [completedSteps, setCompletedSteps] = useState<Set<string>>(new Set());
@@ -75,9 +73,7 @@ export const UiNavigationSteps: React.FC<{
 			if (targetOrder < currentStepOrder) {
 				markSubsequentStepsIncomplete(targetOrder);
 			}
-
 			markPreviousStepsComplete(targetOrder);
-
 			setCurrentStepOrder(targetOrder);
 		}
 	};
@@ -184,7 +180,6 @@ export const UiNavigationSteps: React.FC<{
 			const totalSteps = navigationState.current.steps.size;
 
 			return React.cloneElement(child, {
-				icon: completedIcon,
 				order: stepData?.order || index + 1,
 				totalSteps,
 				isActive: isStepActive(child.props.id),

@@ -19,22 +19,10 @@ const meta = {
 			},
 			description: "Mark all steps complete as if the user has completed them.",
 		},
-		completedIcon: {
-			control: {
-				type: "select",
-			},
-			description: "Icon to display when a step is complete.",
-			options: [
-				["far", "face-smile"],
-				["far", "face-meh"],
-				["far", "face-angry"],
-			],
-		},
 	},
 	args: {
 		initialStepId: "3",
 		complete: false,
-		completedIcon: ["far", "face-smile"],
 		children: undefined
 	},
 } satisfies Meta<typeof UiNavigationSteps>;
