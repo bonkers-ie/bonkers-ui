@@ -34,6 +34,7 @@ export const UiNavigationSteps: React.FC<{
 	complete?: boolean
 }> = ({ initialStepId, children, className, completedIcon, complete = false }) => {
 	const orderCounter = useRef(0);
+	const [currentStepOrder, setCurrentStepOrder] = useState<number>(0);
 	const [completedSteps, setCompletedSteps] = useState<Set<string>>(new Set());
 
 	const navigationState = useRef<INavigationProviderState>({
@@ -59,16 +60,25 @@ export const UiNavigationSteps: React.FC<{
 
 	const navigateToStep = (id: string) => {
 		const { steps, parentMap } = navigationState.current;
+		let targetOrder: number | null = null;
 
 		if (steps.has(id)) {
-			const currentOrder = steps.get(id)!.order;
-			markPreviousStepsComplete(currentOrder);
+			targetOrder = steps.get(id)!.order;
 		} else if (parentMap.has(id)) {
 			const parentId = parentMap.get(id)!;
 			if (steps.has(parentId)) {
-				const currentOrder = steps.get(parentId)!.order;
-				markPreviousStepsComplete(currentOrder);
+				targetOrder = steps.get(parentId)!.order;
 			}
+		}
+
+		if (targetOrder !== null) {
+			if (targetOrder < currentStepOrder) {
+				markSubsequentStepsIncomplete(targetOrder);
+			}
+
+			markPreviousStepsComplete(targetOrder);
+
+			setCurrentStepOrder(targetOrder);
 		}
 	};
 
@@ -96,14 +106,27 @@ export const UiNavigationSteps: React.FC<{
 		}
 	};
 
-	const markPreviousStepsComplete = (currentOrder: number) => {
-		if (!complete) {
+	const markSubsequentStepsIncomplete = (targetOrder: number) => {
+		setCompletedSteps(prev => {
+			const newSet = new Set(prev);
+			navigationState.current.steps.forEach((data, id) => {
+				if (data.order > targetOrder) {
+					newSet.delete(id);
+				}
+			});
+			return newSet;
+		});
+	};
 
+	const markPreviousStepsComplete = (targetOrder: number) => {
+		if (!complete) {
 			setCompletedSteps(prev => {
 				const newSet = new Set(prev);
 				navigationState.current.steps.forEach((data, id) => {
-					if (data.order < currentOrder) {
+					if (data.order < targetOrder) {
 						newSet.add(id);
+					} else if (data.order === targetOrder) {
+						newSet.delete(id);
 					}
 				});
 				return newSet;
@@ -117,18 +140,26 @@ export const UiNavigationSteps: React.FC<{
 		const { steps, parentMap } = navigationState.current;
 
 		if (steps.size > 0) {
+			let targetStepId = initialStepId;
+
 			if (parentMap.has(initialStepId)) {
-				const parentId = parentMap.get(initialStepId)!;
-				if (steps.has(parentId)) {
-					const currentOrder = steps.get(parentId)!.order;
-					markPreviousStepsComplete(currentOrder);
+				const parentId = parentMap.get(initialStepId);
+				if (parentId && steps.has(parentId)) {
+					targetStepId = parentId;
 				}
-			} else if (steps.has(initialStepId)) {
-				const currentOrder = steps.get(initialStepId)!.order;
-				markPreviousStepsComplete(currentOrder);
 			}
-		};
-	}, [initialStepId]);
+
+			if (complete) {
+				setCompletedSteps(new Set(steps.keys()));
+			} else {
+				setCompletedSteps(new Set());
+			}
+
+			if (steps.has(targetStepId)) {
+				navigateToStep(targetStepId);
+			}
+		}
+	}, [initialStepId, complete]);
 
 	const contextValue: INavigationStepContext = {
 		currentStepId: initialStepId,

@@ -1,7 +1,7 @@
 import React, { useEffect  } from "react";
 import cx from "classnames";
 import { ENavStepStatus, type INavStepProps } from "./_types";
-import { ETypographySizes, UiTypography } from "../UiTypography";
+import { ETextWeight, ETypographySizes, UiTypography } from "../UiTypography";
 import { useStepNav } from "./UiNavigationSteps";
 import { UiIcon } from "../UiIcon";
 import { ESize } from "../../_types/sizing.ts";
@@ -11,6 +11,7 @@ function getStepClasses(status: ENavStepStatus, isClickable: boolean) {
 	return cx(
 		`
 			flex
+			transform
 			items-center
 			justify-center
 			rounded-full
@@ -18,6 +19,7 @@ function getStepClasses(status: ENavStepStatus, isClickable: boolean) {
 			text-secondary-400
 			transition-all
 			duration-150
+			ease-in-out
 			md:h-xl
 			md:w-full
 			md:px-xs
@@ -104,12 +106,10 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 				className={ cx(getStepClasses(status, isClickable), className) }
 			>
 				<UiTypography
-					className={ cx("flex place-items-center gap-xxs",
-						{
-							"font-bold": status === ENavStepStatus.ACTIVE,
-							"font-medium": status !== ENavStepStatus.ACTIVE,
-						}
-					) }
+					className="flex place-items-center gap-xxs"
+					weight={ status === ENavStepStatus.ACTIVE
+						? ETextWeight.SEMI_BOLD
+						: ETextWeight.REGULAR }
 					lineHeight
 					size={ ETypographySizes.XS }
 				>
@@ -130,15 +130,14 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 						) }
 					{
 
-						<UiTypography
+						<span
 							className={ cx("text-xxs text-nowrap md:text-xs", {
 								"hidden md:inline": status !== ENavStepStatus.ACTIVE,
 							}) }
-							tag="span"
 						>
 							{ name }
 							{ progressText }
-						</UiTypography>
+						</span>
 
 					}
 				</UiTypography>
