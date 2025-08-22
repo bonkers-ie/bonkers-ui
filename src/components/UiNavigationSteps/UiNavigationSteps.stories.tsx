@@ -3,7 +3,7 @@ import { UiNavigationSteps } from "./UiNavigationSteps.tsx";
 import { UiNavigationStep } from "./UiNavigationStep.tsx";
 
 const meta = {
-	title: "Components/UiNavigationStepsProvider",
+	title: "Components/UiNavigationSteps",
 	component: UiNavigationSteps,
 	argTypes: {
 		initialStepId: {
