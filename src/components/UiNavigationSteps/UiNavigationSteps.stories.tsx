@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { UiNavigationSteps } from "./UiNavigationSteps.tsx";
 import { UiNavigationStep } from "./UiNavigationStep.tsx";
+import { UiIcon } from "../UiIcon/UiIcon.tsx";
+import { ESize } from "../UiAccordion/index.ts";
 
 const meta = {
 	title: "Components/UiNavigationSteps",
@@ -66,27 +68,28 @@ export const Primary: Story = {
 			},
 		];
 
+		const Icon = () => <UiIcon className="text-white" name={ ["far", "face-smile"] } size={ ESize.XS }/>;
+
 		return (
 			<div className="grid gap-md">
-				<div className="max-w-[95%]">
 
-					<UiNavigationSteps { ...args }>
-						{
-							steps.map(step => (
-								<UiNavigationStep
-									key={ step.id }
-									id={ step.id }
-									name={ step.name }
-									subSteps={ step.substeps }
-								/>
-							))
-						}
+				<UiNavigationSteps { ...args }>
+					{
+						steps.map(step => (
+							<UiNavigationStep
+								key={ step.id }
+								id={ step.id }
+								icon={ <Icon /> }
+								name={ step.name }
+								subSteps={ step.substeps }
+							/>
+						))
+					}
 
-					</UiNavigationSteps>
+				</UiNavigationSteps>
 
-				</div>
 				<UiNavigationSteps initialStepId="51" complete>
-					<UiNavigationStep id="11" name="Property"  />
+					<UiNavigationStep id="11" name="Property" />
 					<UiNavigationStep id="21" name="Contents" subSteps={ [{
 						id: "contents.1",
 						name: "Contents 1"

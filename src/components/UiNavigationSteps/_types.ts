@@ -1,4 +1,4 @@
-import type { IconProp } from "@fortawesome/fontawesome-svg-core";
+import type { ReactNode } from "react";
 
 export enum ENavStepStatus {
 	COMPLETE = "complete",
@@ -25,7 +25,7 @@ export interface INavStepProps {
 	subSteps?: INavSubStep[];
 	className?: string;
 	onClick?: () => void;
-	icon?: IconProp;
+	icon?: ReactNode;
 	order?: number;
 	totalSteps?: number;
 	isActive?: boolean;

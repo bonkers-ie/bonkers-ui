@@ -3,8 +3,6 @@ import cx from "classnames";
 import { ENavStepStatus, type INavStepProps } from "./_types";
 import { ETextWeight, ETypographySizes, UiTypography } from "../UiTypography";
 import { useStepNav } from "./UiNavigationSteps";
-import { UiIcon } from "../UiIcon";
-import { ESize } from "../../_types/sizing.ts";
 import styles from "./UiNavigationSteps.module.css";
 
 function getStepClasses(status: ENavStepStatus, isClickable: boolean) {
@@ -114,9 +112,7 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 					size={ ETypographySizes.XS }
 				>
 					{ status === ENavStepStatus.COMPLETE
-						? (
-							<UiIcon className="text-white" name={ icon || ["far", "face-smile"] } size={ ESize.XS }/>
-						)
+						? icon
 						: (
 							<UiTypography
 								className={ cx({
