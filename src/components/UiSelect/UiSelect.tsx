@@ -10,6 +10,7 @@ type TSelectProps = {
 	disabled?: boolean;
 	value?: string | number | readonly string[];
 	placeholder?: string;
+	prefixIcon?: React.ReactNode;
 	postfixIcon?: React.ReactNode;
 	className?: string;
 	kind?: EInputKind;
@@ -21,6 +22,7 @@ const stateClasses = {
 	[EInputKind.DEFAULT]: "border-secondary-alt-600",
 	[EInputKind.ERROR]: "border-error",
 	[EInputKind.SUCCESS]: "border-primary-600",
+	[EInputKind.WARNING]: "border-warning-600",
 };
 
 export const UiSelect: React.FC<TSelectProps> = ({
@@ -31,6 +33,7 @@ export const UiSelect: React.FC<TSelectProps> = ({
 	onChange,
 	className,
 	placeholder,
+	prefixIcon,
 	postfixIcon,
 	statusMessage,
 	kind,
@@ -55,6 +58,7 @@ export const UiSelect: React.FC<TSelectProps> = ({
 				: null
 			}
 			<div className={ cx(styles.UiSelect,
+				"flex items-center gap-sm",
 				"relative",
 				"rounded-xl",
 				"border",
@@ -63,21 +67,17 @@ export const UiSelect: React.FC<TSelectProps> = ({
 					? ["pointer-events-none", "border-secondary-alt-300", "bg-secondary-alt-200"]
 					: [kind && stateClasses[kind], "bg-white"]
 			) }>
+				{ prefixIcon
+					? <div className="flex items-center pl-sm">{ prefixIcon }</div>
+					: null }
 				<select
 					{ ...rest }
-					className="
-						m-0
-						w-full
-						cursor-pointer
-						appearance-none
-						border-0
-						bg-transparent
-						p-sm
-						pr-xl
-						leading-[20px]
-						text-secondary-alt
-						outline-0
-					"
+					className={ cx(
+						"m-0 w-full cursor-pointer appearance-none border-0 bg-transparent text-secondary-alt outline-0",
+						prefixIcon
+							? "p-0 py-sm pr-xl"
+							: "p-sm pr-xl"
+					) }
 					disabled={ disabled }
 					value={ value }
 					onChange={ handleChange }
@@ -128,7 +128,9 @@ export const UiSelect: React.FC<TSelectProps> = ({
 						color={
 							kind === EInputKind.ERROR
 								? EColors.ERROR
-								: EColors.PRIMARY
+								: kind === EInputKind.WARNING
+									? EColors.WARNING_500
+									: EColors.PRIMARY
 						}
 						size={ ETypographySizes.SM }
 						data-status={ !!statusMessage }
