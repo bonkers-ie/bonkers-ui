@@ -6,6 +6,7 @@ type TSelectProps = {
     disabled?: boolean;
     value?: string | number | readonly string[];
     placeholder?: string;
+    prefixIcon?: React.ReactNode;
     postfixIcon?: React.ReactNode;
     className?: string;
     kind?: EInputKind;

@@ -1,0 +1,5 @@
+import{j as s}from"./jsx-runtime-D_zvdyIk.js";import{E as r,a as n,U as o}from"./UiPills-kNzQcvCf.js";import"./iframe-8KcR7PC5.js";import{U as t,E as a}from"./UiIcon-B-mgRT4U.js";import"./index-CQ_1EZVJ.js";import"./UiTypography-2F3lfKHV.js";const P={title:"Components/UiPills",component:o,argTypes:{size:{control:{type:"select"},options:Object.values(r),description:"Pills Size"},kind:{control:{type:"select"},options:Object.values(n),description:"Pills Kind"},children:{control:{type:"text"},description:"Pills Children"}},args:{kind:n.PRIMARY,size:r.SMALL,children:"Pills"}},e={render:i=>s.jsx(o,{kind:i.kind,size:i.size,icon:s.jsx(t,{name:["far","face-smile"],size:a.XS}),children:i.children})};e.parameters={...e.parameters,docs:{...e.parameters?.docs,source:{originalSource:`{
+  render: args => <UiPills kind={args.kind} size={args.size} icon={<UiIcon name={["far", "face-smile"]} size={ESize.XS} />}>
+            {args.children}
+        </UiPills>
+}`,...e.parameters?.docs?.source}}};const f=["Primary"];export{e as Primary,f as __namedExportsOrder,P as default};
