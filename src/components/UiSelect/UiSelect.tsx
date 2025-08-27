@@ -10,7 +10,7 @@ type TSelectProps = {
 	disabled?: boolean;
 	value?: string | number | readonly string[];
 	placeholder?: string;
-	postfixIcon?: React.ReactNode;
+	preIcon?: React.ReactNode;
 	className?: string;
 	kind?: EInputKind;
 	statusMessage?: string | React.ReactElement;
@@ -21,6 +21,7 @@ const stateClasses = {
 	[EInputKind.DEFAULT]: "border-secondary-alt-600",
 	[EInputKind.ERROR]: "border-error",
 	[EInputKind.SUCCESS]: "border-primary-600",
+	[EInputKind.WARNING]: "border-warning-600",
 };
 
 export const UiSelect: React.FC<TSelectProps> = ({
@@ -31,7 +32,7 @@ export const UiSelect: React.FC<TSelectProps> = ({
 	onChange,
 	className,
 	placeholder,
-	postfixIcon,
+	preIcon,
 	statusMessage,
 	kind,
 	...rest
@@ -55,6 +56,7 @@ export const UiSelect: React.FC<TSelectProps> = ({
 				: null
 			}
 			<div className={ cx(styles.UiSelect,
+				"flex items-center gap-sm",
 				"relative",
 				"rounded-xl",
 				"border",
@@ -63,21 +65,17 @@ export const UiSelect: React.FC<TSelectProps> = ({
 					? ["pointer-events-none", "border-secondary-alt-300", "bg-secondary-alt-200"]
 					: [kind && stateClasses[kind], "bg-white"]
 			) }>
+				{ preIcon
+					? <div className="flex items-center pl-sm">{ preIcon }</div>
+					: null }
 				<select
 					{ ...rest }
-					className="
-						m-0
-						w-full
-						cursor-pointer
-						appearance-none
-						border-0
-						bg-transparent
-						p-sm
-						pr-xl
-						leading-[20px]
-						text-secondary-alt
-						outline-0
-					"
+					className={ cx(
+						"m-0 w-full cursor-pointer appearance-none border-0 bg-transparent text-secondary-alt outline-0",
+						preIcon
+							? "p-0 py-sm pr-xl"
+							: "p-sm pr-xl"
+					) }
 					disabled={ disabled }
 					value={ value }
 					onChange={ handleChange }
@@ -87,23 +85,6 @@ export const UiSelect: React.FC<TSelectProps> = ({
 						: null }
 					{ children }
 				</select>
-				<div className="pointer-events-none absolute top-1/2 right-sm -translate-y-1/2">
-					{ postfixIcon
-						? postfixIcon
-						: (<svg
-							width="16"
-							height="16"
-							viewBox="0 0 16 16"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								d="M13.25 6.8125L8.5 11.2812C8.34375 11.4375 8.15625 11.5 8 11.5C7.8125 11.5 7.625 11.4375 7.46875 11.3125L2.71875 6.8125C2.40625 6.53125 2.40625 6.0625 2.6875 5.75C2.96875 5.4375 3.4375 5.4375 3.75 5.71875L8 9.71875L12.2188 5.71875C12.5312 5.4375 13 5.4375 13.2812 5.75C13.5625 6.0625 13.5625 6.53125 13.25 6.8125Z"
-								fill="currentColor"
-							/>
-						</svg>)
-					}
-				</div>
 			</div>
 			{ subLabel
 				? (<UiTypography
@@ -128,7 +109,9 @@ export const UiSelect: React.FC<TSelectProps> = ({
 						color={
 							kind === EInputKind.ERROR
 								? EColors.ERROR
-								: EColors.PRIMARY
+								: kind === EInputKind.WARNING
+									? EColors.WARNING_500
+									: EColors.PRIMARY
 						}
 						size={ ETypographySizes.SM }
 						data-status={ !!statusMessage }
