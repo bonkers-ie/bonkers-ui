@@ -22,3 +22,4 @@ export * from './components/UiTable';
 export * from './components/UiTabs';
 export * from './components/UiToggle';
 export * from './components/UiTypography';
+export * from './components/UiNavigationSteps';
