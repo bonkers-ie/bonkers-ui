@@ -117,22 +117,22 @@ export const Variants: Story = {
 			</div>
 			<div className='flex flex-col gap-sm'>
 				<div className='flex gap-sm'>
-					<UiSelect { ...args } kind={ EInputKind.DEFAULT } heading="Default with Icon" preIcon={ <UiIcon name={ ["far", "face-angry"] } size={ ESize.MD } className="text-secondary-alt-600" /> }>
+					<UiSelect { ...args } kind={ EInputKind.DEFAULT } heading="Default with Icon" prefixIcon={ <UiIcon name={ ["far", "face-angry"] } size={ ESize.MD } className="text-secondary-alt-600" /> }>
 						<option value="">Select option</option>
 						<option value="1">Option 1</option>
 						<option value="2">Option 2</option>
 					</UiSelect>
-					<UiSelect { ...args } kind={ EInputKind.ERROR } heading="Error with Icon" preIcon={ <UiIcon name={ ["far", "face-angry"] } size={ ESize.MD } className="text-error" /> } statusMessage="Error message">
+					<UiSelect { ...args } kind={ EInputKind.ERROR } heading="Error with Icon" prefixIcon={ <UiIcon name={ ["far", "face-angry"] } size={ ESize.MD } className="text-error" /> } statusMessage="Error message">
 						<option value="">Select option</option>
 						<option value="1">Option 1</option>
 						<option value="2">Option 2</option>
 					</UiSelect>
-					<UiSelect { ...args } kind={ EInputKind.SUCCESS } heading="Success with Icon" preIcon={ <UiIcon name={ ["far", "face-angry"] } size={ ESize.MD } className="text-primary-600" /> }>
+					<UiSelect { ...args } kind={ EInputKind.SUCCESS } heading="Success with Icon" prefixIcon={ <UiIcon name={ ["far", "face-angry"] } size={ ESize.MD } className="text-primary-600" /> }>
 						<option value="">Select option</option>
 						<option value="1">Option 1</option>
 						<option value="2">Option 2</option>
 					</UiSelect>
-					<UiSelect { ...args } kind={ EInputKind.WARNING } heading="Warning with Icon" preIcon={ <UiIcon name={ ["far", "face-angry"] } size={ ESize.MD } className="text-warning-600" /> } statusMessage="Warning message">
+					<UiSelect { ...args } kind={ EInputKind.WARNING } heading="Warning with Icon" prefixIcon={ <UiIcon name={ ["far", "face-angry"] } size={ ESize.MD } className="text-warning-600" /> } statusMessage="Warning message">
 						<option value="">Select option</option>
 						<option value="1">Option 1</option>
 						<option value="2">Option 2</option>
@@ -140,7 +140,7 @@ export const Variants: Story = {
 				</div>
 			</div>
 			<div className='flex flex-col gap-sm'>
-				<UiSelect { ...args } kind={ EInputKind.DEFAULT } heading="Disabled" disabled preIcon={ <UiIcon name={ ["far", "face-angry"] } size={ ESize.MD } className="text-secondary-alt-300" /> }>
+				<UiSelect { ...args } kind={ EInputKind.DEFAULT } heading="Disabled" disabled prefixIcon={ <UiIcon name={ ["far", "face-angry"] } size={ ESize.MD } className="text-secondary-alt-300" /> }>
 					<option value="">Cannot select</option>
 					<option value="1">Option 1</option>
 					<option value="2">Option 2</option>
