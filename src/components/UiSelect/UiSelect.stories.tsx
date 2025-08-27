@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import { UiSelect } from "./UiSelect";
 import { EInputKind } from "../UiInput";
+import { UiIcon } from "../UiIcon";
+import { ESize } from "../../_types/sizing";
 
 const meta = {
 	title: "Components/UiSelect",
@@ -84,4 +86,66 @@ export const Primary: Story = {
 			</React.Fragment>
 		);
 	}
+};
+
+export const Variants: Story = {
+	render: (args) => (
+		<div className='flex flex-col gap-lg'>
+			<div className='flex flex-col gap-sm'>
+				<div className='flex gap-sm'>
+					<UiSelect { ...args } kind={ EInputKind.DEFAULT } heading="Default">
+						<option value="">Select option</option>
+						<option value="1">Option 1</option>
+						<option value="2">Option 2</option>
+					</UiSelect>
+					<UiSelect { ...args } kind={ EInputKind.ERROR } heading="Error">
+						<option value="">Select option</option>
+						<option value="1">Option 1</option>
+						<option value="2">Option 2</option>
+					</UiSelect>
+					<UiSelect { ...args } kind={ EInputKind.SUCCESS } heading="Success">
+						<option value="">Select option</option>
+						<option value="1">Option 1</option>
+						<option value="2">Option 2</option>
+					</UiSelect>
+					<UiSelect { ...args } kind={ EInputKind.WARNING } heading="Warning">
+						<option value="">Select option</option>
+						<option value="1">Option 1</option>
+						<option value="2">Option 2</option>
+					</UiSelect>
+				</div>
+			</div>
+			<div className='flex flex-col gap-sm'>
+				<div className='flex gap-sm'>
+					<UiSelect { ...args } kind={ EInputKind.DEFAULT } heading="Default with Icon" prefixIcon={ <UiIcon name={ ["far", "face-angry"] } size={ ESize.MD } className="text-secondary-alt-600" /> }>
+						<option value="">Select option</option>
+						<option value="1">Option 1</option>
+						<option value="2">Option 2</option>
+					</UiSelect>
+					<UiSelect { ...args } kind={ EInputKind.ERROR } heading="Error with Icon" prefixIcon={ <UiIcon name={ ["far", "face-angry"] } size={ ESize.MD } className="text-error" /> } statusMessage="Error message">
+						<option value="">Select option</option>
+						<option value="1">Option 1</option>
+						<option value="2">Option 2</option>
+					</UiSelect>
+					<UiSelect { ...args } kind={ EInputKind.SUCCESS } heading="Success with Icon" prefixIcon={ <UiIcon name={ ["far", "face-angry"] } size={ ESize.MD } className="text-primary-600" /> }>
+						<option value="">Select option</option>
+						<option value="1">Option 1</option>
+						<option value="2">Option 2</option>
+					</UiSelect>
+					<UiSelect { ...args } kind={ EInputKind.WARNING } heading="Warning with Icon" prefixIcon={ <UiIcon name={ ["far", "face-angry"] } size={ ESize.MD } className="text-warning-600" /> } statusMessage="Warning message">
+						<option value="">Select option</option>
+						<option value="1">Option 1</option>
+						<option value="2">Option 2</option>
+					</UiSelect>
+				</div>
+			</div>
+			<div className='flex flex-col gap-sm'>
+				<UiSelect { ...args } kind={ EInputKind.DEFAULT } heading="Disabled" disabled prefixIcon={ <UiIcon name={ ["far", "face-angry"] } size={ ESize.MD } className="text-secondary-alt-300" /> }>
+					<option value="">Cannot select</option>
+					<option value="1">Option 1</option>
+					<option value="2">Option 2</option>
+				</UiSelect>
+			</div>
+		</div>
+	)
 };
