@@ -16,7 +16,7 @@ function getStepClasses(status: ENavStepStatus, isClickable: boolean) {
 			border
 			text-secondary-400
 			transition-all
-			duration-150
+			duration-100
 			ease-in-out
 			md:h-xl
 			md:w-full
@@ -47,7 +47,7 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 	isComplete = false,
 	icon
 }) => {
-	const { currentStepId, updateSubstepProgress, navigateToStep, registerStep } = useStepNav();
+	const { currentStepId, updateSubstepProgress, registerStep } = useStepNav();
 	const isSubstepActive = subSteps.some((subStep) => subStep.id === currentStepId);
 	const hasSubsteps = subSteps.length > 0;
 
@@ -68,7 +68,6 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 	const handleClick = () => {
 		if (status !== ENavStepStatus.INACTIVE) {
 			onClick?.();
-			navigateToStep(id);
 		}
 	};
 
@@ -79,7 +78,9 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 	const progressText = hasSubsteps
 		? isComplete
 			? ` ${subSteps.length}/${subSteps.length}`
-			: ` ${order}/${totalSteps || subSteps.length}`
+			: isSubstepActive
+				? ` ${subSteps.findIndex((step) => step.id === currentStepId) + 1}/${subSteps.length}`
+				: ` ${order}/${subSteps.length}`
 		: null;
 
 	return (

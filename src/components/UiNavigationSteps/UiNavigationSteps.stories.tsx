@@ -13,7 +13,7 @@ const meta = {
 				type: "select",
 			},
 			description: "Initial step ID to set as active when the provider is mounted.",
-			options: ["1", "2", "3", "4", "5"],
+			options: ["1", "1.1", "1.2", "2", "3", "4", "5"],
 		},
 		complete: {
 			control: {
