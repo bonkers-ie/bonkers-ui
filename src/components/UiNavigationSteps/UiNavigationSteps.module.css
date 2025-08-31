@@ -4,12 +4,12 @@
 	left: 0;
 	right: 0;
 	height: 1px;
-	top: 15px;
+	top: 14px;
 	background-color: var(--color-secondary-alt-500);
 	width: 98%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 864px) {
 	.navbar::before {
 		top: 20px;
 	}
@@ -27,7 +27,7 @@
 	z-index: -1;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 864px) {
 	.active::before {
 		top: 20px;
 	}
