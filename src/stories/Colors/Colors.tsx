@@ -3,7 +3,7 @@ import { getCSSVariables, getThemeTokens } from "../../helper";
 
 export const Colors = () => {
 	const allTokens = getCSSVariables();
-	const { groupedColors, baseColors } = getThemeTokens(allTokens);
+	const { groupedColors, baseColors, berColors } = getThemeTokens(allTokens);
 
 	return (
 		<div>
@@ -24,7 +24,7 @@ export const Colors = () => {
 					)) }
 				</ul>
 			</div>
-			<hr className="my-sm"/>
+			<hr className="my-sm" />
 
 			{ groupedColors.map(({ groupTitle, groupColors }) => (
 				<div className="mb-md" key={ groupTitle }>
@@ -45,6 +45,24 @@ export const Colors = () => {
 					<hr className="my-sm"/>
 				</div>
 			)) }
+
+			<div className="mb-md">
+				<h2 className="mb-sm text-3xl font-bold">Ber Colors:</h2>
+
+				<ul className="color_wrapper grid gap-md">
+					{ berColors.map(({ name, value }) => (
+						<li key={ name } className="grid gap-xs">
+							<div className="color_circle relative m-auto size-xxxxxl rounded-full" style={ {
+								backgroundColor: value,
+							} }>
+							</div>
+							<b className="text-center text-lg">{ name }</b>
+							<div className="text-center">({ value })</div>
+							<div className="text-center text-md text-nowrap">{ value }</div>
+						</li>
+					)) }
+				</ul>
+			</div>
 		</div>
 	);
 };
