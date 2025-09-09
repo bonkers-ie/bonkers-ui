@@ -91,7 +91,6 @@ const groupColors = (colors: TToken[]): TGroupedColor[] => {
 		return acc;
 	}, {});
 
-	console.log(groups);
 	return Object.values(groups);
 };
 
