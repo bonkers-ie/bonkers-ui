@@ -20,5 +20,6 @@ export declare const getThemeTokens: (variables: TToken[]) => {
     spacings: TToken[];
     groupedColors: TGroupedColor[];
     baseColors: TToken[];
+    berColors: TToken[];
 };
 export declare function getCSSVariables(): TToken[];

@@ -9,49 +9,49 @@ export declare const berRankDictionary: readonly [{
     readonly color: EColors.SECONDARY_ALT;
 }, {
     readonly text: "G";
-    readonly color: EColors.ERROR;
+    readonly color: EColors.BER_RED;
 }, {
     readonly text: "F";
-    readonly color: EColors.WARNING_700;
+    readonly color: EColors.BER_DARK_ORANGE;
 }, {
     readonly text: "E2";
-    readonly color: EColors.WARNING_600;
+    readonly color: EColors.BER_MID_ORANGE;
 }, {
     readonly text: "E1";
-    readonly color: EColors.WARNING_600;
+    readonly color: EColors.BER_MID_ORANGE;
 }, {
     readonly text: "D2";
-    readonly color: EColors.WARNING_400;
+    readonly color: EColors.BER_YELLOW;
 }, {
     readonly text: "D1";
-    readonly color: EColors.WARNING_400;
+    readonly color: EColors.BER_YELLOW;
 }, {
     readonly text: "C3";
-    readonly color: EColors.PRIMARY_ALT;
+    readonly color: EColors.BER_BRIGHT_GREEN;
 }, {
     readonly text: "C2";
-    readonly color: EColors.PRIMARY_ALT;
+    readonly color: EColors.BER_BRIGHT_GREEN;
 }, {
     readonly text: "C1";
-    readonly color: EColors.PRIMARY_ALT;
+    readonly color: EColors.BER_BRIGHT_GREEN;
 }, {
     readonly text: "B3";
-    readonly color: EColors.PRIMARY_ALT_600;
+    readonly color: EColors.BER_MID_GREEN;
 }, {
     readonly text: "B2";
-    readonly color: EColors.PRIMARY_ALT_600;
+    readonly color: EColors.BER_MID_GREEN;
 }, {
     readonly text: "B1";
-    readonly color: EColors.PRIMARY_ALT_600;
+    readonly color: EColors.BER_MID_GREEN;
 }, {
     readonly text: "A3";
-    readonly color: EColors.PRIMARY_ALT_700;
+    readonly color: EColors.BER_DARK_GREEN;
 }, {
     readonly text: "A2";
-    readonly color: EColors.PRIMARY_ALT_700;
+    readonly color: EColors.BER_DARK_GREEN;
 }, {
     readonly text: "A1";
-    readonly color: EColors.PRIMARY_ALT_700;
+    readonly color: EColors.BER_DARK_GREEN;
 }];
 export declare const berRanksList: ("N/A" | "G" | "F" | "E2" | "E1" | "D2" | "D1" | "C3" | "C2" | "C1" | "B3" | "B2" | "B1" | "A3" | "A2" | "A1")[];
 export declare enum EBerSize {

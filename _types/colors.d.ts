@@ -57,5 +57,12 @@ export declare enum EColors {
     SECONDARY_ALT_400 = "--color-secondary-alt-400",
     SECONDARY_ALT_500 = "--color-secondary-alt-500",
     SECONDARY_ALT_600 = "--color-secondary-alt-600",
-    SECONDARY_ALT_700 = "--color-secondary-alt-700"
+    SECONDARY_ALT_700 = "--color-secondary-alt-700",
+    BER_DARK_GREEN = "--color-ber-dark-green",
+    BER_MID_GREEN = "--color-ber-mid-green",
+    BER_BRIGHT_GREEN = "--color-ber-bright-green",
+    BER_YELLOW = "--color-ber-yellow",
+    BER_MID_ORANGE = "--color-ber-mid-orange",
+    BER_DARK_ORANGE = "--color-ber-dark-orange",
+    BER_RED = "--color-ber-red"
 }
