@@ -58,7 +58,7 @@ export const Colors = () => {
 							</div>
 							<b className="text-center text-lg">{ name }</b>
 							<div className="text-center">({ value })</div>
-							<div className="text-center text-md text-nowrap">{ value }</div>
+							<div className="text-center text-md text-nowrap">{ name }</div>
 						</li>
 					)) }
 				</ul>
