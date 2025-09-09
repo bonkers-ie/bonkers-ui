@@ -35,22 +35,28 @@ export const getThemeTokens = (variables: TToken[]) => {
 	const fontSizes = variables.filter(variable => variable.name.includes("--font-size"));
 	const spacings = variables.filter(variable => variable.name.includes("--spacing"));
 	const colors = variables.filter(variable => variable.name.includes("--color"));
-	const baseColors  = colors.filter(({ name }) => name.includes("white") || name.includes("black") || name.includes("transparent") || name.includes("current"));
+	const baseColors = colors.filter(({ name }) => name.includes("white") || name.includes("black") || name.includes("transparent") || name.includes("current"));
+	const berColors = colors.filter(({ name }) => name.includes("ber-"));
 
 	return {
 		fontSizes,
 		spacings,
 		groupedColors: groupColors(colors),
-		baseColors
+		baseColors,
+		berColors
 	};
 };
 
 // helper to split up the css variables into groups for displaying in Colors story
 const groupColors = (colors: TToken[]): TGroupedColor[] => {
 	const baseNames = ["transparent", "current", "black", "white"];
+
 	// Filter out base colors.
 	const filteredColors = colors.filter(({ name }) => {
 		const trimmedName = name.replace("--color-", "");
+		if (trimmedName.startsWith("ber-")) {
+			return false;
+		}
 		return !baseNames.includes(trimmedName);
 	});
 

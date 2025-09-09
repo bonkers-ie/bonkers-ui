@@ -14,63 +14,63 @@ export const berRankDictionary = [
 	},
 	{
 		text: "G",
-		color: EColors.ERROR,
+		color: EColors.BER_RED,
 	},
 	{
 		text: "F",
-		color: EColors.WARNING_700,
+		color: EColors.BER_DARK_ORANGE,
 	},
 	{
 		text: "E2",
-		color: EColors.WARNING_600,
+		color: EColors.BER_MID_ORANGE,
 	},
 	{
 		text: "E1",
-		color: EColors.WARNING_600,
+		color: EColors.BER_MID_ORANGE,
 	},
 	{
 		text: "D2",
-		color: EColors.WARNING_400,
+		color: EColors.BER_YELLOW,
 	},
 	{
 		text: "D1",
-		color: EColors.WARNING_400,
+		color: EColors.BER_YELLOW,
 	},
 	{
 		text: "C3",
-		color: EColors.PRIMARY_ALT,
+		color: EColors.BER_BRIGHT_GREEN,
 	},
 	{
 		text: "C2",
-		color: EColors.PRIMARY_ALT,
+		color: EColors.BER_BRIGHT_GREEN,
 	},
 	{
 		text: "C1",
-		color: EColors.PRIMARY_ALT,
+		color: EColors.BER_BRIGHT_GREEN,
 	},
 	{
 		text: "B3",
-		color: EColors.PRIMARY_ALT_600,
+		color: EColors.BER_MID_GREEN,
 	},
 	{
 		text: "B2",
-		color: EColors.PRIMARY_ALT_600,
+		color: EColors.BER_MID_GREEN,
 	},
 	{
 		text: "B1",
-		color: EColors.PRIMARY_ALT_600,
+		color: EColors.BER_MID_GREEN,
 	},
 	{
 		text: "A3",
-		color: EColors.PRIMARY_ALT_700,
+		color: EColors.BER_DARK_GREEN,
 	},
 	{
 		text: "A2",
-		color: EColors.PRIMARY_ALT_700,
+		color: EColors.BER_DARK_GREEN,
 	},
 	{
 		text: "A1",
-		color: EColors.PRIMARY_ALT_700,
+		color: EColors.BER_DARK_GREEN,
 	},
 ] as const;
 
