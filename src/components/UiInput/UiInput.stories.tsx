@@ -34,6 +34,7 @@ const meta = {
 				EInputKind.DEFAULT,
 				EInputKind.SUCCESS,
 				EInputKind.ERROR,
+				EInputKind.WARNING
 			],
 			description: "The state of the input",
 			control: {
@@ -120,7 +121,7 @@ export const TextInput: Story = {
 	},
 };
 
-export const TextInputVariations: Story  = {
+export const TextInputVariations: Story = {
 	name: "UiInputText Kinds",
 	render: (args) => (
 		<div className="mt-sm flex w-full flex-row gap-sm">
