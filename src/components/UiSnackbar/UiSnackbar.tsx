@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState }  from "react";
+import React, { useEffect, useRef, useState } from "react";
 import cx from "classnames";
 import { ESnackbarDuration, ESnackbarTypes } from "./_types";
 
@@ -62,7 +62,6 @@ export const UiSnackbar: React.FC<UiSnackbarProps> = ({
 	const pauseTimeRef = useRef<number>(0);
 	const startTimeRef = useRef<number>(Date.now());
 	const notificationRef = useRef<HTMLDivElement>(null);
-	const animationRef = useRef<number>(0);
 
 	useEffect(() => {
 		if (!isDismissed || !notificationRef.current) return;
@@ -70,7 +69,6 @@ export const UiSnackbar: React.FC<UiSnackbarProps> = ({
 		const handleAnimationEnd = () => {
 			onDismissAction?.(id);
 			if (timerRef.current) clearInterval(timerRef.current);
-			if (animationRef.current) cancelAnimationFrame(animationRef.current);
 		};
 
 		notificationRef.current.addEventListener("animationend", handleAnimationEnd);
@@ -140,9 +138,7 @@ export const UiSnackbar: React.FC<UiSnackbarProps> = ({
 				"px-sm",
 				"py-xs",
 				"flex-col",
-				{
-					"gap-y-xxxs": children,
-				},
+				"gap-y-xxxs",
 				"text-sm",
 				kindClasses[kind],
 				className
@@ -153,22 +149,29 @@ export const UiSnackbar: React.FC<UiSnackbarProps> = ({
 		>
 			<div className="flex w-full justify-between">
 				<div className="flex flex-row items-center gap-xxs">
-					{ preIcon }
+					{ preIcon
+						? preIcon
+						: null }
 					{ title }
 				</div>
-				{ postIcon }
+				{ postIcon
+					? postIcon
+					: null }
 			</div>
-			<div
-				style={ {
-					color: kind === ESnackbarTypes.DEFAULT
-						? "black"
-						: "white",
-					fontWeight: "normal",
-				} }
-				className="w-full"
-			>
-				{ children }
-			</div>
+			{ children
+				? <div
+					style={ {
+						color: kind === ESnackbarTypes.DEFAULT
+							? "black"
+							: "white",
+						fontWeight: "normal",
+					} }
+					className="w-full"
+				>
+					{ children }
+				</div>
+				: null
+			}
 			<div
 				className='absolute bottom-0 left-0 h-xxs bg-black opacity-30 bg-blend-color-burn'
 				style={ {

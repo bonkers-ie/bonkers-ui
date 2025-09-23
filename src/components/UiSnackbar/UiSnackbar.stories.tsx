@@ -28,7 +28,19 @@ const meta = {
 				type: "text",
 				description: "text or child element/s",
 			}
-		}
+		},
+		preIcon: {
+			control: {
+				type: "text",
+				description: "ReactNode element that is positioned at the start of the snackbar"
+			}
+		},
+		postIcon: {
+			control: {
+				type: "text",
+				description: "ReactNode element that is positioned at the end of the snackbar"
+			}
+		},
 
 	},
 	args: {
@@ -57,7 +69,7 @@ export const Primary: Story = {
 			<UiSnackbar
 				id="unique-id-3"
 				kind={ ESnackbarTypes.WARNING }
-				preIcon={ <UiIcon name={ ["far", "face-smile" ] } size={ ESize.SM } /> }
+				preIcon={ <UiIcon name={ ["far", "face-smile"] } size={ ESize.SM } /> }
 				postIcon={ <UiIcon name={ ["far", "face-angry"] } size={ ESize.SM } /> }
 				title="Warning Notification with content"
 				duration={ ESnackbarDuration.LONG }
