@@ -6,6 +6,7 @@ import { UiAccordionInfoDropdown } from "../UiAccordion";
 import { UiInputBase } from "./UiInput.base";
 import { UiIcon } from "../UiIcon";
 import { ESize } from "../../_types/sizing";
+import { UiInputTextArea } from "./UiInputTextArea";
 
 const meta = {
 	title: "Components/UiInputBase",
@@ -140,4 +141,19 @@ export const TextInputVariations: Story = {
 			/>
 		</div>
 	)
+};
+
+export const TextAreaInput: Story = {
+	name: "UiInputTextArea",
+	render: (args) => {
+		return (
+			<UiInputTextArea
+				id="textAreaInput"
+				title="Title"
+				subtitle="Subtitle"
+				onFocus={ () => console.log("focus") }
+				{ ...args }
+			/>
+		);
+	}
 };
