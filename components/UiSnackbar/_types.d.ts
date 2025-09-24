@@ -5,3 +5,8 @@ export declare enum ESnackbarTypes {
     WARNING = "warning",
     ERROR = "error"
 }
+export declare enum ESnackbarDuration {
+    SHORT = 5000,
+    LONG = 10000,
+    INFINITE = Infinity
+}

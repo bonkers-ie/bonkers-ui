@@ -1,4 +1,6 @@
-export { UiInputBase } from './UiInput.base.tsx';
-export { UiInputTitled } from './UiInputTitled.tsx';
-export { UiInputText } from './UiInputText.tsx';
-export { EInputKind } from './_types.ts';
+export { UiInputBase } from './UiInput.base';
+export { UiInputTextArea } from './UiInputTextArea';
+export { UiInputTitled } from './UiInputTitled';
+export { UiInputText } from './UiInputText';
+export { UiInputStatusMessage } from './UiInputStatusMessage';
+export { EInputKind } from './_types';
