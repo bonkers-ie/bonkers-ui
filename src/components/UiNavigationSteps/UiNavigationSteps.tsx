@@ -183,7 +183,7 @@ export const UiNavigationSteps: React.FC<{
 				order: stepData?.order || index + 1,
 				totalSteps,
 				isActive: isStepActive(child.props.id),
-				isComplete: isStepComplete(child.props.id),
+				isComplete: isStepComplete(child.props.id)
 			});
 		}
 		return child;
@@ -191,8 +191,18 @@ export const UiNavigationSteps: React.FC<{
 
 	return (
 		<NavigationStepContext.Provider value={ contextValue }>
-			<nav aria-label="Progress" className={ cx("relative grid grid-cols-1 grid-rows-1 items-center", styles.navbar, className) }>
-				<div className="z-10 flex items-center justify-between">
+			<nav
+				aria-label="Progress"
+				className={ cx("relative grid grid-cols-1 grid-rows-1 items-center", styles.navbar, className) }
+				data-status={
+					completedSteps.size === navigationState.current.steps.size
+						? "complete"
+						: undefined
+				}
+			>
+				<div
+					className="z-10 flex items-center justify-between"
+				>
 					{ childWithProps }
 				</div>
 			</nav>

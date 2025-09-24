@@ -88,7 +88,7 @@ export const Primary: Story = {
 
 				</UiNavigationSteps>
 
-				<UiNavigationSteps initialStepId="51" complete>
+				<UiNavigationSteps initialStepId="31" complete>
 					<UiNavigationStep id="11" name="Property" />
 					<UiNavigationStep id="21" name="Contents" subSteps={ [{
 						id: "contents.1",
