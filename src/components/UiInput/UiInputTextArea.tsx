@@ -58,6 +58,7 @@ export const UiInputTextArea: FC<TUiInputTextAreaProps> = ({
 				<textarea
 					id={ id }
 					className={ cx(`
+                        min-h-xxl
                         w-full
                         resize-y
                     `) }
@@ -68,7 +69,6 @@ export const UiInputTextArea: FC<TUiInputTextAreaProps> = ({
 						}
 					} }
 					placeholder={ placeholder }
-					maxLength={ 500 }
 					{ ...rest }
 				/>
 				{ postIcon
