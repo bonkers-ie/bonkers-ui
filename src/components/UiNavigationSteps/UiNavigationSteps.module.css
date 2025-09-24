@@ -15,7 +15,7 @@
 
 nav[data-status="complete"]::before {
 	top: 13px;
-	baackground-color: var(--color-secondary-400);
+	background-color: var(--color-secondary-400);
 }
 
 @media (min-width: 768px) {
