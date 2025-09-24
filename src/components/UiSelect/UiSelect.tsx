@@ -2,7 +2,7 @@ import React from "react";
 import cx from "classnames";
 import { UiTypography, ETypographySizes, EColors } from "../UiTypography";
 import styles from "./UiSelect.module.css";
-import { EInputKind } from "../UiInput";
+import { EInputKind, UiInputStatusMessage } from "../UiInput";
 
 type TSelectProps = {
 	heading?: string
@@ -73,7 +73,11 @@ export const UiSelect: React.FC<TSelectProps> = ({
 				<select
 					{ ...rest }
 					className={ cx(
-						"m-0 w-full cursor-pointer appearance-none border-0 bg-transparent text-secondary-alt outline-0",
+						"m-0 w-full cursor-pointer appearance-none border-0 bg-transparent outline-0",
+						{
+							"text-secondary-alt": value === "" || !value,
+							"text-black": value
+						},
 						prefixIcon
 							? "p-0 py-sm pr-xl"
 							: "p-sm pr-xl"
@@ -118,25 +122,11 @@ export const UiSelect: React.FC<TSelectProps> = ({
 
 			{ statusMessage
 				? (
-					<UiTypography
-						className={ cx(
-							"transition-all duration-300 ease-in-out",
-							"mt-xxs max-h-0 gap-xxs overflow-hidden opacity-0",
-							"data-[status=true]:max-h-full data-[status=true]:opacity-100"
-						) }
-						lineHeight
-						color={
-							kind === EInputKind.ERROR
-								? EColors.ERROR
-								: kind === EInputKind.WARNING
-									? EColors.WARNING_500
-									: EColors.PRIMARY
-						}
-						size={ ETypographySizes.SM }
-						data-status={ !!statusMessage }
+					<UiInputStatusMessage
+						kind={ kind }
 					>
 						{ statusMessage }
-					</UiTypography>
+					</UiInputStatusMessage>
 				)
 				: null }
 		</div>
