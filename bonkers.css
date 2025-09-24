@@ -121,15 +121,6 @@
 	--color-secondary-alt-600: #767b92;
 	--color-secondary-alt-700: #595c6e;
 
-	--color-ber-dark-green: #00a651;
-	--color-ber-mid-green: #51b848;
-	--color-ber-bright-green: #bfd730;
-	--color-ber-yellow: #fff200;
-	--color-ber-mid-orange: #fdb913;
-	--color-ber-dark-orange: #f37021;
-	--color-ber-red:#ed1c24;
-
-
 	/* backdrop blur */
 	--backdrop-blur-min: 0.5px;
 	--backdrop-blur-xs: 2px;
@@ -263,17 +254,6 @@
 	--color-secondary: var(--color-secondary-500);
 	--color-secondary-alt: var(--color-secondary-alt-500);
 	--color-warning: var(--color-warning-500);
-
-	--color-ber-dark-green: var(--color-ber-dark-green);
-	--color-ber-mid-green: var(--color-ber-mid-green);
-	--color-ber-bright-green: var(--color-ber-bright-green);
-	--color-ber-yellow: var(--color-ber-yellow);
-	--color-ber-mid-orange: var(--color-ber-mid-orange);
-	--color-ber-dark-orange: var(--color-ber-dark-orange);
-	--color-ber-red: var(--color-ber-red);
-
-
-
 
 	/* backdrop blur */
 	--backdrop-blur-*: initial;

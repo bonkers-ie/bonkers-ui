@@ -1,6 +1,5 @@
 import React from "react";
 import cx from "classnames";
-import css from "./UiBerRank.module.css";
 import { EColors } from "../../_types/colors.ts";
 import { berRankDictionary, type TBerPropNumber, type TBerPropString, EBerSize } from "./_types";
 import { UiTypography, ETextWeight, ETypographySizes, ETextTransform } from "../UiTypography";
@@ -12,8 +11,8 @@ interface IUiBerRankProps {
 }
 
 const sizeClasses = {
-	[EBerSize.SMALL]: css.icon_small,
-	[EBerSize.MEDIUM]: css.icon_medium
+	[EBerSize.SMALL]: "h-[30px]",
+	[EBerSize.MEDIUM]: "h-[60px]"
 };
 
 const textSize = {
@@ -54,22 +53,23 @@ export const UiBerRank: React.FC<IUiBerRankProps> = ({
 					ber
 				</UiTypography>
 			</div>
+
 			<div className="relative">
-				<UiTypography
-					color={ berRankDictionary[+rank]?.color || berRankDictionary[0].color }
+
+				<svg className={
+					cx(sizeClasses[size], berRankDictionary[+rank]?.color || berRankDictionary[0].color)
+				}
+				viewBox="0 0 106 60"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
 				>
-					<svg className={ sizeClasses[size] }
-						viewBox="0 0 106 60"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path
-							fillRule="evenodd"
-							d="M3.01833 20.2172C0.74308 13.3915 -0.394547 9.9786 0.287586 7.26202C0.884697 4.88404 2.36903 2.82464 4.43616 1.50619C6.79762 0 10.3951 0 17.5901 0H90.3607C95.7373 0 98.4255 0 100.479 1.04634C102.285 1.96672 103.754 3.43534 104.674 5.24169C105.721 7.29524 105.721 9.9835 105.721 15.36V44.64C105.721 50.0165 105.721 52.7048 104.674 54.7583C103.754 56.5647 102.285 58.0333 100.479 58.9537C98.4255 60 95.7373 60 90.3607 60H17.5901C10.3951 60 6.79762 60 4.43616 58.4938C2.36903 57.1754 0.884697 55.116 0.287586 52.738C-0.394547 50.0214 0.743081 46.6085 3.01834 39.7827L4.93001 34.0477C5.43062 32.5459 5.68093 31.795 5.78035 31.0268C5.86857 30.3451 5.86857 29.6549 5.78035 28.9732C5.68093 28.205 5.43062 27.4541 4.93001 25.9523L3.01833 20.2172Z"
-							fill="currentColor"
-						/>
-					</svg>
-				</UiTypography>
+					<path
+						fillRule="evenodd"
+						d="M3.01833 20.2172C0.74308 13.3915 -0.394547 9.9786 0.287586 7.26202C0.884697 4.88404 2.36903 2.82464 4.43616 1.50619C6.79762 0 10.3951 0 17.5901 0H90.3607C95.7373 0 98.4255 0 100.479 1.04634C102.285 1.96672 103.754 3.43534 104.674 5.24169C105.721 7.29524 105.721 9.9835 105.721 15.36V44.64C105.721 50.0165 105.721 52.7048 104.674 54.7583C103.754 56.5647 102.285 58.0333 100.479 58.9537C98.4255 60 95.7373 60 90.3607 60H17.5901C10.3951 60 6.79762 60 4.43616 58.4938C2.36903 57.1754 0.884697 55.116 0.287586 52.738C-0.394547 50.0214 0.743081 46.6085 3.01834 39.7827L4.93001 34.0477C5.43062 32.5459 5.68093 31.795 5.78035 31.0268C5.86857 30.3451 5.86857 29.6549 5.78035 28.9732C5.68093 28.205 5.43062 27.4541 4.93001 25.9523L3.01833 20.2172Z"
+						fill="currentColor"
+					/>
+				</svg>
+
 				<UiTypography
 					className="absolute top-0 left-0 flex size-full items-center justify-center"
 					color={ EColors.WHITE }
