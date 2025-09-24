@@ -3,7 +3,7 @@ import React, {
 	useContext,
 	useState,
 	useRef,
-	useEffect,
+	useEffect, useCallback,
 } from "react";
 import { type INavStepProps, type INavigationStepContext, type INavSubStep } from "./_types";
 import cx from "classnames";
@@ -32,8 +32,10 @@ export const UiNavigationSteps: React.FC<{
 	complete?: boolean
 }> = ({ initialStepId, children, className, complete = false }) => {
 	const orderCounter = useRef(0);
+	const navRef = useRef<HTMLDivElement>(null);
 	const [currentStepOrder, setCurrentStepOrder] = useState<number>(0);
 	const [completedSteps, setCompletedSteps] = useState<Set<string>>(new Set());
+	const [activeBarWidth, setActiveBarWidth] = useState<number>(0);
 
 	const navigationState = useRef<INavigationProviderState>({
 		steps: new Map(),
@@ -189,6 +191,39 @@ export const UiNavigationSteps: React.FC<{
 		return child;
 	});
 
+	const updateActiveBarWidth = useCallback(() => {
+		if (!navRef.current) return;
+
+		const activeStep = navRef.current.querySelector(`[aria-current="step"]`);
+		if (!activeStep) return setActiveBarWidth(0);
+
+		const stepRect = activeStep.getBoundingClientRect();
+		const containerRect = navRef.current.getBoundingClientRect();
+		const newWidth = (stepRect.left - containerRect.left) + (stepRect.width / 2);
+
+		setActiveBarWidth(newWidth);
+	}, []);
+
+	useEffect(() => {
+		if (!navRef.current) return;
+
+		const resizeObserver = new ResizeObserver(() => {
+			requestAnimationFrame(updateActiveBarWidth);
+		});
+
+		resizeObserver.observe(navRef.current);
+		const stepElements = navRef.current.querySelectorAll('[role="listitem"]');
+		stepElements.forEach(step => {
+			resizeObserver.observe(step);
+		});
+
+		updateActiveBarWidth();
+
+		return () => {
+			resizeObserver.disconnect();
+		};
+	}, [updateActiveBarWidth, initialStepId]);
+
 	return (
 		<NavigationStepContext.Provider value={ contextValue }>
 			<nav
@@ -199,7 +234,11 @@ export const UiNavigationSteps: React.FC<{
 						? "complete"
 						: undefined
 				}
+				ref={ navRef }
 			>
+				<div className={ styles.navbarProgress } style={ {
+					width: `${activeBarWidth}px`,
+				} } />
 				<div
 					className="z-10 flex items-center justify-between"
 				>

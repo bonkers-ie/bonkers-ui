@@ -1,4 +1,4 @@
-import React, { useEffect, useRef  } from "react";
+import React, { useEffect } from "react";
 import cx from "classnames";
 import { ENavStepStatus, type INavStepProps } from "./_types";
 import { ETextWeight, ETypographySizes, UiTypography } from "../UiTypography";
@@ -39,7 +39,6 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 	className = "",
 	onClick,
 	order = 1,
-	totalSteps = 1,
 	isActive = false,
 	isComplete = false,
 	icon
@@ -68,15 +67,6 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 		}
 	};
 
-	const currentStepWidthRef = useRef<HTMLDivElement>(null);
-
-	const calculateWidth = (currentStepWidth: number) => {
-		const stepWidthPercentage = (currentStepWidth / window.innerWidth) * 100;
-		const position = (order / totalSteps) * 100;
-
-		return `${position - stepWidthPercentage / 2}%`;
-	};
-
 	const isClickable = status !== ENavStepStatus.INACTIVE;
 
 	const progressText = hasSubsteps
@@ -89,16 +79,10 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 
 	return (
 		<div
-			style={ status === ENavStepStatus.ACTIVE
-				? ({
-					"--step-width": `${calculateWidth(currentStepWidthRef.current?.clientWidth ?? 0)}`
-				} as React.CSSProperties)
-				: {} }
 			className={ cx("flex flex-col gap-xxs md:flex-row md:items-center", {
 				[styles.active]: status === ENavStepStatus.ACTIVE,
 			},
 			) }
-			ref={ currentStepWidthRef }
 		>
 			<button
 				onClick={ handleClick }
