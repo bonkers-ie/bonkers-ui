@@ -116,6 +116,15 @@ const colorClasses = {
 	[EColors.ACCENT_ALT_500]: "text-accent-alt-500",
 	[EColors.ACCENT_ALT_600]: "text-accent-alt-600",
 	[EColors.ACCENT_ALT_700]: "text-accent-alt-700",
+
+	[EColors.BER_DARK_GREEN]: "text-ber-dark-green",
+	[EColors.BER_MID_GREEN]: "text-ber-mid-green",
+	[EColors.BER_BRIGHT_GREEN]: "text-ber-bright-green",
+	[EColors.BER_YELLOW]: "text-ber-yellow",
+	[EColors.BER_MID_ORANGE]: "text-ber-mid-orange",
+	[EColors.BER_DARK_ORANGE]: "text-ber-dark-orange",
+	[EColors.BER_RED]: "text-ber-red",
+
 };
 
 export const UiTypography = <T extends keyof React.JSX.IntrinsicElements> (

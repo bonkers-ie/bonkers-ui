@@ -6,6 +6,7 @@ import { UiAccordionInfoDropdown } from "../UiAccordion";
 import { UiInputBase } from "./UiInput.base";
 import { UiIcon } from "../UiIcon";
 import { ESize } from "../../_types/sizing";
+import { UiInputTextArea } from "./UiInputTextArea";
 
 const meta = {
 	title: "Components/UiInputBase",
@@ -34,6 +35,7 @@ const meta = {
 				EInputKind.DEFAULT,
 				EInputKind.SUCCESS,
 				EInputKind.ERROR,
+				EInputKind.WARNING
 			],
 			description: "The state of the input",
 			control: {
@@ -120,7 +122,7 @@ export const TextInput: Story = {
 	},
 };
 
-export const TextInputVariations: Story  = {
+export const TextInputVariations: Story = {
 	name: "UiInputText Kinds",
 	render: (args) => (
 		<div className="mt-sm flex w-full flex-row gap-sm">
@@ -139,4 +141,19 @@ export const TextInputVariations: Story  = {
 			/>
 		</div>
 	)
+};
+
+export const TextAreaInput: Story = {
+	name: "UiInputTextArea",
+	render: (args) => {
+		return (
+			<UiInputTextArea
+				id="textAreaInput"
+				title="Title"
+				subtitle="Subtitle"
+				onFocus={ () => console.log("focus") }
+				{ ...args }
+			/>
+		);
+	}
 };

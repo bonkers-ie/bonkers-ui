@@ -1,4 +1,4 @@
-import React, { useEffect  } from "react";
+import React, { useEffect, useRef  } from "react";
 import cx from "classnames";
 import { ENavStepStatus, type INavStepProps } from "./_types";
 import { ETextWeight, ETypographySizes, UiTypography } from "../UiTypography";
@@ -15,9 +15,6 @@ function getStepClasses(status: ENavStepStatus, isClickable: boolean) {
 			rounded-full
 			border
 			text-secondary-400
-			transition-all
-			duration-100
-			ease-in-out
 			md:h-xl
 			md:w-full
 			md:px-xs
@@ -71,7 +68,14 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 		}
 	};
 
-	const calculateWidth = () => (order / totalSteps) * 100;
+	const currentStepWidthRef = useRef<HTMLDivElement>(null);
+
+	const calculateWidth = (currentStepWidth: number) => {
+		const stepWidthPercentage = (currentStepWidth / window.innerWidth) * 100;
+		const position = (order / totalSteps) * 100;
+
+		return `${position - stepWidthPercentage / 2}%`;
+	};
 
 	const isClickable = status !== ENavStepStatus.INACTIVE;
 
@@ -87,13 +91,14 @@ export const UiNavigationStep: React.FC<INavStepProps> = ({
 		<div
 			style={ status === ENavStepStatus.ACTIVE
 				? ({
-					"--step-width": `${calculateWidth()}%`
+					"--step-width": `${calculateWidth(currentStepWidthRef.current?.clientWidth ?? 0)}`
 				} as React.CSSProperties)
 				: {} }
 			className={ cx("flex flex-col gap-xxs md:flex-row md:items-center", {
 				[styles.active]: status === ENavStepStatus.ACTIVE,
 			},
 			) }
+			ref={ currentStepWidthRef }
 		>
 			<button
 				onClick={ handleClick }

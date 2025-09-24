@@ -1,16 +1,26 @@
+.active {
+	--step-width: 0%;
+}
+
 .navbar::before {
 	content: "";
 	position: absolute;
 	left: 0;
 	right: 0;
 	height: 1px;
-	top: 15px;
+	top: 16px;
 	background-color: var(--color-secondary-alt-500);
 	width: 98%;
 }
 
+nav[data-status="complete"]::before {
+	top: 13px;
+	background-color: var(--color-secondary-400);
+}
+
 @media (min-width: 768px) {
-	.navbar::before {
+	.navbar::before,
+	nav[data-status="complete"]::before {
 		top: 20px;
 	}
 }
@@ -21,7 +31,7 @@
 	left: 0;
 	right: 0;
 	height: 1px;
-	top: 15px;
+	top: 16px;
 	background-color: var(--color-secondary-400);
 	width: var(--step-width, 0%);
 	z-index: -1;

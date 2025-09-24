@@ -14,12 +14,13 @@ export type TUiInputBaseProps = {
 
 export const UiInputBase: React.FC<
 	TUiInputBaseProps
-> = ({ postIcon, preIcon, className, kind = EInputKind.DEFAULT, ...rest } ) => {
+> = ({ postIcon, preIcon, className, kind = EInputKind.DEFAULT, ...rest }) => {
 
 	const stateClasses = {
 		[EInputKind.DEFAULT]: "border-secondary-alt-600",
 		[EInputKind.ERROR]: "border-error",
 		[EInputKind.SUCCESS]: "border-primary-600",
+		[EInputKind.WARNING]: "border-warning-600"
 	};
 
 	return (
