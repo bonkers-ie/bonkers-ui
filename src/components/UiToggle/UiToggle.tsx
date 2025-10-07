@@ -143,8 +143,8 @@ export const UiToggle: React.FC<TUiToggleProps> = ({
 						<path
 							d="M1 4.40106L6.60071 10.1135L15.1694 1.71245"
 							stroke="currentColor"
-							stroke-width="1.6"
-							stroke-linecap="round"
+							strokeWidth="1.6"
+							strokeLinecap="round"
 						/>
 					</svg>
 
