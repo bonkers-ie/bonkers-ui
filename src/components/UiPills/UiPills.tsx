@@ -9,6 +9,8 @@ interface IUiPills {
 	size?: EBadgeSize,
 	icon?: React.ReactNode,
 	rounded?: boolean,
+	justifyCenter?: boolean,
+	fullWidth?: boolean,
 	className?: string
 }
 
@@ -33,17 +35,28 @@ export const UiPills: React.FC<IUiPills> = ({
 	kind = EBadgeKind.PRIMARY,
 	size = EBadgeSize.SMALL,
 	className,
+	justifyCenter = false,
 	icon,
-	rounded = false
+	rounded = false,
+	fullWidth
 }) => {
 	return (
 		<div className={ cx(
 			"ui-pills",
-			"grid w-max grid-flow-col justify-start",
+			"grid grid-flow-col",
 			"items-center",
 			"gap-xxxs",
-			"px-xxs py-xxxs",
+			"py-xxxs",
+			rounded
+				? "px-xs"
+				: "px-xxs",
 			"overflow-hidden",
+			fullWidth
+				? "w-full"
+				: "w-max",
+			justifyCenter
+				? "justify-center"
+				: "justify-start",
 			rounded
 				? "rounded-full"
 				: "rounded-sm",
@@ -53,7 +66,7 @@ export const UiPills: React.FC<IUiPills> = ({
 			{ icon }
 			{ children
 				? (
-					<UiTypography size={ sizeEnums[size] } weight={ ETextWeight.SEMI_BOLD } className="whitespace-nowrap">
+					<UiTypography lineHeight size={ sizeEnums[size] } weight={ ETextWeight.SEMI_BOLD } className="whitespace-nowrap">
 						{ children }
 					</UiTypography>
 				)
