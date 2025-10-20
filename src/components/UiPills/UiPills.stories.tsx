@@ -52,6 +52,9 @@ const meta = {
 		kind: EBadgeKind.PRIMARY,
 		size: EBadgeSize.SMALL,
 		children: "Pills",
+		fullWidth: false,
+		rounded: false,
+		justifyCenter: false,
 	},
 } satisfies Meta<typeof UiPills>;
 
@@ -65,9 +68,9 @@ export const Primary: Story = {
 			kind={ args.kind }
 			size={ args.size }
 			icon={ <UiIcon name={ ["far", "face-smile"] } size={ ESize.XS }/> }
-			fullWidth={ args.fullWidth }
 			rounded={ args.rounded }
 			justifyCenter={ args.justifyCenter }
+			fullWidth={ args.fullWidth }
 		>
 			{ args.children }
 		</UiPills>

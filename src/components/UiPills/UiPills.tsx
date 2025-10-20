@@ -38,7 +38,7 @@ export const UiPills: React.FC<IUiPills> = ({
 	justifyCenter = false,
 	icon,
 	rounded = false,
-	fullWidth
+	fullWidth = false
 }) => {
 	return (
 		<div className={ cx(
