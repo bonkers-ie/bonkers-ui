@@ -10,32 +10,39 @@ interface IUiAlert {
 	children: React.ReactNode,
 	className?: string
 	kind?: EAlertTypes,
-	icon?: IconProp
+	icon?: IconProp,
+	noBorder?: boolean
 }
 
 const kindClasses = {
-	[EAlertTypes.PRIMARY]: "border-primary text-primary ",
-	[EAlertTypes.SECONDARY]: "'border-secondary text-secondary",
-	[EAlertTypes.ERROR]: "border-error text-error",
-	[EAlertTypes.WARNING]: "border-warning text-warning"
+	[EAlertTypes.PRIMARY]: "border-primary ",
+	[EAlertTypes.SECONDARY]: "border-secondary",
+	[EAlertTypes.ERROR]: "border-error",
+	[EAlertTypes.WARNING]: "border-warning"
+};
 
+const iconKindClasses = {
+	[EAlertTypes.PRIMARY]: "text-primary",
+	[EAlertTypes.SECONDARY]: "text-secondary",
+	[EAlertTypes.ERROR]: "text-error",
+	[EAlertTypes.WARNING]: "text-warning"
 };
 
 export const UiAlert: React.FC<IUiAlert> = ({
 	children,
 	kind = EAlertTypes.PRIMARY,
 	className,
-	icon
+	icon,
+	noBorder = false
 }) => {
 	return (
 		<div className={ cx(
 			"ui-alert",
 			"flex",
 			"gap-sm",
-			"rounded-xl",
-			"border",
-			"bg-white",
-			"p-sm",
+			noBorder
+				? "border-0"
+				: "rounded-xl border bg-white p-sm",
 			"leading-normal",
 			"text-xs",
 			kindClasses[kind],
@@ -43,7 +50,11 @@ export const UiAlert: React.FC<IUiAlert> = ({
 		) }>
 
 			{ icon
-				? <UiIcon name={ icon } size={ ESize.SM } />
+				? <UiIcon
+					className={ cx(iconKindClasses[kind], "h-lh align-middle") }
+					name={ icon }
+					size={ ESize.SM }
+				/>
 				: null }
 			{ children }
 		</div>

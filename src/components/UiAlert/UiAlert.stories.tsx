@@ -20,11 +20,18 @@ const meta = {
 				type: "text",
 			},
 			description: "Alert Children",
-		}
+		},
+		noBorder: {
+			control: {
+				type: "boolean",
+			},
+			description: "Remove border from alert",
+		},
 	},
 	args: {
 		kind: EAlertTypes.PRIMARY,
 		children: "This is a default alert",
+		noBorder: false,
 	},
 } satisfies Meta<typeof UiAlert>;
 
@@ -37,11 +44,9 @@ export const Primary: Story = {
 		<UiAlert
 			kind={ args.kind }
 			icon={ ["far", "face-smile"] }
+			noBorder={ args.noBorder }
 		>
-			<span className="text-secondary">
-				{ args.children }
-			</span>
-
+			{ args.children }
 		</UiAlert>
 	)
 };
