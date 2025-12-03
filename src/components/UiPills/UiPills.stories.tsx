@@ -1,9 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { UiPills } from "./UiPills";
-import { UiIcon } from "../UiIcon";
 import { EBadgeKind, EBadgeSize } from "./_types";
 import React from "react";
-import { ESize } from "../../_types/sizing";
 
 const meta = {
 	title: "Components/UiPills",
@@ -67,7 +65,7 @@ export const Primary: Story = {
 		<UiPills
 			kind={ args.kind }
 			size={ args.size }
-			icon={ <UiIcon name={ ["far", "face-smile"] } size={ ESize.XS }/> }
+			icon={ ["far", "face-smile"] }
 			rounded={ args.rounded }
 			justifyCenter={ args.justifyCenter }
 			fullWidth={ args.fullWidth }
@@ -86,7 +84,7 @@ export const Rounded: Story = {
 		<UiPills
 			kind={ args.kind }
 			size={ args.size }
-			icon={ <UiIcon name={ ["far", "face-smile"] } size={ ESize.XS }/> }
+			icon={ ["far", "face-smile"] }
 			rounded={ args.rounded }
 		>
 			{ args.children }
@@ -103,7 +101,7 @@ export const FullWidth: Story = {
 		<UiPills
 			kind={ args.kind }
 			size={ args.size }
-			icon={ <UiIcon name={ ["far", "face-smile"] } size={ ESize.XS }/> }
+			icon={ ["far", "face-smile"] }
 			fullWidth={ args.fullWidth }
 		>
 			{ args.children }
@@ -124,7 +122,7 @@ export const FullWidthAndCenterAligned: Story = {
 		<UiPills
 			kind={ args.kind }
 			size={ args.size }
-			icon={ <UiIcon name={ ["far", "face-smile"] } size={ ESize.XS }/> }
+			icon={ ["far", "face-smile"] }
 			fullWidth={ args.fullWidth }
 			rounded={ args.rounded }
 			justifyCenter={ args.justifyCenter }

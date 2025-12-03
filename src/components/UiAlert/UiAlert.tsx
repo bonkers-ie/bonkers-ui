@@ -7,11 +7,11 @@ import { ESize } from "../../_types/sizing";
 import { type IconProp } from "@fortawesome/fontawesome-svg-core";
 
 interface IUiAlert {
-	children: React.ReactNode,
-	className?: string
-	kind?: EAlertTypes,
-	icon?: IconProp,
-	noBorder?: boolean
+	children: React.ReactNode;
+	className?: string;
+	kind?: EAlertTypes;
+	icon?: IconProp;
+	noBorder?: boolean;
 }
 
 const kindClasses = {

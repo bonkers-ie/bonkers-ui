@@ -11,6 +11,7 @@ interface IUiIconProps {
 }
 
 const sizeToClassName: { [key in ESize]: string } = {
+	[ESize.MIN]: "size-min",
 	[ESize.XXXS]: "size-xxxs",
 	[ESize.XXS]: "size-xxs",
 	[ESize.XS]: "size-xs",
@@ -34,7 +35,6 @@ export const UiIcon: React.FC<IUiIconProps> = ({ size, name, className }) => {
 				"ui-icon",
 				"inline",
 				"overflow-visible",
-				"align-[-.125em]",
 				size && sizeToClassName[size],
 				className
 			) }
