@@ -39,7 +39,7 @@ export const UiSelect: React.FC<TSelectProps> = ({
 	postfixIcon,
 	statusMessage,
 	kind,
-	size,
+	size = ESelectSize.MD,
 	...rest
 }) => {
 	const [value, setValue] = React.useState(rest.value || rest.defaultValue || "");
@@ -90,7 +90,7 @@ export const UiSelect: React.FC<TSelectProps> = ({
 							"p-sm": size === ESelectSize.MD && !prefixIcon
 						},
 						prefixIcon
-							? "p-0 pr-xl"
+							? "pr-xl"
 							: "p-sm pr-xl"
 					) }
 					disabled={ disabled }
