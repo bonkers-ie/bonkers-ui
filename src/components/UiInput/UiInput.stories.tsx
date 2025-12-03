@@ -1,12 +1,11 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { UiInputText } from "./UiInputText";
-import { EInputKind } from "./_types";
+import { EInputKind, EInputSize } from "./_types";
 import { UiAccordionInfoDropdown } from "../UiAccordion";
 import { UiInputBase } from "./UiInput.base";
 import { UiIcon } from "../UiIcon";
 import { ESize } from "../../_types/sizing";
-import { UiInputTextArea } from "./UiInputTextArea";
 
 const meta = {
 	title: "Components/UiInputBase",
@@ -60,7 +59,17 @@ const meta = {
 		},
 		postIcon: {
 			description: "The ReactNode positioned after the input",
-		}
+		},
+		size: {
+			options: [
+				EInputSize.SMALL,
+				EInputSize.MEDIUM,
+			],
+			description: "The size of the input",
+			control: {
+				type: "radio",
+			},
+		},
 	},
 	args: {
 		id: "testInput",
@@ -83,7 +92,7 @@ export const BaseInput: Story = {
 	render: (args) => {
 
 		return (
-			<UiInputBase id="BaseInput" { ...args } />
+			<UiInputBase { ...args } />
 		);
 	}
 };
@@ -95,7 +104,6 @@ export const BaseInputWithIcons: Story = {
 			placeholder="Pre and Post Icons..."
 			preIcon={ <UiIcon size={ ESize.SM } name={ ["far", "face-smile"] } /> }
 			postIcon="$ Dollar"
-			id="baseIcons"
 			{ ...args }
 		/>
 	),
@@ -111,7 +119,6 @@ export const TextInput: Story = {
 		);
 		return (
 			<UiInputText
-				id="textInput"
 				title="Title"
 				subtitle="Subtitle"
 				infoComponent={ <Info /> }
@@ -141,19 +148,4 @@ export const TextInputVariations: Story = {
 			/>
 		</div>
 	)
-};
-
-export const TextAreaInput: Story = {
-	name: "UiInputTextArea",
-	render: (args) => {
-		return (
-			<UiInputTextArea
-				id="textAreaInput"
-				title="Title"
-				subtitle="Subtitle"
-				onFocus={ () => console.log("focus") }
-				{ ...args }
-			/>
-		);
-	}
 };

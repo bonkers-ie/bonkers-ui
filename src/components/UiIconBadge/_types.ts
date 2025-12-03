@@ -4,10 +4,10 @@ export type BadgeSize = ESize.SM | ESize.MD | ESize.LG | ESize.XL;
 
 export enum EIconBadgeKind {
 	PRIMARY = "primary",
-	LIGHT = "light",
-	DARK = "dark",
+	SECONDARY = "secondary",
 	WARNING = "warning",
-	ERROR = "error"
+	ERROR = "error",
+	AI = "ai"
 }
 
 export interface IUiIconBadgeProps {

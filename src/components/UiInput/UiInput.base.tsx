@@ -1,6 +1,6 @@
 import React from "react";
 import { UiTypography } from "../UiTypography";
-import { EInputKind } from "./_types";
+import { EInputKind, EInputSize } from "./_types";
 import cx from "classnames";
 
 export type TUiInputBaseProps = {
@@ -9,12 +9,12 @@ export type TUiInputBaseProps = {
 	preIcon?: React.ReactNode;
 	kind?: EInputKind;
 	className?: string;
-
+	size?: EInputSize;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const UiInputBase: React.FC<
 	TUiInputBaseProps
-> = ({ postIcon, preIcon, className, kind = EInputKind.DEFAULT, ...rest }) => {
+> = ({ postIcon, preIcon, className, kind = EInputKind.DEFAULT, size = EInputSize.MEDIUM, ...rest }) => {
 
 	const stateClasses = {
 		[EInputKind.DEFAULT]: "border-secondary-alt-600",
@@ -30,17 +30,18 @@ export const UiInputBase: React.FC<
 			className={
 				cx(
 					"ui-input-wrapper",
-					"flex flex-row items-center gap-sm rounded-xl border p-sm",
-					"hover:border-secondary-alt-700",
+					"flex flex-row items-center gap-sm rounded-xl border",
 					"focus-within:outline-4",
 					"focus-within:outline-primary-300",
 					"focus-within:ring-secondary-alt-700 active:ring",
 					kind && stateClasses[kind],
 					{
-						"bg-white": !rest.disabled,
-						"border-secondary-alt-300 bg-secondary-alt-200": rest.disabled,
+						"bg-white hover:border-secondary-alt-700": !rest.disabled,
+						"!border-secondary-alt-300 bg-secondary-alt-200": rest.disabled,
 					},
-					className
+					className,
+					size === EInputSize.SMALL && "px-xs py-xxs",
+					size === EInputSize.MEDIUM && "p-sm"
 				)
 			}
 		>
