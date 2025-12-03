@@ -1,5 +1,6 @@
 import { default as React } from '../../../node_modules/react';
 import { EInputKind } from '../UiInput';
+import { ESelectSize } from './_types';
 type TSelectProps = {
     heading?: string;
     subLabel?: string;
@@ -10,6 +11,7 @@ type TSelectProps = {
     postfixIcon?: React.ReactNode;
     className?: string;
     kind?: EInputKind;
+    size?: ESelectSize;
     statusMessage?: string | React.ReactElement;
     onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 } & React.SelectHTMLAttributes<HTMLSelectElement>;

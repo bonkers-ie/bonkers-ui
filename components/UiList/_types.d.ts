@@ -7,6 +7,7 @@ export declare enum EListItemSpacing {
     COMPACT = "COMPACT"
 }
 export declare enum EListItemSize {
+    XS = "XS",
     SM = "SM",
     MD = "MD"
 }

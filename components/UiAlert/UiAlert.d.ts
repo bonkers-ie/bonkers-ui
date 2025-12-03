@@ -6,6 +6,7 @@ interface IUiAlert {
     className?: string;
     kind?: EAlertTypes;
     icon?: IconProp;
+    noBorder?: boolean;
 }
 export declare const UiAlert: React.FC<IUiAlert>;
 export {};

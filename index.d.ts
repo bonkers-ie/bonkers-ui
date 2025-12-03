@@ -6,6 +6,7 @@ export * from './components/UiCheckbox';
 export * from './components/UiIcon';
 export * from './components/UiIconBadge';
 export * from './components/UiInput';
+export * from './components/UiInputTextArea';
 export * from './components/UiInputRange';
 export * from './components/UiList';
 export * from './components/UiNotificationBadge';

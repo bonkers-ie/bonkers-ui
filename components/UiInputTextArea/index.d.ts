@@ -1,0 +1,1 @@
+export { UiInputTextArea } from './UiInputTextArea';

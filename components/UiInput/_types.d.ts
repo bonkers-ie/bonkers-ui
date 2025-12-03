@@ -4,3 +4,7 @@ export declare enum EInputKind {
     SUCCESS = "SUCCESS",
     WARNING = "WARNING"
 }
+export declare enum EInputSize {
+    SMALL = "small",
+    MEDIUM = "medium"
+}

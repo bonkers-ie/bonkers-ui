@@ -24,7 +24,7 @@ export declare enum ETypographySizes {
      */
     XL = "xl",
     /**
-     * 24px
+     * @deprecated 24px - use XXXL instead
      */
     XXL = "2xl",
     /**
@@ -32,7 +32,7 @@ export declare enum ETypographySizes {
      */
     XXXL = "3xl",
     /**
-     * 42px
+     * 32px
      */
     XXXXL = "4xl",
     /**
