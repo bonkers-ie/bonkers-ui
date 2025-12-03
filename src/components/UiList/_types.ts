@@ -9,6 +9,7 @@ export enum EListItemSpacing {
 }
 
 export enum EListItemSize {
+	XS = "XS",
 	SM = "SM",
 	MD = "MD"
 }

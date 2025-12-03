@@ -1,8 +1,8 @@
-import { UiTypography } from "../UiTypography";
-import { EInputKind } from "./_types";
-import cx from "classnames";
-import { UiInputStatusMessage } from "./UiInputStatusMessage";
 import type { FC, ReactNode, TextareaHTMLAttributes } from "react";
+import { UiTypography } from "../UiTypography";
+import { EInputKind } from "../UiInput/_types";
+import cx from "classnames";
+import { UiInputStatusMessage } from "../UiInput/UiInputStatusMessage";
 
 type TUiInputTextAreaProps = {
 	id: string;
@@ -46,7 +46,7 @@ export const UiInputTextArea: FC<TUiInputTextAreaProps> = ({
 						kind && stateClasses[kind],
 						{
 							"bg-white": !rest.disabled,
-							"border-secondary-alt-300 bg-secondary-alt-200": rest.disabled,
+							"!border-secondary-alt-300 bg-secondary-alt-200": rest.disabled,
 						},
 						className
 					)
@@ -58,10 +58,10 @@ export const UiInputTextArea: FC<TUiInputTextAreaProps> = ({
 				<textarea
 					id={ id }
 					className={ cx(`
-                        min-h-xxl
-                        w-full
-                        resize-y
-                    `) }
+						min-h-xxl
+						w-full
+						resize-y
+					`) }
 					rows={ 3 }
 					onKeyDown={ (e) => {
 						if (e.key === "Enter") {

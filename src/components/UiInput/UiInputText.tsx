@@ -13,17 +13,21 @@ type TUiInputTextProps = {
 	infoComponent?: React.ReactNode;
 } & TUiInputBaseProps;
 
-export const UiInputText: React.FC<TUiInputTextProps> = ({
+export const UiInputText = React.forwardRef<HTMLInputElement, TUiInputTextProps>(({
 	kind,
 	title,
 	infoComponent,
 	subtitle,
 	statusMessage,
 	...rest
-}) => {
+}, ref) => {
 	return (
 		<UiInputTitled title={ title } subtitle={ subtitle } infoComponent={ infoComponent } >
-			<UiInputBase kind={ kind } { ...rest } />
+			<UiInputBase
+				kind={ kind }
+				ref={ ref }
+				{ ...rest }
+			/>
 			{ statusMessage
 				? (
 					<UiInputStatusMessage
@@ -35,4 +39,4 @@ export const UiInputText: React.FC<TUiInputTextProps> = ({
 				: null }
 		</UiInputTitled>
 	);
-};
+});

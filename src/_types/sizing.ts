@@ -9,6 +9,10 @@ export enum ESize {
 	 */
 	ZERO = "zero",
 	/**
+	 * min (1px)
+	 */
+	MIN = "min",
+	/**
 	 * 4px
 	 */
 	XXXS = "xxxs",

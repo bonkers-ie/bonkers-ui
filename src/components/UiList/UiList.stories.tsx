@@ -4,6 +4,7 @@ import { UiList } from "./UiList";
 import { UiIcon } from "../UiIcon";
 import React from "react";
 import { EListItemDirection, EListItemSize, EListItemSpacing } from "./_types";
+import { ESize } from "../UiAccordion";
 
 const meta = {
 	title: "Components/UiList",
@@ -43,7 +44,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const IconComponent = () => {
-	return <UiIcon name={ ["far", "face-smile"] } />;
+	return <UiIcon name={ ["far", "face-smile"] } size={ ESize.SM } />;
 };
 
 export const Primary: Story = {

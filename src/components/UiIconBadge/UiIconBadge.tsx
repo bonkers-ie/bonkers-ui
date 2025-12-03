@@ -12,11 +12,11 @@ const badgeSizeClasses = {
 };
 
 const kindClasses = {
-	[EIconBadgeKind.PRIMARY]: "bg-primary-500 text-white",
-	[EIconBadgeKind.LIGHT]: "bg-primary-100 text-primary-800",
-	[EIconBadgeKind.DARK]: "bg-primary-800 text-white",
-	[EIconBadgeKind.WARNING]: "bg-warning-500 text-white",
-	[EIconBadgeKind.ERROR]: "bg-error-500 text-white"
+	[EIconBadgeKind.PRIMARY]: "bg-primary-alt-700",
+	[EIconBadgeKind.WARNING]: "bg-warning-500",
+	[EIconBadgeKind.ERROR]: "bg-error-500",
+	[EIconBadgeKind.SECONDARY]: "bg-secondary-500",
+	[EIconBadgeKind.AI]: "bg-[linear-gradient(225deg,#8B8BFC_16.73%,#282894_86.38%)]",
 };
 
 export const UiIconBadge: React.FC<IUiIconBadgeProps> = ({
@@ -32,6 +32,9 @@ export const UiIconBadge: React.FC<IUiIconBadgeProps> = ({
 			"items-center",
 			"justify-center",
 			"aspect-square",
+			"drop-shadow-md drop-shadow-black/25",
+			"border-2 border-white",
+			"text-white",
 			badgeSizeClasses[size],
 			kindClasses[kind],
 			className

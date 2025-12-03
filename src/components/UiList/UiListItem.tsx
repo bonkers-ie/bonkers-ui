@@ -22,7 +22,7 @@ export const UiListItem: React.FC<IUiListItemProps> = ({ children,
 		<li className={ cx("flex", spacingClasses[space], className) }>
 			{
 				prefix
-					? <span className="w-[1em]">
+					? <span className="inline-flex h-lh items-center">
 						{ prefix }
 					</span>
 					: null

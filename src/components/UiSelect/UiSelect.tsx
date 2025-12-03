@@ -3,6 +3,7 @@ import cx from "classnames";
 import { UiTypography, ETypographySizes, EColors } from "../UiTypography";
 import styles from "./UiSelect.module.css";
 import { EInputKind, UiInputStatusMessage } from "../UiInput";
+import { ESelectSize } from "./_types";
 
 type TSelectProps = {
 	heading?: string
@@ -14,6 +15,7 @@ type TSelectProps = {
 	postfixIcon?: React.ReactNode;
 	className?: string;
 	kind?: EInputKind;
+	size?: ESelectSize;
 	statusMessage?: string | React.ReactElement;
 	onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 } & React.SelectHTMLAttributes<HTMLSelectElement>
@@ -37,6 +39,7 @@ export const UiSelect: React.FC<TSelectProps> = ({
 	postfixIcon,
 	statusMessage,
 	kind,
+	size = ESelectSize.MD,
 	...rest
 }) => {
 	const [value, setValue] = React.useState(rest.value || rest.defaultValue || "");
@@ -67,19 +70,27 @@ export const UiSelect: React.FC<TSelectProps> = ({
 					? ["pointer-events-none", "border-secondary-alt-300", "bg-secondary-alt-200"]
 					: [kind && stateClasses[kind], "bg-white"]
 			) }>
-				{ prefixIcon
-					? <div className="flex items-center pl-sm">{ prefixIcon }</div>
-					: null }
+				{
+					prefixIcon
+						? <div className="flex items-center pl-sm">{ prefixIcon }</div>
+						: null
+				}
 				<select
 					{ ...rest }
 					className={ cx(
 						"m-0 w-full cursor-pointer appearance-none border-0 bg-transparent outline-0",
 						{
 							"text-secondary-alt": value === "" || !value,
-							"text-black": value
+							"text-black": value,
+
+							"py-xs": size === ESelectSize.SM && prefixIcon,
+							"py-sm": size === ESelectSize.MD && prefixIcon,
+
+							"px-sm py-xs": size === ESelectSize.SM && !prefixIcon,
+							"p-sm": size === ESelectSize.MD && !prefixIcon
 						},
 						prefixIcon
-							? "p-0 py-sm pr-xl"
+							? "pr-xl"
 							: "p-sm pr-xl"
 					) }
 					disabled={ disabled }
