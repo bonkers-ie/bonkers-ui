@@ -21,6 +21,7 @@ const spacingClasses = {
 };
 
 const sizeClasses = {
+	[EListItemSize.XS]: "text-xs",
 	[EListItemSize.SM]: "text-sm",
 	[EListItemSize.MD]: "text-md"
 };

@@ -4,6 +4,7 @@ import { UiSelect } from "./UiSelect";
 import { EInputKind } from "../UiInput";
 import { UiIcon } from "../UiIcon";
 import { ESize } from "../../_types/sizing";
+import { ESelectSize } from "./_types";
 
 const meta = {
 	title: "Components/UiSelect",
@@ -44,6 +45,13 @@ const meta = {
 			},
 			options: Object.keys(EInputKind),
 			description: "Kind of the select element"
+		},
+		size: {
+			control: {
+				type: "select"
+			},
+			options: Object.keys(ESelectSize),
+			description: "Size of the select element"
 		},
 		value: {
 			control: {

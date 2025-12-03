@@ -67,7 +67,7 @@ export const UiToggle: React.FC<TUiToggleProps> = ({
 			"text-md",
 			{
 				"flex-row-reverse": invertOrder,
-				"pointer-events-none opacity-50": disabled
+				"pointer-events-none opacity-50 grayscale": disabled
 			},
 			justificationClasses[justify],
 			className

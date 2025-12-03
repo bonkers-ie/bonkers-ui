@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { UiInputText } from "./UiInputText";
 import { EInputKind, EInputSize } from "./_types";
@@ -90,9 +90,10 @@ type Story = StoryObj<typeof meta>;
 export const BaseInput: Story = {
 	name: "UiInputBase",
 	render: (args) => {
+		const inputRef = useRef<HTMLInputElement>(null);
 
 		return (
-			<UiInputBase { ...args } />
+			<UiInputBase ref={ inputRef } { ...args } />
 		);
 	}
 };
@@ -117,8 +118,11 @@ export const TextInput: Story = {
 				Lorem, ipsum dolor.
 			</UiAccordionInfoDropdown>
 		);
+		const inputRef = useRef<HTMLInputElement>(null);
+
 		return (
 			<UiInputText
+				ref={ inputRef }
 				title="Title"
 				subtitle="Subtitle"
 				infoComponent={ <Info /> }
