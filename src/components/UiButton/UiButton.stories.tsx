@@ -52,7 +52,7 @@ const meta = {
 	args: {
 		children: "Button",
 		kind: EButtonTypes.PRIMARY_BRAND,
-		size: EButtonSizes.DEFAULT,
+		size: EButtonSizes.MEDIUM,
 		fullWidth: false,
 		disabled: false,
 		weight: EButtonWeight.BOLD
