@@ -17,11 +17,10 @@ export enum EButtonTypes {
 }
 
 export enum EButtonSizes {
-	DEFAULT = "default",
+	XSMALL = "xs",
 	SMALL = "sm",
 	MEDIUM = "md",
-	LARGE = "lg",
-	XLARGE = "xl"
+	LARGE = "lg"
 }
 
 export enum EButtonWeight {

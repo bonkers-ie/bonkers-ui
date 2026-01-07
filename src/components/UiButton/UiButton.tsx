@@ -268,11 +268,10 @@ const focusColorClasses = {
 };
 
 const sizeClasses = {
-	[EButtonSizes.SMALL]: "px-xs py-xxs rounded-lg focus-visible:before:rounded-xl text-sm",
-	[EButtonSizes.MEDIUM]: "p-sm rounded-lg focus-visible:before:rounded-xl text-md",
-	[EButtonSizes.LARGE]: "px-md py-sm rounded-xl focus-visible:before:rounded-2xl text-xl",
-	[EButtonSizes.XLARGE]: "px-lg py-md rounded-xl focus-visible:before:rounded-2xl text-2xl",
-	[EButtonSizes.DEFAULT]: "px-sm py-sm rounded-lg focus-visible:before:rounded-xl",
+	[EButtonSizes.XSMALL]: "px-xs py-xxs rounded-lg focus-visible:before:rounded-xl",
+	[EButtonSizes.SMALL]: "px-sm py-xs rounded-xl focus-visible:before:rounded-2xl",
+	[EButtonSizes.MEDIUM]: "p-sm rounded-xl focus-visible:before:rounded-2xl",
+	[EButtonSizes.LARGE]: "px-lg py-md rounded-xl focus-visible:before:rounded-2xl",
 };
 
 const weightClasses = {
@@ -282,7 +281,7 @@ const weightClasses = {
 
 export const UiButton: React.FC<TButtonProps> = ({
 	kind = EButtonTypes.PRIMARY_BRAND,
-	size = EButtonSizes.DEFAULT,
+	size = EButtonSizes.MEDIUM,
 	fullWidth = false,
 	disabled = false,
 	children,
