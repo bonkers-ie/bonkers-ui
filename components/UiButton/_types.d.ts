@@ -16,11 +16,10 @@ export declare enum EButtonTypes {
     TERTIARY_INVERSE = "tertiary-inverse"
 }
 export declare enum EButtonSizes {
-    DEFAULT = "default",
+    XSMALL = "xs",
     SMALL = "sm",
     MEDIUM = "md",
-    LARGE = "lg",
-    XLARGE = "xl"
+    LARGE = "lg"
 }
 export declare enum EButtonWeight {
     DEFAULT = "default",
