@@ -6,11 +6,12 @@ type TUiTypographyProps<T extends keyof React.JSX.IntrinsicElements> = {
     children?: React.ReactNode;
     underline?: boolean;
     lineHeight?: boolean;
+    lineHeightLegacy?: boolean;
     size?: ETypographySizes;
     textTransform?: ETextTransform;
     align?: ETextAlign;
     weight?: ETextWeight;
     color?: EColors;
 } & Omit<React.JSX.IntrinsicElements[T], "children" | "ref">;
-export declare const UiTypography: <T extends keyof React.JSX.IntrinsicElements>({ children, tag, underline, lineHeight, size, textTransform, align, weight, color, className, ...rest }: TUiTypographyProps<T>) => React.JSX.Element;
+export declare const UiTypography: <T extends keyof React.JSX.IntrinsicElements>({ children, tag, underline, lineHeight, size, textTransform, align, weight, color, className, lineHeightLegacy, ...rest }: TUiTypographyProps<T>) => React.JSX.Element;
 export {};
