@@ -8,6 +8,7 @@ type TUiTypographyProps<T extends keyof React.JSX.IntrinsicElements> = {
 	children?: React.ReactNode;
 	underline?: boolean;
 	lineHeight?: boolean;
+	lineHeightLegacy?: boolean;
 	size?: ETypographySizes;
 	textTransform?: ETextTransform;
 	align?: ETextAlign;
@@ -16,16 +17,29 @@ type TUiTypographyProps<T extends keyof React.JSX.IntrinsicElements> = {
 } & Omit<React.JSX.IntrinsicElements[T], "children" | "ref">;
 
 const sizeClasses = {
-	[ETypographySizes.MD]: "text-md",
 	[ETypographySizes.XXS]: "text-xxs",
 	[ETypographySizes.XS]: "text-xs",
 	[ETypographySizes.SM]: "text-sm",
+	[ETypographySizes.MD]: "text-md",
 	[ETypographySizes.LG]: "text-lg",
 	[ETypographySizes.XL]: "text-xl",
 	[ETypographySizes.XXL]: "text-2xl",
 	[ETypographySizes.XXXL]: "text-3xl",
 	[ETypographySizes.XXXXL]: "text-4xl",
 	[ETypographySizes.XXXXXL]: "text-5xl",
+};
+
+const lineHeightClasses = {
+	[ETypographySizes.XXS]: "leading-normal",
+	[ETypographySizes.XS]: "leading-[150%]",
+	[ETypographySizes.SM]: "leading-[145%]",
+	[ETypographySizes.MD]: "leading-[150%]",
+	[ETypographySizes.LG]: "leading-[155%]",
+	[ETypographySizes.XL]: "leading-[140%]",
+	[ETypographySizes.XXL]: "leading-[135%]",
+	[ETypographySizes.XXXL]: "leading-[142%]",
+	[ETypographySizes.XXXXL]: "leading-[125%]",
+	[ETypographySizes.XXXXXL]: "leading-[140%]",
 };
 
 const textTransformClasses = {
@@ -130,6 +144,7 @@ export const UiTypography = <T extends keyof React.JSX.IntrinsicElements> (
 		weight,
 		color,
 		className,
+		lineHeightLegacy,
 		...rest
 	}: TUiTypographyProps<T> ): React.JSX.Element => {
 
@@ -138,8 +153,11 @@ export const UiTypography = <T extends keyof React.JSX.IntrinsicElements> (
 		{
 			underline
 		},
-		lineHeight
+		lineHeightLegacy
 			? "leading-normal"
+			: "leading-none",
+		lineHeight
+			? lineHeightClasses[size || ETypographySizes.XXS]
 			: "leading-none",
 		size && sizeClasses[size],
 		textTransform && textTransformClasses[textTransform],

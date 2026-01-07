@@ -99,8 +99,8 @@ async function run() {
 		console.log(
 			`Tag ${newVersion} has been created and pushed successfully!`,
 		);
-	} catch (error) {
-		console.error(error.message);
+	} catch (error: unknown) {
+		console.error(error);
 		process.exit(1); // Exit with non-zero code to indicate failure
 	}
 }
