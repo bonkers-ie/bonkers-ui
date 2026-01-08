@@ -31,6 +31,12 @@ const meta = {
 				description: "The Element line height 1.5",
 			}
 		},
+		lineHeightLegacy: {
+			control: {
+				type: "boolean",
+				description: "The Element line height legacy (100%)",
+			}
+		},
 		size: {
 			control: {
 				type: "select",
@@ -72,6 +78,7 @@ const meta = {
 		tag: "p",
 		underline: false,
 		lineHeight: false,
+		lineHeightLegacy: false,
 		size: ETypographySizes.MD,
 		textTransform: ETextTransform.NONE,
 		align: ETextAlign.LEFT,
