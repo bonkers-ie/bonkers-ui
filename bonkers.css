@@ -39,6 +39,7 @@
 	--spacing-xxs: 8px;
 	--spacing-xs: 12px;
 	--spacing-sm: 16px;
+	--spacing-smd: 20px;
 	--spacing-md: 24px;
 	--spacing-lg: 32px;
 	--spacing-xl: 40px;
@@ -141,6 +142,7 @@
 	--xxs: var(--spacing-xxs);
 	--xs: var(--spacing-xs);
 	--sm: var(--spacing-sm);
+	--smd: var(--spacing-smd);
 	--md: var(--spacing-md);
 	--lg: var(--spacing-lg);
 	--xl: var(--spacing-xl);
@@ -275,6 +277,7 @@
 	--spacing-xxs: var(--spacing-xxs);
 	--spacing-xs: var(--spacing-xs);
 	--spacing-sm: var(--spacing-sm);
+	--spacing-smd: var(--spacing-smd);
 	--spacing-md: var(--spacing-md);
 	--spacing-lg: var(--spacing-lg);
 	--spacing-xl: var(--spacing-xl);
@@ -290,6 +293,7 @@
 	--min-h-xxs: var(--spacing-xxs);
 	--min-h-xs: var(--spacing-xs);
 	--min-h-sm: var(--spacing-sm);
+	--min-h-smd: var(--spacing-smd);
 	--min-h-md: var(--spacing-md);
 	--min-h-lg: var(--spacing-lg);
 	--min-h-xl: var(--spacing-xl);
@@ -305,6 +309,7 @@
 	--max-h-xxs: var(--spacing-xxs);
 	--max-h-xs: var(--spacing-xs);
 	--max-h-sm: var(--spacing-sm);
+	--max-h-smd: var(--spacing-smd);
 	--max-h-md: var(--spacing-md);
 	--max-h-lg: var(--spacing-lg);
 	--max-h-xl: var(--spacing-xl);
@@ -320,6 +325,7 @@
 	--min-w-xxs: var(--spacing-xxs);
 	--min-w-xs: var(--spacing-xs);
 	--min-w-sm: var(--spacing-sm);
+	--min-w-smd: var(--spacing-smd);
 	--min-w-md: var(--spacing-md);
 	--min-w-lg: var(--spacing-lg);
 	--min-w-xl: var(--spacing-xl);
@@ -335,6 +341,7 @@
 	--max-w-xxs: var(--spacing-xxs);
 	--max-w-xs: var(--spacing-xs);
 	--max-w-sm: var(--spacing-sm);
+	--max-w-smd: var(--spacing-smd);
 	--max-w-md: var(--spacing-md);
 	--max-w-lg: var(--spacing-lg);
 	--max-w-xl: var(--spacing-xl);

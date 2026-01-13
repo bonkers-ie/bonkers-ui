@@ -8,6 +8,7 @@ type TButtonProps = {
 	size?: EButtonSizes;
 	fullWidth?: boolean;
 	weight?: EButtonWeight;
+	tag?: keyof React.JSX.IntrinsicElements;
 	className?: string;
 } & React.HTMLAttributes<HTMLElement> &
 	React.ButtonHTMLAttributes<HTMLElement> &
@@ -270,8 +271,8 @@ const focusColorClasses = {
 const sizeClasses = {
 	[EButtonSizes.XSMALL]: "px-xs py-xxs rounded-lg focus-visible:before:rounded-xl",
 	[EButtonSizes.SMALL]: "px-sm py-xs rounded-xl focus-visible:before:rounded-2xl",
-	[EButtonSizes.MEDIUM]: "p-sm rounded-xl focus-visible:before:rounded-2xl",
-	[EButtonSizes.LARGE]: "px-lg py-md rounded-xl focus-visible:before:rounded-2xl",
+	[EButtonSizes.MEDIUM]: "py-sm px-smd rounded-xl focus-visible:before:rounded-2xl",
+	[EButtonSizes.LARGE]: "px-md py-smd rounded-xl focus-visible:before:rounded-2xl",
 };
 
 const weightClasses = {
@@ -288,48 +289,46 @@ export const UiButton: React.FC<TButtonProps> = ({
 	weight = EButtonWeight.BOLD,
 	className,
 	onClick,
+	tag = "button",
 	...rest
 }) => {
-	return (
-		<button
-			{ ...rest }
-			onClick={ onClick }
-			className={ cx(
-				css.UiButton,
-				"cursor-pointer",
-				"touch-manipulation",
-				"whitespace-nowrap",
-				"leading-none",
-				"flex",
-				"gap-xs",
-				"justify-center",
-				"items-center",
-				"relative",
-				"transition-all",
-				"focus-visible:before:border-2",
-				"focus-visible:before:absolute",
-				"focus-visible:before:-translate-x-1/2",
-				"focus-visible:before:-translate-y-1/2",
-				"focus-visible:before:left-1/2",
-				"focus-visible:before:top-1/2",
-				"focus-visible:before:inset-0",
-				"focus-visible:before:z-[-1]",
-				"focus-visible:before:w-[calc(100%+12px)]",
-				"focus-visible:before:h-[calc(100%+10px)]",
-				focusColorClasses.background(kind),
-				focusColorClasses.border(kind),
-				typeClasses[kind],
-				sizeClasses[size],
-				weightClasses[weight],
-				{
-					"w-full": fullWidth,
-					"pointer-events-none": disabled,
-				},
-				className
-			) }
-			disabled={ disabled }
-		>
-			{ children }
-		</button>
-	);
+	return React.createElement(tag, {
+		disabled,
+		onClick,
+		className: cx(
+			css.UiButton,
+			"cursor-pointer",
+			"touch-manipulation",
+			"whitespace-nowrap",
+			"leading-none",
+			"flex",
+			"gap-xs",
+			"justify-center",
+			"items-center",
+			"relative",
+			"transition-all",
+			"focus-visible:before:border-2",
+			"focus-visible:before:absolute",
+			"focus-visible:before:-translate-x-1/2",
+			"focus-visible:before:-translate-y-1/2",
+			"focus-visible:before:left-1/2",
+			"focus-visible:before:top-1/2",
+			"focus-visible:before:inset-0",
+			"focus-visible:before:z-[-1]",
+			"focus-visible:before:w-[calc(100%+12px)]",
+			"focus-visible:before:h-[calc(100%+10px)]",
+			focusColorClasses.background(kind),
+			focusColorClasses.border(kind),
+			typeClasses[kind],
+			sizeClasses[size],
+			weightClasses[weight],
+			{
+				"w-full": fullWidth,
+				"w-fit": !fullWidth,
+				"pointer-events-none": disabled,
+			},
+			className
+		),
+		...rest
+	}, children);
 };
