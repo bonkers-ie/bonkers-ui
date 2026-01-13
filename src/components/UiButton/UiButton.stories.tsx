@@ -16,6 +16,18 @@ const meta = {
 			options: Object.values(EButtonTypes),
 			description: "Button Type",
 		},
+		tag: {
+			control: {
+				type: "select"
+			},
+			options: [
+				"p",
+				"span",
+				"button",
+				"a",
+			],
+			description: "Button Type",
+		},
 		size: {
 			control: {
 				type: "select"
@@ -55,7 +67,8 @@ const meta = {
 		size: EButtonSizes.MEDIUM,
 		fullWidth: false,
 		disabled: false,
-		weight: EButtonWeight.BOLD
+		weight: EButtonWeight.BOLD,
+		tag: "button"
 	},
 } satisfies Meta<typeof UiButton>;
 
