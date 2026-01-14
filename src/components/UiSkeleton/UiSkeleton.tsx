@@ -35,7 +35,7 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 							"flex items-center justify-center gap-xs",
 							"px-sm py-xxs",
 							"border-t-0 border-b border-secondary-alt-300 md:border-b-0",
-							"md:rounded-tl-xl md:rounded-bl-xl",
+							"md:rounded-l-xl",
 							"md:rounded-br-0 rounded-tl-xl"
 						) }
 					>
@@ -116,7 +116,7 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 							"flex flex-row md:grid md:flex-col md:place-content-center md:items-center md:gap-sm",
 							"border-t border-l-0 border-secondary-alt-300 md:border-t-0",
 							"items-center justify-between p-sm",
-							"md:rounded-tr-xl md:rounded-br-xl",
+							"md:rounded-r-xl",
 							"md:rounded-tl-0 rounded-br-xl",
 							"md:border-l"
 						) }
@@ -219,7 +219,7 @@ export const UiSkeleton: React.FC<UiSkeletonProps> = ({
 							<div className={ cx("mb-xxxs h-md w-2/4 rounded-sm bg-secondary-alt-300") } />
 						</div>
 
-						<div className={ cx("place-items-center border border-r-0 border-l-0 border-secondary-alt-300 py-xxs") }>
+						<div className={ cx("place-items-center border border-x-0 border-secondary-alt-300 py-xxs") }>
 							<div className={ cx("mb-xxxs h-md w-2/3 rounded-sm bg-secondary-alt-400") } />
 							<div className={ cx("mb-xxxs h-md w-2/4 rounded-sm bg-secondary-alt-300") } />
 						</div>

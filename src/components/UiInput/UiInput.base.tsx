@@ -33,10 +33,10 @@ export const UiInputBase = React.forwardRef<HTMLInputElement, TUiInputBaseProps>
 						"focus-within:outline-4",
 						"focus-within:outline-primary-300",
 						"focus-within:ring-secondary-alt-700 active:ring",
-						kind && stateClasses[kind],
+						kind && !rest.disabled && stateClasses[kind],
 						{
 							"bg-white hover:border-secondary-alt-700": !rest.disabled,
-							"!border-secondary-alt-300 bg-secondary-alt-200": rest.disabled,
+							"border-secondary-alt-300 bg-secondary-alt-200": rest.disabled,
 						},
 						className,
 						size === EInputSize.SMALL && "px-xs py-xxs",
