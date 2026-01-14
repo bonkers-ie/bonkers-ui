@@ -3,16 +3,14 @@ import { EButtonSizes, EButtonTypes, EButtonWeight } from "./_types.ts";
 import cx from "classnames";
 import css from "./UiButton.module.css";
 
-type TButtonProps = {
+type PolymorphicProps<T extends React.ElementType> = {
+	tag?: T;
 	kind?: EButtonTypes;
 	size?: EButtonSizes;
 	fullWidth?: boolean;
 	weight?: EButtonWeight;
-	tag?: keyof React.JSX.IntrinsicElements;
 	className?: string;
-} & React.HTMLAttributes<HTMLElement> &
-	React.ButtonHTMLAttributes<HTMLElement> &
-	React.AnchorHTMLAttributes<HTMLElement>
+} & React.ComponentPropsWithoutRef<T>;
 
 const typeClasses = {
 	[EButtonTypes.PRIMARY_BRAND]: `
@@ -280,22 +278,24 @@ const weightClasses = {
 	[EButtonWeight.BOLD]: "font-bold",
 };
 
-export const UiButton: React.FC<TButtonProps> = ({
-	kind = EButtonTypes.PRIMARY_BRAND,
-	size = EButtonSizes.MEDIUM,
-	fullWidth = false,
-	disabled = false,
-	children,
-	weight = EButtonWeight.BOLD,
-	className,
-	onClick,
-	tag = "button",
-	...rest
-}) => {
-	return React.createElement(tag, {
-		disabled,
+export function UiButton<T extends React.ElementType = "button">(
+	{
+		kind = EButtonTypes.PRIMARY_BRAND,
+		size = EButtonSizes.MEDIUM,
+		fullWidth = false,
+		disabled = false,
+		weight = EButtonWeight.BOLD,
+		className,
 		onClick,
-		className: cx(
+		tag,
+		...rest
+	}: PolymorphicProps<T>
+) {
+	const Component = tag || "button";
+	return <Component
+		disabled={ disabled }
+		onClick={ onClick }
+		className={ cx(
 			css.UiButton,
 			"cursor-pointer",
 			"touch-manipulation",
@@ -328,7 +328,8 @@ export const UiButton: React.FC<TButtonProps> = ({
 				"pointer-events-none": disabled,
 			},
 			className
-		),
-		...rest
-	}, children);
+		) }
+		{ ...rest }
+	/>;
+
 };
