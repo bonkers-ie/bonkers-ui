@@ -1,12 +1,12 @@
 import { default as React } from '../../../node_modules/react';
 import { EButtonSizes, EButtonTypes, EButtonWeight } from './_types.ts';
-type TButtonProps = {
+type PolymorphicProps<T extends React.ElementType> = {
+    tag?: T;
     kind?: EButtonTypes;
     size?: EButtonSizes;
     fullWidth?: boolean;
     weight?: EButtonWeight;
-    tag?: keyof React.JSX.IntrinsicElements;
     className?: string;
-} & React.HTMLAttributes<HTMLElement> & React.ButtonHTMLAttributes<HTMLElement> & React.AnchorHTMLAttributes<HTMLElement>;
-export declare const UiButton: React.FC<TButtonProps>;
+} & React.ComponentPropsWithoutRef<T>;
+export declare function UiButton<T extends React.ElementType = "button">({ kind, size, fullWidth, disabled, weight, className, onClick, tag, ...rest }: PolymorphicProps<T>): React.JSX.Element;
 export {};
