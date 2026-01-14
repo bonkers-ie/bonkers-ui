@@ -118,7 +118,7 @@ export default [
 						}]
 				}
 			],
-			"better-tailwindcss/no-unregistered-classes": [
+			"better-tailwindcss/no-unknown-classes": [
 				"warn",
 			],
 		},

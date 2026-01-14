@@ -144,7 +144,7 @@ export const UiInputRange: React.FC<TUiInputRangeProps> = ({
 					left: thumbLeft,
 				} }
 			>
-				<div className="absolute top-1/2 left-1/2 size-xxs -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary-600" />
+				<div className="absolute top-1/2 left-1/2 size-xxs -translate-1/2 rounded-full bg-primary-600" />
 			</div>
 		</div>
 	);
