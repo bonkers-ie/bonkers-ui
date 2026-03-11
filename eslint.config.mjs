@@ -1,4 +1,4 @@
-import react from "eslint-plugin-react";
+import eslintReact from "@eslint-react/eslint-plugin";
 import tseslint from "typescript-eslint";
 import stylisticPlugin from "@stylistic/eslint-plugin";
 import storybook from "eslint-plugin-storybook";
@@ -11,8 +11,8 @@ import eslintPluginBetterTailwindcss from "eslint-plugin-better-tailwindcss";
 export default [
 	{
 		files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
+		...eslintReact.configs["recommended-typescript"],
 		plugins: {
-			react,
 			"@stylistic": stylisticPlugin,
 			"better-tailwindcss": eslintPluginBetterTailwindcss
 		},
@@ -64,11 +64,10 @@ export default [
 			"@stylistic/indent": ["error", "tab"],
 			"@stylistic/no-mixed-spaces-and-tabs": "error",
 			"@stylistic/eol-last": ["error", "always"],
-			"react/jsx-curly-spacing": [2, {
+			"@stylistic/jsx-curly-spacing": [2, {
 				"when": "always",
 				"children": true
 			}],
-			"react/jsx-indent": ["error", "tab"],
 			"tailwindcss/no-custom-classname": "off",
 			"object-curly-newline": ["error", {
 				"ObjectExpression": {
