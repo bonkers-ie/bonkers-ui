@@ -6,7 +6,7 @@ import setupFontAwesome from "../fontAwesome";
 setupFontAwesome();
 
 const preview: Preview = {
-    parameters: {
+	parameters: {
 		options: {
 			storySort: {
 				method: "",
@@ -18,26 +18,23 @@ const preview: Preview = {
 			},
 		},
 		stylePreview: true,
-		actions: {
-			argTypesRegex: "^on[A-Z].*"
-		},
 		backgrounds: {
-            options: {
-                bonkers: {
+			options: {
+				bonkers: {
 					name: "Bonkers",
 					value: "url(https://web-assets.bonkers.ie/maverick/img/about.0ed347c.png)",
 				}
-            }
-        }
+			}
+		}
 	},
 
-    tags: ["autodocs"],
+	tags: ["autodocs"],
 
-    initialGlobals: {
-        backgrounds: {
-            value: "bonkers"
-        }
-    }
+	initialGlobals: {
+		backgrounds: {
+			value: "bonkers"
+		}
+	}
 };
 
 export default preview;

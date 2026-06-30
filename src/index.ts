@@ -19,6 +19,7 @@ export * from "./components/UiRadioFancy";
 export * from "./components/UiSelect";
 export * from "./components/UiSkeleton";
 export * from "./components/UiSnackbar";
+export * from "./components/UiStars";
 export * from "./components/UiTable";
 export * from "./components/UiTabs";
 export * from "./components/UiToggle";

@@ -31,6 +31,12 @@ const meta = {
 				type: "text"
 			}
 		},
+		value: {
+			control: {
+				type: "select"
+			},
+			options: ["value_1", "value_2", "value_3", "value_4"]
+		}
 	},
 	args: {
 		children: "Some text",
@@ -38,6 +44,7 @@ const meta = {
 		justify: EJustify.START,
 		invertOrder: false,
 		disabled: false,
+		value: "value_3"
 	},
 } satisfies Meta<typeof UiRadio>;
 
@@ -47,7 +54,11 @@ type Story = StoryObj<typeof UiRadio>;
 
 export const Default: Story = {
 	render: (args) => {
-		const [selectedValue, setSelectedValue] = React.useState<string>("value_3");
+		const [selectedValue, setSelectedValue] = React.useState<string>(args.value);
+
+		React.useEffect(() => {
+			setSelectedValue(args.value);
+		}, [args.value]);
 
 		const handleChange = (value: string) => {
 			setSelectedValue(value);
