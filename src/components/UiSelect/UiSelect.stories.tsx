@@ -43,20 +43,21 @@ const meta = {
 			control: {
 				type: "select"
 			},
-			options: Object.keys(EInputKind),
+			options: Object.values(EInputKind),
 			description: "Kind of the select element"
 		},
 		size: {
 			control: {
 				type: "select"
 			},
-			options: Object.keys(ESelectSize),
+			options: Object.values(ESelectSize),
 			description: "Size of the select element"
 		},
 		value: {
 			control: {
-				type: "text"
+				type: "select"
 			},
+			options: ["", "1", "2", "3"],
 			description: "Value of the select element"
 		},
 	},
@@ -77,21 +78,23 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
 	render: (args) => {
-		const [value, setValue] = React.useState(args.value);
+		const [value, setValue] = React.useState(args.value ?? "");
 
-		const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-			setValue(event.target.value);
-		};
+		React.useEffect(() => {
+			setValue(args.value ?? "");
+		}, [args.value]);
 
 		return (
-			<React.Fragment>
-				<UiSelect { ...args } value={ value } onChange={ handleChange }>
-					<option value="" disabled hidden>Select an option</option>
-					<option value="1">Option 1</option>
-					<option value="2">Option 2</option>
-					<option value="3">Option 3</option>
-				</UiSelect>
-			</React.Fragment>
+			<UiSelect
+				{ ...args }
+				value={ value }
+				onChange={ (event) => setValue(event.target.value) }
+			>
+				<option value="" disabled>Select an option</option>
+				<option value="1">Option 1</option>
+				<option value="2">Option 2</option>
+				<option value="3">Option 3</option>
+			</UiSelect>
 		);
 	}
 };

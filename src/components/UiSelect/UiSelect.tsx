@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import cx from "classnames";
 import { UiTypography, ETypographySizes, EColors } from "../UiTypography";
 import styles from "./UiSelect.module.css";
@@ -43,6 +43,7 @@ export const UiSelect: React.FC<TSelectProps> = ({
 	...rest
 }) => {
 	const [value, setValue] = React.useState(rest.value || rest.defaultValue || "");
+
 	const handleChange = React.useCallback(
 		(event: React.ChangeEvent<HTMLSelectElement>) => {
 			setValue(event.target.value);
@@ -50,6 +51,13 @@ export const UiSelect: React.FC<TSelectProps> = ({
 		},
 		[onChange],
 	);
+
+	useEffect(() => {
+		if (rest.value !== undefined) {
+			setValue(rest.value);
+		}
+	}, [rest.value]);
+
 	return (
 		<div className={ cx("ui-select", className) }>
 			{ heading
