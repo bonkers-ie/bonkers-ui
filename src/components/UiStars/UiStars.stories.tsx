@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { UiStars } from "./UiStars";
-import { EStarsSize, EStarColors } from "./_types";
+import { EStarsSize } from "./_types";
+import { EColors } from "../../_types/colors";
 
 const meta = {
 	title: "Components/UiStars",
@@ -34,15 +35,22 @@ const meta = {
 			control: {
 				type: "select"
 			},
-			options: Object.values(EStarColors),
+			options: Object.values(EColors),
 			description: "Star color",
+		},
+		showOutline: {
+			control: {
+				type: "boolean"
+			},
+			description: "Show an outline on the unfilled portion of a star",
 		}
 	},
 	args: {
 		starsFilled: 3.5,
 		count: 5,
 		size: EStarsSize.MD,
-		color: EStarColors.DEFAULT
+		color: EColors.PRIMARY,
+		showOutline: true
 	},
 } satisfies Meta<typeof UiStars>;
 
