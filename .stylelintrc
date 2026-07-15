@@ -3,7 +3,7 @@
 		"stylelint-prettier"
 	],
 	"extends": [
-		"stylelint-prettier/recommended",
+		"stylelint-prettier",
 		"stylelint-config-tailwindcss"
 	],
 	"rules": {
