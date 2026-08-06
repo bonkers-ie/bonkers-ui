@@ -1,11 +1,12 @@
 import React from "react";
 import cx from "classnames";
 import { EColors } from "../../_types/colors.ts";
-import { berRankDictionary, type TBerPropNumber, type TBerPropString, EBerSize } from "./_types";
+import { type TBerPropNumber, type TBerPropString, EBerSize, type TBerRankDictionary } from "./_types";
 import { UiTypography, ETextWeight, ETypographySizes, ETextTransform } from "../UiTypography";
 
 interface IUiBerRankProps {
-	rank: TBerPropNumber | TBerPropString | number;
+	dictionary: TBerRankDictionary[];
+	rank: TBerPropNumber | TBerPropString;
 	size?: EBerSize;
 	className?: string;
 }
@@ -23,7 +24,8 @@ const textSize = {
 export const UiBerRank: React.FC<IUiBerRankProps> = ({
 	rank,
 	className,
-	size = EBerSize.SMALL
+	size = EBerSize.SMALL,
+	dictionary
 }) => {
 	return (
 		<div className={ cx(
@@ -57,7 +59,7 @@ export const UiBerRank: React.FC<IUiBerRankProps> = ({
 			<div className="relative">
 
 				<svg className={
-					cx(sizeClasses[size], berRankDictionary[+rank]?.color || berRankDictionary[0].color)
+					cx(sizeClasses[size], dictionary[+rank]?.color || dictionary[0].color)
 				}
 				viewBox="0 0 106 60"
 				fill="none"
@@ -77,7 +79,7 @@ export const UiBerRank: React.FC<IUiBerRankProps> = ({
 					weight={ ETextWeight.BOLD }
 					textTransform={ ETextTransform.UPPERCASE }
 				>
-					{ berRankDictionary[+rank]?.text || berRankDictionary[0].text }
+					{ dictionary[+rank]?.text || dictionary[0].text }
 				</UiTypography>
 			</div>
 		</div>
