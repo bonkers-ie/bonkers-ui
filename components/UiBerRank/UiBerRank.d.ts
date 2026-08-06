@@ -1,7 +1,8 @@
 import { default as React } from '../../../node_modules/react';
-import { TBerPropNumber, TBerPropString, EBerSize } from './_types';
+import { TBerPropNumber, TBerPropString, EBerSize, TBerRankDictionary } from './_types';
 interface IUiBerRankProps {
-    rank: TBerPropNumber | TBerPropString | number;
+    dictionary: TBerRankDictionary[];
+    rank: TBerPropNumber | TBerPropString;
     size?: EBerSize;
     className?: string;
 }
