@@ -10,9 +10,15 @@ export enum EIconBadgeKind {
 	AI = "ai"
 }
 
+export enum EIconBadgeColorType {
+	FLAT = "flat",
+	COLORFUL = "colorful"
+}
+
 export interface IUiIconBadgeProps {
 	size?: BadgeSize;
 	kind?: EIconBadgeKind;
 	children: React.ReactNode;
 	className?: string;
+	colorType?: EIconBadgeColorType
 }
