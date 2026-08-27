@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./UiCheckbox.module.css";
 import cx from "classnames";
 import { EJustify } from "../../_types/align";
-import { ECheckboxSize } from "./_types.ts";
+import { ECheckboxALign, ECheckboxSize } from "./_types.ts";
 
 export type TUiCheckboxProps = {
 	invertOrder?: boolean;
@@ -13,6 +13,7 @@ export type TUiCheckboxProps = {
 	onChange?: (checked: boolean) => void;
 	className?: string;
 	name?: string;
+	align?: ECheckboxALign
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "onChange">;
 
 const justificationClasses = {
@@ -22,6 +23,12 @@ const justificationClasses = {
 	[EJustify.BETWEEN]: "justify-between",
 	[EJustify.AROUND]: "justify-around",
 	[EJustify.EVENLY]: "justify-evenly"
+};
+
+const alignClasses = {
+	[ECheckboxALign.TOP]: "items-start",
+	[ECheckboxALign.CENTER]: "items-center",
+	[ECheckboxALign.BOTTOM]: "items-end"
 };
 
 const spanSizeClasses = {
@@ -44,6 +51,7 @@ export const UiCheckbox: React.FC<TUiCheckboxProps> = ({
 	children,
 	onChange,
 	className,
+	align = ECheckboxALign.CENTER,
 	name,
 	...rest
 }) => {
@@ -58,7 +66,7 @@ export const UiCheckbox: React.FC<TUiCheckboxProps> = ({
 				styles.UiCheckbox,
 				"grid",
 				"cursor-pointer",
-				children && "items-center gap-sm",
+				children && cx("gap-sm", alignClasses[align]),
 				justificationClasses[justify],
 				disabled && styles.UiCheckbox__disabled,
 				className
