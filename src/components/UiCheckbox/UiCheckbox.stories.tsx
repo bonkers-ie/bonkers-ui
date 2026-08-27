@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import { UiCheckbox } from "./UiCheckbox";
 import { EJustify } from "../../_types/align";
-import { ECheckboxSize } from "./_types";
+import { ECheckboxALign, ECheckboxSize } from "./_types";
 
 const meta = {
 	title: "Components/UiCheckbox",
@@ -21,6 +21,13 @@ const meta = {
 			},
 			options: Object.values(ECheckboxSize),
 			description: "The element size can be SM or MD (MD by default)"
+		},
+		align: {
+			control: {
+				type: "select"
+			},
+			options: Object.values(ECheckboxALign),
+			description: "The vertical alignment of the checkbox against its label (center by default)"
 		},
 		invertOrder: {
 			control: {
@@ -55,7 +62,8 @@ const meta = {
 		onChange: (value: boolean, name?: string) => console.log(`${name
 			? name
 			: "Value"} updated to ${value}`),
-		size: ECheckboxSize.MD
+		size: ECheckboxSize.MD,
+		align: ECheckboxALign.CENTER
 	},
 } satisfies Meta<typeof UiCheckbox>;
 
@@ -84,6 +92,26 @@ export const Primary: Story = {
 			/>
 		);
 	}
+};
+
+export const Align: Story = {
+	render: (args) => (
+		<div className="flex flex-col gap-md">
+			{ Object.values(ECheckboxALign).map((align) => (
+				<UiCheckbox
+					{ ...args }
+					key={ align }
+					align={ align }
+					checked
+				>
+					{ `align="${align}" — ` }
+					Some long label text that wraps onto multiple lines so the alignment is visible.
+					Some long label text that wraps onto multiple lines so the alignment is visible.
+					Some long label text that wraps onto multiple lines so the alignment is visible.
+				</UiCheckbox>
+			)) }
+		</div>
+	)
 };
 
 export const CheckboxGroup: Story = {
