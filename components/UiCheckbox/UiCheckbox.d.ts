@@ -1,6 +1,6 @@
 import { default as React } from '../../../node_modules/react';
 import { EJustify } from '../../_types/align';
-import { ECheckboxSize } from './_types.ts';
+import { ECheckboxALign, ECheckboxSize } from './_types.ts';
 export type TUiCheckboxProps = {
     invertOrder?: boolean;
     justify?: EJustify;
@@ -10,5 +10,6 @@ export type TUiCheckboxProps = {
     onChange?: (checked: boolean) => void;
     className?: string;
     name?: string;
+    align?: ECheckboxALign;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "onChange">;
 export declare const UiCheckbox: React.FC<TUiCheckboxProps>;
