@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import cx from "classnames";
 import styles from "./UiToggle.module.css";
 import { EJustify } from "../../_types/align";
+import { EToggleLabelSize } from "./_types";
 
 type TUiToggleProps = {
 	children?: React.ReactNode
@@ -11,6 +12,7 @@ type TUiToggleProps = {
 	defaultChecked?: boolean
 	checked?: boolean
 	value?: boolean
+	labelSize?: EToggleLabelSize
 	onChange?: (checked: boolean) => void
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange">;
 
@@ -23,6 +25,7 @@ export const UiToggle: React.FC<TUiToggleProps> = ({
 	value,
 	className,
 	defaultChecked,
+	labelSize = EToggleLabelSize.MD,
 	onChange,
 	...rest
 }) => {
@@ -54,6 +57,16 @@ export const UiToggle: React.FC<TUiToggleProps> = ({
 		[EJustify.EVENLY]: "justify-evenly"
 	};
 
+	const labelSizes = {
+		[EToggleLabelSize.XXS]: "text-xxs",
+		[EToggleLabelSize.XS]: "text-xs",
+		[EToggleLabelSize.SM]: "text-sm",
+		[EToggleLabelSize.MD]: "text-md",
+		[EToggleLabelSize.LG]: "text-lg",
+		[EToggleLabelSize.XL]: "text-xl",
+		[EToggleLabelSize.XXL]: "text-2xl",
+	};
+
 	return (
 		<label className={ cx(
 			"ui-toggle",
@@ -64,7 +77,7 @@ export const UiToggle: React.FC<TUiToggleProps> = ({
 			"items-center",
 			"w-full",
 			"leading-normal",
-			"text-md",
+			labelSizes[labelSize],
 			{
 				"flex-row-reverse": invertOrder,
 				"pointer-events-none opacity-50 grayscale": disabled

@@ -80,7 +80,7 @@ export const UiRadio: React.FC<TUiRadioProps> = ({
 				"group-hover:border-secondary-alt-700",
 				"group-focus:border-secondary-alt-700",
 				"peer-checked:border-2",
-				"peer-checked:border-primary",
+				"peer-checked:border-primary-600",
 				"hover:peer-checked:border-primary-600",
 				"active:peer-checked:border-primary-800",
 				"peer-focus:shadow-border-primary",
@@ -96,7 +96,7 @@ export const UiRadio: React.FC<TUiRadioProps> = ({
 					"block",
 					"size-xxs",
 					"rounded-full",
-					"bg-primary",
+					"bg-primary-600",
 				) } />
 			</span>
 			{ children }
