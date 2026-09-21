@@ -2,7 +2,6 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { UiToggle } from "./UiToggle";
 import { EJustify } from "../../_types/align";
-import { EToggleLabelSize } from "./_types";
 
 const meta = {
 	title: "Components/UiToggle",
@@ -44,15 +43,7 @@ const meta = {
 				type: "boolean",
 			},
 			description: "Toggle Value",
-		},
-		labelSize: {
-			control: {
-				type: "select"
-			},
-			options: Object.values(EToggleLabelSize),
-			description: "Toggle Label Size",
-		},
-
+		}
 	}
 } satisfies Meta<typeof UiToggle>;
 
@@ -65,7 +56,6 @@ export const Primary: Story = {
 		children: "title",
 		disabled: false,
 		invertOrder: false,
-		labelSize: EToggleLabelSize.MD,
 		onChange: (value: boolean) => console.log(`Checked ${value}`),
 	},
 	render: (args) => {
