@@ -86,20 +86,14 @@ export const UiSelect: React.FC<TSelectProps> = ({
 				<select
 					{ ...rest }
 					className={ cx(
-						"m-0 w-full cursor-pointer appearance-none border-0 bg-transparent outline-0",
+						"m-0 w-full cursor-pointer appearance-none border-0 bg-transparent pr-xl leading-[22px] outline-0",
 						{
+							"py-xxs": size === ESelectSize.SM,
+							"py-sm": size === ESelectSize.MD,
 							"text-secondary-alt": value === "" || !value,
 							"text-black": value,
-
-							"py-xs": size === ESelectSize.SM && prefixIcon,
-							"py-sm": size === ESelectSize.MD && prefixIcon,
-
-							"px-sm py-xs": size === ESelectSize.SM && !prefixIcon,
-							"p-sm": size === ESelectSize.MD && !prefixIcon
-						},
-						prefixIcon
-							? "pr-xl"
-							: "p-sm pr-xl"
+							"pl-sm": !prefixIcon,
+						}
 					) }
 					disabled={ disabled }
 					value={ value }

@@ -5,3 +5,4 @@ Bun.write("./dist/eslint.config.mjs", Bun.file("./eslint.config.mjs"));
 // Bun.write("./dist/.stylelintrc", Bun.file("./.stylelintrc"));
 Bun.write("./dist/README.md", Bun.file("./README.md"));
 Bun.write("./dist/LICENCE", Bun.file("./LICENCE"));
+Bun.write("./dist/CLAUDE.md", Bun.file("./CLAUDE.md"));
