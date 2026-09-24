@@ -10,6 +10,7 @@ export type TUiRadioFancy = {
     className?: string;
     radioType?: ERadioTypes;
     value: string;
+    name?: string;
     onChange: (value: string) => void;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "checked" | "value" | "name">;
 export declare const UiRadioFancy: React.FC<TUiRadioFancy>;

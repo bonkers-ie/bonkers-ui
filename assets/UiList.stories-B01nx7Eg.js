@@ -1,0 +1,30 @@
+import{a as e,n as t}from"./rolldown-runtime-DkW27tQK.js";import{g as n}from"./iframe-DYDs02wk.js";import{t as r}from"./jsx-runtime-DeHZSEgm.js";import{t as i}from"./classnames-D09xBJOL.js";import{i as a,n as o,r as s,t as c}from"./UiIcon-DFqNdBsp.js";var l,u,d;function f(){return(f=t((()=>{l=function(e){return e.VERTICAL=`VERTICAL`,e.HORIZONTAL=`HORIZONTAL`,e}({}),u=function(e){return e.DEFAULT=`DEFAULT`,e.COMPACT=`COMPACT`,e}({}),d=function(e){return e.XS=`XS`,e.SM=`SM`,e.MD=`MD`,e}({})})))()}var p,m,h,g;function _(){return(_=t((()=>{n(),p=e(i(),1),f(),m=r(),h={[u.DEFAULT]:`gap-xxxs`,[u.COMPACT]:`gap-xxs`},g=({children:e,prefix:t,className:n,space:r=u.DEFAULT})=>(0,m.jsxs)(`li`,{className:(0,p.default)(`flex`,h[r],n),children:[t?(0,m.jsx)(`span`,{className:`inline-flex h-lh items-center`,children:t}):null,e?(0,m.jsx)(`span`,{children:e}):null]}),g.__docgenInfo={description:``,methods:[],displayName:`UiListItem`,props:{children:{required:!0,tsType:{name:`ReactReactNode`,raw:`React.ReactNode`},description:``},className:{required:!1,tsType:{name:`string`},description:``},prefix:{required:!1,tsType:{name:`ReactReactNode`,raw:`React.ReactNode`},description:``},space:{required:!1,tsType:{name:`EListItemSpacing`},description:``,defaultValue:{value:`EListItemSpacing.DEFAULT`,computed:!0}}}}})))()}var v,y,b,x,S,C;function w(){return(w=t((()=>{n(),f(),v=e(i(),1),y=r(),b={[l.VERTICAL]:`flex-col`,[l.HORIZONTAL]:`flex-row`},x={[u.DEFAULT]:`gap-sm`,[u.COMPACT]:`gap-xxs`},S={[d.XS]:`text-xs`,[d.SM]:`text-sm`,[d.MD]:`text-md`},C=({children:e,direction:t=l.VERTICAL,spacing:n=u.DEFAULT,size:r=d.SM,className:i})=>(0,y.jsx)(`ul`,{className:(0,v.default)(`ui-list`,`flex`,b[t],x[n],S[r],i),children:e}),C.__docgenInfo={description:``,methods:[],displayName:`UiList`,props:{children:{required:!1,tsType:{name:`ReactReactNode`,raw:`React.ReactNode`},description:``},direction:{required:!1,tsType:{name:`EListItemDirection`},description:``,defaultValue:{value:`EListItemDirection.VERTICAL`,computed:!0}},size:{required:!1,tsType:{name:`EListItemSize`},description:``,defaultValue:{value:`EListItemSize.SM`,computed:!0}},spacing:{required:!1,tsType:{name:`EListItemSpacing`},description:``,defaultValue:{value:`EListItemSpacing.DEFAULT`,computed:!0}},className:{required:!1,tsType:{name:`string`},description:``}}}})))()}var T,E,D,O,k,A;function j(){return(j=t((()=>{_(),w(),o(),n(),f(),a(),T=r(),E={title:`Components/UiList`,component:C,argTypes:{direction:{control:{type:`select`},options:Object.values(l),description:`Direction`},size:{control:{type:`select`},options:Object.values(d),description:`Icon Size`},spacing:{control:{type:`select`},options:Object.values(u),description:`Icon Spacing`}},args:{direction:l.VERTICAL,size:d.SM,spacing:u.DEFAULT}},D=()=>(0,T.jsx)(c,{name:[`far`,`face-smile`],size:s.SM}),O={render:e=>(0,T.jsxs)(C,{direction:e.direction,size:e.size,spacing:e.spacing,children:[(0,T.jsx)(g,{prefix:D(),children:`Item 1`}),(0,T.jsx)(g,{prefix:D(),children:`Item 2`}),(0,T.jsx)(g,{prefix:D(),children:`Item 3`})]})},k={render:e=>(0,T.jsxs)(`div`,{className:`flex flex-col gap-lg`,children:[(0,T.jsxs)(C,{direction:e.direction,size:e.size,spacing:e.spacing,children:[(0,T.jsx)(g,{children:`Item 1`}),(0,T.jsx)(g,{children:`Item 2`}),(0,T.jsx)(g,{children:`Item 3`})]}),(0,T.jsxs)(C,{direction:e.direction,size:e.size,spacing:e.spacing,children:[(0,T.jsxs)(g,{prefix:D(),children:[`Item 1`,(0,T.jsx)(`br`,{}),` Item 1`]}),(0,T.jsx)(g,{prefix:D(),children:`Item 2`}),(0,T.jsx)(g,{prefix:D(),children:`Item 3`})]}),(0,T.jsxs)(C,{direction:l.HORIZONTAL,size:e.size,spacing:e.spacing,children:[(0,T.jsxs)(g,{prefix:D(),children:[`Item 1`,(0,T.jsx)(`br`,{}),` Item 1`]}),(0,T.jsx)(g,{prefix:D(),children:`Item 2`}),(0,T.jsx)(g,{children:`Item 3`})]}),(0,T.jsxs)(C,{direction:l.HORIZONTAL,size:e.size,spacing:e.spacing,children:[(0,T.jsxs)(g,{children:[`Item 1`,(0,T.jsx)(`br`,{}),` Item 1`]}),(0,T.jsx)(g,{children:`Item 2`}),(0,T.jsx)(g,{children:`Item 3`})]})]})},A=[`Primary`,`Variants`],O.parameters={...O.parameters,docs:{...O.parameters?.docs,source:{originalSource:`{
+  render: args => <UiList direction={args.direction} size={args.size} spacing={args.spacing}>
+            <UiListItem prefix={IconComponent()}>Item 1</UiListItem>
+            <UiListItem prefix={IconComponent()}>Item 2</UiListItem>
+            <UiListItem prefix={IconComponent()}>Item 3</UiListItem>
+        </UiList>
+}`,...O.parameters?.docs?.source}}},k.parameters={...k.parameters,docs:{...k.parameters?.docs,source:{originalSource:`{
+  render: args => <div className='flex flex-col gap-lg'>
+            <UiList direction={args.direction} size={args.size} spacing={args.spacing}>
+                <UiListItem>Item 1</UiListItem>
+                <UiListItem>Item 2</UiListItem>
+                <UiListItem>Item 3</UiListItem>
+            </UiList>
+            <UiList direction={args.direction} size={args.size} spacing={args.spacing}>
+                <UiListItem prefix={IconComponent()}>Item 1<br /> Item 1</UiListItem>
+                <UiListItem prefix={IconComponent()}>Item 2</UiListItem>
+                <UiListItem prefix={IconComponent()}>Item 3</UiListItem>
+            </UiList>
+            <UiList direction={EListItemDirection.HORIZONTAL} size={args.size} spacing={args.spacing}>
+                <UiListItem prefix={IconComponent()}>Item 1<br /> Item 1</UiListItem>
+                <UiListItem prefix={IconComponent()}>Item 2</UiListItem>
+                <UiListItem>Item 3</UiListItem>
+            </UiList>
+            <UiList direction={EListItemDirection.HORIZONTAL} size={args.size} spacing={args.spacing}>
+                <UiListItem>Item 1<br /> Item 1</UiListItem>
+                <UiListItem>Item 2</UiListItem>
+                <UiListItem>Item 3</UiListItem>
+            </UiList>
+        </div>
+}`,...k.parameters?.docs?.source}}}})))()}j();export{O as Primary,k as Variants,A as __namedExportsOrder,E as default};

@@ -5,4 +5,4 @@ export type TUiAccordionInfoDropdown = {
     postfix?: (isOpen?: boolean) => React.ReactNode;
     prefix?: (isOpen?: boolean) => React.ReactNode;
 };
-export declare const UiAccordionInfoDropdown: ({ children, id, title, postfix, prefix }: TUiAccordionInfoDropdown) => import("react").JSX.Element;
+export declare const UiAccordionInfoDropdown: ({ children, id, title, postfix, prefix }: TUiAccordionInfoDropdown) => import('../../../node_modules/react').JSX.Element;
