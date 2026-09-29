@@ -40,8 +40,9 @@ export const UiInputTextArea: FC<TUiInputTextAreaProps> = ({
 						"ui-text-area-wrapper",
 						"flex flex-row items-center gap-sm rounded-xl border p-xs",
 						"hover:border-secondary-alt-700",
-						"focus-within:outline-4",
-						"focus-within:outline-primary-300",
+						"focus-within:outline-2",
+						"focus-within:outline-offset-2",
+						"focus-within:outline-primary-600",
 						"focus-within:ring-secondary-alt-700 active:ring",
 						kind && !rest.disabled && stateClasses[kind],
 						{
