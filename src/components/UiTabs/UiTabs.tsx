@@ -4,7 +4,8 @@ import cx from "classnames";
 type UiTabsProps = {
 	tabs: string[]
 	tabsModel: string,
-	className: string
+	className?: string
+	name?: string
 	onTabChange: (val: string) => void
 }
 
@@ -12,8 +13,10 @@ export const UiTabs: React.FC<UiTabsProps> = ({
 	tabs,
 	tabsModel,
 	onTabChange,
-	className
+	className,
+	name
 }) => {
+	const fallbackName = React.useId();
 
 	return (
 		<ul className={ cx(
@@ -52,6 +55,7 @@ export const UiTabs: React.FC<UiTabsProps> = ({
 							"appearance-none"
 						) }
 						type="radio"
+						name={ name || fallbackName }
 						value={ tab }
 						checked={ tabsModel === tab }
 						onChange={ ()=> onTabChange(tab) }>

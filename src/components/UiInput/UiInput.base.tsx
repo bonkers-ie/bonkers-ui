@@ -70,8 +70,8 @@ export const UiInputBase = React.forwardRef<HTMLInputElement, TUiInputBaseProps>
 							"border-secondary-alt-300 bg-secondary-alt-200": rest.disabled,
 						},
 						className,
-						size === EInputSize.SMALL && "px-xs py-xxs",
-						size === EInputSize.MEDIUM && "p-sm"
+						size === EInputSize.SMALL && "px-xs",
+						size === EInputSize.MEDIUM && "px-sm"
 					)
 				}
 			>
@@ -80,7 +80,11 @@ export const UiInputBase = React.forwardRef<HTMLInputElement, TUiInputBaseProps>
 					: null }
 				<input
 					ref={ ref }
-					className={ cx("w-full bg-transparent outline-hidden placeholder:text-secondary-alt-600", placeHolderClasses[kind]) }
+					className={ cx(
+						"w-full bg-transparent leading-[22px] outline-hidden placeholder:text-secondary-alt-600", placeHolderClasses[kind],
+						size === EInputSize.SMALL && "py-xxs",
+						size === EInputSize.MEDIUM && "py-sm"
+					) }
 					{ ...rest }
 				/>
 

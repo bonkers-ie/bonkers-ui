@@ -53,7 +53,9 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 			) }
 			id={ id  || `${name}-${value}` }
 			type="radio"
+			name={ name }
 			value={ value }
+			disabled={ disabled }
 			checked={ checked }
 			onChange={ () => onChange(value) }
 			{ ...rest }
