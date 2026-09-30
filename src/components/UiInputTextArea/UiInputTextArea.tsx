@@ -14,10 +14,24 @@ type TUiInputTextAreaProps = {
 } & TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 const stateClasses = {
-	[EInputKind.DEFAULT]: "border-secondary-alt-600",
+	[EInputKind.DEFAULT]: "border-secondary-300",
 	[EInputKind.ERROR]: "border-error",
 	[EInputKind.SUCCESS]: "border-primary-600",
 	[EInputKind.WARNING]: "border-warning-600"
+};
+
+const hoverClasses = {
+	[EInputKind.DEFAULT]: "hover:border-secondary-300 hover:bg-secondary-alt-200",
+	[EInputKind.SUCCESS]: "hover:border-primary-alt-700 hover:bg-primary-50",
+	[EInputKind.ERROR]: "hover:border-error-500 hover:bg-error-100",
+	[EInputKind.WARNING]: "hover:border-warning-600 hover:bg-warning-300"
+};
+
+const placeHolderClasses = {
+	[EInputKind.DEFAULT]: "hover:placeholder:text-secondary-alt-600",
+	[EInputKind.SUCCESS]: "hover:placeholder:text-primary-alt-700",
+	[EInputKind.ERROR]: "hover:placeholder:text-error-500",
+	[EInputKind.WARNING]: "hover:placeholder:text-warning-600"
 };
 
 export const UiInputTextArea: FC<TUiInputTextAreaProps> = ({
@@ -39,12 +53,11 @@ export const UiInputTextArea: FC<TUiInputTextAreaProps> = ({
 					cx(
 						"ui-text-area-wrapper",
 						"flex flex-row items-center gap-sm rounded-xl border p-xs",
-						"hover:border-secondary-alt-700",
 						"focus-within:outline-2",
 						"focus-within:outline-offset-2",
 						"focus-within:outline-primary-600",
 						"focus-within:ring-secondary-alt-700 active:ring",
-						kind && !rest.disabled && stateClasses[kind],
+						kind && !rest.disabled && [stateClasses[kind] , hoverClasses[kind]],
 						{
 							"bg-white": !rest.disabled,
 							"border-secondary-alt-300 bg-secondary-alt-200": rest.disabled,
@@ -62,7 +75,7 @@ export const UiInputTextArea: FC<TUiInputTextAreaProps> = ({
 						min-h-xxl
 						w-full
 						resize-y
-					`) }
+					`, kind && !rest.disabled && placeHolderClasses[kind]) }
 					rows={ 3 }
 					onKeyDown={ (e) => {
 						if (e.key === "Enter") {
