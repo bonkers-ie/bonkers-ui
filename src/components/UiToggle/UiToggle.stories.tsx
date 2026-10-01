@@ -43,8 +43,7 @@ const meta = {
 				type: "boolean",
 			},
 			description: "Toggle Value",
-		},
-
+		}
 	}
 } satisfies Meta<typeof UiToggle>;
 
