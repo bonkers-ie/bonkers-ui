@@ -8,8 +8,9 @@
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true,
     "moduleDetection": "force",
-    "noEmit": true
+    "noEmit": true,
+    "types": ["bun"]
   },
-  "include": ["vite.config.ts"],
+  "include": ["vite.config.ts", "publish.ts", "postbuild.ts"],
   "exclude": ["node_modules", "./src/**/*.stories.*", "./src/stories"]
 }

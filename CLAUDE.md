@@ -125,10 +125,11 @@ Notation: `prop: Type = default`. `?` = optional. Every component also accepts `
 - `disabled?` · `invertOrder?` · `justify?: EJustify = START` · full width by default
 
 **`UiRadio`** (`bonkers-ui/UiRadio`) is a classic radio. `children` is the label.
-- `name: string`, `value: string`, `onChange(value: string)` (**required**) · `checked?` · `disabled?` · `invertOrder?` · `justify?: EJustify`
+- `name: string`, `value: string`, `onChange(value: string)` (**required**) · `checked?` · `disabled?` · `invertOrder?` · `justify?: EJustify` · plus native `<input>` attrs
+- Give every option in a group the same `name` so the browser treats them as one group (Tab focuses it once, arrow keys move between options).
 
 **`UiPlainRadio`** (`bonkers-ui/UiPlainRadio`) is a card-style radio: a bordered box with a radio dot, the label, and an optional `subHeader?: string`.
-- Same required props as `UiRadio` (`name`, `value`, `onChange(value)`) · `checked?` · `disabled?`
+- Same required props as `UiRadio` (`name`, `value`, `onChange(value)`) · `checked?` · `disabled?` · plus native `<input>` attrs. Use the same `name` across a group, as with `UiRadio`.
 
 **`UiRadioFancy`** (`bonkers-ui/UiRadioFancy`) is a card radio with a round green icon bubble.
 - `value: string`, `onChange(value)`, `children` (**required**) · `active?: boolean` (⚠ this is the checked state, not `checked`) · `icon?: IconProp` · `subHeader?` · `disabled?`

@@ -34,7 +34,7 @@ export const UiRadio: React.FC<TUiRadioProps> = ({
 	checked = false,
 	children,
 	className,
-	tabIndex
+	...rest
 }) => {
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,6 +57,7 @@ export const UiRadio: React.FC<TUiRadioProps> = ({
 				}
 			) }>
 			<input
+				{ ...rest }
 				id={ id || `${name}-${value}` }
 				name={ name.toString() }
 				type="radio"
@@ -65,7 +66,6 @@ export const UiRadio: React.FC<TUiRadioProps> = ({
 				checked={ checked }
 				onChange={ handleChange }
 				className="peer absolute appearance-none"
-				tabIndex={ tabIndex }
 			/>
 			<span className={ cx(
 				styles.UiRadio__custom,

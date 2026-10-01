@@ -55,7 +55,7 @@ export const Primary: Story = {
 			<div>
 				<UiPlainRadio
 					disabled={ args.disabled }
-					name="Value1"
+					name="plain-radio"
 					value="value1"
 					onChange={ handleChange }
 					checked={ selectedValue === "value1" }
@@ -69,7 +69,7 @@ export const Primary: Story = {
 
 				<UiPlainRadio
 					disabled={ args.disabled }
-					name="Value2"
+					name="plain-radio"
 					value="value2"
 					onChange={ handleChange }
 					checked={ selectedValue === "value2" }
