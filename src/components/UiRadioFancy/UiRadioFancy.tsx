@@ -14,6 +14,7 @@ export type TUiRadioFancy = {
 	className?: string;
 	radioType?: ERadioTypes;
 	value: string;
+	name?: string;
 	onChange: (value: string) => void;
 
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "checked" | "value" | "name">;
@@ -32,8 +33,9 @@ export const UiRadioFancy: React.FC<TUiRadioFancy> = ({
 	radioType = ERadioTypes.DEFAULT,
 	value,
 	onChange,
-	className
-
+	name,
+	className,
+	...rest
 }) => {
 	return (
 		<label className={ cx(
@@ -44,7 +46,16 @@ export const UiRadioFancy: React.FC<TUiRadioFancy> = ({
 			},
 			className
 		) }>
-			<input className="group peer absolute appearance-none" type="radio" checked={ active } onChange={ ()=> onChange(value) }/>
+			<input
+				{ ...rest }
+				className="group peer absolute appearance-none"
+				type="radio"
+				name={ name }
+				value={ value }
+				disabled={ disabled }
+				checked={ !!active }
+				onChange={ () => onChange(value) }
+			/>
 
 			<div className={ cx(
 				"box-border",
@@ -68,7 +79,7 @@ export const UiRadioFancy: React.FC<TUiRadioFancy> = ({
 					? "peer-focus:outline-offset-2"
 					: "peer-focus:outline-offset-0",
 				disabled
-					? "peer-checked:shadow-border-primary-disabled border-secondary-alt-400 text-secondary-alt-500"
+					? "border-secondary-alt-400 text-secondary-alt-500 peer-checked:shadow-selected-disabled"
 					: "border-secondary-alt-600",
 
 				typeClasses[radioType],

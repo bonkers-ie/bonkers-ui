@@ -1,5 +1,6 @@
 import React from "react";
 import cx from "classnames";
+import { EPlainRadioSize } from "./_types";
 
 export type TUiPlainRadio = {
 	children?: React.ReactNode
@@ -8,10 +9,11 @@ export type TUiPlainRadio = {
 	value: string;
 	name: string;
 	className?: string
-	checked?: boolean
+	checked?: boolean;
+	size?: EPlainRadioSize;
 	onChange: (value: string) => void;
 
-} & Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "checked" | "value" | "name">;
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "checked" | "value" | "name" | "size">;
 
 export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 	id,
@@ -21,11 +23,17 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 	value,
 	name,
 	checked = false,
+	size = EPlainRadioSize.DEFAULT,
 	className,
 	onChange,
 	...rest
 
 }) => {
+
+	const sizeClasses = {
+		[EPlainRadioSize.DEFAULT]: "py-xs px-sm",
+		[EPlainRadioSize.SMALL]: "py-xxs px-xs"
+	};
 
 	return (
 		<label className={ cx(
@@ -33,7 +41,7 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 			"relative",
 			"group",
 			{
-				"pointer-events-none opacity-50": disabled
+				"pointer-events-none": disabled
 			},
 			className
 		) }
@@ -45,7 +53,9 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 			) }
 			id={ id  || `${name}-${value}` }
 			type="radio"
+			name={ name }
 			value={ value }
+			disabled={ disabled }
 			checked={ checked }
 			onChange={ () => onChange(value) }
 			{ ...rest }
@@ -58,7 +68,7 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 				"flex",
 				"gap-sm",
 				"items-center",
-				"p-sm",
+				sizeClasses[size],
 				"peer-active:bg-secondary-alt-200",
 				"peer-active:ring-primary-800",
 				"peer-focus-within:outline-offset-4",
@@ -86,11 +96,11 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 			>
 
 				<span className={ cx(
-					"bg-white",
+					"block",
+					"shrink-0",
 					"group-active:ring-primary-800",
 					"group-hover:ring-primary-700",
 					"pointer-events-none",
-					"relative",
 					"rounded-full",
 					"size-md",
 					checked
@@ -99,41 +109,16 @@ export const UiPlainRadio: React.FC<TUiPlainRadio> = ({
 					disabled
 						? "ring-secondary-alt-300"
 						: "ring-primary-600",
-
 					{
+						"bg-white": !checked,
+						"inset-ring-4 inset-ring-white": checked,
+						"bg-primary-600 group-hover:bg-primary-700 group-active:bg-primary-800": checked && !disabled,
+						"bg-secondary-300": checked && disabled,
 						"ring-secondary-alt-600 group-hover:ring-secondary-500 group-active:ring-secondary-500": !disabled && !checked,
 					}
+				) } />
 
-				) }>
-					<span
-						className={ cx(
-							"absolute",
-							"block",
-							"group-active:bg-primary-800",
-							"group-hover:bg-primary-700",
-							"left-xxs",
-							"pointer-events-none",
-							"rounded-full",
-							"size-xxs",
-							"top-xxs",
-							checked
-								? "bg-primary-600"
-								: "bg-white",
-							disabled
-								? "bg-secondary-alt-300"
-								: "bg-primary-600",
-							{
-								"bg-white group-hover:bg-white group-active:bg-white": !disabled && !checked,
-							}
-
-						) }/>
-
-				</span>
-
-				<div className={ `
-					flex
-					flex-col
-				` }>
+				<div className={ cx("flex flex-col", disabled && "text-secondary-300") }>
 					{ children }
 
 					{

@@ -60,6 +60,7 @@ export const Primary: Story = {
 					disabled={ args.disabled }
 					icon={ ["far", "face-smile"] }
 					radioType={ args.radioType }
+					name="fancy-radio"
 					value="value1"
 					onChange={ handleChange }
 					active={ selectedValue === "value1" }
@@ -73,6 +74,7 @@ export const Primary: Story = {
 					disabled={ args.disabled }
 					icon={ ["far", "face-smile"] }
 					radioType={ args.radioType }
+					name="fancy-radio"
 					value="value2"
 					onChange={ handleChange }
 					active={ selectedValue === "value2" }
@@ -110,6 +112,7 @@ export const Variant: Story = {
 					disabled={ args.disabled }
 					icon={ ["far", "face-smile"] }
 					radioType={ args.radioType }
+					name="fancy-radio"
 					value="value1"
 					onChange={ handleChange }
 					active={ selectedValue === "value1" }
@@ -123,6 +126,7 @@ export const Variant: Story = {
 					disabled={ args.disabled }
 					icon={ ["far", "face-smile"] }
 					radioType={ args.radioType }
+					name="fancy-radio"
 					value="value2"
 					onChange={ handleChange }
 					active={ selectedValue === "value2" }

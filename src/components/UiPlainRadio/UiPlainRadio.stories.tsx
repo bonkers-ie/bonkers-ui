@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { UiPlainRadio } from "./UiPlainRadio";
 import React, { useState } from "react";
+import { EPlainRadioSize } from "./_types";
 
 const meta = {
 	title: "Components/UiPlainRadio",
@@ -24,10 +25,18 @@ const meta = {
 			},
 			description: "RadioFancy Children",
 		},
+		size: {
+			control: {
+				type: "select",
+			},
+			options: Object.values(EPlainRadioSize),
+			description: "Radio size",
+		},
 	},
 	args: {
 		children: "Rural",
 		disabled: false,
+		size: EPlainRadioSize.DEFAULT,
 		subHeader: "DG2 = Rural supply region",
 		onChange: (value: string) => console.log(value),
 		checked: false,
@@ -55,11 +64,12 @@ export const Primary: Story = {
 			<div>
 				<UiPlainRadio
 					disabled={ args.disabled }
-					name="Value1"
+					name="plain-radio"
 					value="value1"
 					onChange={ handleChange }
 					checked={ selectedValue === "value1" }
 					children={ args.children }
+					size={ args.size }
 
 				>
 
@@ -69,12 +79,13 @@ export const Primary: Story = {
 
 				<UiPlainRadio
 					disabled={ args.disabled }
-					name="Value2"
+					name="plain-radio"
 					value="value2"
 					onChange={ handleChange }
 					checked={ selectedValue === "value2" }
 					children={ args.children }
 					subHeader={ args.subHeader }
+					size={ args.size }
 				>
 
 				</UiPlainRadio>

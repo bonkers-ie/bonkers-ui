@@ -240,7 +240,7 @@ const typeClasses = {
 		hover:no-underline
 		hover:text-secondary-alt-300
 		active:bg-secondary-400
-		active-text-white
+		active:text-white
 		disabled:bg-transparent
 		disabled:text-secondary-alt-700
 		disabled:underline
@@ -293,6 +293,9 @@ export function UiButton<T extends React.ElementType = "button">(
 ) {
 	const Component = tag || "button";
 	return <Component
+		type={ Component === "button"
+			? "button"
+			: undefined }
 		disabled={ disabled }
 		onClick={ onClick }
 		className={ cx(

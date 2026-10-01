@@ -1,6 +1,7 @@
 import React from "react";
 import { UiRadio } from "./UiRadio";
 import { EJustify } from "../../_types/align";
+import { ERadioSize } from "./_types";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 const meta = {
@@ -13,6 +14,13 @@ const meta = {
 			},
 			options: Object.values(EJustify),
 			description: "The Element justify",
+		},
+		size: {
+			control: {
+				type: "select"
+			},
+			options: Object.values(ERadioSize),
+			description: "The Element size",
 		},
 		invertOrder: {
 			control: {
@@ -42,6 +50,7 @@ const meta = {
 		children: "Some text",
 		onChange: (value: unknown) => console.log(`Value updated to ${value}`),
 		justify: EJustify.START,
+		size: ERadioSize.DEFAULT,
 		invertOrder: false,
 		disabled: false,
 		value: "value_3"
