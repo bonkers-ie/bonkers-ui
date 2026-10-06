@@ -3,6 +3,12 @@ import { EButtonSizes, EButtonTypes, EButtonWeight } from "./_types.ts";
 import cx from "classnames";
 import css from "./UiButton.module.css";
 
+type TButtonType = "button" | "submit" | "reset";
+
+type TButtonTypeProps<T extends React.ElementType> = [T] extends ["button"]
+	? { type: TButtonType }
+	: unknown;
+
 type PolymorphicProps<T extends React.ElementType> = {
 	tag?: T;
 	kind?: EButtonTypes;
@@ -10,7 +16,7 @@ type PolymorphicProps<T extends React.ElementType> = {
 	fullWidth?: boolean;
 	weight?: EButtonWeight;
 	className?: string;
-} & React.ComponentPropsWithoutRef<T>;
+} & React.ComponentPropsWithoutRef<T> & TButtonTypeProps<T>;
 
 const typeClasses = {
 	[EButtonTypes.PRIMARY_BRAND]: `
@@ -293,9 +299,6 @@ export function UiButton<T extends React.ElementType = "button">(
 ) {
 	const Component = tag || "button";
 	return <Component
-		type={ Component === "button"
-			? "button"
-			: undefined }
 		disabled={ disabled }
 		onClick={ onClick }
 		className={ cx(

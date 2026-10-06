@@ -95,6 +95,7 @@ Notation: `prop: Type = default`. `?` = optional. Every component also accepts `
 
 ### Actions
 **`UiButton`** (`bonkers-ui/UiButton`) is polymorphic through `tag`, for example `<UiButton tag="a" href="/x">`. Native attrs of the tag are accepted.
+- `type: "button" | "submit" | "reset"` is **required** when `tag` is `"button"` (the default). There is no default `type`, because a native `<button>` inside a `<form>` submits it. Leave `type` out for other tags (`"a"`, `Link`, ...).
 - `kind?: EButtonTypes = PRIMARY_BRAND`: `{PRIMARY|SECONDARY|TERTIARY}_{BRAND|ACCENT|NEUTRAL|DESTRUCTIVE|INVERSE}`. PRIMARY is filled, SECONDARY is outlined, TERTIARY is a text link. INVERSE is for dark backgrounds.
 - `size?: EButtonSizes = MEDIUM`: `XSMALL SMALL MEDIUM LARGE`
 - `weight?: EButtonWeight = BOLD`: `DEFAULT BOLD`
@@ -211,6 +212,7 @@ Notation: `prop: Type = default`. `?` = optional. Every component also accepts `
 ## Part 3 — Composition patterns and pitfalls
 
 - For a form field with a label and a validation message, use `UiInputText` with `kind={EInputKind.ERROR}` and `statusMessage="…"`. The same `kind` + `statusMessage` pair works on `UiSelect` and `UiInputTextArea`.
+- Always pass `type` to a `<UiButton>` rendered as a `<button>`: `type="submit"` for the form's submit button, `type="button"` for everything else.
 - For a link that looks like a button, use `<UiButton tag="a" href="…">`. With Next.js, use `<UiButton tag={Link} href="…">`.
 - Callbacks differ between components. `UiCheckbox` and `UiToggle` call `onChange(boolean)`, `UiRadio`, `UiPlainRadio` and `UiRadioFancy` call `onChange(value: string)`, and `UiSelect` calls `onChange(event)`. `UiInputRange` uses `onChangeHandler(number)`.
 - Put text in `UiTypography` rather than raw `<p className="text-sm">`. That keeps the size and line height consistent.

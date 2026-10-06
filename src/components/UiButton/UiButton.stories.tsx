@@ -28,6 +28,17 @@ const meta = {
 			],
 			description: "Button Type",
 		},
+		type: {
+			control: {
+				type: "select"
+			},
+			options: [
+				"button",
+				"submit",
+				"reset",
+			],
+			description: "Native button type. Required when tag is \"button\" (the default)",
+		},
 		size: {
 			control: {
 				type: "select"
@@ -68,7 +79,8 @@ const meta = {
 		fullWidth: false,
 		disabled: false,
 		weight: EButtonWeight.BOLD,
-		tag: "button"
+		tag: "button",
+		type: "button",
 	},
 } satisfies Meta<typeof UiButton>;
 
